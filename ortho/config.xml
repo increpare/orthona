@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.increpare.tokiutala" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.increpare.ortho" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>toki-utala</name>
-    <description>A vocabulary testing program for the language toki pona.</description>
+    <description>Ortho drawing tool for an unnamed language.</description>
     <author email="analytic@gmail.com" href="http://www.increpare.com">increpare</author>
     <content src="index.html" />
     <preference name="permissions" value="none" />

@@ -21,221 +21,261 @@
 -->
 <html>
     <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="apple-mobile-web-app-capable" content="yes"/>
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <title>Ortho</title>
+<style>
+body, html { margin: 0px;}
+    canvas {
+        position:absolute;
+        margin:0;
+    }
+</style>
+<script type="text/javascript" charset="utf-8">
+    var elements=[];
+    var lines=[];
+    var canvas;
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    var id;
+    var d;                        // only do this once per page
+    var ctx;
 
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <title>Toki Utala</title>
-<script src="js/dictionary.js" type="text/javascript" charset="utf-8" async defer></script>
-<style type="text/css">
-body {
-    overflow: hidden
+    function doStart(){
+        canvas = document.getElementById("mainCanvas");
+        ctx = canvas.getContext('2d');
+        ctx.imageSmoothingEnabled = false;
+        id = ctx.createImageData(1,1); // only do this once per page;
+        d = id.data;
 
-    font-size: 120%;
-    text-align: center;
-
-
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-ul {
-list-style-type: none;
-padding:0px;
-}
-
-a {
-    text-decoration: none;
-}
-a:active {
-}
-#targetWord{
-     text-transform: uppercase; 
-}
-
-li {
-    border:1px solid black;
-    padding: 5px;
-    margin: 5px;
-}
-
-
-.streakText {
-    border-radius:5px;
-    padding:5px 10px;
-}
-
-.itemLink {
-}
-
-
-#continueButton{
-}
-        </style>
-                <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-        <script type="text/javascript" >
-            
-var check="✓";
-var cross="✘";
-var neutral=".";
-
-// Returns a random integer between min (included) and max (excluded)
-// Using Math.round() will give you a non-uniform distribution!
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-function fisherYates(myArray,nb_picks)
-{
-    for (i = myArray.length-1; i > 1  ; i--)
-    {
-        var r = Math.floor(Math.random()*i);
-        var t = myArray[i];
-        myArray[i] = myArray[r];
-        myArray[r] = t;
+        canvas.addEventListener("touchstart", handleStart, false);
+        canvas.addEventListener("touchend", handleEnd, false);
+        canvas.addEventListener("touchcancel", handleEnd, false);
+        canvas.addEventListener("touchleave", handleEnd, false);
+        canvas.addEventListener("touchmove", handleMove, false);
+        render();
     }
 
-    return myArray.slice(0,nb_picks);
-}
+    
+    var oldX=0;
+    var oldY=0;
 
+    function handleStart(evt) {
+        evt.preventDefault();
+        window.console.log("begin");
+        for (var i =0; i<evt.touches.length; i++){
+            var t= evt.touches[i];
 
-var choiceCount=5;
-var answer=-1;
-var highScore = localStorage.getItem("highScore");
-if (highScore==null){
-    highScore=0;
-}
-var score=0;
-var chosenAnswer=-1;
+            var cx = t.clientX;
+            var cy = t.clientY;
 
-var chosenIndices=[];
-var gameState=0;
+            var gx = Math.round(cx/cellSize);
+            var gy = Math.round(cy/cellSize);
+            oldX=gx;
+            oldY=gy;           
+        }
 
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-function startPopulate(qMode){
-    if (qMode){
-        chosenIndices=[];
-        //pick 5 random rows
-        rows = fisherYates(dictionary,choiceCount);
-        //pick 1 to be the answer at random
-        answer = getRandomInt(0,5);
-        //pick language direction
-        direction = getRandomInt(0,2);
-        //populate screendat
-
-
-        var tw = document.getElementById("targetWord");
-        var tr = rows[answer];
-        var td = tr[1-direction];
-        tw.innerText = td[getRandomInt(0,td.length)];
+        render();
     }
 
-    for (var i=0;i<5;i++){
-        var r = rows[i];
-        var d = r[direction];
-        var d2 = r[1-direction];
+    function clickCell(x,y){
 
-        var el = document.getElementById("choice"+i);
-        if (qMode){
-            chosenIndices.push(getRandomInt(0,d.length));
-            d[chosenIndices[i]]=capitalizeFirstLetter(d[chosenIndices[i]]);
-            el.innerHTML= '<a class="list-group-item itemLink"  ontouchstart="clickChoice('+i+')">'+d[chosenIndices[i]]+"</a>";
-        } else {
-            el.innerHTML=d[chosenIndices[i]];
-            def=d2[getRandomInt(0,d2.length)];
-            if (answer===i && answer===chosenAnswer) {
-                el.innerHTML = '<a class="list-group-item itemLink  disabled"  style="color:green; background-color:lightgreen;">'+el.innerHTML+" "+check+"("+def+")"+'</a>';
-            } else if (answer===i) {
-                el.innerHTML = '<a class="list-group-item  itemLink disabled"   style="color:green; background-color:lightgreen;">'+el.innerHTML+" ("+def+")"+'</a>';
-            } else if (chosenAnswer==i){
-                el.innerHTML = '<a class="list-group-item itemLink disabled"  style="color:red; background-color:#eeaaaa;">'+el.innerHTML+" "+cross+" ("+def+")"+'</a>';                
+    }
+
+    function makeLine(x1,y1,x2,y2){
+        if (x1<x2|| (x1===x2&&y1<y2)){
+            var tx=x1;
+            x1=x2;
+            x2=tx;
+
+            var ty=y1;
+            y1=y2;
+            y2=ty;
+        }
+        lines.push([x1,y1,x2,y2]);
+    }
+
+    function handleEnd(evt){
+        evt.preventDefault();
+        window.console.log("end");
+        for (var i=0;i<evt.touches.length;i++){
+
+            var t= evt.touches[i];
+
+            var cx = t.clientX;
+            var cy = t.clientY;
+
+            var gx = Math.round(cx/cellSize);
+            var gy = Math.round(cy/cellSize);
+
+            if (oldX==gx && oldY==gy){
+                clickCell(gx,gy);
             } else {
-                el.innerHTML = '<a class="list-group-item itemLink disabled" >'+el.innerHTML+" ("+def+")"+'</button>'
+                makeLine(oldX,oldY,gx,gy);
             }
         }
     }
-    if (qMode){
-        var el = document.getElementById("continueButton").style.display="none";
-    } else {
-        var el = document.getElementById("continueButton").style.display="initial";        
-    }
-    document.getElementById("currentStreak").innerText=score;
-    document.getElementById("longestStreak").innerText=highScore;
-}
+    var pentagon = [
+        0,-1000,
+        -951,-309,
+        -588,809,
+        588,809,
+        951,-309
+    ];
 
-function clickChoice(i){
-    if (gameState===1){
-        return;
-    }
-    gameState=1;
-    if (i===answer){
-        score++;
-        if (score>highScore){
-            highScore=score;
-            localStorage.setItem("highScore",score);
+    var triangle = [
+        0,-1000,
+        -866,500,
+        866,500
+    ];
+
+    function drawIcon(x,y,n){
+        switch(n){
+            case 0://thick dot
+            {
+                ctx.beginPath();
+                ctx.arc(x,y,5,0,2*Math.PI);   
+                ctx.fillStyle="#000000";
+                ctx.fill();
+                break;   
+            }
+            case 1://circle
+            {
+                ctx.beginPath();
+                ctx.arc(x,y,cellSize*0.4,0,2*Math.PI);
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }
+            case 2://star
+            {
+
+                ctx.beginPath();
+                var s = cellSize*0.4/1000;
+                ctx.moveTo(x+pentagon[2*0+0]*s,y+pentagon[2*0+1]*s);
+                ctx.lineTo(x+pentagon[2*2+0]*s,y+pentagon[2*2+1]*s);
+                ctx.lineTo(x+pentagon[2*4+0]*s,y+pentagon[2*4+1]*s);
+                ctx.lineTo(x+pentagon[2*1+0]*s,y+pentagon[2*1+1]*s);
+                ctx.lineTo(x+pentagon[2*3+0]*s,y+pentagon[2*3+1]*s);
+                ctx.closePath();
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }
+            case 3://triangle
+            {
+                ctx.beginPath();
+                var s = cellSize*0.4/1000;
+                ctx.moveTo(x+triangle[2*0+0]*s,y+triangle[2*0+1]*s);
+                ctx.lineTo(x+triangle[2*2+0]*s,y+triangle[2*2+1]*s);
+                ctx.lineTo(x+triangle[2*1+0]*s,y+triangle[2*1+1]*s);
+                ctx.closePath();
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }
+            case 4://2 star
+            {
+                ctx.beginPath();
+                var s = cellSize*0.4/1.41;
+                ctx.moveTo(0.5+x-s,0.5+y);
+                ctx.lineTo(0.5+x+s,0.5+y);
+                ctx.moveTo(0.5+x,0.5+y-s);
+                ctx.lineTo(0.5+x,0.5+y+s);
+                ctx.moveTo(0.5+x-s/1.414,0.5+y-s/1.414);
+                ctx.lineTo(0.5+x+s/1.414,0.5+y+s/1.414);
+                ctx.moveTo(0.5+x-s/1.414,0.5+y+s/1.414);
+                ctx.lineTo(0.5+x+s/1.414,0.5+y-s/1.414);
+                ctx.strokeStyle="#000000"
+                ctx.stroke();
+                break;   
+            }
+            case 5://square
+            {
+                ctx.beginPath();
+                var s = cellSize*0.4/1.41;
+                ctx.moveTo(x-s,y-s);
+                ctx.lineTo(x+s,y-s);
+                ctx.lineTo(x+s,y+s);
+                ctx.lineTo(x-s,y+s);
+                ctx.closePath();
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }
         }
-    } else {
-        score=0;        
     }
-    chosenAnswer=i;
-    startPopulate(false);
 
-}
-
-function clickContinue(){
-    if (gameState===0){
-        return;
+    function handleEnd(evt) {
     }
-    gameState=0;
-    startPopulate(true);
-}
 
-var choiceEl=[];
-function doStart(){
+    function handleCancel(evt) {
+    }
 
-    startPopulate(true);
-}
-        </script>
+    function handleMove(evt) {
+        evt.preventDefault();
+        for (var i=0;i<evt.touches.length;i++){
+            var t = evt.touches[i];
+            var x=(t.clientX);
+            var y=(t.clientY);
+            d[0]   = 0;
+            d[1]   = 0;
+            d[2]   = 0;
+            d[3]   = 255;
+            ctx.putImageData( id, x, y );     
+        }
+        //evt.preventDefault();
+        //return false;
+    }
 
+    var cellSize=64;
+
+    function render(){            
+      if (canvas.getContext) {
+        ctx.canvas.width  = window.innerWidth;
+        ctx.canvas.height = window.innerHeight;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);    
+        ctx.lineWidth = 1.0;                        
+
+        //draw gui
+        ctx.beginPath();
+        for (var i=cellSize+0.5;i<canvas.width;i+=cellSize){ 
+            ctx.moveTo(i,0);
+            ctx.lineTo(i,ctx.canvas.height);
+        }
+        for (var j=cellSize+0.5;j<canvas.height;j+=cellSize){ 
+            ctx.moveTo(0,j);
+            ctx.lineTo(ctx.canvas.width,j);
+        }
+        ctx.strokeStyle="#aaaaaa";
+        ctx.stroke();
+
+        for (var i=0;i<elements.length;i++){
+            var e = elements[i];
+            drawIcon(e[0],e[1],e[2]);        
+        }
+
+        ctx.beginPath();
+        for (var i=0;i<lines.length;i++){
+            var l = lines[i];
+            ctx.moveTo(l[0]*cellSize,l[1]*cellSize);
+            ctx.lineTo(l[2]*cellSize,l[3]*cellSize);
+        }
+        ctx.strokeStyle="#000000"
+        ctx.stroke();
+      }
+    }
+</script>
     </head>
-    <body onload="doStart()">
-        <div class="app">
-            <h1 id="title">Toki Utala</h1>
-            <p>
-            <hr>
-            <p>
-            <span class="streakText">Current Streak: <span id="currentStreak">0</span></span> &nbsp; &nbsp; &nbsp; <span class="streakText">Longest Streak: <span id="longestStreak">0</span></span>
-            <p>
-            <hr>
-            <p>
-            <h2 id = "targetWord"></h2>
-            <p>
-<div class="list-group">
-  <span id="choice0"></span> <span id = "meaning0"></span>
-  <span id="choice1"></span> <span id = "meaning1"></span>
-  <span id="choice2"></span> <span id = "meaning2"></span>
-  <span id="choice3"></span> <span id = "meaning3"></span>
-  <span id="choice4"></span> <span id = "meaning4"></span>
-</div>
-<p>
-<div><button class="btn btn-block btn-lg btn-info" id="continueButton"  ontouchstart="clickContinue()">continue</button></class>
-
-        </div>
-
-
-
+    <body onload="doStart()" onresize="render()">
+        <canvas id="mainCanvas"  >
+            
+        </canvas>
     </body>
 
 </html>
