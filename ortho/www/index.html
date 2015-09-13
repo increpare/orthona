@@ -21,6 +21,10 @@
 -->
 <html>
     <head>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="viewport" content="user-scalable=no, width=device-width" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <title>Ortho</title>
 <style>
 body, html { margin: 0px;}
@@ -37,49 +41,129 @@ body, html { margin: 0px;}
     var id;
     var d;                        // only do this once per page
     var ctx;
+    var shapeCount=5;
+    var offsetX=0;
+    var offsetY=0;
+    var scale=1;
+
+    var scaleMin=0.25;
+    var scaleMax=1.0;
 
     function doStart(){
         canvas = document.getElementById("mainCanvas");
         ctx = canvas.getContext('2d');
         ctx.imageSmoothingEnabled = false;
-        id = ctx.createImageData(1,1); // only do this once per page;
-        d = id.data;
 
         canvas.addEventListener("touchstart", handleStart, false);
         canvas.addEventListener("touchend", handleEnd, false);
         canvas.addEventListener("touchcancel", handleEnd, false);
         canvas.addEventListener("touchleave", handleEnd, false);
         canvas.addEventListener("touchmove", handleMove, false);
+
+        for (var i=0;i<30;i++){            
+            elements.push([1+i%5,1+Math.floor(i/5),i]);
+        }
         render();
     }
 
     
     var oldX=0;
     var oldY=0;
-
+    var oldtouches=null;
+    var cleared=false;
+    var moved=false;
     function handleStart(evt) {
         evt.preventDefault();
-        window.console.log("begin");
-        for (var i =0; i<evt.touches.length; i++){
-            var t= evt.touches[i];
 
-            var cx = t.clientX;
-            var cy = t.clientY;
+        if (evt.touches.length===2){
+            moved=true;
+            oldtouches=[evt.touches[0].clientX,evt.touches[0].clientY,evt.touches[1].clientX,evt.touches[1].clientY];
+        } 
 
-            var gx = Math.round(cx/cellSize);
-            var gy = Math.round(cy/cellSize);
+        for (var i =0; i<evt.changedTouches.length; i++){
+            var t= evt.changedTouches[i];
+
+            var cx = t.clientX-offsetX;
+            var cy = t.clientY-offsetY;
+
+            var gx = Math.round(cx/(cellSize*scale));
+            var gy = Math.round(cy/(cellSize*scale));
             oldX=gx;
             oldY=gy;           
         }
-
+        if (evt.touches.length==3){
+            restoreState();
+            cleared=true;
+        }
+        if (evt.touches.length==4){
+            elements = [];
+            lines = [];
+            saveState();
+            cleared=true;
+        }
         render();
     }
 
-    function clickCell(x,y){
+    var saveStack=[];
+    var justSaved=false;
+    function saveState(){
+        justSaved=true;
+        var s = {
+            elements:elements.slice(),
+            lines:lines.slice(),
+            offsetX:offsetX,
+            offsetY:offsetY,
+            scale:scale
+        };
+        saveStack.push(JSON.stringify(s));
+    }
 
+    function restoreState(){
+        if (justSaved){
+            if (saveStack.length>0){
+                saveStack.pop();
+            }
+        }
+        justSaved=false;
+        if (saveStack.length>0){
+            var s = saveStack.pop();
+            elements=s.elements;
+            lines=s.lines;
+            offsetX=s.offsetX;
+            offsetY=s.offsetY;
+            scale=s.scale;
+
+        }
+    }
+    function clickCell(x,y){
+        for (var i=0;i<elements.length;i++){
+            var e = elements[i];
+            if (e[0]===x&&e[1]===y){
+                if (e[2]<shapeCount-1){
+                    e[2]++;
+                } else {
+                    elements.splice(i,1);
+                }
+                return;
+            }
+        }
+        elements.push([x,y,0]);
+        saveState();
     }
 
     function makeLine(x1,y1,x2,y2){
+        if (x2>x1+1){
+            x2=x1+1;
+        } else if (x2<x1-1){
+            x2=x1-1;
+        }
+        if (y2>y1+1){
+            y2=y1+1;
+        } else if (y2<y1-1){
+            y2=y1-1;
+        }
+
+
         if (x1<x2|| (x1===x2&&y1<y2)){
             var tx=x1;
             x1=x2;
@@ -89,21 +173,38 @@ body, html { margin: 0px;}
             y1=y2;
             y2=ty;
         }
+
+        for (var i=0;i<lines.length;i++){
+            var l = lines[i];
+            if (l[0]===x1&&l[1]===y1&&l[2]===x2&&l[3]===y2) {
+                lines.splice(i,1);
+                return;
+            }
+        }
+
         lines.push([x1,y1,x2,y2]);
+        saveState();
     }
 
     function handleEnd(evt){
         evt.preventDefault();
-        window.console.log("end");
-        for (var i=0;i<evt.touches.length;i++){
+        if (cleared==true || moved==true){
+            if (evt.touches.length===0){
+                cleared=false;
+                moved=false;
+            }
+            return;
+        }
 
-            var t= evt.touches[i];
+        for (var i=0;i<evt.changedTouches.length;i++){
 
-            var cx = t.clientX;
-            var cy = t.clientY;
+            var t= evt.changedTouches[i];
 
-            var gx = Math.round(cx/cellSize);
-            var gy = Math.round(cy/cellSize);
+            var cx = t.clientX-offsetX;
+            var cy = t.clientY-offsetY;
+
+            var gx = Math.round(cx/(cellSize*scale));
+            var gy = Math.round(cy/(cellSize*scale));
 
             if (oldX==gx && oldY==gy){
                 clickCell(gx,gy);
@@ -111,6 +212,7 @@ body, html { margin: 0px;}
                 makeLine(oldX,oldY,gx,gy);
             }
         }
+        render();
     }
     var pentagon = [
         0,-1000,
@@ -128,18 +230,343 @@ body, html { margin: 0px;}
 
     function drawIcon(x,y,n){
         switch(n){
-            case 0://thick dot
+            case 0: // good/bad yinyang
+            {
+                var r = cellSize*0.4*scale;
+                ctx.beginPath();
+                ctx.arc(x,y,r,Math.PI/2,Math.PI/2+2*Math.PI);
+                ctx.fillStyle="#000000"
+                ctx.fill();                
+
+                ctx.beginPath();
+                ctx.arc(x,y,r,Math.PI/2+Math.PI/2,Math.PI/2+3*Math.PI/2);
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+
+
+                ctx.beginPath();
+                ctx.arc(x+r/2,y,r/2,Math.PI/2+0,Math.PI/2+2*Math.PI);
+                ctx.fillStyle="#000000"
+                ctx.fill();
+                
+
+                ctx.beginPath();
+                ctx.arc(x-r/2,y,r/2,Math.PI/2+0,Math.PI/2+2*Math.PI);
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.arc(x,y,r,Math.PI/2+0,Math.PI/2+2*Math.PI);
+                ctx.strokeStyle="#000000"      
+                ctx.stroke();
+
+                break;
+            }
+            case 1: //inside/outside box in box
             {
                 ctx.beginPath();
-                ctx.arc(x,y,5,0,2*Math.PI);   
+                var s = cellSize*scale*0.3;
+                ctx.moveTo(x-s,y-s);
+                ctx.lineTo(x+s,y-s);
+                ctx.lineTo(x+s,y+s);
+                ctx.lineTo(x-s,y+s);
+                ctx.closePath();
+                s*=0.66;
+                ctx.moveTo(x-s,y-s);
+                ctx.lineTo(x+s,y-s);
+                ctx.lineTo(x+s,y+s);
+                ctx.lineTo(x-s,y+s);
+                ctx.closePath();
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }
+            case 2: // part/many division
+            {
+                ctx.beginPath();
+                var r = cellSize*0.4*scale;
+                ctx.arc(x,y,r,0,2*Math.PI);
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.moveTo(x-r,y);
+                ctx.lineTo(x+r,y);
+                ctx.strokeStyle="#000000"
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(x,y-r/2,1,0,2*Math.PI);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(x,y+r/2,1,0,2*Math.PI);
+                ctx.stroke();
+                break;   
+            }
+            case 3: // temperature (lines coming in from outside)
+            {
+                ctx.beginPath();
+                var r = cellSize*0.4*scale;
+                ctx.arc(x,y,r,0,2*Math.PI);
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.moveTo(x-r,y);
+                ctx.lineTo(x-r/2,y);
+                ctx.moveTo(x,y-r);
+                ctx.lineTo(x,y-r/2);
+                ctx.moveTo(x+r,y);
+                ctx.lineTo(x+r/2,y);
+                ctx.moveTo(x,y+r);
+                ctx.lineTo(x,y+r/2);
+                ctx.stroke();
+                break;   
+            }
+            case 4://desire spiral
+            {
+                var r = cellSize*0.4*scale;
+                ctx.beginPath();
+                ctx.arc(x,y,r,0,2*Math.PI);
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();          
+                ctx.beginPath();
+                var r2=r*2/3;
+                var r3=r2/2;
+                ctx.arc(x,y+r-r2-r3,r3,Math.PI/2,Math.PI*3/2);
+                ctx.arc(x,y+r-r2,r2,3*Math.PI/2,Math.PI/2);
+                ctx.arc(x,y,r,Math.PI/2,2*Math.PI);
+                ctx.stroke();
+
+                break;
+            }
+            case 5://knowledge interlocking circles
+            {
+                ctx.beginPath();
+                var r = cellSize*0.3*scale
+                ctx.arc(x-r/2,y,r,0,2*Math.PI);
+                ctx.arc(x+r/2,y,r,0,2*Math.PI);
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.beginPath();                
+                ctx.arc(x-r/2,y,r,0,2*Math.PI);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(x+r/2,y,r,0,2*Math.PI);
+                ctx.stroke();
+                break;   
+            }
+            case 6://place, marker
+            {
+                var r = cellSize*0.4*scale*0.9;
+                ctx.beginPath();
+                ctx.moveTo(x,y+r);
+                ctx.lineTo(x-r/2,y);
+                ctx.bezierCurveTo(x-r,y-r,x+r,y-r,x+r/2,y);
+                //ctx.lineTo(x+r/4,y-2*r);
+                ctx.closePath();
+                ctx.fillStyle="#000000"
+                ctx.fill();
+                ctx.fillStyle="#ffffff"
+                break;               
+            }
+            case 7://size arrows
+            {
+                ctx.beginPath();
+                var r = cellSize*0.4*scale
+                ctx.lineWidth = 2.0;      
+                ctx.beginPath();
+                ctx.moveTo(x-r,y-r/3);
+                ctx.lineTo(x-r,y+r/3);
+                ctx.moveTo(x+r,y-r/3);
+                ctx.lineTo(x+r,y+r/3);
+                ctx.moveTo(x-r/3,y-r);
+                ctx.lineTo(x+r/3,y-r);
+                ctx.moveTo(x-r/3,y+r);
+                ctx.lineTo(x+r/3,y+r);
+                ctx.moveTo(x-r,y);
+                ctx.lineTo(x+r,y);
+                ctx.moveTo(x,y-r);
+                ctx.lineTo(x,y+r);
+                ctx.stroke();
+                ctx.lineWidth = 1.0;      
+                break;   
+            }
+            case 8://height arrows
+            {
+                ctx.beginPath();
+                ctx.lineWidth = 2.0;      
+                var r = cellSize*0.4*scale
+                ctx.beginPath();
+                ctx.moveTo(x-r/3,y-r);
+                ctx.lineTo(x+r/3,y-r);
+                ctx.moveTo(x-r/3,y+r);
+                ctx.lineTo(x+r/3,y+r);
+                ctx.moveTo(x,y-r);
+                ctx.lineTo(x,y+r);
+                ctx.stroke();
+                ctx.lineWidth = 1.0;      
+                break;   
+            }
+            case 9://speaker thick dot
+            {
+                ctx.beginPath();
+                ctx.arc(x,y,5*scale,0,2*Math.PI);   
                 ctx.fillStyle="#000000";
                 ctx.fill();
+                ctx.fillStyle="#ffffff"
+                break;   
+            }
+            case 10://object/life thick dot
+            {   
+                ctx.lineWidth = 2.0;      
+                var r = cellSize*0.4*scale                  
+                ctx.beginPath();
+                ctx.moveTo(x,y-r); 
+                ctx.lineTo(x,y+r);
+                ctx.moveTo(x-r,y); 
+                ctx.lineTo(x+r,y);  
+                ctx.moveTo(x-r/1.4,y-r/1.4); 
+                ctx.lineTo(x+r/1.4,y+r/1.4);  
+                ctx.moveTo(x-r/1.4,y+r/1.4); 
+                ctx.lineTo(x+r/1.4,y-r/1.4);  
+                ctx.stroke();   
+                ctx.lineWidth = 1.0;                        
+                break;   
+            }
+            case 11://loudness concentric circles
+            {   
+                var r = cellSize*0.4*scale;
+                var oldR=r;
+                ctx.beginPath();
+                ctx.arc(x,y,r,0,2*Math.PI);
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.stroke();
+
+                r-=oldR*0.333;
+                ctx.beginPath();
+                ctx.arc(x,y,r,0,2*Math.PI);
+                ctx.fill();
+                ctx.stroke();
+
+                r-=oldR*0.333;
+                ctx.beginPath();
+                ctx.arc(x,y,r,0,2*Math.PI);
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }
+            case 12://see - eye
+            {
+                var r = cellSize*0.4*scale;
+
+
+                ctx.beginPath();
+                ctx.moveTo(x-r,y);
+                var top=r*0.8;
+                ctx.bezierCurveTo(x-r/2,y-top,x+r/2,y-top,x+r,y);
+                ctx.bezierCurveTo(x+r/2,y+top,x-r/2,y+top,x-r,y);
+                ctx.fill();
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(x,y,r/4,0,2*Math.PI);
+                ctx.stroke();
+                break;   
+            }
+            case 13://hear - ear
+            {
+                var r = cellSize*0.4*scale;
+
+
+                ctx.beginPath();
+                ctx.moveTo(x,y-r);
+                var top=r*0.8;
+                ctx.bezierCurveTo(x-top,y-r/2,x-top,y+r/2,x,y+r);
+                ctx.bezierCurveTo(x+top,y+r/2,x+top,y-r/2,x,y-r);
+                ctx.fill();
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(x,y,r/5,0,2*Math.PI);
+                ctx.fillStyle="#000000"
+                ctx.fill();
+                ctx.fillStyle="#ffffff"
+                break;   
+            }
+            case 14://touch - hand
+            {
+                ctx.beginPath();
+                var s = cellSize*scale*0.4/1.41;
+                ctx.moveTo(x-s*0.8,y-2*s+s/2);
+                ctx.lineTo(x-s*0.8,y+s);
+                ctx.lineTo(x+s*0.8,y+s);
+                ctx.lineTo(x+s*0.8,y-s/2);
+                ctx.lineTo(x-s/4,y-s+s/2);
+                ctx.lineTo(x-s/4,y-2*s+s/2);
+                ctx.bezierCurveTo(x-s/4,y-2*s+s/2-s/2,x-s*0.8,y-2*s+s/2-s/2,x-s*0.8,y-2*s+s/2);
+                ctx.closePath();
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }
+            case 15://smell - nose
+            {
+                var r = cellSize*0.4*scale*0.9;
+                ctx.beginPath();
+                ctx.moveTo(x,y-r);
+                ctx.lineTo(x-r/2,y);
+                ctx.bezierCurveTo(x-r,y+r,x+r,y+r,x+r/2,y);
+                //ctx.lineTo(x+r/4,y-2*r);
+                ctx.closePath();
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }
+            case 16://talk - mouth
+            {
+                var r = cellSize*0.4*scale;
+
+
+                ctx.beginPath();
+                ctx.moveTo(x-r,y);
+                var top=r*0.8;
+                ctx.bezierCurveTo(x-r/2,y-top,x+r/2,y-top,x+r,y);
+                ctx.bezierCurveTo(x+r/2,y+top,x-r/2,y+top,x-r,y);
+                ctx.fill();
+
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(x+r/3,y);
+                ctx.lineTo(x+r/3,y+r/2);
+                ctx.arc(x,y+r/2,r/3,2*Math.PI,Math.PI);
+                ctx.lineTo(x-r/3,y);
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }
+            case 17://eat - mouth
+            {
+                var r = cellSize*0.4*scale;
+                ctx.beginPath();
+                ctx.moveTo(x-r,y);
+                var top=r*0.8;
+                ctx.bezierCurveTo(x-r/2,y-1.5*top,x+r/2,y-1.5*top,x+r,y);
+                ctx.bezierCurveTo(x+r/2,y+1.5*top,x-r/2,y+1.5*top,x-r,y);
+                ctx.fill();
+                ctx.bezierCurveTo(x-r/2,y-top,x+r/2,y-top,x+r,y);
+                ctx.bezierCurveTo(x+r/2,y+top,x-r/2,y+top,x-r,y);
+                ctx.stroke();
                 break;   
             }
             case 1://circle
             {
                 ctx.beginPath();
-                ctx.arc(x,y,cellSize*0.4,0,2*Math.PI);
+                ctx.arc(x,y,cellSize*0.2*scale,0,2*Math.PI);
                 ctx.strokeStyle="#000000"
                 ctx.fillStyle="#ffffff"
                 ctx.fill();
@@ -150,7 +577,7 @@ body, html { margin: 0px;}
             {
 
                 ctx.beginPath();
-                var s = cellSize*0.4/1000;
+                var s = cellSize*scale*0.4/1000;
                 ctx.moveTo(x+pentagon[2*0+0]*s,y+pentagon[2*0+1]*s);
                 ctx.lineTo(x+pentagon[2*2+0]*s,y+pentagon[2*2+1]*s);
                 ctx.lineTo(x+pentagon[2*4+0]*s,y+pentagon[2*4+1]*s);
@@ -166,7 +593,7 @@ body, html { margin: 0px;}
             case 3://triangle
             {
                 ctx.beginPath();
-                var s = cellSize*0.4/1000;
+                var s = cellSize*scale*0.4/1000;
                 ctx.moveTo(x+triangle[2*0+0]*s,y+triangle[2*0+1]*s);
                 ctx.lineTo(x+triangle[2*2+0]*s,y+triangle[2*2+1]*s);
                 ctx.lineTo(x+triangle[2*1+0]*s,y+triangle[2*1+1]*s);
@@ -180,7 +607,7 @@ body, html { margin: 0px;}
             case 4://2 star
             {
                 ctx.beginPath();
-                var s = cellSize*0.4/1.41;
+                var s = cellSize*scale*0.4/1.41;
                 ctx.moveTo(0.5+x-s,0.5+y);
                 ctx.lineTo(0.5+x+s,0.5+y);
                 ctx.moveTo(0.5+x,0.5+y-s);
@@ -196,7 +623,7 @@ body, html { margin: 0px;}
             case 5://square
             {
                 ctx.beginPath();
-                var s = cellSize*0.4/1.41;
+                var s = cellSize*scale*0.4/1.41;
                 ctx.moveTo(x-s,y-s);
                 ctx.lineTo(x+s,y-s);
                 ctx.lineTo(x+s,y+s);
@@ -211,32 +638,107 @@ body, html { margin: 0px;}
         }
     }
 
-    function handleEnd(evt) {
-    }
-
     function handleCancel(evt) {
     }
 
-    function handleMove(evt) {
-        evt.preventDefault();
-        for (var i=0;i<evt.touches.length;i++){
-            var t = evt.touches[i];
-            var x=(t.clientX);
-            var y=(t.clientY);
-            d[0]   = 0;
-            d[1]   = 0;
-            d[2]   = 0;
-            d[3]   = 255;
-            ctx.putImageData( id, x, y );     
-        }
-        //evt.preventDefault();
-        //return false;
+    function dist(ar){
+        var dx = ar[2]-ar[0];
+        var dy = ar[3]-ar[1];
+        return Math.sqrt(dx*dx+dy*dy);
     }
 
-    var cellSize=64;
+    var moving=false;
+    function handleMove(evt) {    
+        evt.preventDefault();
+
+        if (cleared==true){
+            return;
+        }
+
+        if (evt.touches.length===2){
+            var curtouches =[evt.touches[0].clientX,evt.touches[0].clientY,evt.touches[1].clientX,evt.touches[1].clientY];
+            if (oldtouches===null){
+                oldtouches=curtouches;
+                return;
+            }
+
+
+            window.console.log(scale);
+            var oldCenterX = (oldtouches[0]+oldtouches[2])/2;
+            var oldCenterY = (oldtouches[1]+oldtouches[3])/2;
+            var curCenterX = (curtouches[0]+curtouches[2])/2;
+            var curCenterY = (curtouches[1]+curtouches[3])/2;
+            offsetX+=(curCenterX-oldCenterX);
+            offsetY+=(curCenterY-oldCenterY);
+
+
+            var oldDist = dist(oldtouches);
+            var newDist = dist(curtouches);
+            var scaleMultiplier = newDist/oldDist;
+            var oldScale=scale;
+            scale = scale * scaleMultiplier;
+            if (scale<scaleMin){
+                scale=scaleMin;
+            } 
+            if (scale>scaleMax){
+                scale=scaleMax;
+            }
+            //scale around center
+            var dOffsetX=offsetX-curCenterX;
+            var dOffsetY=offsetY-curCenterY;
+            offsetX=dOffsetX*scale/oldScale+curCenterX;
+            offsetY=dOffsetY*scale/oldScale+curCenterY;
+
+
+            oldtouches=curtouches;
+            render();
+            return;
+        } else {
+            oldtouches=null;
+        }
+        /*
+        render();
+
+
+        for (var i =0; i<evt.changedTouches.length; i++){
+            var t= evt.changedTouches[i];
+
+            var cx = t.clientX;
+            var cy = t.clientY;
+
+            var gx = Math.round(cx/cellSize);
+            var gy = Math.round(cy/cellSize);
+
+            if (cx!=oldX||cy!=oldY){
+                var x2=gx;
+                var x1=oldX;
+                var y2=gy;
+                var y1=oldY;
+                if (x2>x1+1){
+                    x2=x1+1;
+                } else if (x2<x1-1){
+                    x2=x1-1;
+                }
+                if (y2>y1+1){
+                    y2=y1+1;
+                } else if (y2<y1-1){
+                    y2=y1-1;
+                }
+
+                ctx.beginPath();
+                ctx.moveTo(x1*cellSize+0.5,y1*cellSize+0.5);
+                ctx.lineTo(x2*cellSize+0.5,y2*cellSize+0.5);
+                ctx.strokeStyle="#888888"
+                ctx.stroke();
+            }
+        }*/
+    }
+
+    var cellSize=55;
 
     function render(){            
       if (canvas.getContext) {
+
         ctx.canvas.width  = window.innerWidth;
         ctx.canvas.height = window.innerHeight;
         ctx.clearRect(0, 0, canvas.width, canvas.height);    
@@ -244,30 +746,44 @@ body, html { margin: 0px;}
 
         //draw gui
         ctx.beginPath();
-        for (var i=cellSize+0.5;i<canvas.width;i+=cellSize){ 
-            ctx.moveTo(i,0);
-            ctx.lineTo(i,ctx.canvas.height);
+        var adjustX = offsetX-Math.floor(offsetX/(cellSize*scale))*(cellSize*scale);
+        var adjustY = offsetY-Math.floor(offsetY/(cellSize*scale))*(cellSize*scale);
+        adjustX/=2;
+        adjustY/=2;
+        for (var i=Math.floor(adjustX-cellSize*scale)+0.5;i<canvas.width;i+=cellSize*scale){ 
+            ctx.moveTo(i+adjustX,0);
+            ctx.lineTo(i+adjustX,ctx.canvas.height);
         }
-        for (var j=cellSize+0.5;j<canvas.height;j+=cellSize){ 
-            ctx.moveTo(0,j);
-            ctx.lineTo(ctx.canvas.width,j);
+        for (var j=Math.floor(adjustY-cellSize*scale)+0.5;j<canvas.height;j+=cellSize*scale){ 
+            ctx.moveTo(0,j+adjustY);
+            ctx.lineTo(ctx.canvas.width,j+adjustY);
         }
-        ctx.strokeStyle="#aaaaaa";
-        ctx.stroke();
 
-        for (var i=0;i<elements.length;i++){
-            var e = elements[i];
-            drawIcon(e[0],e[1],e[2]);        
+        var pc = 1-(scale-scaleMin)/(scaleMax-scaleMin);
+        if (pc>1){
+            pc=1;
         }
+        if (pc<0){
+            pc=0;
+        }
+        var a = Math.round(220+35*pc).toString(16);
+        ctx.strokeStyle="#"+a+a+a;
+        ctx.stroke();
 
         ctx.beginPath();
         for (var i=0;i<lines.length;i++){
             var l = lines[i];
-            ctx.moveTo(l[0]*cellSize,l[1]*cellSize);
-            ctx.lineTo(l[2]*cellSize,l[3]*cellSize);
+            ctx.moveTo(Math.floor(offsetX+l[0]*cellSize*scale)+0.5,Math.floor(offsetY+l[1]*cellSize*scale)+0.5);
+            ctx.lineTo(Math.floor(offsetX+l[2]*cellSize*scale)+0.5,Math.floor(offsetY+l[3]*cellSize*scale)+0.5);
         }
         ctx.strokeStyle="#000000"
         ctx.stroke();
+
+        for (var i=0;i<elements.length;i++){
+            var e = elements[i];
+            drawIcon(offsetX+e[0]*cellSize*scale,offsetY+e[1]*cellSize*scale,e[2]);        
+        }
+
       }
     }
 </script>
