@@ -48,6 +48,7 @@ body, html { margin: 0px;}
 
     var scaleMin=0.25;
     var scaleMax=1.0;
+    var iconSelect=false;
 
     function doStart(){
         canvas = document.getElementById("mainCanvas");
@@ -60,34 +61,60 @@ body, html { margin: 0px;}
         canvas.addEventListener("touchleave", handleEnd, false);
         canvas.addEventListener("touchmove", handleMove, false);
 
-        for (var i=0;i<30;i++){            
-            elements.push([1+i%5,1+Math.floor(i/5),i]);
-        }
         render();
     }
 
-    
+    var hx=0;
+    var hy=0;
     var oldX=0;
     var oldY=0;
     var oldtouches=null;
     var cleared=false;
     var moved=false;
+
+    function iconAt(tx,ty){
+        for (var i=0;i<elements.length;i++){
+            var el = elements[i];
+            if (el[0]===tx&&el[1]===ty){
+                return true;
+            }
+        }
+        return false;
+    }
+
+var startPosX=0;
+var startPosY=0;
     function handleStart(evt) {
+        if (iconSelect==true){
+            iconSelect=false;
+        }
         evt.preventDefault();
 
         if (evt.touches.length===2){
             moved=true;
             oldtouches=[evt.touches[0].clientX,evt.touches[0].clientY,evt.touches[1].clientX,evt.touches[1].clientY];
         } 
+       if (evt.touches.length===1){
 
-        for (var i =0; i<evt.changedTouches.length; i++){
-            var t= evt.changedTouches[i];
+            oldtouches=[evt.touches[0].clientX,evt.touches[0].clientY,evt.touches[0].clientX,evt.touches[0].clientY];
+
+            var t= evt.changedTouches[0];
 
             var cx = t.clientX-offsetX;
             var cy = t.clientY-offsetY;
 
             var gx = Math.round(cx/(cellSize*scale));
             var gy = Math.round(cy/(cellSize*scale));
+            mousex=t.clientX;
+            mousey=t.clientY;
+            var iconat = iconAt(gx,gy);
+            window.console.log(iconat);
+            if (!iconat){
+                startPosX=mousex;
+                startPosY=mousey;
+                iconSelect=true;
+                minDistHit=false;
+            }
             oldX=gx;
             oldY=gy;           
         }
@@ -115,7 +142,7 @@ body, html { margin: 0px;}
             offsetY:offsetY,
             scale:scale
         };
-        saveStack.push(JSON.stringify(s));
+        saveStack.push(s);
     }
 
     function restoreState(){
@@ -135,7 +162,20 @@ body, html { margin: 0px;}
 
         }
     }
-    function clickCell(x,y){
+
+    function clickCell(x,y,n){
+        for (var i=0;i<elements.length;i++){
+            var e = elements[i];
+            if (e[0]===x&&e[1]===y){
+                elements.splice(i,1);
+                break;
+            }
+        }
+        elements.push([x,y,n]);
+        saveState();
+    }
+
+    function tryRemoveCell(x,y){
         for (var i=0;i<elements.length;i++){
             var e = elements[i];
             if (e[0]===x&&e[1]===y){
@@ -144,11 +184,28 @@ body, html { margin: 0px;}
                 } else {
                     elements.splice(i,1);
                 }
-                return;
+                break;
+            }
+        }   
+
+        for (var i=0;i<lines.length;i++){
+            var l = lines[i];
+            var x1=l[0];
+            var y1=l[1];
+            var x2=l[2];
+            var y2=l[3];
+            if (x1===x&&y1===y){
+                if (!iconAt(x2,y2)){
+                    lines.splice(i,1);
+                    i--;
+                }
+            } else if (x2===x&&y2===y){
+                if (!iconAt(x1,y1)){
+                    lines.splice(i,1);
+                    i--;
+                }
             }
         }
-        elements.push([x,y,0]);
-        saveState();
     }
 
     function makeLine(x1,y1,x2,y2){
@@ -186,6 +243,7 @@ body, html { margin: 0px;}
         saveState();
     }
 
+
     function handleEnd(evt){
         evt.preventDefault();
         if (cleared==true || moved==true){
@@ -193,7 +251,24 @@ body, html { margin: 0px;}
                 cleared=false;
                 moved=false;
             }
+            render();
             return;
+        }
+        if (scale<=scaleMin){
+            render();
+            return;
+        }
+
+        if (evt.touches.length==0){
+            if (iconSelect&&minDistHit){
+                var t = evt.changedTouches[0];
+                var px = t.clientX;
+                var py = t.clientY;
+                drawSelectionPanel(true,px,py);
+                iconSelect=false;
+                render();
+                return;
+            }
         }
 
         for (var i=0;i<evt.changedTouches.length;i++){
@@ -207,7 +282,7 @@ body, html { margin: 0px;}
             var gy = Math.round(cy/(cellSize*scale));
 
             if (oldX==gx && oldY==gy){
-                clickCell(gx,gy);
+                tryRemoveCell(gx,gy);
             } else {
                 makeLine(oldX,oldY,gx,gy);
             }
@@ -229,6 +304,8 @@ body, html { margin: 0px;}
     ];
 
     function drawIcon(x,y,n){
+                ctx.fillStyle="#ffffff"
+                ctx.strokeStyle="#000000"
         switch(n){
             case 0: // good/bad yinyang
             {
@@ -339,20 +416,24 @@ body, html { margin: 0px;}
 
                 break;
             }
-            case 5://knowledge interlocking circles
+            case 5://knowledge - page
             {
                 ctx.beginPath();
-                var r = cellSize*0.3*scale
-                ctx.arc(x-r/2,y,r,0,2*Math.PI);
-                ctx.arc(x+r/2,y,r,0,2*Math.PI);
+                var s = cellSize*scale*0.4/1.41;
+                ctx.moveTo(x-s,y-s);
+                ctx.lineTo(x+s,y-s);
+                ctx.lineTo(x+s,y+s);
+                ctx.lineTo(x-s,y+s);
+                ctx.closePath();
                 ctx.strokeStyle="#000000"
                 ctx.fillStyle="#ffffff"
                 ctx.fill();
-                ctx.beginPath();                
-                ctx.arc(x-r/2,y,r,0,2*Math.PI);
-                ctx.stroke();
-                ctx.beginPath();
-                ctx.arc(x+r/2,y,r,0,2*Math.PI);
+                ctx.moveTo(x-s*2/3,y-s/2);
+                ctx.lineTo(x+s*2/3,y-s/2);
+                ctx.moveTo(x-s*2/3,y);
+                ctx.lineTo(x+s*2/3,y);
+                ctx.moveTo(x-s*2/3,y+s/2);
+                ctx.lineTo(x+s*2/3,y+s/2);
                 ctx.stroke();
                 break;   
             }
@@ -516,11 +597,11 @@ body, html { margin: 0px;}
             {
                 var r = cellSize*0.4*scale*0.9;
                 ctx.beginPath();
-                ctx.moveTo(x,y-r);
+                ctx.moveTo(x-r/4,y-r);
                 ctx.lineTo(x-r/2,y);
                 ctx.bezierCurveTo(x-r,y+r,x+r,y+r,x+r/2,y);
-                //ctx.lineTo(x+r/4,y-2*r);
-                ctx.closePath();
+                ctx.lineTo(x+r/4,y-r);
+                //ctx.closePath();
                 ctx.strokeStyle="#000000"
                 ctx.fillStyle="#ffffff"
                 ctx.fill();
@@ -529,28 +610,8 @@ body, html { margin: 0px;}
             }
             case 16://talk - mouth
             {
-                var r = cellSize*0.4*scale;
-
-
-                ctx.beginPath();
-                ctx.moveTo(x-r,y);
-                var top=r*0.8;
-                ctx.bezierCurveTo(x-r/2,y-top,x+r/2,y-top,x+r,y);
-                ctx.bezierCurveTo(x+r/2,y+top,x-r/2,y+top,x-r,y);
-                ctx.fill();
-
-                ctx.stroke();
-                ctx.beginPath();
-                ctx.moveTo(x+r/3,y);
-                ctx.lineTo(x+r/3,y+r/2);
-                ctx.arc(x,y+r/2,r/3,2*Math.PI,Math.PI);
-                ctx.lineTo(x-r/3,y);
-                ctx.fill();
-                ctx.stroke();
-                break;   
-            }
-            case 17://eat - mouth
-            {
+                ctx.fillStyle="#ffffff"
+                ctx.strokeStyle="#000000"
                 var r = cellSize*0.4*scale;
                 ctx.beginPath();
                 ctx.moveTo(x-r,y);
@@ -560,6 +621,284 @@ body, html { margin: 0px;}
                 ctx.fill();
                 ctx.bezierCurveTo(x-r/2,y-top,x+r/2,y-top,x+r,y);
                 ctx.bezierCurveTo(x+r/2,y+top,x-r/2,y+top,x-r,y);
+                ctx.stroke();
+                break;   
+            }
+            case 17://eat - mouth
+            {
+                var r = cellSize*0.4*scale;
+                ctx.beginPath();
+                ctx.moveTo(x-r,y);
+                var top=r*0.8;
+                ctx.bezierCurveTo(x-r/2,y-top,x+r/2,y-top,x+r,y);
+                ctx.bezierCurveTo(x+r/2,y+top,x-r/2,y+top,x-r,y);
+                ctx.fill();
+                ctx.lineTo(x+r,y);
+
+                ctx.moveTo(x,y-r/2);
+                ctx.lineTo(x,y+r/2);
+                ctx.moveTo(x-r/2,y-r/3);
+                ctx.lineTo(x-r/2,y+r/3);
+                ctx.moveTo(x+r/2,y-r/3);
+                ctx.lineTo(x+r/2,y+r/3);
+                ctx.stroke();
+                break;   
+            }
+
+            case 18: // sex - 2 part
+            {
+                ctx.beginPath();
+                var r = cellSize*0.3*scale;
+                ctx.arc(x,y,r,0,2*Math.PI);
+                ctx.fillStyle="#ffffff"
+                ctx.strokeStyle="#000000"
+                ctx.fill();
+                ctx.moveTo(x,y-r);
+                ctx.lineTo(x,y+r);
+                ctx.stroke();
+                break;   
+            }
+            case 19://perform - star
+            {
+
+                ctx.beginPath();
+                var s = cellSize*scale*0.4/1000;
+                ctx.moveTo(x+pentagon[2*0+0]*s,y+pentagon[2*0+1]*s);
+                ctx.lineTo(x+pentagon[2*2+0]*s,y+pentagon[2*2+1]*s);
+                ctx.lineTo(x+pentagon[2*4+0]*s,y+pentagon[2*4+1]*s);
+                ctx.lineTo(x+pentagon[2*1+0]*s,y+pentagon[2*1+1]*s);
+                ctx.lineTo(x+pentagon[2*3+0]*s,y+pentagon[2*3+1]*s);
+                ctx.closePath();
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }
+            case 19://perform - star
+            {
+
+                ctx.beginPath();
+                var s = cellSize*scale*0.4/1000;
+                ctx.moveTo(x+pentagon[2*0+0]*s,y+pentagon[2*0+1]*s);
+                ctx.lineTo(x+pentagon[2*2+0]*s,y+pentagon[2*2+1]*s);
+                ctx.lineTo(x+pentagon[2*4+0]*s,y+pentagon[2*4+1]*s);
+                ctx.lineTo(x+pentagon[2*1+0]*s,y+pentagon[2*1+1]*s);
+                ctx.lineTo(x+pentagon[2*3+0]*s,y+pentagon[2*3+1]*s);
+                ctx.closePath();
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }   
+            case 20://pronoun 1 - triangle
+            {
+                ctx.beginPath();
+                var s = cellSize*scale*0.4/1000;
+                ctx.moveTo(x+triangle[2*0+0]*s,y+triangle[2*0+1]*s);
+                ctx.lineTo(x+triangle[2*2+0]*s,y+triangle[2*2+1]*s);
+                ctx.lineTo(x+triangle[2*1+0]*s,y+triangle[2*1+1]*s);
+                ctx.closePath();
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.stroke();
+                break;  
+            }    
+            case 21://pronoun 2 - upside down triangle
+            {
+                ctx.beginPath();
+                var s = cellSize*scale*0.4/1000;
+                ctx.moveTo(x+triangle[2*0+0]*s,y-triangle[2*0+1]*s);
+                ctx.lineTo(x+triangle[2*2+0]*s,y-triangle[2*2+1]*s);
+                ctx.lineTo(x+triangle[2*1+0]*s,y-triangle[2*1+1]*s);
+                ctx.closePath();
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.stroke();
+                break;  
+            }  
+            case 22://pronoun 3 - square
+            {
+                ctx.beginPath();
+                var s = cellSize*scale*0.4/1.41;
+                ctx.moveTo(x-s,y-s);
+                ctx.lineTo(x+s,y-s);
+                ctx.lineTo(x+s,y+s);
+                ctx.lineTo(x-s,y+s);
+                ctx.closePath();
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }   
+            case 23://pronoun 3 - diamond
+            {
+                ctx.beginPath();
+                var s = cellSize*scale*0.4;
+                ctx.moveTo(x-s,y);
+                ctx.lineTo(x,y+s);
+                ctx.lineTo(x+s,y);
+                ctx.lineTo(x,y-s);
+                ctx.closePath();
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }          
+            case 24://if - lambda
+            {
+                var r=cellSize*0.4*scale;
+                ctx.beginPath();
+                ctx.arc(x,y,r,0,2*Math.PI);
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.moveTo(x-r/1.414,y+r/1.414);
+                ctx.lineTo(x+r/1.414,y-r/1.414);
+                ctx.moveTo(x+r/1.414,y+r/1.414);
+                ctx.lineTo(x,y);
+                ctx.stroke();
+                break;   
+            }      
+            case 25://liquid - drop
+            {
+                var r = cellSize*0.4*scale*0.9;
+                ctx.beginPath();
+                ctx.moveTo(x,y-r);
+                ctx.lineTo(x-r/2,y);
+                ctx.bezierCurveTo(x-r,y+r,x+r,y+r,x+r/2,y);
+                //ctx.lineTo(x+r/4,y-r);
+                ctx.closePath();
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }
+            case 26://solid - square
+            {
+                ctx.beginPath();
+                var s = cellSize*scale*0.3/1.41;
+                ctx.moveTo(x-s,y-s);
+                ctx.lineTo(x+s,y-s);
+                ctx.lineTo(x+s,y+s);
+                ctx.lineTo(x-s,y+s);
+                ctx.closePath();
+                ctx.fillStyle="#000000"
+                ctx.fill();
+                ctx.fillStyle="#ffffff"
+                break;   
+            }
+            case 27://gas - square
+            {
+                ctx.beginPath();
+                var s = cellSize*scale*0.2/1.41;
+                ctx.moveTo(x-s,y-s);
+                ctx.bezierCurveTo(x-2*s,y-3*s,x+2*s,y-3*s,x+s,y-s);
+                ctx.bezierCurveTo(x+3*s,y-2*s,x+3*s,y+2*s,x+s,y+s);
+                ctx.bezierCurveTo(x+2*s,y+3*s,x-2*s,y+3*s,x-s,y+s);
+                ctx.bezierCurveTo(x-3*s,y+2*s,x-3*s,y-2*s,x-s,y-s);
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }
+            case 28://curvature
+            {
+                ctx.beginPath();
+                ctx.arc(x,y,cellSize*0.3*scale,0,2*Math.PI);
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }
+            case 29://knowledge interlocking circles
+            {
+                ctx.beginPath();
+                var r = cellSize*0.3*scale
+                ctx.arc(x-r/2,y,r,0,2*Math.PI);
+                ctx.arc(x+r/2,y,r,0,2*Math.PI);
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.beginPath();                
+                ctx.arc(x-r/2,y,r,0,2*Math.PI);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(x+r/2,y,r,0,2*Math.PI);
+                ctx.stroke();
+                break;   
+            }
+            case 29://competition/cooperation trefoil
+            {
+                ctx.beginPath();
+                var s = cellSize*scale*0.4/1000;
+                var x1 = x+triangle[2*0+0]*s;
+                var y1 = y+triangle[2*0+1]*s;
+                var x2 = x+triangle[2*1+0]*s;
+                var y2 = y+triangle[2*1+1]*s;
+                var x3 = x+triangle[2*2+0]*s;
+                var y3 = y+triangle[2*2+1]*s;
+
+                ctx.moveTo(x1,y1);
+                ctx.bezierCurveTo((x3+x1)/2,(y3+y1)/2,(x3+x2)/2,(y3+y2)/2,x2,y2);
+                ctx.bezierCurveTo((x1+x2)/2,(y1+y2)/2,(x1+x3)/2,(y1+y3)/2,x3,y3);
+                ctx.bezierCurveTo((x2+x3)/2,(y2+y3)/2,(x2+x1)/2,(y2+y1)/2,x1,y1);
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }
+            case 29://cooperation/competition knot
+            {
+                ctx.beginPath();
+                var s = cellSize*scale*0.1;
+                ctx.moveTo(x-s,y-s);
+                ctx.bezierCurveTo(x-5*s,y-s,x-s,y-5*s,x-s,y-s);
+                ctx.lineTo(x+s,y-s);
+                ctx.bezierCurveTo(x+5*s,y-s,x+s,y-5*s,x+s,y-s);
+                ctx.lineTo(x+s,y+s);
+                ctx.bezierCurveTo(x+5*s,y+s,x+s,y+5*s,x+s,y+s);
+                ctx.lineTo(x-s,y+s);
+                ctx.bezierCurveTo(x-5*s,y+s,x-s,y+5*s,x-s,y+s);
+                ctx.lineTo(x-s,y-s);
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }
+            case 29://cooperation/competition knot
+            {
+                ctx.beginPath();
+                var s = cellSize*scale*0.1;
+                ctx.moveTo(x-s,y-s);
+                ctx.bezierCurveTo(x-5*s,y-s,x-s,y-5*s,x-s,y-s);
+                ctx.lineTo(x+s,y-s);
+                ctx.bezierCurveTo(x+5*s,y-s,x+s,y-5*s,x+s,y-s);
+                ctx.lineTo(x+s,y+s);
+                ctx.bezierCurveTo(x+5*s,y+s,x+s,y+5*s,x+s,y+s);
+                ctx.lineTo(x-s,y+s);
+                ctx.bezierCurveTo(x-5*s,y+s,x-s,y+5*s,x-s,y+s);
+                ctx.lineTo(x-s,y-s);
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }
+            case 29://competition
+            {
+                ctx.beginPath();
+                var s = cellSize*scale*0.3;
+                ctx.moveTo(x-s,y-s);
+                ctx.bezierCurveTo(x-2*s,y+s,x+2*s,y+s,x+s,y-s);
+                ctx.bezierCurveTo(x-s,y-2*s,x-s,y+2*s,x+s,y+s);
+                ctx.bezierCurveTo(x+2*s,y-s,x-2*s,y-s,x-s,y+s);
+                ctx.bezierCurveTo(x+s,y+2*s,x+s,y-2*s,x-s,y-s);
+                ctx.fill();
                 ctx.stroke();
                 break;   
             }
@@ -648,15 +987,33 @@ body, html { margin: 0px;}
     }
 
     var moving=false;
-    function handleMove(evt) {    
+    var minDist=5.0;
+    var minDistHit=false;
+    function handleMove(evt) {
+    
         evt.preventDefault();
 
         if (cleared==true){
             return;
         }
+        if (evt.touches.length===1&&scale>scaleMin){  
+            var t = evt.touches[0];          
+            mousex=t.clientX;
+            mousey=t.clientY;
+            var d = dist([startPosX,startPosY,mousex,mousey]);
+            window.console.log(d);
+            if (iconSelect&& d>minDist){
+                minDistHit=true;
+            }
+            render();
+            return;
+        }
 
-        if (evt.touches.length===2){
-            var curtouches =[evt.touches[0].clientX,evt.touches[0].clientY,evt.touches[1].clientX,evt.touches[1].clientY];
+        if (evt.touches.length===2||(evt.touches.length==1&&scale<=scaleMin)){
+            var curtouches = evt.touches.length===2 ?
+                    [evt.touches[0].clientX,evt.touches[0].clientY,evt.touches[1].clientX,evt.touches[1].clientY] :
+                    [evt.touches[0].clientX,evt.touches[0].clientY,evt.touches[0].clientX,evt.touches[0].clientY];
+                    
             if (oldtouches===null){
                 oldtouches=curtouches;
                 return;
@@ -676,19 +1033,20 @@ body, html { margin: 0px;}
             var newDist = dist(curtouches);
             var scaleMultiplier = newDist/oldDist;
             var oldScale=scale;
-            scale = scale * scaleMultiplier;
-            if (scale<scaleMin){
-                scale=scaleMin;
-            } 
-            if (scale>scaleMax){
-                scale=scaleMax;
+            if ( evt.touches.length===2){
+                scale = scale * scaleMultiplier;
+                if (scale<scaleMin){
+                    scale=scaleMin;
+                } 
+                if (scale>scaleMax){
+                    scale=scaleMax;
+                }
+                //scale around center
+                var dOffsetX=offsetX-curCenterX;
+                var dOffsetY=offsetY-curCenterY;
+                offsetX=dOffsetX*scale/oldScale+curCenterX;
+                offsetY=dOffsetY*scale/oldScale+curCenterY;
             }
-            //scale around center
-            var dOffsetX=offsetX-curCenterX;
-            var dOffsetY=offsetY-curCenterY;
-            offsetX=dOffsetX*scale/oldScale+curCenterX;
-            offsetY=dOffsetY*scale/oldScale+curCenterY;
-
 
             oldtouches=curtouches;
             render();
@@ -736,6 +1094,75 @@ body, html { margin: 0px;}
 
     var cellSize=55;
 
+    var symbolCount=30;
+
+    function drawSelectionPanel(select,x,y){
+        var panelRows=5;
+        var panelCols=Math.ceil(symbolCount/panelRows);
+
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+
+        var centerX = w/2;
+        var centerY = h/2;
+
+        var panelLeft = centerX-panelRows*cellSize/2;
+        var panelRight = centerX+panelRows*cellSize/2;
+        var panelTop = centerY-panelCols*cellSize/2;
+        var panelBottom = centerY+panelCols*cellSize/2;
+
+        var ox = panelLeft;
+        var oy = panelTop;
+
+        ctx.beginPath();
+        ctx.moveTo(panelLeft,panelTop);
+        ctx.lineTo(panelRight,panelTop);
+        ctx.lineTo(panelRight,panelBottom);
+        ctx.lineTo(panelLeft,panelBottom);
+        ctx.closePath();
+
+        ctx.strokeStyle="#000000"
+        ctx.fillStyle="ffffff";
+
+        ctx.fill()
+        ctx.stroke()
+
+
+        var dx=x-ox;
+        var dy=y-oy;
+        var w = panelRight-panelLeft;
+        var h = panelBottom-panelTop;
+        var gridx=-1;
+        var gridy=-1;
+        if (dx<0||dy<0||dx>w||dy>h){
+            //nothing
+        } else {
+            var xpos = Math.floor(dx/cellSize);
+            var ypos = Math.floor(dy/cellSize);
+            gridx=xpos;
+            gridy=ypos;
+            var i = xpos+ypos*panelRows;
+            if (select===true){
+                clickCell(oldX,oldY,i);
+            }
+        }
+    
+
+        var oldscale=scale;
+        scale=1;
+        for (var i=0;i<30;i++){            
+            var ix = i%panelRows;
+            var iy = Math.floor(i/panelRows);
+            if (ix==gridx&&iy==gridy){
+                ctx.globalalpha=1.0;
+            }
+            drawIcon(ox+ix*cellSize+cellSize/2,oy+iy*cellSize+cellSize/2,i);
+
+        }
+        scale=oldscale;
+
+        ctx.globalalpha=1.0;
+    }
     function render(){            
       if (canvas.getContext) {
 
@@ -783,7 +1210,9 @@ body, html { margin: 0px;}
             var e = elements[i];
             drawIcon(offsetX+e[0]*cellSize*scale,offsetY+e[1]*cellSize*scale,e[2]);        
         }
-
+        if (iconSelect&&minDistHit){            
+            drawSelectionPanel(false,mousex,mousey);
+        }
       }
     }
 </script>
