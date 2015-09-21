@@ -8,7 +8,7 @@
     },
     "installed_plugins": {
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.increpare.tokiutala"
+            "PACKAGE_NAME": "com.increpare.ortho"
         }
     },
     "dependent_plugins": {}
