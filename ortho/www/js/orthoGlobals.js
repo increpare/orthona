@@ -1,3 +1,8 @@
+var drawGridLines = true;
+var drawGridLines_Diagonal = false;
+var drawLines = true;
+var drawElements = true;
+
 var glyphNames = [
 "PersonA","PersonB","ThingA","ThingB","blank",//0-4
 "Identity","","","","",//5-9

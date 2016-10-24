@@ -1,11 +1,16 @@
 function loadFile(fileName){
-	str = fs.readFileSync('orthoGlobals.js')+'';
+	str = fs.readFileSync(fileName)+'';
 	loadString(str);
 }
 
+function loadString(str){
+	page = JSON.parse(str).book[0];
+	var bounds = getBounds();
+}
+
 function getBounds(){
-	var top		=-1000;
-	var bottom	= 1000;
+	var top		= 1000;
+	var bottom	=-1000;
 	var left	= 1000;
 	var right	=-1000;
 
@@ -17,11 +22,11 @@ function getBounds(){
 		if (e[0]>right){
 			right=e[0];
 		}
-		if (e[1]<left){
-			left=e[1];
+		if (e[1]<top){
+			top=e[1];
 		}
-		if (e[1]>right){
-			right=e[1];
+		if (e[1]>bottom){
+			bottom=e[1];
 		}
 	}
 
@@ -33,23 +38,23 @@ function getBounds(){
 		if (l[0]>right){
 			right=l[0];
 		}
-		if (l[1]<left){
-			left=l[1];
+		if (l[1]<top){
+			top=l[1];
 		}
-		if (l[1]>right){
-			right=l[1];
+		if (l[1]>bottom){
+			bottom=l[1];
 		}
 		if (l[2]<left){
-			left=l[0];
+			left=l[2];
 		}
 		if (l[2]>right){
-			right=l[0];
+			right=l[2];
 		}
-		if (l[3]<left){
-			left=l[1];
+		if (l[3]<top){
+			top=l[3];
 		}
-		if (l[3]>right){
-			right=l[1];
+		if (l[3]>bottom){
+			bottom=l[3];
 		}
 	}
 	
@@ -62,21 +67,15 @@ function getBounds(){
 
 function setOffsetToTopLeft(){
 	var bounds = getBounds();
-	var left = bounds[0];
-	var top = bounds[1];
-	var offsetx=bounds[0]*cellSize-cellsize/2;
-	var offsety=bounds[1]*cellSize-cellsize/2;
+	page.offsetX=-bounds[2]*cellSize+cellSize*0.75;
+	page.offsetY=-bounds[0]*cellSize+cellSize*0.75;
 }
 
 function canvasSize(){
 	var bounds = getBounds();
-	var width = (right-left+1)*cellSize;
-	var height = (bottom-top+1)*cellSize;
+	var width = (bounds[3]-bounds[2]+1.5)*cellSize;
+	var height = (bounds[1]-bounds[0]+1.5)*cellSize;
 	return [width,height];
 }
 
-function loadString(str){
-	page = JSON.parse(str);
-	var bounds = getBounds();
-}
 

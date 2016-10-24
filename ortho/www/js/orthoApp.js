@@ -4,6 +4,7 @@
 function SaveState(){
     var sketch_save = JSON.stringify({book:sketchBook,page:sketchBookIndex});
     localStorage.setItem("sketchbookDat",sketch_save);
+    console.log(sketch_save)
 }
 function TryRestoreState(){
     var sketch_save = localStorage.getItem("sketchbookDat");
@@ -88,8 +89,6 @@ function iconAt(tx,ty){
 }
 
 function handleStart(evt) {
-
-    console.log("handleStart\t"+evt.touches.length+"\t"+toolbarSelect);
     if (iconSelect==true){
         iconSelect=false;
     }
@@ -249,7 +248,6 @@ function makeLine(x1,y1,x2,y2){
 
 
 function handleEnd(evt){
-    console.log("handleEnd\t"+evt.touches.length+"\t"+toolbarSelect);
     evt.preventDefault();
     if (cleared===true || moved===true || toolbarSelect===true){
         if (evt.touches.length===0){
@@ -540,6 +538,11 @@ function drawSelectionPanel(select,x,y){
 }
 
 function renderApp(){
+    if (canvas.getContext) {
+        ctx.canvas.width  = window.innerWidth;
+        ctx.canvas.height = window.innerHeight;
+    }
+
     orthoRender();
 
 

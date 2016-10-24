@@ -724,69 +724,89 @@ function drawIcon(x,y,n){
 }
 
 function orthoRender(){            
-  if (canvas.getContext) {
-
-    ctx.canvas.width  = window.innerWidth;
-    ctx.canvas.height = window.innerHeight;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);    
+  if (canvas.getContext) { 
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);  
     ctx.lineWidth = 1.0;                        
 
-    //draw gui
-    ctx.beginPath();
-    var adjustX = page.offsetX-Math.floor(page.offsetX/(cellSize*page.scale))*(cellSize*page.scale);
-    var adjustY = page.offsetY-Math.floor(page.offsetY/(cellSize*page.scale))*(cellSize*page.scale);
-    adjustX/=2;
-    adjustY/=2;
-    for (var i=Math.floor(adjustX-cellSize*page.scale)+0.5;i<canvas.width;i+=cellSize*page.scale){ 
-        ctx.moveTo(i+adjustX,0);
-        ctx.lineTo(i+adjustX,ctx.canvas.height);
-    }
-    for (var j=Math.floor(adjustY-cellSize*page.scale)+0.5;j<canvas.height;j+=cellSize*page.scale){ 
-        ctx.moveTo(0,j+adjustY);
-        ctx.lineTo(ctx.canvas.width,j+adjustY);
-    }
-
-    var pc = 1-(page.scale-scaleMin)/(scaleMax-scaleMin);
-    if (pc>1){
-        pc=1;
-    }
-    if (pc<0){
-        pc=0;
-    }
-    var a = Math.round(220+35*pc).toString(16);
-    ctx.strokeStyle="#"+a+a+a;
-    ctx.stroke();
-
-    ctx.beginPath();
-    for (var i=0;i<page.lines.length;i++){
-        var l = page.lines[i];
-        var x1 = Math.floor(page.offsetX+l[0]*cellSize*page.scale)+0.5;
-        var y1 = Math.floor(page.offsetY+l[1]*cellSize*page.scale)+0.5;
-        var x2 = Math.floor(page.offsetX+l[2]*cellSize*page.scale)+0.5;
-        var y2 = Math.floor(page.offsetY+l[3]*cellSize*page.scale)+0.5;
-        ctx.moveTo(x1,y1);
-        ctx.lineTo(x2,y2);
-
-        if (l[4]===1){
-            var mx = (x1+x2)/2;
-            var my = (y1+y2)/2;
-            var t = Math.atan2(x2-x1,y2-y1);
-            var dx = Math.sin(t+Math.PI/2);
-            var dy = Math.cos(t+Math.PI/2);
-            ctx.moveTo(
-                mx-dx*cellSize*page.scale/5,
-                my-dy*cellSize*page.scale/5);
-            ctx.lineTo(
-                mx+dx*cellSize*page.scale/5,
-                my+dy*cellSize*page.scale/5);
+    if (drawGridLines){
+        //draw gui
+        ctx.beginPath();
+        var adjustX = page.offsetX-Math.floor(page.offsetX/(cellSize*page.scale))*(cellSize*page.scale);
+        var adjustY = page.offsetY-Math.floor(page.offsetY/(cellSize*page.scale))*(cellSize*page.scale);
+        adjustX/=2;
+        adjustY/=2;
+        var startX = Math.floor(adjustX-cellSize*page.scale)+0.5;
+        var startY = Math.floor(adjustY-cellSize*page.scale)+0.5;
+        
+        for (var i=startX;i<canvas.width;i+=cellSize*page.scale){ 
+            ctx.moveTo(i+adjustX,0);
+            ctx.lineTo(i+adjustX,ctx.canvas.height);
         }
-    }
-    ctx.strokeStyle="#000000"
-    ctx.stroke();
+        for (var j=startY;j<canvas.height;j+=cellSize*page.scale){ 
+            ctx.moveTo(0,j+adjustY);
+            ctx.lineTo(ctx.canvas.width,j+adjustY);
+        }
 
-    for (var i=0;i<page.elements.length;i++){
-        var e = page.elements[i];
-        drawIcon(page.offsetX+e[0]*cellSize*page.scale,page.offsetY+e[1]*cellSize*page.scale,e[2]);        
+        if (drawGridLines_Diagonal){     
+            for (var i=startX;i<canvas.width;i+=cellSize*page.scale){
+                ctx.moveTo(i+adjustX,0);
+                ctx.lineTo(i+adjustX+canvas.height,canvas.height);
+            }       
+            for (var i=startX-cellSize*page.scale;i>-canvas.height;i-=cellSize*page.scale){
+                ctx.moveTo(i+adjustX,0);
+                ctx.lineTo(i+adjustX+canvas.height,canvas.height);
+            }    
+            for (var i=startX;i<(canvas.width+canvas.height);i+=cellSize*page.scale){
+                ctx.moveTo(i+adjustX,0);
+                ctx.lineTo(i+adjustX-canvas.height,canvas.height);
+            }
+        }
+        var pc = 1-(page.scale-scaleMin)/(scaleMax-scaleMin);
+        if (pc>1){
+            pc=1;
+        }
+        if (pc<0){
+            pc=0;
+        }
+        var a = Math.round(220+35*pc).toString(16);
+        ctx.strokeStyle="#"+a+a+a;
+        ctx.stroke();
+    }
+
+    if (drawLines){
+        ctx.beginPath();
+        for (var i=0;i<page.lines.length;i++){
+            var l = page.lines[i];
+            var x1 = Math.floor(page.offsetX+l[0]*cellSize*page.scale)+0.5;
+            var y1 = Math.floor(page.offsetY+l[1]*cellSize*page.scale)+0.5;
+            var x2 = Math.floor(page.offsetX+l[2]*cellSize*page.scale)+0.5;
+            var y2 = Math.floor(page.offsetY+l[3]*cellSize*page.scale)+0.5;
+            ctx.moveTo(x1,y1);
+            ctx.lineTo(x2,y2);
+            if (l[4]===1){
+                var mx = (x1+x2)/2;
+                var my = (y1+y2)/2;
+                var t = Math.atan2(x2-x1,y2-y1);
+                var dx = Math.sin(t+Math.PI/2);
+                var dy = Math.cos(t+Math.PI/2);
+                ctx.moveTo(
+                    mx-dx*cellSize*page.scale/5,
+                    my-dy*cellSize*page.scale/5);
+                ctx.lineTo(
+                    mx+dx*cellSize*page.scale/5,
+                    my+dy*cellSize*page.scale/5);
+            }
+        }
+        ctx.strokeStyle="#000000"
+        ctx.stroke();
+    }
+
+    if (drawElements){
+        for (var i=0;i<page.elements.length;i++){
+            var e = page.elements[i];
+            drawIcon(page.offsetX+e[0]*cellSize*page.scale,page.offsetY+e[1]*cellSize*page.scale,e[2]);        
+        }
     }
 
   }
