@@ -56,9 +56,22 @@ body, html { margin: 0px;}
     }
     ];
 
+    function SaveState(){
+        var sketch_save = JSON.stringify({book:sketchBook,page:sketchBookIndex});
+        localStorage.setItem("sketchbookDat",sketch_save);
+    }
+    function TryRestoreState(){
+        var sketch_save = localStorage.getItem("sketchbookDat");
+        if (sketch_save!==null){
+            var dat = JSON.parse(sketch_save);
+            sketchBook=dat.book;
+            sketchBookIndex=dat.page;
+            LoadPage();
+        }
+    }
+
     var page=sketchBook[0];
 
-    var sketchTitle=" ";
     var canvas;
 
     var id;
@@ -84,6 +97,7 @@ body, html { margin: 0px;}
         canvas.addEventListener("touchcancel", handleEnd, false);
         canvas.addEventListener("touchleave", handleEnd, false);
         canvas.addEventListener("touchmove", handleMove, false);
+        TryRestoreState();
 
         render();
     }
@@ -107,15 +121,18 @@ body, html { margin: 0px;}
                 sketchTitle:""
             });
         }
+        page=sketchBook[sketchBookIndex];
         render();
     }
     function PageLeft(){
         if (sketchBookIndex===0){
             return;
         }
-        sketchBookIndex--;
-        LoadPage();
+        sketchBookIndex--;  
+        LoadPage();      
+        SaveState();
     }
+
     function PageEmpty(){
         return page.lines.length===0&&page.elements.length===0;
     }
@@ -123,15 +140,19 @@ body, html { margin: 0px;}
         if (PageEmpty()===false){
             sketchBookIndex++;
             LoadPage();
+            SaveState();
         }
     }
 
-    function clearEverything(){
-        page.elements = [];
-        page.lines = [];
-        page.title = "";
-        cleared=true;
+    function clearEverything(){        
+        sketchBook.splice(sketchBookIndex,1);
+        if (sketchBookIndex===sketchBook.length &&
+            sketchBookIndex>0){
+            sketchBookIndex--;
+        }
+        LoadPage();
     }
+
     function iconAt(tx,ty){
         for (var i=0;i<page.elements.length;i++){
             var el = page.elements[i];
@@ -164,18 +185,18 @@ var startPosY=0;
             var cx = t.clientX-page.offsetX;
             var cy = t.clientY-page.offsetY;
 
-            if (cy<cellSize){
+            if (t.clientY<cellSize+20){
 
                 toolbarSelect=true;
                 console.log("toolbarSelect = "+toolbarSelect);
 
-                if (cx<cellSize){
+                if (t.clientX<cellSize){
                     //delete
                     clearEverything();
-                } else if (cx<canvas.width-2*cellSize){
+                } else if (t.clientX<canvas.width-2*cellSize){
                     //set title
                     newTitle();
-                } else if (cx<canvas.width-cellSize){
+                } else if (t.clientX<canvas.width-cellSize){
                     //move left
                     PageLeft();
                 } else {
@@ -202,20 +223,18 @@ var startPosY=0;
             oldY=gy;           
         }
 
-        if (evt.touches.length==4){
-            clearEverything();
-        }
         render();
     }
 
 
     function newTitle(){        
         var onSucess = function(){};
-        var s = prompt("enter title",sketchTitle).toUpperCase();
+        var s = prompt("enter title",page.sketchTitle).toUpperCase();
         if (s.length>5){
             s=s.substr(0,5);
         }
-        sketchTitle=s;
+        page.sketchTitle=s;
+        SaveState();
     }
     function clickCell(x,y,n){
         for (var i=0;i<page.elements.length;i++){
@@ -226,6 +245,7 @@ var startPosY=0;
             }
         }
         page.elements.push([x,y,n]);
+        SaveState();
     }
 
     function tryRemoveCell(x,y){
@@ -259,10 +279,11 @@ var startPosY=0;
                 }
             }
         }
+        SaveState();
     }
 
     function makeLine(x1,y1,x2,y2){
-        if (x2>x1+1){
+        /*if (x2>x1+1){
             x2=x1+1;
         } else if (x2<x1-1){
             x2=x1-1;
@@ -271,8 +292,17 @@ var startPosY=0;
             y2=y1+1;
         } else if (y2<y1-1){
             y2=y1-1;
-        }
+        }*/
 
+
+        var dx=x2-x1;
+        var dy=y2-y1;
+
+        var l = Math.max(Math.abs(dx),Math.abs(dy));
+        dx = Math.sign(dx)*l;
+        dy = Math.sign(dy)*l;
+        x2=x1+dx;
+        y2=y1+dy;
 
         if (x1<x2|| (x1===x2&&y1<y2)){
             var tx=x1;
@@ -297,6 +327,7 @@ var startPosY=0;
         }
 
         page.lines.push([x1,y1,x2,y2,0]);
+        SaveState();
     }
 
 
@@ -559,6 +590,7 @@ var startPosY=0;
                 ctx.fillStyle="#ffffff"
                 break;   
             }
+            /*ugly star
             case 10://object/life thick dot
             {   
                 ctx.lineWidth = 2.0;      
@@ -576,6 +608,25 @@ var startPosY=0;
                 ctx.lineWidth = 1.0;                        
                 break;   
             }
+            */   
+            case 10://hourglass
+            {
+                ctx.beginPath();
+                var r = cellSize*page.scale*0.4;
+                var s = cellSize*page.scale*0.4;
+                var t = cellSize*page.scale*0.05;
+                ctx.moveTo(x-s,y-r);
+                ctx.bezierCurveTo(x,y-t,x,y-t,x+s,y-r);    
+                ctx.bezierCurveTo(x+t,y,x+t,y,x+s,y+r);
+                ctx.bezierCurveTo(x,y+t,x,y+t,x-s,y+r); 
+                ctx.bezierCurveTo(x-t,y,x-t,y,x-s,y-r);
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.fill();
+                ctx.stroke();
+                break;   
+            }  
+
             case 11://loudness concentric circles
             {   
                 var r = cellSize*0.4*page.scale;
@@ -1030,6 +1081,30 @@ var startPosY=0;
                 ctx.lineWidth=1;
                 break;   
             }
+            case 33://new icon
+            {
+                ctx.lineWidth=2;
+                ctx.beginPath();
+                var s = cellSize/3;
+                var t = 0.2*s;
+                ctx.moveTo(x-s,y-s);
+                ctx.lineTo(x+t,y-s);
+                ctx.lineTo(x+s,y-t);
+                ctx.lineTo(x+s,y+s);
+                ctx.lineTo(x-s,y+s);
+                ctx.closePath();
+                ctx.moveTo(x+t,y-s);
+                ctx.lineTo(x+t,y-t);
+                ctx.lineTo(x+s,y-t);
+
+                ctx.strokeStyle="#000000"
+                ctx.fillStyle="#ffffff"
+                ctx.stroke();
+
+
+                ctx.lineWidth=1;
+                break;     
+            }
         }
     }
 
@@ -1061,7 +1136,6 @@ var startPosY=0;
                 minDistHit=true;
             }
             render();
-            return;
         }
 
         if (evt.touches.length===2||(evt.touches.length==1&&page.scale<=scaleMin)){
@@ -1108,47 +1182,48 @@ var startPosY=0;
         } else {
             oldtouches=null;
         }
-        /*
+        
         render();
+/*
+        if (evt.touches.length===1 && iconSelect===false && moved===false)
+        {
+            for (var i =0; i<evt.changedTouches.length; i++){
+                var t= evt.changedTouches[0];
 
+                var cx = t.clientX;
+                var cy = t.clientY;
 
-        for (var i =0; i<evt.changedTouches.length; i++){
-            var t= evt.changedTouches[i];
+                var gx = Math.round(cx/cellSize);
+                var gy = Math.round(cy/cellSize);
 
-            var cx = t.clientX;
-            var cy = t.clientY;
+                if (cx!=oldX||cy!=oldY){
+                    var x2=gx;
+                    var x1=oldX;
+                    var y2=gy;
+                    var y1=oldY;
 
-            var gx = Math.round(cx/cellSize);
-            var gy = Math.round(cy/cellSize);
+                    var dx=x2-x1;
+                    var dy=y2-y1;
 
-            if (cx!=oldX||cy!=oldY){
-                var x2=gx;
-                var x1=oldX;
-                var y2=gy;
-                var y1=oldY;
-                if (x2>x1+1){
-                    x2=x1+1;
-                } else if (x2<x1-1){
-                    x2=x1-1;
+                    var l = Math.max(Math.abs(dx),Math.abs(dy));
+                    dx = Math.sign(dx)*l;
+                    dy = Math.sign(dy)*l;
+                    x2=x1+dx;
+                    y2=y1+dy;
+
+                    ctx.beginPath();
+                    ctx.moveTo(x1*cellSize+0.5,y1*cellSize+0.5);
+                    ctx.lineTo(x2*cellSize+0.5,y2*cellSize+0.5);
+                    ctx.strokeStyle="#888888"
+                    ctx.stroke();
                 }
-                if (y2>y1+1){
-                    y2=y1+1;
-                } else if (y2<y1-1){
-                    y2=y1-1;
-                }
-
-                ctx.beginPath();
-                ctx.moveTo(x1*cellSize+0.5,y1*cellSize+0.5);
-                ctx.lineTo(x2*cellSize+0.5,y2*cellSize+0.5);
-                ctx.strokeStyle="#888888"
-                ctx.stroke();
             }
         }*/
     }
 
     var cellSize=55;
 
-    var symbolCount=30;
+    var symbolCount=40;
     var highlightedglyphicon=-1;
 
     function drawSelectionPanel(select,x,y){
@@ -1353,29 +1428,37 @@ var startPosY=0;
             ctx.beginPath();
             ctx.moveTo(0,0);        
             ctx.lineTo(canvas.width,0);
-            ctx.lineTo(canvas.width,cellSize);
-            ctx.lineTo(0,cellSize);
+            ctx.lineTo(canvas.width,20+cellSize);
+            ctx.lineTo(0,20+cellSize);
             ctx.closePath();
             ctx.fill()
             ctx.stroke()
 
             //left button
 
-            drawIcon(cellSize/2,cellSize/2,32);
+            if (sketchBook.length===1&&PageEmpty()){
+            } else {
+                drawIcon(cellSize/2,20+cellSize/2,32);
+            }
 
             ctx.fillStyle="#000000";
             ctx.textAlign ="center";
             ctx.font = "38px helvetica";
-            ctx.fillText(sketchTitle,(canvas.width-cellSize)/2,cellSize-14);
+            ctx.fillText(page.sketchTitle,(canvas.width-cellSize)/2,20+cellSize-14);
 
             if (sketchBookIndex>0){
-                drawIcon(canvas.width-3*cellSize/2,cellSize/2,30);
-            } else if (!PageEmpty()){
-                drawIcon(canvas.width-cellSize/2,cellSize/2,31);
+                drawIcon(canvas.width-3*cellSize/2,20+cellSize/2,30);
+            } 
+            if (!PageEmpty()){
+                if (sketchBookIndex===sketchBook.length-1){
+                    drawIcon(canvas.width-cellSize/2,20+cellSize/2,33);
+                } else {
+                    drawIcon(canvas.width-cellSize/2,20+cellSize/2,31);
+                }
             }
         }
 
-        if (iconSelect&&minDistHit)
+        //if (iconSelect&&minDistHit)
         {            
             drawSelectionPanel(false,mousex,mousey);
         }
