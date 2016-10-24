@@ -1,0 +1,69 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/6.9.1/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'cairo',
+1 verbose cli   '--enable-svg=yes' ]
+2 info using npm@1.4.3
+3 info using node@v6.9.1
+4 verbose cache add [ 'cairo', null ]
+5 verbose cache add name=undefined spec="cairo" args=["cairo",null]
+6 verbose parsed url Url {
+6 verbose parsed url   protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'cairo',
+6 verbose parsed url   path: 'cairo',
+6 verbose parsed url   href: 'cairo' }
+7 silly lockFile e03dc4c5-cairo cairo
+8 verbose lock cairo /Users/stephenlavelle/.npm/e03dc4c5-cairo.lock
+9 silly lockFile e03dc4c5-cairo cairo
+10 silly lockFile e03dc4c5-cairo cairo
+11 verbose addNamed [ 'cairo', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile e7ee282f-cairo cairo@
+14 verbose lock cairo@ /Users/stephenlavelle/.npm/e7ee282f-cairo.lock
+15 silly addNameRange { name: 'cairo', range: '*', hasData: false }
+16 verbose url raw cairo
+17 verbose url resolving [ 'https://registry.npmjs.org/', './cairo' ]
+18 verbose url resolved https://registry.npmjs.org/cairo
+19 info trying registry request attempt 1 at 2:38:39 PM
+20 http GET https://registry.npmjs.org/cairo
+21 http 404 https://registry.npmjs.org/cairo
+22 silly registry.get cb [ 404,
+22 silly registry.get   { 'content-type': 'application/json',
+22 silly registry.get     'cache-control': 'max-age=0',
+22 silly registry.get     'content-length': '2',
+22 silly registry.get     'accept-ranges': 'bytes',
+22 silly registry.get     date: 'Mon, 24 Oct 2016 13:38:45 GMT',
+22 silly registry.get     via: '1.1 varnish',
+22 silly registry.get     age: '0',
+22 silly registry.get     connection: 'close',
+22 silly registry.get     'x-served-by': 'cache-lcy1145-LCY',
+22 silly registry.get     'x-cache': 'MISS',
+22 silly registry.get     'x-cache-hits': '0',
+22 silly registry.get     'x-timer': 'S1477316319.326223,VS0,VE5894',
+22 silly registry.get     vary: 'Accept-Encoding' } ]
+23 silly addNameRange number 2 { name: 'cairo', range: '*', hasData: true }
+24 silly addNameRange versions [ undefined, [] ]
+25 error TypeError: Cannot read property 'latest' of undefined
+25 error     at next (/usr/local/lib/node_modules/npm/lib/cache.js:744:35)
+25 error     at /usr/local/lib/node_modules/npm/lib/cache.js:732:5
+25 error     at saved (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/get.js:148:7)
+25 error     at /usr/local/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:133:7
+25 error     at FSReqWrap.oncomplete (fs.js:123:15)
+26 error If you need help, you may report this *entire* log,
+26 error including the npm and node versions, at:
+26 error     <http://github.com/npm/npm/issues>
+27 error System Darwin 16.0.0
+28 error command "/usr/local/Cellar/node/6.9.1/bin/node" "/usr/local/bin/npm" "install" "cairo" "--enable-svg=yes"
+29 error cwd /Users/stephenlavelle/Documents/Ortho/ortho/www/js
+30 error node -v v6.9.1
+31 error npm -v 1.4.3
+32 verbose exit [ 1, true ]
