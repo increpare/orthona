@@ -36,12 +36,13 @@ body, html { margin: 0px;}
 <script type="text/javascript" charset="utf-8">
 
     var glyphNames = [
-    "CAT0","DOG1","RABBITZ","PRUNE","APPLE9",
-    "CAT1","DOG2","RABBITA","PRUNE","APPLE9",
-    "CAT2","DOG3","RABBITB","PRUNE","APPLE9",
-    "CAT3","DOG4","RABBITC","PRUNE","APPLE9",
-    "CAT4","DOG5","RABBITD","PRUNE","APPLE9",
-    "CAT5","DOG6","RABBITE","PRUNE","APPLE9",
+    "PersonA","PersonB","ThingA","ThingB","blank",//0-4
+    "Identity","","","","",//5-9
+    "","","","","",//10-14
+    "","","","","",//15-19
+    "","","","","",//20-24
+    "","","","","",//25-29
+    "","","","","",//30-34
     ];
 
     var sketchBookIndex=0;
@@ -87,6 +88,9 @@ body, html { margin: 0px;}
     var toolbarSelect=false;
 
     function doStart(){
+        for (var i=0;i<glyphNames.length;i++){
+            glyphNames[i]=glyphNames[i].toUpperCase();
+        }
         canvas = document.getElementById("mainCanvas");
         ctx = canvas.getContext('2d');
         ctx.imageSmoothingEnabled = false;
