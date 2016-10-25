@@ -16,8 +16,8 @@ for (var i=2;i<process.argv.length;i++){
 	var t = process.argv[i];
 	if (t=="-noGridLines"){
 		drawGridLines=false;
-	} else if (t=="--diagonals"){
-		drawGridLines_Diagonal=false;
+	} else if (t=="-diagonals"){
+		drawGridLines_Diagonal=true;
 	} else if (t=="-noIcons"){
 		drawElements=false;
 	} else if (t=="-noLines"){

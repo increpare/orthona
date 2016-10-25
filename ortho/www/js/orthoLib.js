@@ -8,6 +8,23 @@ axes[2]=[-1,1]
 axes[3]=[0,1]
 axes[4]=[1,1]
 
+
+var blah=0;
+function SaveImage(filename){
+	saveFile("dat/temp.json")
+	var cmd = './printOrtho dat/temp.json';
+	var capturedOutput = require('child_process').execSync(cmd, {stdio:[0,1,2]})
+}
+
+function ElementAt(x,y){
+	for (var i=0;i<page.elements.length;i++){
+		var e= page.elements[i];
+		if (e[0]===x&&e[1]===y){
+			return  e;
+		}
+	}
+	return null;
+}
 function Connection(e1,e2,lines){
 	for (var i=0;i<lines.length;i++){
 		var l = lines[i];

@@ -22,7 +22,6 @@ for (var i=2;i<process.argv.length;i++){
 		asciiCharacters=true;
 	} else if (inputFileName===""){
 		inputFileName=t;
-		console.log("input file "+t)
 	} else {
 		console.log("Too many arguments. Unexpected argument \""+t+"\".");		
 	}
@@ -56,19 +55,23 @@ function LineAtPoint(p){
 	for (var i=0;i<page.lines.length;i++){
 		var l = page.lines[i];
 		if (PointOnLine(p,l)){		
-			return  LineDirection(l);
+			return  l;
 		}
 	}
-	return 0;
+	return null;
 }
 
+
+var lines = [" -/|\\"," …⋰⋮⋱"];
 
 for (var i=0;i<width;i++){
 	for (var j=0;j<height;j++){
 		var p = [i+offsetX,j+offsetY]
-		var ld1=LineAtPoint(p);
-		if (ld1!==0){
-			grid[2*j+1][2*i+1]=" -/|\\"[Math.abs(ld1)];
+		var l = LineAtPoint(p);
+		if (l!==null){
+			var ld1=LineDirection(l);
+			grid[2*j+1][2*i+1]=lines[l[4]===1?1:0][Math.abs(ld1)];
+			
 			//for each cell, check 9 points for line drawing
 			for (var mi=-1;mi<=1;mi++){
 				for (var mj=-1;mj<=1;mj++){
@@ -77,12 +80,13 @@ for (var i=0;i<width;i++){
 					}
 					var p_out=[p[0]+mi,p[1]+mj]
 					if (Connection(p,p_out,page.lines)){
-						var l_dir = LineAtPoint(p_out);
-						if (l_dir!==0){
+						var l2 = LineAtPoint(p_out);
+						if (l2!==null){
+							var l_dir = LineDirection(l2);
 							var l_vec = axes[l_dir];
 							if ((l_vec[0]===mi&&l_vec[1]===mj)||(l_vec[0]===-mi&&l_vec[1]===-mj)){
-								l_dir=Math.abs(l_dir);
-								grid[2*j+1+mj][2*i+1+mi]=" -/|\\"[l_dir];
+								l_dir=Math.abs(l_dir);								
+								grid[2*j+1+mj][2*i+1+mi]=lines[l2[4]===1?1:0][Math.abs(l_dir)];
 							}
 						}
 					}
