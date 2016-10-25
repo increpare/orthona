@@ -31,9 +31,14 @@ for (var i=2;i<process.argv.length;i++){
 		console.log("Too many arguments. Unexpected argument \""+t+"\".");		
 	}
 }
+
 if (inputFileName=="")
 {
-	console.log("need to supply input name");
+	console.log("need to supply input file");
+}
+
+if (outputFileName===""){
+	outputFileName = inputFileName.substring(0, inputFileName.indexOf('.json'))+'.png'
 }
 
 loadFile(inputFileName);
@@ -49,24 +54,7 @@ var Image = Canvas.Image
 canvas = new Canvas(canvasDimensions[0], canvasDimensions[1])
 ctx = canvas.getContext('2d');
 
-ctx.font = '30px Impact';
-ctx.fillText("Awesome!", 50, 100);
-
-var te = ctx.measureText('Awesome!');
-ctx.strokeStyle = 'rgba(0,0,0,0.5)';
-ctx.beginPath();
-ctx.lineTo(50, 102);
-ctx.lineTo(50 + te.width, 102);
-ctx.stroke();
-
-
-drawIcon(0,cellSize,10);
-
 orthoRender();
-
-if (outputFileName===""){
-	outputFileName = inputFileName.substring(0, inputFileName.indexOf('.json'))+'.png'
-}
 
 var dataURL = canvas.toDataURL();
 var data = dataURL.replace(/^data:image\/\w+;base64,/, "");

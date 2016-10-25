@@ -1,0 +1,115 @@
+#!/usr/bin/env node
+
+
+var fs = require('fs');
+eval(fs.readFileSync('orthoGlobals.js')+'');
+eval(fs.readFileSync('orthoRender.js')+'');
+eval(fs.readFileSync('orthoLib.js')+'');
+
+if (process.argv.length===2){
+	console.log("USAGE: printOrtho [-noGridLines] [-diagonals] [-noIcons] [-noLines] FILENAME");
+	return;
+}
+
+var inputFileName=""
+for (var i=2;i<process.argv.length;i++){
+	var t = process.argv[i];
+	if (t=="-noGridLines"){
+		drawGridLines=false;
+	} else if (t=="--diagonals"){
+		drawGridLines_Diagonal=false;
+	} else if (t=="-noIcons"){
+		drawElements=false;
+	} else if (t=="-noLines"){
+		drawLines=false;
+	} else if (inputFileName===""){
+		inputFileName=t;
+		console.log("input file "+t)
+	} else {
+		console.log("Too many arguments. Unexpected argument \""+t+"\".");		
+	}
+}
+
+if (inputFileName=="")
+{
+	console.log("need to supply input file");
+}
+
+loadFile(inputFileName);
+
+var bounds = getBounds();
+var height = bounds[1]-bounds[0]+1
+var width = bounds[3]-bounds[2]+1
+
+var offsetX=bounds[2]
+var offsetY=bounds[0]
+
+//GRID INDICES ARE Y,X
+var grid = []
+for (var j=0;j<2*height+1;j++){
+	var row = []
+	for (var i=0;i<2*width+1;i++){
+		row.push(" ")
+	}
+	grid.push(row)
+}
+
+function LineAtPoint(p){
+	for (var i=0;i<page.lines.length;i++){
+		var l = page.lines[i];
+		if (PointOnLine(p,l)){		
+			return  LineDirection(l);
+		}
+	}
+	return 0;
+}
+
+
+for (var i=0;i<width;i++){
+	for (var j=0;j<height;j++){
+		var p = [i+offsetX,j+offsetY]
+		var ld1=LineAtPoint(p);
+		if (ld1!==0){
+			grid[2*j+1][2*i+1]=" -/|\\"[Math.abs(ld1)];
+			//for each cell, check 9 points for line drawing
+			for (var mi=-1;mi<=1;mi++){
+				for (var mj=-1;mj<=1;mj++){
+					if (mi===0&&mj===0){
+						continue;
+					}
+					var p_out=[p[0]+mi,p[1]+mj]
+					if (Connection(p,p_out,page.lines)){
+						var l_dir = LineAtPoint(p_out);
+						if (l_dir!==0){
+							var l_vec = axes[l_dir];
+							if ((l_vec[0]===mi&&l_vec[1]===mj)||(l_vec[0]===-mi&&l_vec[1]===-mj)){
+								log (p + " connected to " +p_out)
+								l_dir=Math.abs(l_dir);
+								grid[2*j+1+mj][2*i+1+mi]=" -/|\\"[l_dir];
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+var symbols = "1234.abcdefghijklmnopqrstuvwxyABCDE"
+for (var i=0;i<page.elements.length;i++){
+	var e = page.elements[i]
+	var ex = e[0]-offsetX
+	var ey = e[1]-offsetY
+	var es = symbols[e[2]]
+	grid[2*ey+1][2*ex+1]=es
+}
+
+
+var ans=""
+for (var j=0;j<2*height+1;j++){
+	for (var i=0;i<2*width+1;i++){
+		ans+=grid[j][i]
+	}
+	ans+="\n"
+}
+console.log(ans)
