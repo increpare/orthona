@@ -1,0 +1,14 @@
+for fn in dat/json/*.json
+do
+	echo "processing $fn"
+	./json2png $fn
+	./json2bin $fn
+	./retop $fn
+done
+
+for fn in dat/retop/*.json
+do
+	echo "processing $fn"
+	./json2png $fn
+	./json2bin $fn
+done

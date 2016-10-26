@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 var fs = require('fs')
-var path = require('path');
 eval(fs.readFileSync('../ortho/www/js/orthoGlobals.js')+'')
 eval(fs.readFileSync('../ortho/www/js/orthoRender.js')+'')
 eval(fs.readFileSync('js/orthoLib.js')+'')
@@ -32,7 +31,15 @@ if (inputFileName=="")
 }
 
 if (outputFileName===""){
-	outputFileName = inputFileName.substring(0, inputFileName.indexOf('.json'))+'.bin'
+
+	var path = require('path');
+	var globalPath = path.resolve(inputFileName)
+	var parsed = path.parse(globalPath)
+	parsed.ext=".bin"
+	parsed.dir+="/../bin"
+	parsed.base=parsed.name+parsed.ext;
+	outputFileName = path.format(parsed)
+	log("outputFileName = "+outputFileName)
 }
 
 loadFile(inputFileName)

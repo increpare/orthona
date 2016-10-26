@@ -31,7 +31,16 @@ if (inputFileName=="")
 }
 
 if (outputFileName===""){
-	outputFileName = inputFileName.substring(0, inputFileName.indexOf('.bin'))+'.json'
+
+	var path = require('path');
+	var globalPath = path.resolve(inputFileName)
+	var parsed = path.parse(globalPath)
+	parsed.ext=".json"
+	parsed.dir+="/../json"
+	parsed.base=parsed.name+parsed.ext;
+	log(parsed)
+	outputFileName = path.format(parsed)
+	log("outputFileName = "+outputFileName)
 }
 
 loadBinary(inputFileName)

@@ -12,9 +12,11 @@ axes[4]=[1,1]
 
 
 var blah=0;
-function SaveImage(filename){
-	saveFile("dat/temp.json")
-	var cmd = './printOrtho dat/temp.json';
+function PrintImage(){
+	var tmp = require('tmp');
+	var name = tmp.tmpNameSync();
+	saveFile(name)
+	var cmd = './printJson '+name;
 	var capturedOutput = require('child_process').execSync(cmd, {stdio:[0,1,2]})
 }
 
@@ -40,7 +42,7 @@ function Connection(e1,e2,lines){
 }
 
 function saveFile(fileName){
-    var sketch_save = JSON.stringify({book:sketchBook,page:sketchBookIndex});    
+    var sketch_save = JSON.stringify(sketchBook[sketchBookIndex]);    
 	str = fs.writeFileSync(fileName,sketch_save);
 }
 

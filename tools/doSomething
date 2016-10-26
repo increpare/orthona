@@ -1,6 +1,0 @@
-for fn in dat/*.json
-do
-	echo "$fn"
-	./drawOrtho $fn
-    ./elegy $fn && ./drawOrtho ${fn%%.*}_normalized.json
-done

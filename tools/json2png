@@ -46,7 +46,6 @@ if (outputFileName===""){
 	parsed.ext=".png"
 	parsed.dir+="/../png"
 	parsed.base=parsed.name+parsed.ext;
-	log(parsed)
 	outputFileName = path.format(parsed)
 	log("outputFileName = "+outputFileName)
 }

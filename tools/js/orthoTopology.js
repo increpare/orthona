@@ -32,17 +32,17 @@ function Topologize(){
 			let r = Connection(e1,e2,lines)
 			var c=r[0];
 			if  (r!==0&&c!==0){
-				console.log("found start");
-				console.log(r)
+				//log("found start");
+				//log(r)
 				let c = r[0]
 				let l = r[1]
-				console.log("r = "+r)
-				console.log("c:"+c,"l:"+l)
+				//log("r = "+r)
+				//log("c:"+c,"l:"+l)
 				M[i][j]=c;
 				M[j][i]=-c;
 				N[i][j]=l[4]
 				N[j][i]=l[4]
-				console.log("found end");
+				//log("found end");
 			}
 		}
 	}
@@ -59,9 +59,11 @@ function GetConnected(s,M){
 	return result;
 }
 
+
 //so long as it's a tree, you only need to know your connection from a single symbol
-function FindInsertionPosition(uv,vec,v_node,M){
-	var margin=1;
+function FindDisconnectedInsertionPosition(uv,vec,v_node,M){
+	//log("FindDisconnectedInsertionPosition");
+	var margin=0;
 	while(true) {
 		var bounds = getBounds();
 		var top = bounds[0];
@@ -79,7 +81,97 @@ function FindInsertionPosition(uv,vec,v_node,M){
 		var w = right-left+1
 		var h = bottom-top+1
 
-		log("margin = "+margin+" w,h = "+w+","+h)
+		//log("margin = "+margin+" w,h = "+w+","+h)
+		//populate blank one
+		var grid=[]
+		for (var i=0;i<w;i++){
+			var col=[]
+			for (var j=0;j<h;j++){
+				col.push(0)
+			}
+			grid.push(col)
+		}
+
+		//populate with obstructions (obstruction=+1)
+		for (var i=0;i<page.elements.length;i++){
+			var e = page.elements[i];
+			
+			var px = e[0]-xoffset
+			var py = e[1]-yoffset
+			
+			for (var j=-4;j<=4;j++){
+				if (j===0) {
+					continue;
+				}
+				
+				var targetval=-2;
+				
+				var px = e[0]-xoffset;
+				var py = e[1]-yoffset;
+				grid[px][py]=-3;
+
+				var diff = axes[j];
+				var bounded = (x,y) => (x>=0&&x<w&&y>=0&&y<h);
+				var start=true;
+				while(bounded(px,py)){
+					var e_here = ElementAt(px+xoffset,py+yoffset);
+					if (e_here!==null&&!start){
+						break;
+					}
+					start=false;
+					grid[px][py]=Math.min(grid[px][py],targetval);
+					px+=diff[0];
+					py+=diff[1];
+				}
+			}
+		}
+
+		var grid_s = "";
+		for (var j=0;j<grid[0].length;j++){
+			for (var i=0;i<grid.length;i++){
+				grid_s+="ox*."[grid[i][j]+3];
+			}
+			grid_s+="\n";
+		}
+		//log(grid_s);
+
+		//find a -1
+		for (var i2=0;i2<w;i2++){
+			for (var j2=0;j2<h;j2++){
+				if (grid[i2][j2]===0){
+					return [i2+xoffset,j2+yoffset];
+				}
+			}
+		}
+		margin++;
+		if (margin>5){
+			return [0,1];
+		}
+	}
+	return [0,1];
+}
+
+//so long as it's a tree, you only need to know your connection from a single symbol
+function FindInsertionPosition(uv,vec,v_node,M){
+	var margin=0;
+	while(true) {
+		var bounds = getBounds();
+		var top = bounds[0];
+		var bottom = bounds[1];
+		var left = bounds[2];
+		var right = bounds[3];
+
+		left-=margin;
+		right+=margin;
+		top-=margin;
+		bottom+=margin;
+		
+		var xoffset=left
+		var yoffset=top
+		var w = right-left+1
+		var h = bottom-top+1
+
+		//log("margin = "+margin+" w,h = "+w+","+h)
 		//populate blank one
 		var grid=[]
 		for (var i=0;i<w;i++){
@@ -134,7 +226,7 @@ function FindInsertionPosition(uv,vec,v_node,M){
 			}
 			grid_s+="\n";
 		}
-		log(grid_s);
+		//log(grid_s);
 
 		//find a -1
 		for (var i2=0;i2<w;i2++){
@@ -176,7 +268,9 @@ function Instantiate(T){
 		unvisited.push([i,S[i]]);
 	}
 
+	var found=false;
 	while (unvisited.length>0){
+		found=false;
 		//unvisited node connected to graph
 		for (var i=0;i<unvisited.length;i++){
 			var breakout=false;
@@ -186,6 +280,7 @@ function Instantiate(T){
 				var v = visited[j];
 				var v_index = v[0];
 				if (M[uv_index][v_index]!==0){
+					found=true;
 					var v_node = page.elements[j];
 					var [newE,newL] = FindInsertionPosition(uv,M[v_index][uv_index],v_node);
 					newL[4]=N[uv_index][v_index];
@@ -195,13 +290,30 @@ function Instantiate(T){
 					unvisited.splice(i,1);
 					visited.push(uv)
 
-					SaveImage(blah+".png");
+					//PrintImage();
 					blah++;
 				}
 			}
 			if (breakout){
 				break;
 			}
+		}
+
+		//remained of unvisited is disconnected - just add the first one
+		if (found===false){		
+			var breakout=false;
+			var uv = unvisited[0];
+			var uv_index=uv[0];
+			var newE = FindDisconnectedInsertionPosition()
+			newE[2]=uv[1];
+
+			page.elements.push(newE);
+
+			unvisited.splice(0,1);
+			visited.push(uv)
+
+			//PrintImage();
+			blah++;
 		}
 
 	}

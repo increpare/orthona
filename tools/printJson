@@ -12,10 +12,11 @@ var symbols = [
 var emoji = require('node-emoji');
 
 
-var fs = require('fs');
-eval(fs.readFileSync('orthoGlobals.js')+'');
-eval(fs.readFileSync('orthoRender.js')+'');
-eval(fs.readFileSync('orthoLib.js')+'');
+var fs = require('fs')
+eval(fs.readFileSync('../ortho/www/js/orthoGlobals.js')+'')
+eval(fs.readFileSync('../ortho/www/js/orthoRender.js')+'')
+eval(fs.readFileSync('js/orthoLib.js')+'')
+eval(fs.readFileSync('js/orthoTopology.js')+'')
 
 if (process.argv.length===2){
 	console.log("USAGE: printOrtho [-ascii] [-skeleton] FILENAME");
