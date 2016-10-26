@@ -8,7 +8,7 @@ eval(fs.readFileSync('orthoTopology.js')+'');
 
 
 if (process.argv.length===2){
-	console.log("USAGE: elegy INPUT [OUTPUT]");
+	console.log("USAGE: retop INPUT [OUTPUT]");
 	return;
 }
 
