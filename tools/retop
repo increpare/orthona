@@ -32,7 +32,7 @@ if (inputFileName=="")
 }
 
 if (outputFileName===""){
-	outputFileName = inputFileName.substring(0, inputFileName.indexOf('.json'))+'_normalized.json'
+	outputFileName = inputFileName.substring(0, inputFileName.indexOf('.json'))+'_top.json'
 }
 
 loadFile(inputFileName)
