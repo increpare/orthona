@@ -79,7 +79,7 @@ for (var i=0;i<width;i++){
 						continue;
 					}
 					var p_out=[p[0]+mi,p[1]+mj]
-					if (Connection(p,p_out,page.lines)){
+					if (Connection(p,p_out,page.lines)[0]){
 						var l2 = LineAtPoint(p_out);
 						if (l2!==null){
 							var l_dir = LineDirection(l2);

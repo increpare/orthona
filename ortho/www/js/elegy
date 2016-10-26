@@ -38,6 +38,7 @@ if (outputFileName===""){
 loadFile(inputFileName)
 
 var T = Topologize()
+log(T)
 Instantiate(T)
 
 saveFile(outputFileName)

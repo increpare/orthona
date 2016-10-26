@@ -25,12 +25,13 @@ function ElementAt(x,y){
 	}
 	return null;
 }
+
 function Connection(e1,e2,lines){
 	for (var i=0;i<lines.length;i++){
 		var l = lines[i];
 		if (PointOnLine(e1,l)&&PointOnLine(e2,l)){
 			var r = Relation(e1,e2)
-			return r;
+			return [r,l];
 		}
 	}
 	return 0;

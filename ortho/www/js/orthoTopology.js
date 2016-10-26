@@ -13,25 +13,41 @@ function Topologize(){
 	}
 
 	var M = [];
+	var N = [];
 	for (var i=0;i<elements.length;i++){
 		var r = [];
+		var rn = [];
 		for (var j=0;j<elements.length;j++){
 			r.push(0);
+			rn.push(0);
 		}
 		M.push(r);
+		N.push(rn);
 	}
 
 	for (var i=0;i<elements.length;i++){
 		var e1 = elements[i]
 		for (var j=i+1;j<elements.length;j++){			
 			var e2 = elements[j]
-			var c = Connection(e1,e2,lines)
-			M[i][j]=c;
-			M[j][i]=-c;
+			let r = Connection(e1,e2,lines)
+			var c=r[0];
+			if  (c!==0){
+				console.log("found start");
+				console.log(r)
+				let c = r[0]
+				let l = r[1]
+				console.log("c:"+c,"l:"+l)
+				console.log("l4="+l[4])
+				M[i][j]=c;
+				M[j][i]=-c;
+				N[i][j]=l[4]
+				N[j][i]=l[4]
+				console.log("found end");
+			}
 		}
 	}
 
-	var T = {S:S,M:M};
+	var T = {S:S,M:M,N:N};
 	return {S:S,M:M};
 }
 
