@@ -1,5 +1,14 @@
 #!/usr/bin/env node
 
+var symbols = [
+	"■","▼","⌔","○","•",
+	"⊚","◇","△","□","☆",
+	"♧","⧉","🔒","ᗡ","👑",
+	"👁","👄","👆","👂","🍴",
+	"💭","👃","⌛️","⊿","🍌",
+	"⬡","⬇","⌑","λ","✙",
+	"☯","▣","⨸","🌀","📄"];
+
 var emoji = require('node-emoji');
 
 
@@ -9,17 +18,19 @@ eval(fs.readFileSync('orthoRender.js')+'');
 eval(fs.readFileSync('orthoLib.js')+'');
 
 if (process.argv.length===2){
-	console.log("USAGE: printOrtho [-ascii] FILENAME");
+	console.log("USAGE: printOrtho [-ascii] [-skeleton] FILENAME");
 	return;
 }
 
 var asciiCharacters=false;
-
+var skeleton=false;
 var inputFileName=""
 for (var i=2;i<process.argv.length;i++){
 	var t = process.argv[i];
 	if (t=="-ascii"){
 		asciiCharacters=true;
+	} if (t=="-skeleton"){
+		skeleton=true;
 	} else if (inputFileName===""){
 		inputFileName=t;
 	} else {
@@ -40,6 +51,39 @@ var width = bounds[3]-bounds[2]+1
 
 var offsetX=bounds[2]
 var offsetY=bounds[0]
+
+
+
+if (skeleton){
+	//GRID INDICES ARE Y,X
+	var grid = []
+	for (var j=0;j<height;j++){
+		var row = []
+		for (var i=0;i<width;i++){
+			row.push(" ")
+		}
+		grid.push(row)
+	}
+
+	for (var i=0;i<page.elements.length;i++){
+		var e = page.elements[i]
+		log(e)
+		var ex = e[0]-offsetX
+		var ey = e[1]-offsetY
+		var es = symbols[e[2]]
+		grid[ey][ex]=es
+	}
+		
+	var ans=""
+	for (var j=0;j<height;j++){
+		for (var i=0;i<width;i++){
+			ans+=grid[j][i]
+		}
+		ans+="\n"
+	}
+	console.log(ans)
+	return;
+}
 
 //GRID INDICES ARE Y,X
 var grid = []
@@ -96,8 +140,6 @@ for (var i=0;i<width;i++){
 	}
 }
 
-var symbols = ["■","▼","⌔","○","•","⊚","◇","△","□","☆","♧","⧉","🔒","ᗡ","👑","👁","👄","👆","👂","🍴","☁","👃","⊿","⬡","⬇","⌑","λ","✙","☯","▣","⨸","🌀","📄"];
-
 if (asciiCharacters){
 	symbols = "1234.abcdefghijklmnopqrstuvwxyABCDE";
 }
@@ -109,7 +151,6 @@ for (var i=0;i<page.elements.length;i++){
 	var es = symbols[e[2]]
 	grid[2*ey+1][2*ex+1]=es
 }
-
 
 var ans=""
 for (var j=0;j<2*height+1;j++){

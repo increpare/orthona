@@ -2,9 +2,13 @@
 FORMAT
 -	signature 0x4f 0x72 0x74 0x68
 -	version [ ubyte ]
--	elementCount
+-	elementCount [ ubyte ]
 -	[element] 
-		element = [short,short,ubyte] 
--	lineCount
+		element = [byte,byte,ubyte] 
+-	lineCount [ ubyte ]
 -	[line]
-		line = [short,short,short,short,byte]
+		line = [byte,byte,byte,byte,ubyte]
+
+so, given a file with E elements, and L lines, length in bytes is
+	4+1+1+E*(1+1+1)+2+L*(1+1+1+1+1)
+	9+E*3+L*5

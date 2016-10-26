@@ -1,3 +1,5 @@
+var ORTHO_VERSION=0;
+
 var axes = {};
 axes[-4]=[-1,-1]
 axes[-3]=[0,-1]
@@ -42,14 +44,93 @@ function saveFile(fileName){
 	str = fs.writeFileSync(fileName,sketch_save);
 }
 
+function arrayToUInt16(a1,a2){
+	return a1+a2*0x100
+}
+function arrayToInt16(ar){
+	return a1+a2*0x100-0x7FFF
+}
+
+function loadBinary(fileName){
+	clearGraph();
+
+	var data = fs.readFileSync(fileName);
+	var signature = [data[0],data[1],data[2],data[3]]
+	var version = data[4]
+	var E = data[5]
+	log(E)
+	
+	var p=6;
+
+	for (var i=0;i<E;i++){
+		log(data[0],data[p+1],data[p+2])
+		var e_x = data[p++]-0x80
+		var e_y = data[p++]-0x80
+		var e_s = data[p++]
+		page.elements.push([e_x,e_y,e_s])
+	}
+
+	var L = data[p++]
+	log(L)
+
+	for (var i=0;i<L;i++){
+		log(data[0],data[p+1],data[p+2],data[p+3])
+		var l_x1 = data[p++]-0x80
+		var l_y1 = data[p++]-0x80
+		var l_x2 = data[p++]-0x80
+		var l_y2 = data[p++]-0x80
+		var l_s = data[p++]
+		page.lines.push([l_x1,l_y1,l_x2,l_y2,l_s])
+	}
+
+}
+
+function saveBinary(fileName){
+	var E = page.elements.length
+	var L = page.lines.length
+
+	var dat = [0x4f,0x72,0x74,0x68]
+	dat.push(ORTHO_VERSION)
+
+
+	dat.push(E&0xff)
+	log(E&0xff)
+	for (var i=0;i<E;i++){
+		var e 	= page.elements[i];
+		var x 	= (e[0]+0x80)&0xff
+		var y 	= (e[1]+0x80)&0xff
+		var t 	= e[2]&0xff
+
+		log(x,y,t)
+		dat.push(x,y,t)
+	}
+
+	log(L&0xFF)
+	dat.push(L&0xFF)
+
+	for (var i=0;i<L;i++){
+		var l 	= page.lines[i];
+		var x1 	= (e[0]+0x80)&0xff
+		var y1 	= (e[1]+0x80)&0xff
+		var x2 	= (e[2]+0x80)&0xff
+		var y2 	= (e[3]+0x80)&0xff
+
+		var t 	= e[2]&0xff
+		log(x1,y1,x2,y2,t)
+		dat.push(x1,y1,x2,y2,t)
+	}
+
+	var buffer = Buffer.from(dat)
+	fs.writeFileSync(fileName,buffer);
+}
+
 function loadFile(fileName){
 	str = fs.readFileSync(fileName)+'';
 	loadString(str);
 }
 
 function loadString(str){
-	page = JSON.parse(str).book[0];
-	var bounds = getBounds();
+	page = JSON.parse(str);
 }
 
 
