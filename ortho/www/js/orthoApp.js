@@ -238,6 +238,7 @@ function makeLine(x1,y1,x2,y2){
             } else {
                 page.lines.splice(i,1);
             }
+            SaveState();
             return;
         }
     }
