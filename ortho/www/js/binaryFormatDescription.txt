@@ -1,0 +1,10 @@
+
+FORMAT
+-	signature 0x4f 0x72 0x74 0x68
+-	version [ ubyte ]
+-	elementCount
+-	[element] 
+		element = [short,short,ubyte] 
+-	lineCount
+-	[line]
+		line = [short,short,short,short,byte]
