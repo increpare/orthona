@@ -31,13 +31,13 @@ function Topologize(){
 			var e2 = elements[j]
 			let r = Connection(e1,e2,lines)
 			var c=r[0];
-			if  (c!==0){
+			if  (r!==0&&c!==0){
 				console.log("found start");
 				console.log(r)
 				let c = r[0]
 				let l = r[1]
+				console.log("r = "+r)
 				console.log("c:"+c,"l:"+l)
-				console.log("l4="+l[4])
 				M[i][j]=c;
 				M[j][i]=-c;
 				N[i][j]=l[4]
@@ -46,9 +46,7 @@ function Topologize(){
 			}
 		}
 	}
-
-	var T = {S:S,M:M,N:N};
-	return {S:S,M:M};
+	return {S:S,M:M,N:N};
 }
 
 function GetConnected(s,M){
@@ -163,6 +161,7 @@ function Instantiate(T){
 	clearGraph();
 	var S = T.S;
 	var M = T.M;
+	var N = T.N;
 
 	//first, make an impure model with overlapping elements
 	if (S.length===0){
@@ -189,7 +188,7 @@ function Instantiate(T){
 				if (M[uv_index][v_index]!==0){
 					var v_node = page.elements[j];
 					var [newE,newL] = FindInsertionPosition(uv,M[v_index][uv_index],v_node);
-
+					newL[4]=N[uv_index][v_index];
 					page.elements.push(newE);
 					page.lines.push(newL);
 
