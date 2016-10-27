@@ -750,11 +750,11 @@ function orthoRender(){
             ctx.moveTo(0,j+adjustY);
             ctx.lineTo(ctx.canvas.width,j+adjustY);
         }
-        log(adjustX+","+adjustY)
+        //log(adjustX+","+adjustY)
         if (drawGridLines_Diagonal){     
             for (var i=startX;i<canvas.width;i+=cellSize*page.scale){
                 ctx.moveTo(i+adjustX,startY+startX);
-                ctx.lineTo(i+adjustX+2*canvas.height,+startY+2*canvas.height);
+                ctx.lineTo(i+adjustX+2*canvas.height,+startY+startX+2*canvas.height);
             }       
             for (var i=startX-cellSize*page.scale;i>-canvas.height;i-=cellSize*page.scale){
                 ctx.moveTo(i+adjustX,+startY+startX);

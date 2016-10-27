@@ -41,12 +41,43 @@ function ElementAt(x,y){
 	return null;
 }
 
-function Connection(e1,e2,lines){
+function NoPointBetween(e1,e2,elements){
+	var dx=0;
+	var dy=0;
+	
+	if (e1[0]<e2[0]) dx=1;
+	if (e1[0]>e2[0]) dx=-1;
+
+	if (e1[1]<e2[1]) dy=1;
+	if (e1[1]>e2[1]) dy=-1;
+	var x1=e1[0]+dx
+	var y1=e1[1]+dy
+
+	var x2=e2[0]
+	var y2=e2[1]
+
+	while(x1!==x2||y1!==y2){
+		for (var i=0;i<elements.length;i++){
+			var e = elements[i]
+			if (e[0]===x1&&e[1]===y1){
+				return false;
+			}
+		}
+		x1+=dx
+		y1+=dy
+	}
+	return true;
+}
+
+function Connection(e1,e2,lines,elements){
 	for (var i=0;i<lines.length;i++){
 		var l = lines[i];
 		if (PointOnLine(e1,l)&&PointOnLine(e2,l)){
-			var r = Relation(e1,e2)
-			return [r,l];
+			if (NoPointBetween(e1,e2,elements))
+			{
+				var r = Relation(e1,e2)
+				return [r,l];
+			}
 		}
 	}
 	return 0;
@@ -272,7 +303,7 @@ function PointOnLine(e,line){
 	var d2 = Math.sqrt(dx2*dx2+dy2*dy2)
 	var diff = d12-d1-d2
 	var d = Math.abs(d12-d1-d2);
-	return d<0.1;
+	return d<0.001;
 }
 
 function LineDirection(l){
@@ -306,5 +337,3 @@ function Relation(e1,e2){
 	}
 	return dx+3*dy
 }
-
-var log = console.log

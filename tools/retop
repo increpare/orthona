@@ -51,7 +51,6 @@ var outputFileName2=""
 	parsed.dir+="/../retop"
 	parsed.base=parsed.name+"_retop_big"+parsed.ext;
 	outputFileName2 = path.format(parsed)
-	log("outputFileName2 = "+outputFileName2)
 }
 
 

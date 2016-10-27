@@ -2,3 +2,7 @@ ortho/platforms
 ortho/platforms/*.*
 ortho/plugins
 ortho/www/js/dat/*.png
+
+*.png
+
+*.png

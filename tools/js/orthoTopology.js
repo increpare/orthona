@@ -25,11 +25,17 @@ function findMostCentralVal(v,grid){
 }
 
 
+function ConnectLines(){
+
+}
+
 function Topologize(){
+
+	ConnectLines();
+
 	var elements = page.elements;
 	var lines = page.lines;
 
-	
 	var S = []
 	for (var i=0;i<elements.length;i++){
 		var e = elements[i];
@@ -53,7 +59,7 @@ function Topologize(){
 		var e1 = elements[i]
 		for (var j=i+1;j<elements.length;j++){			
 			var e2 = elements[j]
-			let r = Connection(e1,e2,lines)
+			let r = Connection(e1,e2,lines,elements)
 			var c=r[0];
 			if  (r!==0&&c!==0){
 				//log("found start");

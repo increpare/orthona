@@ -1,0 +1,37 @@
+uniquely characterize
+
+solid square		1
+solid marker
+outline marker
+outline circle
+solid dot
+concentric circles	6
+diamond
+equilateral triangle
+outline square
+star
+rounded cross		11
+overlapping circles	
+keyhole
+semicircle
+crown
+eye			16
+mouth
+hand
+handle
+teeth
+v eye			21
+nose
+hourglass
+right-angled triangle
+banana
+cube			26
+arrow
+diagonal cross
+lambda
+plus
+yinyang			31
+concentric squares
+division
+spiral
+parallel lines

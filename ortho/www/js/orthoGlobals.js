@@ -58,3 +58,6 @@ var mousex=0;
 var mousey=0;
 var startPosX=0;
 var startPosY=0;
+
+
+var log = console.log
