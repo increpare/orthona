@@ -1978,6 +1978,7 @@ module.exports.clearGraph=clearGraph
 module.exports.getBounds=getBounds
 module.exports.canvasSize=canvasSize
 module.exports.axes=axes
+module.exports.MoveOriginToTopLeft=MoveOriginToTopLeft
 }).call(this,require("buffer").Buffer)
 },{"./app/orthoGlobals":2,"buffer":9,"child_process":7,"fs":7,"tmp":5}],5:[function(require,module,exports){
 (function (process){

@@ -1,0 +1,7 @@
+<?xml version='1.0' standalone='yes'?>
+<parent xmlns='http://example.org'
+	xmlns:svg='http://www.w3.org/2000/svg'>
+	<svg:svg width='6.5cm' height='8.5cm' viewBox='0 0 6.5 8.5' version='1.1'>
+		<svg:circle stroke-width='0.01' cx='2.75' cy='2.75' r='0.4' fill='transparent' stroke='red' />		
+	</svg:svg>
+</parent>

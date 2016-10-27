@@ -8,7 +8,7 @@ var log = console.log
 
 
 if (process.argv.length===2){
-	console.log("USAGE: json2png [-noGridLines] [-diagonals] [-noIcons] [-noLines] FILENAME [OUTPUT]");
+	console.log("USAGE: json2png [-noGridLines] [-diagonals] [-noIcons] [-noLines] [-selectiveGridLines] FILENAME [OUTPUT]");
 	return;
 }
 

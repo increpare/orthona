@@ -181,20 +181,7 @@ const int triangle[] = {
                 866,500
 };
 
-void describeArc(FILE* f, float x, float y, float radius, float startAngle, float endAngle){
-    
-    var start = polarToCartesian(x, y, radius, endAngle);
-    var end = polarToCartesian(x, y, radius, startAngle);
-    
-    var largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
-    
-    var d = [
-             "M", start.x, start.y,
-             "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y
-             ].join(" ");
-    
-    return d;       
-}
+
 void drawIcon(FILE* f, float x,float y,uchar icon){
     switch(icon){
         case 0://square - solid

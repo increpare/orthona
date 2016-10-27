@@ -1,0 +1,21 @@
+<?xml version='1.0' standalone='yes'?>
+<parent xmlns='http://example.org'
+	xmlns:svg='http://www.w3.org/2000/svg'>
+	<!-- parent contents here -->
+	<svg:svg width='130mm' height='270mm' viewBox='0 0 130 270' version='1.1'>
+		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='black' d='M 95 215 L 95 195 M 95 195 L 55 195 M 55 195 L 55 135 M 55 135 L 55 115 M 55 135 L 15 95 M 55 195 L 35 195 M 15 95 L 75 35 M 35 195 L 35 235 M 75 35 L 75 15 '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 88.6 215 L 95 221.4 L 101.4 215 L 95 208.6 Z '/>
+		<svg:circle stroke-width='1' cx='95' cy='195' r='1.6' fill='black' stroke='black' />
+		<svg:circle stroke-width='1' cx='55' cy='195' r='1.6' fill='black' stroke='black' />
+		<svg:path  stroke-width='1' fill='black' stroke='black' d='M 55 140.76 L 52.12 135 C 49.24 129.24, 60.76 129.24, 57.88 135 Z '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 52.730496453900706 112.73049645390071 C 50.46099290780142 108.19148936170212, 59.53900709219858 108.19148936170212, 57.269503546099294 112.73049645390071 C 61.808510638297875 110.46099290780141, 61.808510638297875 119.53900709219859, 57.269503546099294 117.26950354609929 C 59.53900709219858 121.80851063829788, 50.46099290780142 121.80851063829788, 52.730496453900706 117.26950354609929 C 48.191489361702125 119.53900709219859, 48.191489361702125 110.46099290780141, 52.730496453900706 112.73049645390071 Z '/>
+		<svg:rect stroke-width='1' x='10.460992907801419' y='90.46099290780141' width='9.078014184397164' height='9.078014184397164' fill='white' stroke='black' />
+		<svg:circle stroke-width='1' cx='35' cy='195' r='1.6' fill='black' stroke='black' />
+		<svg:rect stroke-width='1' x='71.59574468085107' y='31.595744680851062' width='6.808510638297872' height='6.808510638297872' fill='black' stroke='black' />
+		<svg:rect stroke-width='1' x='30.46099290780142' y='230.46099290780143' width='9.078014184397164' height='9.078014184397164' fill='white' stroke='black' />
+		<svg:circle stroke-width='1' cx='75' cy='15' r='6.4' fill='white' stroke='black' />
+		<svg:circle stroke-width='1' cx='75' cy='15' r='4.268800000000001' fill='white' stroke='black' />
+		<svg:circle stroke-width='1' cx='75' cy='15' r='2.1376000000000004' fill='white' stroke='black' />
+	</svg:svg>
+	<!-- ... -->
+</parent>

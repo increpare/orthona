@@ -1,0 +1,24 @@
+<?xml version='1.0' standalone='yes'?>
+<parent xmlns='http://example.org'
+	xmlns:svg='http://www.w3.org/2000/svg'>
+	<!-- parent contents here -->
+	<svg:svg width='170mm' height='190mm' viewBox='0 0 170 190' version='1.1'>
+		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='black' d='M 95 15 L 115 35 M 115 35 L 135 35 M 135 35 L 135 75 M 115 35 L 55 35 M 55 35 L 55 135 M 115 35 L 115 115 M 135 35 L 75 95 M 75 95 L 15 155 '/>
+		<svg:rect stroke-width='1' x='91.59574468085107' y='11.595744680851064' width='6.808510638297872' height='6.808510638297872' fill='black' stroke='black' />
+		<svg:circle stroke-width='1' cx='112.6' cy='35' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='117.39999999999999' cy='35' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='112.6' cy='35' r='6.4' fill='transparent' stroke='black' />
+		<svg:circle stroke-width='1' cx='117.39999999999999' cy='35' r='6.4' fill='transparent' stroke='black' />
+		<svg:path  stroke-width='1' fill='black' stroke='black' d='M 135 40.76 L 132.12 35 C 129.24 29.24, 140.76 29.24, 137.88 35 Z '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 135 68.6 L 140.5424 78.2 L 129.4576 78.2 Z '/>
+		<svg:rect stroke-width='1' x='51.59574468085106' y='31.595744680851062' width='6.808510638297872' height='6.808510638297872' fill='black' stroke='black' />
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 55 128.6 L 60.5424 138.2 L 49.4576 138.2 Z '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 115 108.6 L 120.5424 118.2 L 109.4576 118.2 Z '/>
+		<svg:circle stroke-width='1' cx='72.6' cy='95' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='77.39999999999999' cy='95' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='72.6' cy='95' r='6.4' fill='transparent' stroke='black' />
+		<svg:circle stroke-width='1' cx='77.39999999999999' cy='95' r='6.4' fill='transparent' stroke='black' />
+		<svg:rect stroke-width='1' x='11.595744680851064' y='151.59574468085106' width='6.808510638297872' height='6.808510638297872' fill='black' stroke='black' />
+	</svg:svg>
+	<!-- ... -->
+</parent>

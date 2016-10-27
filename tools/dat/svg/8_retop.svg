@@ -1,0 +1,11 @@
+<?xml version='1.0' standalone='yes'?>
+<parent xmlns='http://example.org'
+	xmlns:svg='http://www.w3.org/2000/svg'>
+	<!-- parent contents here -->
+	<svg:svg width='70mm' height='50mm' viewBox='0 0 70 50' version='1.1'>
+		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='black' d='M 15 15 L 35 15 M 25 19 L 25 11 '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 13.56 9.879999999999999 L 12.12 15.64 C 9.239999999999998 21.400000000000002 , 20.76 21.400000000000002 , 17.88 15.64 L 16.44 9.879999999999999 '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 30.2 10.2 L 39.8 10.2 C 35.8 15 , 35.8 15 , 39.8 19.8 L 30.2 19.8 C 34.2 15 , 34.2 15 , 30.2 10.2 Z  '/>
+	</svg:svg>
+	<!-- ... -->
+</parent>

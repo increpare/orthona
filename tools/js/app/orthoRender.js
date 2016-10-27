@@ -522,7 +522,7 @@ function drawIcon(x,y,n){
                 var px = r*Math.sin(i*a);
                 var py = r*Math.cos(i*a);
                 if (i===0){
-                    ctx.lineTo(x+px,y+py);
+                    ctx.moveTo(x+px,y+py);
                 } else {
                     ctx.lineTo(x+px,y+py);
                 }
@@ -769,8 +769,10 @@ function orthoRender(){
         for (var i=startX;i<canvas.width;i+=cellSize*glob.page.scale){ 
             var [x1,y1] = [i+adjustX,0]
             var [x2,y2] = [i+adjustX,ctx.canvas.height]
-            ctx.moveTo(x1,y1);
-            ctx.lineTo(x2,y2);
+            if (shouldDrawGridLine(x1,y1,x2,y2)){
+                ctx.moveTo(x1,y1);
+                ctx.lineTo(x2,y2);
+            }
         }
         for (var j=startY;j<canvas.height;j+=cellSize*glob.page.scale){ 
             var [x1,y1] = [0,j+adjustY];

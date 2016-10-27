@@ -1,0 +1,19 @@
+<?xml version='1.0' standalone='yes'?>
+<parent xmlns='http://example.org'
+	xmlns:svg='http://www.w3.org/2000/svg'>
+	<!-- parent contents here -->
+	<svg:svg width='130mm' height='170mm' viewBox='0 0 130 170' version='1.1'>
+		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='black' d='M 15 55 L 35 75 M 35 75 L 55 75 M 55 75 L 75 75 M 35 75 L 95 135 M 62.17157287525381 107.82842712474618 L 67.82842712474618 102.17157287525382 M 75 75 L 75 15 M 55 75 L 55 115 '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 15 48.6 L 11.236799999999999 60.1776 L 21.0864 53.0224 L 8.913599999999999 53.0224 L 18.7632 60.1776 Z '/>
+		<svg:rect stroke-width='1' x='31.595744680851062' y='71.59574468085107' width='6.808510638297872' height='6.808510638297872' fill='black' stroke='black' />
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 55 68.6 L 51.2368 80.1776 L 61.0864 73.0224 L 48.9136 73.0224 L 58.7632 80.1776 Z '/>
+		<svg:rect stroke-width='1' x='71.59574468085107' y='71.59574468085107' width='6.808510638297872' height='6.808510638297872' fill='black' stroke='black' />
+		<svg:circle stroke-width='1' cx='92.6' cy='135' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='97.39999999999999' cy='135' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='92.6' cy='135' r='6.4' fill='transparent' stroke='black' />
+		<svg:circle stroke-width='1' cx='97.39999999999999' cy='135' r='6.4' fill='transparent' stroke='black' />
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 68.6 15 L 75 21.4 L 81.4 15 L 75 8.6 Z '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 48.6 115 L 55 121.4 L 61.4 115 L 55 108.6 Z '/>
+	</svg:svg>
+	<!-- ... -->
+</parent>

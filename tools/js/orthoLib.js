@@ -14,6 +14,7 @@ axes[2]=[-1,1]
 axes[3]=[0,1]
 axes[4]=[1,1]
 
+
 function ar_shuffle(a) {
     for (let i = a.length; i; i--) {
         let j = Math.floor(Math.random() * i);
@@ -433,3 +434,4 @@ module.exports.clearGraph=clearGraph
 module.exports.getBounds=getBounds
 module.exports.canvasSize=canvasSize
 module.exports.axes=axes
+module.exports.MoveOriginToTopLeft=MoveOriginToTopLeft
