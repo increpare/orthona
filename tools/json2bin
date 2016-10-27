@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-var fs = require('fs')
-eval(fs.readFileSync('../ortho/www/js/orthoGlobals.js')+'')
-eval(fs.readFileSync('../ortho/www/js/orthoRender.js')+'')
-eval(fs.readFileSync('js/orthoLib.js')+'')
-eval(fs.readFileSync('js/orthoTopology.js')+'')
-
+var fs 				= require('fs')
+var glob 			= require('./js/app/orthoGlobals')
+var orthoRender 	= require('./js/app/orthoRender')
+var lib 			= require('./js/orthoLib')
+var svgRender 		= require("./js/svgRender")
+var log=console.log
 
 if (process.argv.length===2){
 	console.log("USAGE: json2bin INPUT [OUTPUT]")
@@ -31,7 +31,6 @@ if (inputFileName=="")
 }
 
 if (outputFileName===""){
-
 	var path = require('path');
 	var globalPath = path.resolve(inputFileName)
 	var parsed = path.parse(globalPath)
@@ -42,7 +41,7 @@ if (outputFileName===""){
 	log("outputFileName = "+outputFileName)
 }
 
-loadFile(inputFileName)
+lib.loadFile(inputFileName)
 
-saveBinary(outputFileName)
+lib.saveBinary(outputFileName)
 log("saved " + outputFileName)

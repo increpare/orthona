@@ -3,11 +3,12 @@
 var emoji = require('node-emoji');
 
 
-var fs = require('fs')
-eval(fs.readFileSync('../ortho/www/js/orthoGlobals.js')+'')
-eval(fs.readFileSync('../ortho/www/js/orthoRender.js')+'')
-eval(fs.readFileSync('js/orthoLib.js')+'')
-eval(fs.readFileSync('js/orthoTopology.js')+'')
+
+var fs 				= require('fs')
+var glob 			= require('./js/app/orthoGlobals')
+var lib 			= require('./js/orthoLib')
+var svgRender 		= require("./js/orthoTopology")
+var log=console.log
 
 if (process.argv.length===2){
 	console.log("USAGE: printOrtho [-ascii] [-noLines] FILENAME");
@@ -49,9 +50,9 @@ if (inputFileName=="")
 	console.log("need to supply input file");
 }
 
-loadFile(inputFileName);
+lib.loadFile(inputFileName);
 
-var bounds = getBounds();
+var bounds = lib.getBounds();
 var height = bounds[1]-bounds[0]+1
 var width = bounds[3]-bounds[2]+1
 
@@ -103,7 +104,7 @@ for (var j=0;j<2*height+1;j++){
 function LineAtPoint(p){
 	for (var i=0;i<page.lines.length;i++){
 		var l = page.lines[i];
-		if (PointOnLine(p,l)){		
+		if (lib.PointOnLine(p,l)){		
 			return  l;
 		}
 	}
@@ -118,7 +119,7 @@ for (var i=0;i<width;i++){
 		var p = [i+offsetX,j+offsetY]
 		var l = LineAtPoint(p);
 		if (l!==null){
-			var ld1=LineDirection(l);
+			var ld1=lib.LineDirection(l);
 			grid[2*j+1][2*i+1]=lines[l[4]===1?1:0][Math.abs(ld1)];
 			
 			//for each cell, check 9 points for line drawing
@@ -128,11 +129,11 @@ for (var i=0;i<width;i++){
 						continue;
 					}
 					var p_out=[p[0]+mi,p[1]+mj]
-					if (Connection(p,p_out,page.lines)[0]){
+					if (lib.Connection(p,p_out,page.lines)[0]){
 						var l2 = LineAtPoint(p_out);
 						if (l2!==null){
-							var l_dir = LineDirection(l2);
-							var l_vec = axes[l_dir];
+							var l_dir = lib.LineDirection(l2);
+							var l_vec = lib.axes[l_dir];
 							if ((l_vec[0]===mi&&l_vec[1]===mj)||(l_vec[0]===-mi&&l_vec[1]===-mj)){
 								l_dir=Math.abs(l_dir);								
 								grid[2*j+1+mj][2*i+1+mi]=lines[l2[4]===1?1:0][Math.abs(l_dir)];

@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
 var fs = require('fs')
-eval(fs.readFileSync('../ortho/www/js/orthoGlobals.js')+'')
-eval(fs.readFileSync('../ortho/www/js/orthoRender.js')+'')
-eval(fs.readFileSync('js/orthoLib.js')+'')
-eval(fs.readFileSync('js/orthoTopology.js')+'')
+var glob = require('./js/app/orthoGlobals')
+var lib = require('./js/orthoLib')
+var orthoRender = require("./js/app/orthoRender")
+var log = console.log
+
 
 if (process.argv.length===2){
 	console.log("USAGE: json2png [-noGridLines] [-diagonals] [-noIcons] [-noLines] FILENAME [OUTPUT]");
@@ -16,15 +17,15 @@ var outputFileName=""
 for (var i=2;i<process.argv.length;i++){
 	var t = process.argv[i];
 	if (t==="-noGridLines"){
-		drawGridLines=false;
+		glob.drawGridLines=false;
 	} else if (t==="-diagonals"){
-		drawGridLines_Diagonal=true;
+		glob.drawGridLines_Diagonal=true;
 	} else if (t==="-noIcons"){
-		drawElements=false;
+		glob.drawElements=false;
 	} else if (t==="-noLines"){
-		drawLines=false;
+		glob.drawLines=false;
 	} else if (t==="-selectiveGridLines"){
-		drawSelectiveGridLines=true;
+		glob.drawSelectiveGridLines=true;
 	} else if (inputFileName===""){
 		inputFileName=t;
 		console.log("input file "+t)
@@ -52,22 +53,21 @@ if (outputFileName===""){
 	log("outputFileName = "+outputFileName)
 }
 
-loadFile(inputFileName);
+lib.loadFile(inputFileName);
 
+var canvasDimensions = lib.canvasSize();
 
-var canvasDimensions = canvasSize();
-
-setOffsetToTopLeft();
+lib.setOffsetToTopLeft();
 
 var Canvas = require('canvas')
 var Image = Canvas.Image
 
-canvas = new Canvas(canvasDimensions[0], canvasDimensions[1])
-ctx = canvas.getContext('2d');
+glob.canvas = new Canvas(canvasDimensions[0], canvasDimensions[1])
+glob.ctx = glob.canvas.getContext('2d');
 
-orthoRender();
+orthoRender.render();
 
-var dataURL = canvas.toDataURL();
+var dataURL = glob.canvas.toDataURL();
 var data = dataURL.replace(/^data:image\/\w+;base64,/, "");
 var buf = new Buffer(data, 'base64');
 fs.writeFile(outputFileName, buf);

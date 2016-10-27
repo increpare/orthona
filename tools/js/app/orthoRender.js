@@ -1,4 +1,7 @@
 var glob = require('./orthoGlobals')
+var lib = require('../orthoLib')
+var log=console.log
+
 const cellSize = glob.cellSize;
 
 var pentagon = [
@@ -736,7 +739,7 @@ function shouldDrawGridLine(x1,y1,x2,y2){
         var ex = glob.page.offsetX+e[0]*cellSize*glob.page.scale;
         var ey = glob.page.offsetY+e[1]*cellSize*glob.page.scale;
 
-        if (PointOnLine([ex,ey],[x1,y1,x2,y2])){
+        if (lib.PointOnLine([ex,ey],[x1,y1,x2,y2])){
             return true;
         }
     }

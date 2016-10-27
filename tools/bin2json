@@ -1,12 +1,11 @@
 #!/usr/bin/env node
 
-var fs = require('fs')
-
-eval(fs.readFileSync('../ortho/www/js/orthoGlobals.js')+'')
-eval(fs.readFileSync('../ortho/www/js/orthoRender.js')+'')
-eval(fs.readFileSync('js/orthoLib.js')+'')
-eval(fs.readFileSync('js/orthoTopology.js')+'')
-
+var fs 				= require('fs')
+var glob 			= require('./js/app/orthoGlobals')
+var orthoRender 	= require('./js/app/orthoRender')
+var lib 			= require('./js/orthoLib')
+var svgRender 		= require("./js/svgRender")
+var log=console.log
 
 if (process.argv.length===2){
 	console.log("USAGE: bin2json INPUT [OUTPUT]")
@@ -39,12 +38,11 @@ if (outputFileName===""){
 	parsed.ext=".json"
 	parsed.dir+="/../json"
 	parsed.base=parsed.name+"_b"+parsed.ext;
-	log(parsed)
 	outputFileName = path.format(parsed)
 	log("outputFileName = "+outputFileName)
 }
 
-loadBinary(inputFileName)
+lib.loadBinary(inputFileName)
 
-saveFile(outputFileName)
+lib.saveFile(outputFileName)
 log("saved " + outputFileName)

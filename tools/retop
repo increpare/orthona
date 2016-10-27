@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
 var fs = require('fs')
-eval(fs.readFileSync('../ortho/www/js/orthoGlobals.js')+'')
-eval(fs.readFileSync('../ortho/www/js/orthoRender.js')+'')
-eval(fs.readFileSync('js/orthoLib.js')+'')
-eval(fs.readFileSync('js/orthoTopology.js')+'')
+var glob = require('./js/app/orthoGlobals')
+var lib = require('./js/orthoLib')
+var top = require('./js/orthoTopology')
+var orthoRender = require("./js/app/orthoRender")
+var log = console.log
 
 
 if (process.argv.length===2){
@@ -54,34 +55,34 @@ var outputFileName2=""
 }
 
 
-loadFile(inputFileName)
+lib.loadFile(inputFileName)
 
 var minarea=10000000;
-var minpage=JSON.stringify(page);
+var minpage=JSON.stringify(glob.page);
 var maxarea=-100000;
-var maxpage=JSON.stringify(page);
+var maxpage=JSON.stringify(glob.page);
 
-	ConnectLines();
+lib.ConnectLines();
 	
 for (var i=0;i<100;i++){	
-	var T = Topologize()
-	Instantiate(T)	
+	var T = top.Topologize()
+	top.Instantiate(T)	
 
-	var area = pageArea()
+	var area = lib.pageArea()
 	if (area<minarea){
 		minarea=area
-		minpage=JSON.stringify(page);
+		minpage=JSON.stringify(glob.page);
 	}
 	if (area>maxarea){
 		maxarea=area
-		maxpage=JSON.stringify(page);
+		maxpage=JSON.stringify(glob.page);
 	}
-	shuffle();
+	lib.shuffle();
 }
 
-page=JSON.parse(minpage)
+glob.page=JSON.parse(minpage)
 //log("area = "+pageArea())
-saveFile(outputFileName)
+lib.saveFile(outputFileName)
 log("generated "+ outputFileName);
 /*page=JSON.parse(maxpage)
 log("area = "+pageArea())

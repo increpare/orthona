@@ -38,4 +38,4 @@ function svgRender(){
     return svg;
 }
 
-module.exports = svgRender;
+module.exports.render = svgRender;

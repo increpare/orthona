@@ -1,9 +1,15 @@
+var fs = require('fs')
+var glob = require('./app/orthoGlobals')
+var lib = require('./orthoLib')
+var log = console.log
+
+
 function Topologize(){
 
-	ConnectLines();
+	lib.ConnectLines();
 
-	var elements = page.elements;
-	var lines = page.lines;
+	var elements = glob.page.elements;
+	var lines = glob.page.lines;
 
 	var S = []
 	for (var i=0;i<elements.length;i++){
@@ -28,7 +34,7 @@ function Topologize(){
 		var e1 = elements[i]
 		for (var j=i+1;j<elements.length;j++){			
 			var e2 = elements[j]
-			let r = Connection(e1,e2,lines,elements)
+			let r = lib.Connection(e1,e2,lines,elements)
 			var c=r[0];
 			if  (r!==0&&c!==0){
 				//log("found start");
@@ -64,7 +70,7 @@ function FindDisconnectedInsertionPosition(uv,vec,v_node,M){
 	//log("FindDisconnectedInsertionPosition");
 	var margin=0;
 	while(true) {
-		var bounds = getBounds();
+		var bounds = lib.getBounds();
 		var top = bounds[0];
 		var bottom = bounds[1];
 		var left = bounds[2];
@@ -92,8 +98,8 @@ function FindDisconnectedInsertionPosition(uv,vec,v_node,M){
 		}
 
 		//populate with obstructions (obstruction=+1)
-		for (var i=0;i<page.elements.length;i++){
-			var e = page.elements[i];
+		for (var i=0;i<glob.page.elements.length;i++){
+			var e = glob.page.elements[i];
 			
 			var px = e[0]-xoffset
 			var py = e[1]-yoffset
@@ -109,11 +115,11 @@ function FindDisconnectedInsertionPosition(uv,vec,v_node,M){
 				var py = e[1]-yoffset;
 				grid[px][py]=-3;
 
-				var diff = axes[j];
+				var diff = lib.axes[j];
 				var bounded = (x,y) => (x>=0&&x<w&&y>=0&&y<h);
 				var start=true;
 				while(bounded(px,py)){
-					var e_here = ElementAt(px+xoffset,py+yoffset);
+					var e_here = lib.ElementAt(px+xoffset,py+yoffset);
 					if (e_here!==null&&!start){
 						break;
 					}
@@ -154,7 +160,7 @@ function FindDisconnectedInsertionPosition(uv,vec,v_node,M){
 function FindInsertionPosition(uv,vec,v_node,M){
 	var margin=0;
 	while(true) {
-		var bounds = getBounds();
+		var bounds = lib.getBounds();
 		var top = bounds[0];
 		var bottom = bounds[1];
 		var left = bounds[2];
@@ -182,9 +188,9 @@ function FindInsertionPosition(uv,vec,v_node,M){
 		}
 
 		//populate with obstructions (obstruction=+1)
-		for (var i=0;i<page.elements.length;i++){
+		for (var i=0;i<glob.page.elements.length;i++){
 
-			var e = page.elements[i];
+			var e = glob.page.elements[i];
 			var px = e[0]-xoffset
 			var py = e[1]-yoffset
 			
@@ -202,11 +208,11 @@ function FindInsertionPosition(uv,vec,v_node,M){
 				var py = e[1]-yoffset;
 				grid[px][py]=-3;
 
-				var diff = axes[j];
+				var diff = lib.axes[j];
 				var bounded = (x,y) => (x>=0&&x<w&&y>=0&&y<h);
 				var start=true;
 				while(bounded(px,py)){
-					var e_here = ElementAt(px+xoffset,py+yoffset);
+					var e_here = lib.ElementAt(px+xoffset,py+yoffset);
 					if (e_here!==null&&!start){
 						break;
 					}
@@ -249,7 +255,7 @@ var blah=0;
 
 //all this code assumes no loops!
 function Instantiate(T){
-	clearGraph();
+	lib.clearGraph();
 	var S = T.S;
 	var M = T.M;
 	var N = T.N;
@@ -260,7 +266,7 @@ function Instantiate(T){
 	}
 
 	var s = S[0];
-	page.elements.push([0,0,s]);
+	glob.page.elements.push([0,0,s]);
 	var visited=[ [0,S[0]] ];
 	var unvisited=[];	
 	for (var i=1;i<S.length;i++){
@@ -280,11 +286,11 @@ function Instantiate(T){
 				var v_index = v[0];
 				if (M[uv_index][v_index]!==0){
 					found=true;
-					var v_node = page.elements[j];
+					var v_node = glob.page.elements[j];
 					var [newE,newL] = FindInsertionPosition(uv,M[v_index][uv_index],v_node);
 					newL[4]=N[uv_index][v_index];
-					page.elements.push(newE);
-					page.lines.push(newL);
+					glob.page.elements.push(newE);
+					glob.page.lines.push(newL);
 
 					unvisited.splice(i,1);
 					visited.push(uv)
@@ -306,7 +312,7 @@ function Instantiate(T){
 			var newE = FindDisconnectedInsertionPosition()
 			newE[2]=uv[1];
 
-			page.elements.push(newE);
+			glob.page.elements.push(newE);
 
 			unvisited.splice(0,1);
 			visited.push(uv)
@@ -317,3 +323,7 @@ function Instantiate(T){
 
 	}
 }
+
+
+module.exports.Topologize=Topologize
+module.exports.Instantiate=Instantiate

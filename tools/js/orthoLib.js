@@ -1,6 +1,6 @@
 var fs = require('fs')
 
-var glob = require('../../ortho/www/js/orthoGlobals')
+var glob = require('./app/orthoGlobals')
 
 var ORTHO_VERSION=0;
 
@@ -22,8 +22,8 @@ function ar_shuffle(a) {
 }
 
 function shuffle() {
-    ar_shuffle(page.elements)
-    ar_shuffle(page.lines)
+    ar_shuffle(glob.page.elements)
+    ar_shuffle(glob.page.lines)
 }
 
 var blah=0;
@@ -36,8 +36,8 @@ function PrintImage(){
 }
 
 function ElementAt(x,y){
-	for (var i=0;i<page.elements.length;i++){
-		var e= page.elements[i];
+	for (var i=0;i<glob.page.elements.length;i++){
+		var e= glob.page.elements[i];
 		if (e[0]===x&&e[1]===y){
 			return  e;
 		}
@@ -96,7 +96,7 @@ function pageArea(){
 }
 
 function saveFile(fileName){
-    var sketch_save = JSON.stringify(page);    
+    var sketch_save = JSON.stringify(glob.page);    
 	str = fs.writeFileSync(fileName,sketch_save);
 }
 
@@ -124,7 +124,7 @@ function loadBinary(fileName){
 		var e_x = data[p++]
 		var e_y = data[p++]
 		var e_s = data[p++]
-		page.elements.push([e_x,e_y,e_s])
+		glob.page.elements.push([e_x,e_y,e_s])
 	}
 
 	var L = data[p++]
@@ -137,7 +137,7 @@ function loadBinary(fileName){
 		var l_x2 = data[p++]
 		var l_y2 = data[p++]
 		var l_s = data[p++]
-		page.lines.push([l_x1,l_y1,l_x2,l_y2,l_s])
+		glob.page.lines.push([l_x1,l_y1,l_x2,l_y2,l_s])
 	}
 
 }
@@ -145,26 +145,26 @@ function loadBinary(fileName){
 function MoveOriginToTopLeft(){
 	var minx=10000;
 	var miny=10000;
-	for (var i=0;i<page.elements.length;i++){
-		var e = page.elements[i];
+	for (var i=0;i<glob.page.elements.length;i++){
+		var e = glob.page.elements[i];
 		minx=Math.min(minx,e[0]);
 		miny=Math.min(miny,e[1]);
 	}
-	for (var i=0;i<page.lines.length;i++){
-		var l = page.lines[i];
+	for (var i=0;i<glob.page.lines.length;i++){
+		var l = glob.page.lines[i];
 		minx=Math.min(minx,l[0]);
 		miny=Math.min(miny,l[1]);
 		minx=Math.min(minx,l[2]);
 		miny=Math.min(miny,l[3]);
 	}
 
-	for (var i=0;i<page.elements.length;i++){
-		var e = page.elements[i];
+	for (var i=0;i<glob.page.elements.length;i++){
+		var e = glob.page.elements[i];
 		e[0]-=minx
 		e[1]-=miny
 	}
-	for (var i=0;i<page.lines.length;i++){
-		var l = page.lines[i];
+	for (var i=0;i<glob.page.lines.length;i++){
+		var l = glob.page.lines[i];
 		l[0]-=minx
 		l[1]-=miny
 		l[2]-=minx
@@ -175,8 +175,8 @@ function MoveOriginToTopLeft(){
 function saveBinary(fileName){
 	MoveOriginToTopLeft();
 
-	var E = page.elements.length
-	var L = page.lines.length
+	var E = glob.page.elements.length
+	var L = glob.page.lines.length
 
 	var dat = [0x4f,0x72,0x74,0x68]
 	dat.push(ORTHO_VERSION)
@@ -185,7 +185,7 @@ function saveBinary(fileName){
 	dat.push(E&0xff)
 	//log(E&0xff)
 	for (var i=0;i<E;i++){
-		var e 	= page.elements[i];
+		var e 	= glob.page.elements[i];
 		var x 	= (e[0])&0xff
 		var y 	= (e[1])&0xff
 		var t 	= e[2]&0xff
@@ -198,7 +198,7 @@ function saveBinary(fileName){
 	dat.push(L&0xFF)
 
 	for (var i=0;i<L;i++){
-		var l 	= page.lines[i];
+		var l 	= glob.page.lines[i];
 		var x1 	= (l[0])&0xff
 		var y1 	= (l[1])&0xff
 		var x2 	= (l[2])&0xff
@@ -227,13 +227,13 @@ function loadFile(fileName){
 }
 
 function loadString(str){
-	page = JSON.parse(str);
+	glob.page = JSON.parse(str);
 }
 
 
 
 function clearGraph(){
-	page={
+	glob.page={
 	    elements:[],
 	    lines:[],
 	    offsetX:0,
@@ -241,8 +241,8 @@ function clearGraph(){
 	    scale:1,
 	    sketchTitle:""
 	};
-	sketchBook[0]=page
-	sketchBookIndex=0
+	glob.sketchBook[0]=glob.page
+	glob.sketchBookIndex=0
 }
 
 function getBounds(){
@@ -251,8 +251,8 @@ function getBounds(){
 	var left	= 1000;
 	var right	=-1000;
 
-	for (var i=0;i<page.elements.length;i++){
-		var e = page.elements[i];
+	for (var i=0;i<glob.page.elements.length;i++){
+		var e = glob.page.elements[i];
 		if (e[0]<left){
 			left=e[0];
 		}
@@ -267,8 +267,8 @@ function getBounds(){
 		}
 	}
 
-	for (var i=0;i<page.lines.length;i++){
-		var l = page.lines[i];
+	for (var i=0;i<glob.page.lines.length;i++){
+		var l = glob.page.lines[i];
 		if (l[0]<left){
 			left=l[0];
 		}
@@ -304,8 +304,8 @@ function getBounds(){
 
 function setOffsetToTopLeft(){
 	var bounds = getBounds();
-	page.offsetX=-bounds[2]*glob.cellSize+glob.cellSize*0.75;
-	page.offsetY=-bounds[0]*glob.cellSize+glob.cellSize*0.75;
+	glob.page.offsetX=-bounds[2]*glob.cellSize+glob.cellSize*0.75;
+	glob.page.offsetY=-bounds[0]*glob.cellSize+glob.cellSize*0.75;
 }
 
 function canvasSize(){
@@ -345,8 +345,8 @@ function PointOnLine(e,line){
 function ConnectLines(){
 	//modify lines so they go right and down
 
-	for (var i=0;i<page.lines.length;i++){
-		var l = page.lines[i];
+	for (var i=0;i<glob.page.lines.length;i++){
+		var l = glob.page.lines[i];
 		if (l[0]===l[2]){
 			if (l[1]>l[3]){
 				[l[0],l[1],l[2],l[3]]=[l[2],l[3],l[0],l[1]]
@@ -356,13 +356,13 @@ function ConnectLines(){
 		}
 	}
 
-	for (var i=0;i<page.lines.length;i++){
-		var l1 = page.lines[i]
-		for (var j=0;j<page.lines.length;j++){
+	for (var i=0;i<glob.page.lines.length;i++){
+		var l1 = glob.page.lines[i]
+		for (var j=0;j<glob.page.lines.length;j++){
 			if (i===j){
 				continue;
 			}
-			var l2 = page.lines[j]	
+			var l2 = glob.page.lines[j]	
 			if (LineDirection(l1)!==LineDirection(l2)){
 				continue;
 			}
@@ -370,10 +370,10 @@ function ConnectLines(){
 			if (l1[2]===l2[0]&&l1[3]===l2[1]&&l1[4]===l2[4]){
 				var first = Math.max(i,j)
 				var second = Math.min(i,j)
-				page.lines.splice(first,1)
-				page.lines.splice(second,1)
+				glob.page.lines.splice(first,1)
+				glob.page.lines.splice(second,1)
 				newline = [l1[0],l1[1],l2[2],l2[3],Math.max(l1[4],l2[4])]
-				page.lines.push(newline)				
+				glob.page.lines.push(newline)				
 				i=-1;
 				break;
 			}
@@ -427,7 +427,9 @@ module.exports.saveBinary=saveBinary
 module.exports.loadFile=loadFile
 module.exports.loadString=loadString
 module.exports.loadBinary=loadBinary
+module.exports.pageArea=pageArea
 module.exports.setOffsetToTopLeft=setOffsetToTopLeft
 module.exports.clearGraph=clearGraph
 module.exports.getBounds=getBounds
 module.exports.canvasSize=canvasSize
+module.exports.axes=axes
