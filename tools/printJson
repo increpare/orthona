@@ -19,9 +19,9 @@ var skeleton=false;
 var inputFileName=""
 for (var i=2;i<process.argv.length;i++){
 	var t = process.argv[i];
-	if (t=="-ascii"){
+	if (t==="-ascii"){
 		asciiCharacters=true;
-	} if (t=="-noLines"){
+	} else if (t==="-noLines"){
 		skeleton=true;
 	} else if (inputFileName===""){
 		inputFileName=t;
@@ -73,7 +73,6 @@ if (skeleton){
 
 	for (var i=0;i<page.elements.length;i++){
 		var e = page.elements[i]
-		log(e)
 		var ex = e[0]-offsetX
 		var ey = e[1]-offsetY
 		var es = symbols[e[2]]

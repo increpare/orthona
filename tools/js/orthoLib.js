@@ -102,7 +102,7 @@ function loadBinary(fileName){
 		var l_x2 = data[p++]-0x80
 		var l_y2 = data[p++]-0x80
 		var l_s = data[p++]
-		//page.lines.push([l_x1,l_y1,l_x2,l_y2,l_s])
+		page.lines.push([l_x1,l_y1,l_x2,l_y2,l_s])
 	}
 
 }
