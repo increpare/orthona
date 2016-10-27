@@ -1,0 +1,24 @@
+<?xml version='1.0' standalone='yes'?>
+<parent xmlns='http://example.org'
+	xmlns:svg='http://www.w3.org/2000/svg'>
+	<!-- parent contents here -->
+	<svg:svg width='12.500000cm' height='5.500000cm' version='1.1'>
+		<svg:rect stroke-width='0.050000cm' x='2.537234cm' y='1.537234cm' width='0.425532cm' height='0.425532cm' fill='black' stroke='black' />
+		<svg:circle stroke-width='0.050000cm' cx='3.750000cm' cy='1.750000cm' r='0.400000cm' fill='white' stroke='black' />
+		<svg:circle stroke-width='0.050000cm' cx='4.750000cm' cy='2.750000cm' r='0.400000cm' fill='white' stroke='black' />
+		<svg:circle stroke-width='0.050000cm' cx='4.750000cm' cy='3.750000cm' r='0.400000cm' fill='white' stroke='black' />
+		<svg:circle stroke-width='0.050000cm' cx='4.750000cm' cy='1.750000cm' r='0.400000cm' fill='white' stroke='black' />
+		<svg:circle stroke-width='0.050000cm' cx='2.750000cm' cy='2.750000cm' r='0.400000cm' fill='white' stroke='black' />
+		<svg:circle stroke-width='0.050000cm' cx='0.750000cm' cy='0.750000cm' r='0.400000cm' fill='white' stroke='black' />
+		<svg:circle stroke-width='0.050000cm' cx='1.750000cm' cy='0.750000cm' r='0.400000cm' fill='white' stroke='black' />
+		<svg:circle stroke-width='0.050000cm' cx='2.750000cm' cy='0.750000cm' r='0.400000cm' fill='white' stroke='black' />
+		<svg:circle stroke-width='0.050000cm' cx='3.750000cm' cy='0.750000cm' r='0.400000cm' fill='white' stroke='black' />
+		<svg:circle stroke-width='0.050000cm' cx='4.750000cm' cy='0.750000cm' r='0.400000cm' fill='white' stroke='black' />
+		<svg:circle stroke-width='0.050000cm' cx='6.750000cm' cy='1.750000cm' r='0.400000cm' fill='white' stroke='black' />
+		<svg:circle stroke-width='0.050000cm' cx='7.750000cm' cy='1.750000cm' r='0.400000cm' fill='white' stroke='black' />
+		<svg:circle stroke-width='0.050000cm' cx='8.750000cm' cy='1.750000cm' r='0.400000cm' fill='white' stroke='black' />
+		<svg:circle stroke-width='0.050000cm' cx='9.750000cm' cy='1.750000cm' r='0.400000cm' fill='white' stroke='black' />
+		<svg:circle stroke-width='0.050000cm' cx='10.750000cm' cy='1.750000cm' r='0.400000cm' fill='white' stroke='black' />
+	</svg:svg>
+	<!-- ... -->
+</parent>

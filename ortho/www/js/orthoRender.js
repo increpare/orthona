@@ -285,9 +285,6 @@ function drawIcon(x,y,n){
             ctx.fillStyle="#ffffff"
             ctx.fill();
             ctx.stroke();  
-            /*ctx.beginPath();
-            ctx.arc(x,y-r+dy,r*0.6,0,2*Math.PI);
-            ctx.stroke(); */
             break;
         }
         case 13://half-circle, outline

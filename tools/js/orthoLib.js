@@ -1,3 +1,7 @@
+var fs = require('fs')
+
+var glob = require('../../ortho/www/js/orthoGlobals')
+
 var ORTHO_VERSION=0;
 
 var axes = {};
@@ -141,12 +145,12 @@ function loadBinary(fileName){
 function MoveOriginToTopLeft(){
 	var minx=10000;
 	var miny=10000;
-	for (var i=0;i<page.elements;i++){
+	for (var i=0;i<page.elements.length;i++){
 		var e = page.elements[i];
 		minx=Math.min(minx,e[0]);
 		miny=Math.min(miny,e[1]);
 	}
-	for (var i=0;i<page.lines;i++){
+	for (var i=0;i<page.lines.length;i++){
 		var l = page.lines[i];
 		minx=Math.min(minx,l[0]);
 		miny=Math.min(miny,l[1]);
@@ -154,12 +158,12 @@ function MoveOriginToTopLeft(){
 		miny=Math.min(miny,l[3]);
 	}
 
-	for (var i=0;i<page.elements;i++){
+	for (var i=0;i<page.elements.length;i++){
 		var e = page.elements[i];
 		e[0]-=minx
 		e[1]-=miny
 	}
-	for (var i=0;i<page.lines;i++){
+	for (var i=0;i<page.lines.length;i++){
 		var l = page.lines[i];
 		l[0]-=minx
 		l[1]-=miny
@@ -300,14 +304,14 @@ function getBounds(){
 
 function setOffsetToTopLeft(){
 	var bounds = getBounds();
-	page.offsetX=-bounds[2]*cellSize+cellSize*0.75;
-	page.offsetY=-bounds[0]*cellSize+cellSize*0.75;
+	page.offsetX=-bounds[2]*glob.cellSize+glob.cellSize*0.75;
+	page.offsetY=-bounds[0]*glob.cellSize+glob.cellSize*0.75;
 }
 
 function canvasSize(){
 	var bounds = getBounds();
-	var width = (bounds[3]-bounds[2]+1.5)*cellSize;
-	var height = (bounds[1]-bounds[0]+1.5)*cellSize;
+	var width = (bounds[3]-bounds[2]+1.5)*glob.cellSize;
+	var height = (bounds[1]-bounds[0]+1.5)*glob.cellSize;
 	return [width,height];
 }
 
@@ -408,3 +412,22 @@ function Relation(e1,e2){
 	}
 	return dx+3*dy
 }
+
+module.exports.Relation=Relation
+module.exports.LineDirection=LineDirection
+module.exports.ConnectLines=ConnectLines
+module.exports.PointOnLine=PointOnLine
+module.exports.shuffle=shuffle
+module.exports.PrintImage=PrintImage
+module.exports.ElementAt=ElementAt
+module.exports.NoPointBetween=NoPointBetween
+module.exports.Connection=Connection
+module.exports.saveFile=saveFile
+module.exports.saveBinary=saveBinary
+module.exports.loadFile=loadFile
+module.exports.loadString=loadString
+module.exports.loadBinary=loadBinary
+module.exports.setOffsetToTopLeft=setOffsetToTopLeft
+module.exports.clearGraph=clearGraph
+module.exports.getBounds=getBounds
+module.exports.canvasSize=canvasSize
