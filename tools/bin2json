@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var fs = require('fs')
+
 eval(fs.readFileSync('../ortho/www/js/orthoGlobals.js')+'')
 eval(fs.readFileSync('../ortho/www/js/orthoRender.js')+'')
 eval(fs.readFileSync('js/orthoLib.js')+'')

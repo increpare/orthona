@@ -1,3 +1,6 @@
+var glob = require('./orthoGlobals')
+const cellSize = glob.cellSize;
+
 var pentagon = [
     0,-1000,
     -951,-309,
@@ -13,8 +16,9 @@ var triangle = [
 ];
 
 function drawIcon(x,y,n){
-            ctx.fillStyle="#ffffff"
-            ctx.strokeStyle="#000000"
+    ctx=glob.ctx;
+    ctx.fillStyle="#ffffff"
+    ctx.strokeStyle="#000000"
     switch(n){
 
         case -1://left button
@@ -95,7 +99,7 @@ function drawIcon(x,y,n){
         case 0://square - solid
         {
             ctx.beginPath();
-            var s = cellSize*page.scale*0.3/1.41;
+            var s = cellSize*glob.page.scale*0.3/1.41;
             ctx.moveTo(x-s,y-s);
             ctx.lineTo(x+s,y-s);
             ctx.lineTo(x+s,y+s);
@@ -108,7 +112,7 @@ function drawIcon(x,y,n){
         }
         case 1://place marker - solid
         {
-            var r = cellSize*0.4*page.scale*0.9;
+            var r = cellSize*0.4*glob.page.scale*0.9;
             ctx.beginPath();
             ctx.moveTo(x,y+r);
             ctx.lineTo(x-r/2,y);
@@ -122,7 +126,7 @@ function drawIcon(x,y,n){
         }
         case 2://liquid - drop
         {
-            var r = cellSize*0.4*page.scale*0.9;
+            var r = cellSize*0.4*glob.page.scale*0.9;
             ctx.beginPath();
             ctx.moveTo(x,y-r);
             ctx.lineTo(x-r/2,y);
@@ -138,7 +142,7 @@ function drawIcon(x,y,n){
         case 3://circle - outline        
         {
             ctx.beginPath();
-            ctx.arc(x,y,cellSize*0.3*page.scale,0,2*Math.PI);
+            ctx.arc(x,y,cellSize*0.3*glob.page.scale,0,2*Math.PI);
             ctx.strokeStyle="#000000"
             ctx.fillStyle="#ffffff"
             ctx.fill();
@@ -148,7 +152,7 @@ function drawIcon(x,y,n){
         case 4://dot
         {
             ctx.beginPath();
-            ctx.arc(x,y,5*page.scale,0,2*Math.PI);   
+            ctx.arc(x,y,5*glob.page.scale,0,2*Math.PI);   
             ctx.fillStyle="#000000";
             ctx.fill();
             ctx.fillStyle="#ffffff"
@@ -156,7 +160,7 @@ function drawIcon(x,y,n){
         }
         case 5://concetric circles
         {   
-            var r = cellSize*0.4*page.scale;
+            var r = cellSize*0.4*glob.page.scale;
             var oldR=r;
             ctx.beginPath();
             ctx.arc(x,y,r,0,2*Math.PI);
@@ -181,7 +185,7 @@ function drawIcon(x,y,n){
         case 6://diamond
         {
             ctx.beginPath();
-            var s = cellSize*page.scale*0.4;
+            var s = cellSize*glob.page.scale*0.4;
             ctx.moveTo(x-s,y);
             ctx.lineTo(x,y+s);
             ctx.lineTo(x+s,y);
@@ -196,7 +200,7 @@ function drawIcon(x,y,n){
         case 7://triangle outline            
         {
             ctx.beginPath();
-            var s = cellSize*page.scale*0.4/1000;
+            var s = cellSize*glob.page.scale*0.4/1000;
             ctx.moveTo(x+triangle[2*0+0]*s,y+triangle[2*0+1]*s);
             ctx.lineTo(x+triangle[2*2+0]*s,y+triangle[2*2+1]*s);
             ctx.lineTo(x+triangle[2*1+0]*s,y+triangle[2*1+1]*s);
@@ -210,7 +214,7 @@ function drawIcon(x,y,n){
         case 8://square - outline
         {
             ctx.beginPath();
-            var s = cellSize*page.scale*0.4/1.41;
+            var s = cellSize*glob.page.scale*0.4/1.41;
             ctx.moveTo(x-s,y-s);
             ctx.lineTo(x+s,y-s);
             ctx.lineTo(x+s,y+s);
@@ -226,7 +230,7 @@ function drawIcon(x,y,n){
         {
 
             ctx.beginPath();
-            var s = cellSize*page.scale*0.4/1000;
+            var s = cellSize*glob.page.scale*0.4/1000;
             ctx.moveTo(x+pentagon[2*0+0]*s,y+pentagon[2*0+1]*s);
             ctx.lineTo(x+pentagon[2*2+0]*s,y+pentagon[2*2+1]*s);
             ctx.lineTo(x+pentagon[2*4+0]*s,y+pentagon[2*4+1]*s);
@@ -242,7 +246,7 @@ function drawIcon(x,y,n){
         case 10://clover
         {
             ctx.beginPath();
-            var s = cellSize*page.scale*0.2/1.41;
+            var s = cellSize*glob.page.scale*0.2/1.41;
             ctx.moveTo(x-s,y-s);
             ctx.bezierCurveTo(x-2*s,y-3*s,x+2*s,y-3*s,x+s,y-s);
             ctx.bezierCurveTo(x+3*s,y-2*s,x+3*s,y+2*s,x+s,y+s);
@@ -255,7 +259,7 @@ function drawIcon(x,y,n){
         case 11://interlocking circles
         {
             ctx.beginPath();
-            var r = cellSize*0.3*page.scale
+            var r = cellSize*0.3*glob.page.scale
             ctx.arc(x-r/2,y,r,0,2*Math.PI);
             ctx.arc(x+r/2,y,r,0,2*Math.PI);
             ctx.strokeStyle="#000000"
@@ -272,11 +276,11 @@ function drawIcon(x,y,n){
         case 12://keyhole
         {
             ctx.beginPath();
-            var r = cellSize*0.2*page.scale;
-            var s = cellSize*0.3*page.scale; 
-            var t = cellSize*0.2*page.scale; 
+            var r = cellSize*0.2*glob.page.scale;
+            var s = cellSize*0.3*glob.page.scale; 
+            var t = cellSize*0.2*glob.page.scale; 
             var a = 0.8*Math.PI/4;
-            var dy = +cellSize*0.05*page.scale;
+            var dy = +cellSize*0.05*glob.page.scale;
             ctx.arc(x,y-r+dy,r,Math.PI/2+a,Math.PI*5/2-a);
             ctx.lineTo(x+t,y+s+dy);
             ctx.lineTo(x-t,y+s+dy);
@@ -290,7 +294,7 @@ function drawIcon(x,y,n){
         case 13://half-circle, outline
         {
             ctx.beginPath();
-            var r = cellSize*0.3*page.scale
+            var r = cellSize*0.3*glob.page.scale
             ctx.arc(x+r/3,y,r,Math.PI/2,3*Math.PI/2);
             ctx.closePath();
             ctx.strokeStyle="#000000"
@@ -302,14 +306,14 @@ function drawIcon(x,y,n){
         case 14://crown - outline
         {
             ctx.beginPath();
-            var s = cellSize*page.scale*0.2/1.41;
-            var t = cellSize*page.scale*0.5/1.41;
-            var pointHeight = cellSize*page.scale*0.3/1.41;
+            var s = cellSize*glob.page.scale*0.2/1.41;
+            var t = cellSize*glob.page.scale*0.5/1.41;
+            var pointHeight = cellSize*glob.page.scale*0.3/1.41;
             var l = x-t;
             var r = x+t;
             var apex = y-s-pointHeight;
             var pointBottom=y-s;
-            var dy = cellSize*page.scale*0.1/1.41;
+            var dy = cellSize*glob.page.scale*0.1/1.41;
             ctx.moveTo(l,dy+apex);
             ctx.lineTo(l,dy+y+s);
             ctx.lineTo(r,dy+y+s);
@@ -326,7 +330,7 @@ function drawIcon(x,y,n){
         }  
         case 15://eye
         {
-            var r = cellSize*0.4*page.scale;
+            var r = cellSize*0.4*glob.page.scale;
             ctx.beginPath();
             ctx.moveTo(x-r,y);
             var top=r*0.8;
@@ -343,7 +347,7 @@ function drawIcon(x,y,n){
         {
             ctx.fillStyle="#ffffff"
             ctx.strokeStyle="#000000"
-            var r = cellSize*0.4*page.scale;
+            var r = cellSize*0.4*glob.page.scale;
             ctx.beginPath();
             ctx.moveTo(x-r,y);
             var top=r*0.8;
@@ -358,7 +362,7 @@ function drawIcon(x,y,n){
         case 17://hand
         {
             ctx.beginPath();
-            var s = cellSize*page.scale*0.4/1.41;
+            var s = cellSize*glob.page.scale*0.4/1.41;
             ctx.moveTo(x-s*0.8,y-2*s+s/2);
             ctx.lineTo(x-s*0.8,y+s);
             ctx.lineTo(x+s*0.8,y+s);
@@ -376,11 +380,11 @@ function drawIcon(x,y,n){
         case 18://ear
         {
             ctx.beginPath();
-            var dx = -cellSize*page.scale*0.1/1.41;
-            var e = cellSize*page.scale*0.05/1.41;
-            var s = cellSize*page.scale*0.3/1.41;
-            var t = cellSize*page.scale*0.3/1.41;
-            var u = cellSize*page.scale*0.2/1.41;   
+            var dx = -cellSize*glob.page.scale*0.1/1.41;
+            var e = cellSize*glob.page.scale*0.05/1.41;
+            var s = cellSize*glob.page.scale*0.3/1.41;
+            var t = cellSize*glob.page.scale*0.3/1.41;
+            var u = cellSize*glob.page.scale*0.2/1.41;   
             x+=dx;             
             ctx.moveTo(x,y-u);
             ctx.bezierCurveTo(x-s,y-u,x-s,y-u-t,x,y-u-t);
@@ -393,7 +397,7 @@ function drawIcon(x,y,n){
         }
         case 19://teeth
         {
-            var r = cellSize*0.4*page.scale;
+            var r = cellSize*0.4*glob.page.scale;
             ctx.beginPath();
             ctx.moveTo(x-r,y);
             var top=r*0.8;
@@ -413,7 +417,7 @@ function drawIcon(x,y,n){
         }       
         case 20://vertical eye                 
         {
-            var r = cellSize*0.4*page.scale;
+            var r = cellSize*0.4*glob.page.scale;
 
 
             ctx.beginPath();
@@ -432,8 +436,8 @@ function drawIcon(x,y,n){
         }
         case 21://nose
         {
-            var r = cellSize*0.4*page.scale*0.9;
-            var dy = cellSize*0.4*page.scale*0.1;
+            var r = cellSize*0.4*glob.page.scale*0.9;
+            var dy = cellSize*0.4*glob.page.scale*0.1;
             y+=dy;
             ctx.beginPath();
             ctx.moveTo(x-r/4,y-r);
@@ -450,9 +454,9 @@ function drawIcon(x,y,n){
         case 22://box with bent sides
         {
             ctx.beginPath();
-            var r = cellSize*page.scale*0.3;
-            var s = cellSize*page.scale*0.3;
-            var t = cellSize*page.scale*0.05;
+            var r = cellSize*glob.page.scale*0.3;
+            var s = cellSize*glob.page.scale*0.3;
+            var t = cellSize*glob.page.scale*0.05;
             ctx.moveTo(x-s,y-r);
             ctx.lineTo(x+s,y-r);
             //ctx.bezierCurveTo(x,y-t,x,y-t,x+s,y-r);    
@@ -469,9 +473,9 @@ function drawIcon(x,y,n){
         case 23://right-angled triangle
         {
             ctx.beginPath();
-            var s = cellSize*page.scale*0.4/1.41;
-            x-=cellSize*page.scale*0.15/1.41;
-            y-=cellSize*page.scale*0.15/1.41;
+            var s = cellSize*glob.page.scale*0.4/1.41;
+            x-=cellSize*glob.page.scale*0.15/1.41;
+            y-=cellSize*glob.page.scale*0.15/1.41;
 
             ctx.moveTo(x+s,y-s);
             ctx.lineTo(x+s,y+s);
@@ -486,10 +490,10 @@ function drawIcon(x,y,n){
         case 24://banana peel
         {
             ctx.beginPath();
-            var e = cellSize*page.scale*0.1;
-            var r = cellSize*page.scale*0.4;
-            var t = cellSize*page.scale*0.4;
-            var dy = -cellSize*page.scale*0.1;
+            var e = cellSize*glob.page.scale*0.1;
+            var r = cellSize*glob.page.scale*0.4;
+            var t = cellSize*glob.page.scale*0.4;
+            var dy = -cellSize*glob.page.scale*0.1;
             var yc = y-dy;
             y+=dy;
             ctx.moveTo(x-e,y-r/2);
@@ -510,7 +514,7 @@ function drawIcon(x,y,n){
         {
             ctx.beginPath();
             var a = Math.PI/3;
-            var r = cellSize*page.scale*0.4/1.41;                
+            var r = cellSize*glob.page.scale*0.4/1.41;                
             for (var i=0;i<=6;i++){
                 var px = r*Math.sin(i*a);
                 var py = r*Math.cos(i*a);
@@ -539,8 +543,8 @@ function drawIcon(x,y,n){
         case 26://arrow
         {
             ctx.beginPath();
-            var s = cellSize*page.scale*0.4/1.41;
-            var t = cellSize*page.scale*0.4/1.41;
+            var s = cellSize*glob.page.scale*0.4/1.41;
+            var t = cellSize*glob.page.scale*0.4/1.41;
             ctx.moveTo(x-s,y-t);
             ctx.lineTo(x,y-t/3);
             ctx.lineTo(x+s,y-t);
@@ -555,9 +559,9 @@ function drawIcon(x,y,n){
         case 27://diagonal flare            
         {
             ctx.beginPath();
-            var r = cellSize*page.scale*0.4;
-            var s = cellSize*page.scale*0.4;
-            var t = cellSize*page.scale*0.05;
+            var r = cellSize*glob.page.scale*0.4;
+            var s = cellSize*glob.page.scale*0.4;
+            var t = cellSize*glob.page.scale*0.05;
             ctx.moveTo(x-s,y-r);
             ctx.bezierCurveTo(x,y-t,x,y-t,x+s,y-r);    
             ctx.bezierCurveTo(x+t,y,x+t,y,x+s,y+r);
@@ -571,7 +575,7 @@ function drawIcon(x,y,n){
         }  
         case 28://lambda            
         {
-            var r=cellSize*0.4*page.scale;
+            var r=cellSize*0.4*glob.page.scale;
             ctx.beginPath();
             ctx.arc(x,y,r,0,2*Math.PI);
             ctx.strokeStyle="#000000"
@@ -587,7 +591,7 @@ function drawIcon(x,y,n){
         case 29://cross - outline
         {
             ctx.beginPath();
-            var s = cellSize*page.scale*0.15/1.41;
+            var s = cellSize*glob.page.scale*0.15/1.41;
             var t = 3*s;
             ctx.moveTo(x-s,y-s);
             ctx.lineTo(x-s,y-t);
@@ -610,7 +614,7 @@ function drawIcon(x,y,n){
         }   
         case 30://yin yang
         {
-            var r = cellSize*0.35*page.scale;
+            var r = cellSize*0.35*glob.page.scale;
             ctx.beginPath();
             ctx.arc(x,y,r,Math.PI/2,Math.PI/2+2*Math.PI);
             ctx.fillStyle="#000000"
@@ -644,7 +648,7 @@ function drawIcon(x,y,n){
         case 31: //inside/outside box in box
         {
             ctx.beginPath();
-            var s = cellSize*page.scale*0.3;
+            var s = cellSize*glob.page.scale*0.3;
             ctx.moveTo(x-s,y-s);
             ctx.lineTo(x+s,y-s);
             ctx.lineTo(x+s,y+s);
@@ -665,7 +669,7 @@ function drawIcon(x,y,n){
         case 32: // part/many division
         {
             ctx.beginPath();
-            var r = cellSize*0.4*page.scale;
+            var r = cellSize*0.4*glob.page.scale;
             ctx.arc(x,y,r,0,2*Math.PI);
             ctx.fillStyle="#ffffff"
             ctx.fill();
@@ -683,7 +687,7 @@ function drawIcon(x,y,n){
         }
         case 33://desire spiral
         {
-            var r = cellSize*0.4*page.scale;
+            var r = cellSize*0.4*glob.page.scale;
             ctx.beginPath();
             ctx.arc(x,y,r,0,2*Math.PI);
             ctx.strokeStyle="#000000"
@@ -702,7 +706,7 @@ function drawIcon(x,y,n){
         case 34://page
         {
             ctx.beginPath();
-            var s = cellSize*page.scale*0.4/1.41;
+            var s = cellSize*glob.page.scale*0.4/1.41;
             ctx.moveTo(x-s,y-s);
             ctx.lineTo(x+s,y-s);
             ctx.lineTo(x+s,y+s);
@@ -724,13 +728,13 @@ function drawIcon(x,y,n){
 }
 
 function shouldDrawGridLine(x1,y1,x2,y2){
-    if (drawSelectiveGridLines===false){
+    if (glob.drawSelectiveGridLines===false){
         return true;
     }
-    for (var i=0;i<page.elements.length;i++){
-        var e = page.elements[i];
-        var ex = page.offsetX+e[0]*cellSize*page.scale;
-        var ey = page.offsetY+e[1]*cellSize*page.scale;
+    for (var i=0;i<glob.page.elements.length;i++){
+        var e = glob.page.elements[i];
+        var ex = glob.page.offsetX+e[0]*cellSize*glob.page.scale;
+        var ey = glob.page.offsetY+e[1]*cellSize*glob.page.scale;
 
         if (PointOnLine([ex,ey],[x1,y1,x2,y2])){
             return true;
@@ -739,29 +743,33 @@ function shouldDrawGridLine(x1,y1,x2,y2){
     return false;
 }
 
+var ctx=glob.ctx;
+var canvas=glob.canvas;
 function orthoRender(){            
-  if (canvas.getContext) { 
+  if (glob.ctx) { 
+    ctx=glob.ctx;
+    canvas=glob.canvas;
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);  
     ctx.lineWidth = 1.0;                        
 
-    if (drawGridLines){
+    if (glob.drawGridLines){
         //draw gui
         ctx.beginPath();
-        var adjustX = page.offsetX-Math.floor(page.offsetX/(cellSize*page.scale))*(cellSize*page.scale);
-        var adjustY = page.offsetY-Math.floor(page.offsetY/(cellSize*page.scale))*(cellSize*page.scale);
+        var adjustX = glob.page.offsetX-Math.floor(glob.page.offsetX/(cellSize*glob.page.scale))*(cellSize*glob.page.scale);
+        var adjustY = glob.page.offsetY-Math.floor(glob.page.offsetY/(cellSize*glob.page.scale))*(cellSize*glob.page.scale);
         adjustX/=2;
         adjustY/=2;
-        var startX = Math.floor(adjustX-cellSize*page.scale)+0.5;
-        var startY = Math.floor(adjustY-cellSize*page.scale)+0.5;
+        var startX = Math.floor(adjustX-cellSize*glob.page.scale)+0.5;
+        var startY = Math.floor(adjustY-cellSize*glob.page.scale)+0.5;
         
-        for (var i=startX;i<canvas.width;i+=cellSize*page.scale){ 
+        for (var i=startX;i<canvas.width;i+=cellSize*glob.page.scale){ 
             var [x1,y1] = [i+adjustX,0]
             var [x2,y2] = [i+adjustX,ctx.canvas.height]
             ctx.moveTo(x1,y1);
             ctx.lineTo(x2,y2);
         }
-        for (var j=startY;j<canvas.height;j+=cellSize*page.scale){ 
+        for (var j=startY;j<canvas.height;j+=cellSize*glob.page.scale){ 
             var [x1,y1] = [0,j+adjustY];
             var [x2,y2] = [ctx.canvas.width,j+adjustY];
             if (shouldDrawGridLine(x1,y1,x2,y2)){
@@ -770,8 +778,8 @@ function orthoRender(){
             }
         }
         //log(adjustX+","+adjustY)
-        if (drawGridLines_Diagonal){     
-            for (var i=startX;i<canvas.width;i+=cellSize*page.scale){
+        if (glob.drawGridLines_Diagonal){     
+            for (var i=startX;i<canvas.width;i+=cellSize*glob.page.scale){
                 var [x1,y1] = [i+adjustX,startY+startX];
                 var [x2,y2] = [i+adjustX+2*canvas.height,+startY+startX+2*canvas.height];
                 if (shouldDrawGridLine(x1,y1,x2,y2)){
@@ -779,7 +787,7 @@ function orthoRender(){
                     ctx.lineTo(x2,y2);
                 }
             }       
-            for (var i=startX-cellSize*page.scale;i>-canvas.height;i-=cellSize*page.scale){
+            for (var i=startX-cellSize*glob.page.scale;i>-canvas.height;i-=cellSize*glob.page.scale){
                 var [x1,y1] = [i+adjustX,+startY+startX];
                 var [x2,y2] = [i+adjustX+2*canvas.height,+startY+startX+2*canvas.height];
                 if (shouldDrawGridLine(x1,y1,x2,y2)){
@@ -787,7 +795,7 @@ function orthoRender(){
                     ctx.lineTo(x2,y2);
                 }
             }    
-            for (var i=startX;i<(canvas.width+canvas.height);i+=cellSize*page.scale){
+            for (var i=startX;i<(canvas.width+canvas.height);i+=cellSize*glob.page.scale){
                 var [x1,y1] = [i+adjustX,+startY+startX];
                 var [x2,y2] = [i+adjustX-2*canvas.height,+startY+startX+2*canvas.height];
                 if (shouldDrawGridLine(x1,y1,x2,y2)){
@@ -796,7 +804,7 @@ function orthoRender(){
                 }
             }
         }
-        var pc = 1-(page.scale-scaleMin)/(scaleMax-scaleMin);
+        var pc = 1-(glob.page.scale-glob.scaleMin)/(glob.scaleMax-glob.scaleMin);
         if (pc>1){
             pc=1;
         }
@@ -808,14 +816,14 @@ function orthoRender(){
         ctx.stroke();
     }
 
-    if (drawLines){
+    if (glob.drawLines){
         ctx.beginPath();
-        for (var i=0;i<page.lines.length;i++){
-            var l = page.lines[i];
-            var x1 = Math.floor(page.offsetX+l[0]*cellSize*page.scale)+0.5;
-            var y1 = Math.floor(page.offsetY+l[1]*cellSize*page.scale)+0.5;
-            var x2 = Math.floor(page.offsetX+l[2]*cellSize*page.scale)+0.5;
-            var y2 = Math.floor(page.offsetY+l[3]*cellSize*page.scale)+0.5;
+        for (var i=0;i<glob.page.lines.length;i++){
+            var l = glob.page.lines[i];
+            var x1 = Math.floor(glob.page.offsetX+l[0]*cellSize*glob.page.scale)+0.5;
+            var y1 = Math.floor(glob.page.offsetY+l[1]*cellSize*glob.page.scale)+0.5;
+            var x2 = Math.floor(glob.page.offsetX+l[2]*cellSize*glob.page.scale)+0.5;
+            var y2 = Math.floor(glob.page.offsetY+l[3]*cellSize*glob.page.scale)+0.5;
             ctx.moveTo(x1,y1);
             ctx.lineTo(x2,y2);
             if (l[4]===1){
@@ -825,23 +833,26 @@ function orthoRender(){
                 var dx = Math.sin(t+Math.PI/2);
                 var dy = Math.cos(t+Math.PI/2);
                 ctx.moveTo(
-                    mx-dx*cellSize*page.scale/5,
-                    my-dy*cellSize*page.scale/5);
+                    mx-dx*cellSize*glob.page.scale/5,
+                    my-dy*cellSize*glob.page.scale/5);
                 ctx.lineTo(
-                    mx+dx*cellSize*page.scale/5,
-                    my+dy*cellSize*page.scale/5);
+                    mx+dx*cellSize*glob.page.scale/5,
+                    my+dy*cellSize*glob.page.scale/5);
             }
         }
         ctx.strokeStyle="#000000"
         ctx.stroke();
     }
 
-    if (drawElements){
-        for (var i=0;i<page.elements.length;i++){
-            var e = page.elements[i];
-            drawIcon(page.offsetX+e[0]*cellSize*page.scale,page.offsetY+e[1]*cellSize*page.scale,e[2]);        
+    if (glob.drawElements){
+        for (var i=0;i<glob.page.elements.length;i++){
+            var e = glob.page.elements[i];
+            drawIcon(glob.page.offsetX+e[0]*cellSize*glob.page.scale,glob.page.offsetY+e[1]*cellSize*glob.page.scale,e[2]);        
         }
     }
 
   }
 }
+
+module.exports.render=orthoRender;
+module.exports.drawIcon=drawIcon;
