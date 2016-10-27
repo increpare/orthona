@@ -306,6 +306,45 @@ function PointOnLine(e,line){
 	return d<0.001;
 }
 
+function ConnectLines(){
+	//modify lines so they go right and down
+
+	for (var i=0;i<page.lines.length;i++){
+		var l = page.lines[i];
+		if (l[0]===l[2]){
+			if (l[1]>l[3]){
+				[l[0],l[1],l[2],l[3]]=[l[2],l[3],l[0],l[1]]
+			}
+		} else if (l[0]>l[2]){
+			[l[0],l[1],l[2],l[3]]=[l[2],l[3],l[0],l[1]]
+		}
+	}
+
+	for (var i=0;i<page.lines.length;i++){
+		var l1 = page.lines[i]
+		for (var j=0;j<page.lines.length;j++){
+			if (i===j){
+				continue;
+			}
+			var l2 = page.lines[j]	
+			if (LineDirection(l1)!==LineDirection(l2)){
+				continue;
+			}
+
+			if (l1[2]===l2[0]&&l1[3]===l2[1]&&l1[4]===l2[4]){
+				var first = Math.max(i,j)
+				var second = Math.min(i,j)
+				page.lines.splice(first,1)
+				page.lines.splice(second,1)
+				newline = [l1[0],l1[1],l2[2],l2[3],Math.max(l1[4],l2[4])]
+				page.lines.push(newline)				
+				i=-1;
+				break;
+			}
+		}
+	}
+}
+
 function LineDirection(l){
 	return Relation([l[2],l[3]],[l[0],l[1]])
 }

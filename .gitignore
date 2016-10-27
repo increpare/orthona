@@ -11,3 +11,4 @@ tools/dat/png/*_retop.png
 tools/dat/retop/*.*
 
 tools/dat/bin/*.*
+*.log

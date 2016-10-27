@@ -2,6 +2,7 @@ var drawGridLines = true;
 var drawGridLines_Diagonal = false;
 var drawLines = true;
 var drawElements = true;
+var drawSelectiveGridLines=false;
 
 var glyphNames = [
 "PersonA","PersonB","ThingA","ThingB","blank",//0-4

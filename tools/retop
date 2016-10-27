@@ -61,6 +61,8 @@ var minpage=JSON.stringify(page);
 var maxarea=-100000;
 var maxpage=JSON.stringify(page);
 
+	ConnectLines();
+	
 for (var i=0;i<100;i++){	
 	var T = Topologize()
 	Instantiate(T)	

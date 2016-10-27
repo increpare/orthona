@@ -15,14 +15,16 @@ var inputFileName=""
 var outputFileName=""
 for (var i=2;i<process.argv.length;i++){
 	var t = process.argv[i];
-	if (t=="-noGridLines"){
+	if (t==="-noGridLines"){
 		drawGridLines=false;
-	} else if (t=="-diagonals"){
+	} else if (t==="-diagonals"){
 		drawGridLines_Diagonal=true;
-	} else if (t=="-noIcons"){
+	} else if (t==="-noIcons"){
 		drawElements=false;
-	} else if (t=="-noLines"){
+	} else if (t==="-noLines"){
 		drawLines=false;
+	} else if (t==="-selectiveGridLines"){
+		drawSelectiveGridLines=true;
 	} else if (inputFileName===""){
 		inputFileName=t;
 		console.log("input file "+t)

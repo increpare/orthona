@@ -726,6 +726,22 @@ function drawIcon(x,y,n){
     }
 }
 
+function shouldDrawGridLine(x1,y1,x2,y2){
+    if (drawSelectiveGridLines===false){
+        return true;
+    }
+    for (var i=0;i<page.elements.length;i++){
+        var e = page.elements[i];
+        var ex = page.offsetX+e[0]*cellSize*page.scale;
+        var ey = page.offsetY+e[1]*cellSize*page.scale;
+
+        if (PointOnLine([ex,ey],[x1,y1,x2,y2])){
+            return true;
+        }
+    }
+    return false;
+}
+
 function orthoRender(){            
   if (canvas.getContext) { 
     ctx.fillStyle = "#ffffff";
@@ -743,26 +759,44 @@ function orthoRender(){
         var startY = Math.floor(adjustY-cellSize*page.scale)+0.5;
         
         for (var i=startX;i<canvas.width;i+=cellSize*page.scale){ 
-            ctx.moveTo(i+adjustX,0);
-            ctx.lineTo(i+adjustX,ctx.canvas.height);
+            var [x1,y1] = [i+adjustX,0]
+            var [x2,y2] = [i+adjustX,ctx.canvas.height]
+            ctx.moveTo(x1,y1);
+            ctx.lineTo(x2,y2);
         }
         for (var j=startY;j<canvas.height;j+=cellSize*page.scale){ 
-            ctx.moveTo(0,j+adjustY);
-            ctx.lineTo(ctx.canvas.width,j+adjustY);
+            var [x1,y1] = [0,j+adjustY];
+            var [x2,y2] = [ctx.canvas.width,j+adjustY];
+            if (shouldDrawGridLine(x1,y1,x2,y2)){
+                ctx.moveTo(x1,y1);
+                ctx.lineTo(x2,y2);
+            }
         }
         //log(adjustX+","+adjustY)
         if (drawGridLines_Diagonal){     
             for (var i=startX;i<canvas.width;i+=cellSize*page.scale){
-                ctx.moveTo(i+adjustX,startY+startX);
-                ctx.lineTo(i+adjustX+2*canvas.height,+startY+startX+2*canvas.height);
+                var [x1,y1] = [i+adjustX,startY+startX];
+                var [x2,y2] = [i+adjustX+2*canvas.height,+startY+startX+2*canvas.height];
+                if (shouldDrawGridLine(x1,y1,x2,y2)){
+                    ctx.moveTo(x1,y1);
+                    ctx.lineTo(x2,y2);
+                }
             }       
             for (var i=startX-cellSize*page.scale;i>-canvas.height;i-=cellSize*page.scale){
-                ctx.moveTo(i+adjustX,+startY+startX);
-                ctx.lineTo(i+adjustX+2*canvas.height,+startY+startX+2*canvas.height);
+                var [x1,y1] = [i+adjustX,+startY+startX];
+                var [x2,y2] = [i+adjustX+2*canvas.height,+startY+startX+2*canvas.height];
+                if (shouldDrawGridLine(x1,y1,x2,y2)){
+                    ctx.moveTo(x1,y1);
+                    ctx.lineTo(x2,y2);
+                }
             }    
             for (var i=startX;i<(canvas.width+canvas.height);i+=cellSize*page.scale){
-                ctx.moveTo(i+adjustX,+startY+startX);
-                ctx.lineTo(i+adjustX-2*canvas.height,+startY+startX+2*canvas.height);
+                var [x1,y1] = [i+adjustX,+startY+startX];
+                var [x2,y2] = [i+adjustX-2*canvas.height,+startY+startX+2*canvas.height];
+                if (shouldDrawGridLine(x1,y1,x2,y2)){
+                    ctx.moveTo(x1,y1);
+                    ctx.lineTo(x2,y2);
+                }
             }
         }
         var pc = 1-(page.scale-scaleMin)/(scaleMax-scaleMin);

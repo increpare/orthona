@@ -25,9 +25,6 @@ function findMostCentralVal(v,grid){
 }
 
 
-function ConnectLines(){
-
-}
 
 function Topologize(){
 
