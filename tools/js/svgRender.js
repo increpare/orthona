@@ -646,8 +646,8 @@ function svgRender() {
     svg += "<parent xmlns='http://example.org'\n";
     svg += "\txmlns:svg='http://www.w3.org/2000/svg'>\n";
     svg += "\t<!-- parent contents here -->\n";
-    svg += `\t<svg:svg  viewBox='0 0 ${docWidth} ${docHeight}' version='1.1'>\n`
-
+    svg += `\t<svg:svg width='${docWidth}mm' height='${docHeight}mm' viewBox='0 0 ${docWidth} ${docHeight}' version='1.1'>\n`
+    
 
     if (glob.drawGridLines) {
         //draw gui
