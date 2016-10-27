@@ -8,6 +8,6 @@ ortho/www/js/dat/*.png
 *.png
 
 tools/dat/png/*_retop.png
-tools/dat/retop
+tools/dat/retop/*.*
 
-tools/dat/bin
+tools/dat/bin/*.*
