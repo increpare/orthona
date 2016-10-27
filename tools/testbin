@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#convert jsons to binary and back to jsons and back to #binary, and compare the two binary files
+
+echo "testing out binary formats are stable"
+for fn in dat/json/*.json
+do
+	bn=$(basename $fn ".json")
+	tmpjson0=/tmp/$bn.json0
+	tmpbin1=/tmp/$bn.bin1
+	tmpjson1=/tmp/$bn.json1
+	tmpbin2=/tmp/$bn.bin2
+	tmpjson2=/tmp/$bn.json2
+	tmppng=/tmp/$bn.png
+	echo "/tmp/$bn"
+
+	cp $fn $tmpjson0
+	
+	./json2bin $fn $tmpbin1 >/dev/null
+	./bin2json $tmpbin1 $tmpjson1 >/dev/null
+	./json2bin $tmpjson1 $tmpbin2 >/dev/null
+	./bin2json $tmpbin2 $tmpjson2 >/dev/null
+	./json2png $tmpjson2 $tmppng >/dev/null
+	cmp --silent $tmpbin1 $tmpbin2 || echo "bin files are different"
+
+	cmp --silent $tmpjson1 $tmpjson2 || echo "bin files are different"
+done

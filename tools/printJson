@@ -1,14 +1,5 @@
 #!/usr/bin/env node
 
-var symbols = [
-	"■","▼","⌔","○","•",
-	"⊚","◇","△","□","☆",
-	"♧","⧉","🔒","ᗡ","👑",
-	"👁","👄","👆","👂","🍴",
-	"💭","👃","⌛️","⊿","🍌",
-	"⬡","⬇","⌑","λ","✙",
-	"☯","▣","⨸","🌀","📄"];
-
 var emoji = require('node-emoji');
 
 
@@ -19,7 +10,7 @@ eval(fs.readFileSync('js/orthoLib.js')+'')
 eval(fs.readFileSync('js/orthoTopology.js')+'')
 
 if (process.argv.length===2){
-	console.log("USAGE: printOrtho [-ascii] [-skeleton] FILENAME");
+	console.log("USAGE: printOrtho [-ascii] [-noLines] FILENAME");
 	return;
 }
 
@@ -30,7 +21,7 @@ for (var i=2;i<process.argv.length;i++){
 	var t = process.argv[i];
 	if (t=="-ascii"){
 		asciiCharacters=true;
-	} if (t=="-skeleton"){
+	} if (t=="-noLines"){
 		skeleton=true;
 	} else if (inputFileName===""){
 		inputFileName=t;
@@ -38,6 +29,20 @@ for (var i=2;i<process.argv.length;i++){
 		console.log("Too many arguments. Unexpected argument \""+t+"\".");		
 	}
 }
+
+var symbols = [
+	"■","▼","⌔","○","•",
+	"⊚","◇","△","□","☆",
+	"♧","⧉","🔒","ᗡ","👑",
+	"👁","👄","👆","👂","🍴",
+	"💭","👃","⌛️","⊿","🍌",
+	"⬡","⬇","⌑","λ","✙",
+	"☯","▣","⨸","🌀","📄"];
+
+if (asciiCharacters){
+	symbols = "1234.abcdefghijklmnopqrstuvwxyABCDE";
+}
+
 
 if (inputFileName=="")
 {
@@ -141,9 +146,6 @@ for (var i=0;i<width;i++){
 	}
 }
 
-if (asciiCharacters){
-	symbols = "1234.abcdefghijklmnopqrstuvwxyABCDE";
-}
 
 for (var i=0;i<page.elements.length;i++){
 	var e = page.elements[i]

@@ -10,6 +10,17 @@ axes[2]=[-1,1]
 axes[3]=[0,1]
 axes[4]=[1,1]
 
+function ar_shuffle(a) {
+    for (let i = a.length; i; i--) {
+        let j = Math.floor(Math.random() * i);
+        [a[i - 1], a[j]] = [a[j], a[i - 1]];
+    }
+}
+
+function shuffle() {
+    ar_shuffle(page.elements)
+    ar_shuffle(page.lines)
+}
 
 var blah=0;
 function PrintImage(){
@@ -41,8 +52,16 @@ function Connection(e1,e2,lines){
 	return 0;
 }
 
+function pageArea(){
+	var [top,bottom,left,right] = getBounds();
+	var h = (bottom-top+1)
+	var w = (right-left+1)
+	var area = w*h
+	return area
+}
+
 function saveFile(fileName){
-    var sketch_save = JSON.stringify(sketchBook[sketchBookIndex]);    
+    var sketch_save = JSON.stringify(page);    
 	str = fs.writeFileSync(fileName,sketch_save);
 }
 
@@ -57,15 +76,16 @@ function loadBinary(fileName){
 	clearGraph();
 
 	var data = fs.readFileSync(fileName);
+	//log("buffer = "+data.toString('hex'))
 	var signature = [data[0],data[1],data[2],data[3]]
 	var version = data[4]
 	var E = data[5]
-	log(E)
+	//log(E)
 	
 	var p=6;
 
 	for (var i=0;i<E;i++){
-		log(data[0],data[p+1],data[p+2])
+		//log(data[0],data[p+1],data[p+2])
 		var e_x = data[p++]-0x80
 		var e_y = data[p++]-0x80
 		var e_s = data[p++]
@@ -73,16 +93,16 @@ function loadBinary(fileName){
 	}
 
 	var L = data[p++]
-	log(L)
+	//log(L)
 
 	for (var i=0;i<L;i++){
-		log(data[0],data[p+1],data[p+2],data[p+3])
+		//log(data[0],data[p+1],data[p+2],data[p+3],data[p+4])
 		var l_x1 = data[p++]-0x80
 		var l_y1 = data[p++]-0x80
 		var l_x2 = data[p++]-0x80
 		var l_y2 = data[p++]-0x80
 		var l_s = data[p++]
-		page.lines.push([l_x1,l_y1,l_x2,l_y2,l_s])
+		//page.lines.push([l_x1,l_y1,l_x2,l_y2,l_s])
 	}
 
 }
@@ -96,33 +116,41 @@ function saveBinary(fileName){
 
 
 	dat.push(E&0xff)
-	log(E&0xff)
+	//log(E&0xff)
 	for (var i=0;i<E;i++){
 		var e 	= page.elements[i];
 		var x 	= (e[0]+0x80)&0xff
 		var y 	= (e[1]+0x80)&0xff
 		var t 	= e[2]&0xff
 
-		log(x,y,t)
+		//log(x,y,t)
 		dat.push(x,y,t)
 	}
 
-	log(L&0xFF)
+	//log(L&0xFF)
 	dat.push(L&0xFF)
 
 	for (var i=0;i<L;i++){
 		var l 	= page.lines[i];
-		var x1 	= (e[0]+0x80)&0xff
-		var y1 	= (e[1]+0x80)&0xff
-		var x2 	= (e[2]+0x80)&0xff
-		var y2 	= (e[3]+0x80)&0xff
+		var x1 	= (l[0]+0x80)&0xff
+		var y1 	= (l[1]+0x80)&0xff
+		var x2 	= (l[2]+0x80)&0xff
+		var y2 	= (l[3]+0x80)&0xff
 
 		var t 	= e[2]&0xff
-		log(x1,y1,x2,y2,t)
+		//log(x1,y1,x2,y2,t)
 		dat.push(x1,y1,x2,y2,t)
 	}
 
 	var buffer = Buffer.from(dat)
+	
+	var s=""
+	for (var i=0;i<dat.length;i++){
+		s+=("00" + dat[i].toString(16)).substr(-2,2);
+	}
+	//log("dat = "+dat);
+	//log("dat = "+s);
+	//log("buffer = "+buffer.toString('hex'))
 	fs.writeFileSync(fileName,buffer);
 }
 

@@ -1,7 +1,7 @@
 for fn in dat/json/*.json
 do
 	echo "processing $fn"
-	./json2png $fn
+	./json2png -noGridLines $fn
 	./json2bin $fn
 	./retop $fn
 done
@@ -9,6 +9,8 @@ done
 for fn in dat/retop/*.json
 do
 	echo "processing $fn"
-	./json2png $fn
+	./json2png -noLines -diagonals $fn
 	./json2bin $fn
 done
+
+./testbin

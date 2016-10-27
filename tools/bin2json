@@ -37,7 +37,7 @@ if (outputFileName===""){
 	var parsed = path.parse(globalPath)
 	parsed.ext=".json"
 	parsed.dir+="/../json"
-	parsed.base=parsed.name+parsed.ext;
+	parsed.base=parsed.name+"_b"+parsed.ext;
 	log(parsed)
 	outputFileName = path.format(parsed)
 	log("outputFileName = "+outputFileName)

@@ -4,7 +4,7 @@
 function SaveState(){
     var sketch_save = JSON.stringify({book:sketchBook,page:sketchBookIndex});
     localStorage.setItem("sketchbookDat",sketch_save);
-    console.log(JSON.stringify(sketchBook[sketchBookIndex]))
+    console.log(JSON.stringify(page))
 }
 function TryRestoreState(){
     var sketch_save = localStorage.getItem("sketchbookDat");

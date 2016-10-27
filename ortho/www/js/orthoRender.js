@@ -473,6 +473,9 @@ function drawIcon(x,y,n){
         {
             ctx.beginPath();
             var s = cellSize*page.scale*0.4/1.41;
+            x-=cellSize*page.scale*0.15/1.41;
+            y-=cellSize*page.scale*0.15/1.41;
+
             ctx.moveTo(x+s,y-s);
             ctx.lineTo(x+s,y+s);
             ctx.lineTo(x-s,y+s);
@@ -747,19 +750,19 @@ function orthoRender(){
             ctx.moveTo(0,j+adjustY);
             ctx.lineTo(ctx.canvas.width,j+adjustY);
         }
-
+        log(adjustX+","+adjustY)
         if (drawGridLines_Diagonal){     
             for (var i=startX;i<canvas.width;i+=cellSize*page.scale){
-                ctx.moveTo(i+adjustX,0);
-                ctx.lineTo(i+adjustX+canvas.height,canvas.height);
+                ctx.moveTo(i+adjustX,startY+startX);
+                ctx.lineTo(i+adjustX+2*canvas.height,+startY+2*canvas.height);
             }       
             for (var i=startX-cellSize*page.scale;i>-canvas.height;i-=cellSize*page.scale){
-                ctx.moveTo(i+adjustX,0);
-                ctx.lineTo(i+adjustX+canvas.height,canvas.height);
+                ctx.moveTo(i+adjustX,+startY+startX);
+                ctx.lineTo(i+adjustX+2*canvas.height,+startY+startX+2*canvas.height);
             }    
             for (var i=startX;i<(canvas.width+canvas.height);i+=cellSize*page.scale){
-                ctx.moveTo(i+adjustX,0);
-                ctx.lineTo(i+adjustX-canvas.height,canvas.height);
+                ctx.moveTo(i+adjustX,+startY+startX);
+                ctx.lineTo(i+adjustX-2*canvas.height,+startY+startX+2*canvas.height);
             }
         }
         var pc = 1-(page.scale-scaleMin)/(scaleMax-scaleMin);

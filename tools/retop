@@ -8,7 +8,7 @@ eval(fs.readFileSync('js/orthoTopology.js')+'')
 
 
 if (process.argv.length===2){
-	//log("USAGE: retop INPUT [OUTPUT]");
+	log("USAGE: retop INPUT [OUTPUT]");
 	return;
 }
 
@@ -18,17 +18,17 @@ for (var i=2;i<process.argv.length;i++){
 	var t = process.argv[i];
 	if (inputFileName===""){
 		inputFileName=t;
-		//log("input file "+t)
+		log("input file "+t)
 	} else if (outputFileName===""){
 		outputFileName=t;
 	} else {
-		//log("Too many arguments. Unexpected argument \""+t+"\".");		
+		log("Too many arguments. Unexpected argument \""+t+"\".");		
 	}
 }
 
 if (inputFileName=="")
 {
-	//log("need to supply input file");
+	log("need to supply input file");
 }
 
 if (outputFileName===""){
@@ -42,10 +42,46 @@ if (outputFileName===""){
 	log("outputFileName = "+outputFileName)
 }
 
+var outputFileName2=""
+{
+	var path = require('path');
+	var globalPath = path.resolve(inputFileName)
+	var parsed = path.parse(globalPath)
+	parsed.ext=".json"
+	parsed.dir+="/../retop"
+	parsed.base=parsed.name+"_retop_big"+parsed.ext;
+	outputFileName2 = path.format(parsed)
+	log("outputFileName2 = "+outputFileName2)
+}
+
+
 loadFile(inputFileName)
 
-var T = Topologize()
-Instantiate(T)
+var minarea=10000000;
+var minpage=JSON.stringify(page);
+var maxarea=-100000;
+var maxpage=JSON.stringify(page);
 
+for (var i=0;i<100;i++){	
+	var T = Topologize()
+	Instantiate(T)	
+
+	var area = pageArea()
+	if (area<minarea){
+		minarea=area
+		minpage=JSON.stringify(page);
+	}
+	if (area>maxarea){
+		maxarea=area
+		maxpage=JSON.stringify(page);
+	}
+	shuffle();
+}
+
+page=JSON.parse(minpage)
+//log("area = "+pageArea())
 saveFile(outputFileName)
-//log("generated "+ outputFileName);
+log("generated "+ outputFileName);
+/*page=JSON.parse(maxpage)
+log("area = "+pageArea())
+saveFile(outputFileName2)*/
