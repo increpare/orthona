@@ -1,31 +1,3 @@
-
-function findMostCentralVal(v,grid){
-	function dsq(x1,y1,x2,y2){
-		var dx=x2-x1
-		var dy=y2-y1
-		return dx*dx+dy*dy
-	}
-
-	var mx=grid.length/2;
-	var my=grid[0].length/2;
-
-	var closest=1000000;
-	var closestcoords=null;
-	for (var i=0;i<grid.length;i++){
-		for (var j=0;j<grid[0].length;j++){
-			if (grid[i][j]===v){
-				if (dsq(i,j,mx,my)<closest){
-					closest=dsq(i,j,mx,my)
-					closestcoords=[i,j]
-				}
-			}
-		}
-	}
-	return closestcoords
-}
-
-
-
 function Topologize(){
 
 	ConnectLines();

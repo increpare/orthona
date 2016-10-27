@@ -117,8 +117,8 @@ function loadBinary(fileName){
 
 	for (var i=0;i<E;i++){
 		//log(data[0],data[p+1],data[p+2])
-		var e_x = data[p++]-0x80
-		var e_y = data[p++]-0x80
+		var e_x = data[p++]
+		var e_y = data[p++]
 		var e_s = data[p++]
 		page.elements.push([e_x,e_y,e_s])
 	}
@@ -128,17 +128,49 @@ function loadBinary(fileName){
 
 	for (var i=0;i<L;i++){
 		//log(data[0],data[p+1],data[p+2],data[p+3],data[p+4])
-		var l_x1 = data[p++]-0x80
-		var l_y1 = data[p++]-0x80
-		var l_x2 = data[p++]-0x80
-		var l_y2 = data[p++]-0x80
+		var l_x1 = data[p++]
+		var l_y1 = data[p++]
+		var l_x2 = data[p++]
+		var l_y2 = data[p++]
 		var l_s = data[p++]
 		page.lines.push([l_x1,l_y1,l_x2,l_y2,l_s])
 	}
 
 }
 
+function MoveOriginToTopLeft(){
+	var minx=10000;
+	var miny=10000;
+	for (var i=0;i<page.elements;i++){
+		var e = page.elements[i];
+		minx=Math.min(minx,e[0]);
+		miny=Math.min(miny,e[1]);
+	}
+	for (var i=0;i<page.lines;i++){
+		var l = page.lines[i];
+		minx=Math.min(minx,l[0]);
+		miny=Math.min(miny,l[1]);
+		minx=Math.min(minx,l[2]);
+		miny=Math.min(miny,l[3]);
+	}
+
+	for (var i=0;i<page.elements;i++){
+		var e = page.elements[i];
+		e[0]-=minx
+		e[1]-=miny
+	}
+	for (var i=0;i<page.lines;i++){
+		var l = page.lines[i];
+		l[0]-=minx
+		l[1]-=miny
+		l[2]-=minx
+		l[3]-=miny
+	}
+}
+
 function saveBinary(fileName){
+	MoveOriginToTopLeft();
+
 	var E = page.elements.length
 	var L = page.lines.length
 
@@ -150,8 +182,8 @@ function saveBinary(fileName){
 	//log(E&0xff)
 	for (var i=0;i<E;i++){
 		var e 	= page.elements[i];
-		var x 	= (e[0]+0x80)&0xff
-		var y 	= (e[1]+0x80)&0xff
+		var x 	= (e[0])&0xff
+		var y 	= (e[1])&0xff
 		var t 	= e[2]&0xff
 
 		//log(x,y,t)
@@ -163,12 +195,12 @@ function saveBinary(fileName){
 
 	for (var i=0;i<L;i++){
 		var l 	= page.lines[i];
-		var x1 	= (l[0]+0x80)&0xff
-		var y1 	= (l[1]+0x80)&0xff
-		var x2 	= (l[2]+0x80)&0xff
-		var y2 	= (l[3]+0x80)&0xff
+		var x1 	= (l[0])&0xff
+		var y1 	= (l[1])&0xff
+		var x2 	= (l[2])&0xff
+		var y2 	= (l[3])&0xff
 
-		var t 	= e[2]&0xff
+		var t 	= l[5]&0xff
 		//log(x1,y1,x2,y2,t)
 		dat.push(x1,y1,x2,y2,t)
 	}

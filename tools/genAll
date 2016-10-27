@@ -1,3 +1,9 @@
+./clean
+
+cd c
+make
+cd ..
+
 for fn in dat/json/*.json
 do
 	echo "processing $fn"
