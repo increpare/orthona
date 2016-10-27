@@ -1,37 +1,37 @@
 uniquely characterize
 
-solid square		1
-solid marker
-outline marker
-outline circle
-solid dot
-concentric circles	6
-diamond
-equilateral triangle
-outline square
-star
-rounded cross		11
-overlapping circles	
-keyhole
-semicircle
-crown
-eye			16
-mouth
-hand
-handle
-teeth
-v eye			21
-nose
-hourglass
-right-angled triangle
-banana
-cube			26
-arrow
-diagonal cross
-lambda
-plus
-yinyang			31
-concentric squares
-division
-spiral
-parallel lines
+块	solid square		1
+针	solid marker
+钗	outline marker
+圈	outline circle
+点	solid dot
+界	concentric circles	6
+钻	diamond
+形	equilateral triangle
+方	outline square
+星	star
+花	rounded cross		11
+妹	overlapping circles	
+窍	keyhole
+半	semicircle
+冠	crown
+目	eye			16
+口	mouth
+手	hand
+耳	handle
+齿	teeth
+思	v eye			21
+鼻	nose
+时	hourglass
+正	right-angled triangle
+蕉	banana
+额	cube			26
+矢	arrow
+逵	diagonal cross
+联	lambda
+架	plus
+阴	yinyang			31
+弟	concentric squares
+师	division
+波	spiral
+页	parallel lines

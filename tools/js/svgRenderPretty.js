@@ -2,16 +2,13 @@ var lib = require('./orthoLib')
 var glob = require('./app/orthoGlobals')
 
 var pentagon = [
-    0, -1000, 
-    -951, -309, 
-    -588, 809,
+    0, -1000, -951, -309, -588, 809,
     588, 809,
     951, -309
 ];
 
 var triangle = [
-    0, -1000, 
-    -866, 500,
+    0, -1000, -866, 500,
     866, 500
 ];
 
@@ -618,7 +615,6 @@ function drawIcon(x, y, icon) {
                     "L", x + s * 2 / 3, y + s / 2,
                     "'/>\n"
                 ].join(" ");
-                
 
                 break;
             }

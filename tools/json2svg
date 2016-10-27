@@ -35,7 +35,7 @@ for (var i=2;i<process.argv.length;i++){
 	}
 }
 
-if (inputFileName=="")
+if (inputFileName==="")
 {
 	console.log("need to supply input file");
 }

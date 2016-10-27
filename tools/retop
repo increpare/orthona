@@ -27,7 +27,7 @@ for (var i=2;i<process.argv.length;i++){
 	}
 }
 
-if (inputFileName=="")
+if (inputFileName==="")
 {
 	log("need to supply input file");
 }

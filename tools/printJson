@@ -44,8 +44,7 @@ if (asciiCharacters){
 	symbols = "1234.abcdefghijklmnopqrstuvwxyABCDE";
 }
 
-
-if (inputFileName=="")
+if (inputFileName==="")
 {
 	console.log("need to supply input file");
 }

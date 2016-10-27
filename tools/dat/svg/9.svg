@@ -2,7 +2,8 @@
 <parent xmlns='http://example.org'
 	xmlns:svg='http://www.w3.org/2000/svg'>
 	<!-- parent contents here -->
-	<svg:svg width='130mm' height='170mm' viewBox='0 0 130 170' version='1.1'>
+	<svg:svg  viewBox='0 0 130 170' version='1.1'>
+		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='#dcdcdc' d='M 15 0 L 15 412 M 35 0 L 35 412 M 55 0 L 55 412 M 75 0 L 75 412 M 95 0 L 95 412 M 0 15 L 302 15 M 0 35 L 302 35 M 0 55 L 302 55 M 0 75 L 302 75 M 0 95 L 302 95 M 0 115 L 302 115 M 0 135 L 302 135 M -25 -25 L 315 315 M -5 -25 L 335 315 M 15 -25 L 355 315 M 35 -25 L 375 315 M 55 -25 L 395 315 M -45 -25 L 295 315 M -65 -25 L 275 315 M -85 -25 L 255 315 M -105 -25 L 235 315 M -125 -25 L 215 315 M -145 -25 L 195 315 M -85 315 L 255 -25 M -105 315 L 235 -25 M -125 315 L 215 -25 M -145 315 L 195 -25 M -165 315 L 175 -25 M -185 315 L 155 -25 M -205 315 L 135 -25 M -225 315 L 115 -25 M -245 315 L 95 -25 M -265 315 L 75 -25 M -285 315 L 55 -25 '/>
 		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='black' d=''/>
 		<svg:rect stroke-width='1' x='11.595744680851064' y='11.595744680851064' width='6.808510638297872' height='6.808510638297872' fill='black' stroke='black' />
 		<svg:path  stroke-width='1' fill='black' stroke='black' d='M 35 20.76 L 32.12 15 C 29.24 9.239999999999998, 40.76 9.239999999999998, 37.88 15 Z '/>

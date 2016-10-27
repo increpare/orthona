@@ -80,7 +80,7 @@ function PageLeft(){
     if (glob.sketchBookIndex===0){
         return;
     }
-    if (PageEmpty()&&glob.sketchBookIndex==glob.sketchBook.length-1){
+    if (PageEmpty()&&glob.sketchBookIndex===glob.sketchBook.length-1){
         glob.sketchBook.splice(glob.sketchBookIndex,1);
     }
     glob.sketchBookIndex--;  
@@ -119,7 +119,7 @@ function iconAt(tx,ty){
 }
 
 function handleStart(evt) {
-    if (iconSelect==true){
+    if (iconSelect===true){
         iconSelect=false;
     }
     evt.preventDefault();
@@ -297,7 +297,7 @@ function handleEnd(evt){
         return;
     }
 
-    if (evt.touches.length==0){
+    if (evt.touches.length===0){
         if (iconSelect&&minDistHit){
             var t = evt.changedTouches[0];
             var px = t.clientX;
@@ -319,7 +319,7 @@ function handleEnd(evt){
         var gx = Math.round(cx/(cellSize*glob.page.scale));
         var gy = Math.round(cy/(cellSize*glob.page.scale));
 
-        if (oldX==gx && oldY==gy){
+        if (oldX===gx && oldY===gy){
             tryRemoveCell(gx,gy);
         } else {
             makeLine(oldX,oldY,gx,gy);
@@ -341,7 +341,7 @@ function handleMove(evt) {
 
     evt.preventDefault();
 
-    if (cleared==true){
+    if (cleared===true){
         return;
     }
     if (evt.touches.length===1&&glob.page.scale>scaleMin){  
@@ -355,7 +355,7 @@ function handleMove(evt) {
         renderApp();
     }
 
-    if (evt.touches.length===2||(evt.touches.length==1&&glob.page.scale<=scaleMin)){
+    if (evt.touches.length===2||(evt.touches.length===1&&glob.page.scale<=scaleMin)){
         var curtouches = evt.touches.length===2 ?
                 [evt.touches[0].clientX,evt.touches[0].clientY,evt.touches[1].clientX,evt.touches[1].clientY] :
                 [evt.touches[0].clientX,evt.touches[0].clientY,evt.touches[0].clientX,evt.touches[0].clientY];
@@ -547,12 +547,12 @@ function drawSelectionPanel(select,x,y){
     for (var i=0;i<35;i++){            
         var ix = i%panelRows;
         var iy = Math.floor(i/panelRows);
-        if (ix==gridx&&iy==gridy){
+        if (ix===gridx&&iy===gridy){
             ctx.globalalpha=1.0;
         }
         var mx = ox+ix*cellSize+cellSize/2;
         var my = oy+iy*cellSize+cellSize/2;
-        if (i==highlightedglyphicon){
+        if (i===highlightedglyphicon){
             ctx.fillStyle="#bbbbbb";
             ctx.beginPath();
             ctx.moveTo(mx-cellSize/2,my-cellSize/2);

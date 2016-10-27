@@ -3,6 +3,7 @@
 	xmlns:svg='http://www.w3.org/2000/svg'>
 	<!-- parent contents here -->
 	<svg:svg width='90mm' height='50mm' viewBox='0 0 90 50' version='1.1'>
+		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='#dcdcdc' d='M 15 0 L 15 82 M 35 0 L 35 82 M 55 0 L 55 82 M 0 15 L 192 15 M -25 -25 L 75 75 M -5 -25 L 95 75 M 15 -25 L 115 75 M -45 75 L 55 -25 '/>
 		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='black' d='M 15 15 L 35 15 M 35 15 L 55 15 '/>
 		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 8.6 15 C 11.8 9.879999999999999 , 18.2 9.879999999999999 , 21.4 15 C 18.2 20.12 , 11.8 20.12 , 8.6 15 Z  '/>
 		<svg:circle stroke-width='1' cx='15' cy='15' r='1.6' fill='transparent' stroke='black' />
