@@ -3,34 +3,34 @@
 	xmlns:svg='http://www.w3.org/2000/svg'>
 	<!-- parent contents here -->
 	<svg:svg width='290mm' height='350mm' viewBox='0 0 290 350' version='1.1'>
-		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='#dcdcdc' d='M 15 0 L 15 907 M 35 0 L 35 907 M 55 0 L 55 907 M 75 0 L 75 907 M 95 0 L 95 907 M 115 0 L 115 907 M 135 0 L 135 907 M 155 0 L 155 907 M 175 0 L 175 907 M 195 0 L 195 907 M 215 0 L 215 907 M 235 0 L 235 907 M 255 0 L 255 907 M 0 15 L 742 15 M 0 35 L 742 35 M 0 55 L 742 55 M 0 75 L 742 75 M 0 95 L 742 95 M 0 115 L 742 115 M 0 135 L 742 135 M 0 155 L 742 155 M 0 195 L 742 195 M 0 215 L 742 215 M 0 235 L 742 235 M 0 255 L 742 255 M 0 275 L 742 275 M 0 295 L 742 295 M 0 315 L 742 315 M -5 -25 L 695 675 M 15 -25 L 715 675 M 35 -25 L 735 675 M 55 -25 L 755 675 M 75 -25 L 775 675 M 95 -25 L 795 675 M 135 -25 L 835 675 M -45 -25 L 655 675 M -65 -25 L 635 675 M -85 -25 L 615 675 M -105 -25 L 595 675 M -125 -25 L 575 675 M -165 -25 L 535 675 M -245 -25 L 455 675 M -325 -25 L 375 675 M -125 675 L 575 -25 M -185 675 L 515 -25 M -265 675 L 435 -25 M -305 675 L 395 -25 M -325 675 L 375 -25 M -345 675 L 355 -25 M -365 675 L 335 -25 M -385 675 L 315 -25 M -405 675 L 295 -25 M -425 675 L 275 -25 M -445 675 L 255 -25 M -465 675 L 235 -25 M -485 675 L 215 -25 M -505 675 L 195 -25 M -525 675 L 175 -25 M -545 675 L 155 -25 '/>
-		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='black' d='M 115 35 L 95 35 M 115 35 L 175 95 M 95 35 L 95 75 M 175 95 L 175 135 M 175 95 L 175 15 '/>
-		<svg:circle stroke-width='1' cx='155' cy='55' r='4.8' fill='white' stroke='black' />
-		<svg:path  stroke-width='1' fill='black' stroke='transparent' d='M 150.2 55 A 4.8 4.8 0 0 0 159.8 55Z '/>
-		<svg:circle stroke-width='1' cx='152.85' cy='55' r='2.15' fill='black' stroke='transparent' />
-		<svg:circle stroke-width='1' cx='157.15' cy='55' r='2.15' fill='white' stroke='transparent' />
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 116.88091280733592 35.18885438199983 A 3.2 3.2 0 1 0 113.11908719266408 35.18885438199983 L 111.8 40.599999999999994 L 118.2 40.599999999999994 Z '/>
-		<svg:rect stroke-width='1' x='91.59574468085107' y='31.595744680851062' width='6.808510638297872' height='6.808510638297872' fill='black' stroke='black' />
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 175 88.6 L 180.5424 98.2 L 169.4576 98.2 Z '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 93.56 69.88 L 92.12 75.64 C 89.24 81.4 , 100.76 81.4 , 97.88 75.64 L 96.44 69.88 '/>
-		<svg:path  stroke-width='1' fill='black' stroke='black' d='M 175 140.76 L 172.12 135 C 169.24 129.24, 180.76 129.24, 177.88 135 Z '/>
-		<svg:circle stroke-width='1' cx='175' cy='15' r='6.4' fill='white' stroke='black' />
-		<svg:circle stroke-width='1' cx='175' cy='15' r='4.268800000000001' fill='white' stroke='black' />
-		<svg:circle stroke-width='1' cx='175' cy='15' r='2.1376000000000004' fill='white' stroke='black' />
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 70.46099290780141 150.46099290780143 L 79.53900709219859 150.46099290780143 L 79.53900709219859 159.53900709219857 L 70.46099290780141 159.53900709219857  Z  M 71.97399527186761 152.7304964539007 L 78.02600472813239 152.7304964539007 M 71.97399527186761 155 L 78.02600472813239 155 M 71.97399527186761 157.2695035460993 L 78.02600472813239 157.2695035460993 '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 61.4 195 A 6.4 6.4 0 1 0 61.4 195 '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 55 192.86666666666667 A 2.1333333333333333 2.1333333333333333 0 0 0 55 197.13333333333333 M 55 201.4 A 4.266666666666667 4.266666666666667 0 0 0 55 192.86666666666665 M 61.4 195 A 6.4 6.4 0 1 0 55 201.4 '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 190.2 210.2 L 199.8 210.2 C 195.8 215 , 195.8 215 , 199.8 219.8 L 190.2 219.8 C 194.2 215 , 194.2 215 , 190.2 210.2 Z  '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 137.8368794326241 228.75886524822695 L 137.8368794326241 237.8368794326241 L 128.75886524822695 237.8368794326241 Z  '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 35 248.6 C 29.88 251.8 , 29.88 258.2 , 35 261.4 C 40.120000000000005 258.2 , 40.120000000000005 251.8 , 35 248.6 Z  '/>
-		<svg:circle stroke-width='1' cx='35' cy='255' r='1.6' fill='black' stroke='black' />
-		<svg:circle stroke-width='1' cx='215' cy='275' r='6.4' fill='white' stroke='black' />
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 208.6 275 L 221.4 275 '/>
-		<svg:circle stroke-width='1' cx='215' cy='271.8' r='1.28' fill='black' stroke='transparent' />
-		<svg:circle stroke-width='1' cx='215' cy='278.2' r='1.28' fill='black' stroke='transparent' />
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 230.2 110.2 L 239.8 110.2 L 239.8 119.8 L 230.2 119.8 Z  M 231.832 111.832 L 238.168 111.832 L 238.168 118.168 L 231.832 118.168 Z  '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 253.56 289.88 L 252.12 295.64 C 249.24 301.4 , 260.76 301.4 , 257.88 295.64 L 256.44 289.88 '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 13.4 310.2 C 11.8 314.67999999999995 14.68 314.67999999999995 8.6 319.79999999999995 C 15 319.79999999999995 14.68 314.67999999999995 15 316.6 C 15.32 314.67999999999995 15 319.79999999999995 21.4 319.79999999999995 C 15.32 314.67999999999995 18.2 314.67999999999995 16.6 310.2 Z  '/>
+		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='#dcdcdc' d='M 15 0 L 15 907 M 35 0 L 35 907 M 55 0 L 55 907 M 75 0 L 75 907 M 95 0 L 95 907 M 115 0 L 115 907 M 135 0 L 135 907 M 155 0 L 155 907 M 175 0 L 175 907 M 195 0 L 195 907 M 215 0 L 215 907 M 235 0 L 235 907 M 255 0 L 255 907 M 0 15 L 742 15 M 0 35 L 742 35 M 0 55 L 742 55 M 0 75 L 742 75 M 0 95 L 742 95 M 0 115 L 742 115 M 0 135 L 742 135 M 0 155 L 742 155 M 0 175 L 742 175 M 0 195 L 742 195 M 0 215 L 742 215 M 0 235 L 742 235 M 0 275 L 742 275 M 0 295 L 742 295 M 0 315 L 742 315 M -25 -25 L 675 675 M -5 -25 L 695 675 M 15 -25 L 715 675 M 35 -25 L 735 675 M 55 -25 L 755 675 M 75 -25 L 775 675 M 95 -25 L 795 675 M 115 -25 L 815 675 M -45 -25 L 655 675 M -65 -25 L 635 675 M -105 -25 L 595 675 M -145 -25 L 555 675 M -205 -25 L 495 675 M -225 -25 L 475 675 M -305 -25 L 395 675 M -165 675 L 535 -25 M -245 675 L 455 -25 M -265 675 L 435 -25 M -285 675 L 415 -25 M -305 675 L 395 -25 M -325 675 L 375 -25 M -365 675 L 335 -25 M -385 675 L 315 -25 M -405 675 L 295 -25 M -425 675 L 275 -25 M -445 675 L 255 -25 M -465 675 L 235 -25 M -485 675 L 215 -25 M -525 675 L 175 -25 M -545 675 L 155 -25 M -605 675 L 95 -25 '/>
+		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='black' d='M 175 115 L 175 55 M 175 55 L 175 35 M 175 55 L 135 15 M 135 15 L 55 15 M 55 15 L 55 75 '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 250.46099290780143 150.46099290780143 L 259.5390070921986 150.46099290780143 L 259.5390070921986 159.53900709219857 L 250.46099290780143 159.53900709219857  Z  M 251.9739952718676 152.7304964539007 L 258.02600472813236 152.7304964539007 M 251.9739952718676 155 L 258.02600472813236 155 M 251.9739952718676 157.2695035460993 L 258.02600472813236 157.2695035460993 '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 217.8368794326241 128.75886524822695 L 217.8368794326241 137.8368794326241 L 208.75886524822695 137.8368794326241 Z  '/>
+		<svg:circle stroke-width='1' cx='195' cy='175' r='4.8' fill='white' stroke='black' />
+		<svg:path  stroke-width='1' fill='black' stroke='transparent' d='M 190.2 175 A 4.8 4.8 0 0 0 199.8 175Z '/>
+		<svg:circle stroke-width='1' cx='192.85' cy='175' r='2.15' fill='black' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='197.15' cy='175' r='2.15' fill='white' stroke='transparent' />
+		<svg:path  stroke-width='1' fill='black' stroke='black' d='M 175 120.76 L 172.12 115 C 169.24 109.24, 180.76 109.24, 177.88 115 Z '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 175 48.6 L 180.5424 58.2 L 169.4576 58.2 Z '/>
+		<svg:circle stroke-width='1' cx='175' cy='35' r='6.4' fill='white' stroke='black' />
+		<svg:circle stroke-width='1' cx='175' cy='35' r='4.268800000000001' fill='white' stroke='black' />
+		<svg:circle stroke-width='1' cx='175' cy='35' r='2.1376000000000004' fill='white' stroke='black' />
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 136.8809128073359 15.188854381999832 A 3.2 3.2 0 1 0 133.1190871926641 15.188854381999834 L 131.8 20.6 L 138.2 20.6 Z '/>
+		<svg:rect stroke-width='1' x='51.59574468085106' y='11.595744680851064' width='6.808510638297872' height='6.808510638297872' fill='black' stroke='black' />
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 53.56 69.88 L 52.12 75.64 C 49.24 81.4 , 60.76 81.4 , 57.88 75.64 L 56.44 69.88 '/>
+		<svg:circle stroke-width='1' cx='95' cy='95' r='6.4' fill='white' stroke='black' />
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 88.6 95 L 101.4 95 '/>
+		<svg:circle stroke-width='1' cx='95' cy='91.8' r='1.28' fill='black' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='95' cy='98.2' r='1.28' fill='black' stroke='transparent' />
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 75 188.6 C 69.88 191.8 , 69.88 198.2 , 75 201.4 C 80.12 198.2 , 80.12 191.8 , 75 188.6 Z  '/>
+		<svg:circle stroke-width='1' cx='75' cy='195' r='1.6' fill='black' stroke='black' />
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 33.56 209.88 L 32.12 215.64 C 29.24 221.39999999999998 , 40.76 221.39999999999998 , 37.88 215.64 L 36.44 209.88 '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 153.4 230.20000000000002 C 151.8 234.68 154.68 234.68 148.6 239.8 C 155 239.8 154.68 234.68 155 236.6 C 155.32 234.68 155 239.8 161.4 239.8 C 155.32 234.68 158.2 234.68 156.6 230.20000000000002 Z  '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 241.4 275 A 6.4 6.4 0 1 0 241.4 275 '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 235 272.8666666666667 A 2.1333333333333333 2.1333333333333333 0 0 0 235 277.1333333333333 M 235 281.4 A 4.266666666666667 4.266666666666667 0 0 0 235 272.8666666666667 M 241.4 275 A 6.4 6.4 0 1 0 235 281.4 '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 10.2 290.2 L 19.8 290.2 L 19.8 299.8 L 10.2 299.8 Z  M 11.832 291.832 L 18.168 291.832 L 18.168 298.168 L 11.832 298.168 Z  '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 110.2 310.2 L 119.8 310.2 C 115.8 315 , 115.8 315 , 119.8 319.8 L 110.2 319.8 C 114.2 315 , 114.2 315 , 110.2 310.2 Z  '/>
 	</svg:svg>
 	<!-- ... -->
 </parent>

@@ -2,77 +2,77 @@
 <parent xmlns='http://example.org'
 	xmlns:svg='http://www.w3.org/2000/svg'>
 	<!-- parent contents here -->
-	<svg:svg width='650mm' height='690mm' viewBox='0 0 650 690' version='1.1'>
-		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='#dcdcdc' d='M 15 0 L 15 1842 M 35 0 L 35 1842 M 75 0 L 75 1842 M 95 0 L 95 1842 M 115 0 L 115 1842 M 135 0 L 135 1842 M 195 0 L 195 1842 M 215 0 L 215 1842 M 235 0 L 235 1842 M 255 0 L 255 1842 M 275 0 L 275 1842 M 295 0 L 295 1842 M 315 0 L 315 1842 M 335 0 L 335 1842 M 355 0 L 355 1842 M 375 0 L 375 1842 M 415 0 L 415 1842 M 435 0 L 435 1842 M 455 0 L 455 1842 M 475 0 L 475 1842 M 515 0 L 515 1842 M 555 0 L 555 1842 M 575 0 L 575 1842 M 595 0 L 595 1842 M 615 0 L 615 1842 M 0 15 L 1732 15 M 0 35 L 1732 35 M 0 75 L 1732 75 M 0 95 L 1732 95 M 0 115 L 1732 115 M 0 135 L 1732 135 M 0 155 L 1732 155 M 0 175 L 1732 175 M 0 195 L 1732 195 M 0 215 L 1732 215 M 0 235 L 1732 235 M 0 255 L 1732 255 M 0 275 L 1732 275 M 0 295 L 1732 295 M 0 315 L 1732 315 M 0 335 L 1732 335 M 0 375 L 1732 375 M 0 395 L 1732 395 M 0 415 L 1732 415 M 0 435 L 1732 435 M 0 455 L 1732 455 M 0 475 L 1732 475 M 0 495 L 1732 495 M 0 515 L 1732 515 M 0 535 L 1732 535 M 0 555 L 1732 555 M 0 595 L 1732 595 M 0 615 L 1732 615 M 0 635 L 1732 635 M 0 655 L 1732 655 M -5 -25 L 1375 1355 M 15 -25 L 1395 1355 M 35 -25 L 1415 1355 M 55 -25 L 1435 1355 M 75 -25 L 1455 1355 M 95 -25 L 1475 1355 M 115 -25 L 1495 1355 M 135 -25 L 1515 1355 M 155 -25 L 1535 1355 M 175 -25 L 1555 1355 M 215 -25 L 1595 1355 M 295 -25 L 1675 1355 M 315 -25 L 1695 1355 M 355 -25 L 1735 1355 M -105 -25 L 1275 1355 M -125 -25 L 1255 1355 M -165 -25 L 1215 1355 M -185 -25 L 1195 1355 M -225 -25 L 1155 1355 M -265 -25 L 1115 1355 M -285 -25 L 1095 1355 M -325 -25 L 1055 1355 M -385 -25 L 995 1355 M -465 -25 L 915 1355 M -485 -25 L 895 1355 M -545 -25 L 835 1355 M -585 -25 L 795 1355 M -145 1355 L 1235 -25 M -245 1355 L 1135 -25 M -305 1355 L 1075 -25 M -325 1355 L 1055 -25 M -385 1355 L 995 -25 M -445 1355 L 935 -25 M -485 1355 L 895 -25 M -505 1355 L 875 -25 M -525 1355 L 855 -25 M -545 1355 L 835 -25 M -625 1355 L 755 -25 M -645 1355 L 735 -25 M -665 1355 L 715 -25 M -685 1355 L 695 -25 M -705 1355 L 675 -25 M -745 1355 L 635 -25 M -765 1355 L 615 -25 M -785 1355 L 595 -25 M -825 1355 L 555 -25 M -845 1355 L 535 -25 M -865 1355 L 515 -25 M -885 1355 L 495 -25 M -905 1355 L 475 -25 M -925 1355 L 455 -25 M -945 1355 L 435 -25 M -965 1355 L 415 -25 M -985 1355 L 395 -25 M -1005 1355 L 375 -25 M -1025 1355 L 355 -25 M -1085 1355 L 295 -25 '/>
-		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='black' d='M 275 115 L 255 115 M 275 115 L 275 75 M 275 115 L 295 135 M 275 75 L 235 35 M 235 35 L 375 35 M 295 135 L 295 175 M 275 75 L 195 155 M 275 75 L 335 15 M 295 175 L 295 195 M 375 35 L 415 35 M 375 35 L 375 295 M 375 295 L 455 215 M 235 35 L 35 235 M 295 195 L 355 255 M 375 295 L 375 315 M 335 15 L 595 275 M 455 215 L 575 335 M 415 35 L 475 95 M 375 315 L 435 375 M 35 235 L 35 475 M 35 475 L 35 495 M 375 295 L 215 455 M 435 375 L 435 415 M 35 495 L 95 555 M 35 495 L 135 395 M 295 195 L 295 435 M 35 235 L 315 515 M 95 555 L 95 615 M 435 415 L 435 535 M 295 435 L 615 435 M 95 615 L 75 635 M 435 535 L 435 595 M 435 595 L 515 595 M 375 315 L 15 315 M 35 475 L 115 475 M 435 535 L 555 655 '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 276.8809128073359 115.18885438199983 A 3.2 3.2 0 1 0 273.1190871926641 115.18885438199983 L 271.8 120.6 L 278.2 120.6 Z '/>
-		<svg:circle stroke-width='1' cx='252.6' cy='115' r='6.4' fill='white' stroke='transparent' />
-		<svg:circle stroke-width='1' cx='257.4' cy='115' r='6.4' fill='white' stroke='transparent' />
-		<svg:circle stroke-width='1' cx='252.59999999999997' cy='115' r='6.4' fill='transparent' stroke='black' />
-		<svg:circle stroke-width='1' cx='257.4' cy='115' r='6.4' fill='transparent' stroke='black' />
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 275 68.6 L 280.5424 78.2 L 269.4576 78.2 Z '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 293.86524822695037 132.7304964539007 C 290.4609929078014 132.7304964539007 , 290.4609929078014 129.32624113475177 , 293.86524822695037 129.32624113475177 C 300.67375886524826 129.32624113475177 , 300.67375886524826 140.67375886524823 , 293.86524822695037 140.67375886524823 C 290.4609929078014 140.67375886524823 , 290.4609929078014 137.2695035460993 , 293.86524822695037 137.2695035460993 C 295.5673758865248 137.2695035460993 , 295.5673758865248 132.7304964539007 , 293.86524822695037 132.7304964539007 Z  '/>
-		<svg:path  stroke-width='1' fill='black' stroke='black' d='M 235 40.76 L 232.12 35 C 229.24 29.24, 240.76 29.24, 237.88 35 Z '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 375 29.24 L 372.12 35 C 369.24 40.76, 380.76 40.76, 377.88 35 Z '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 297.83687943262413 168.75886524822695 L 297.83687943262413 177.8368794326241 L 288.758865248227 177.8368794326241 Z  '/>
-		<svg:circle stroke-width='1' cx='192.6' cy='155' r='6.4' fill='white' stroke='transparent' />
-		<svg:circle stroke-width='1' cx='197.4' cy='155' r='6.4' fill='white' stroke='transparent' />
-		<svg:circle stroke-width='1' cx='192.6' cy='155' r='6.4' fill='transparent' stroke='black' />
-		<svg:circle stroke-width='1' cx='197.4' cy='155' r='6.4' fill='transparent' stroke='black' />
-		<svg:circle stroke-width='1' cx='335' cy='15' r='4.8' fill='white' stroke='black' />
-		<svg:circle stroke-width='1' cx='295' cy='195' r='6.4' fill='white' stroke='black' />
-		<svg:path  stroke-width='1' fill='transparent' stroke='black' d='M 290.47383309759545 199.52616690240453 L 299.52616690240455 190.47383309759547 M 299.52616690240455 199.52616690240453 L 295 195 '/>
-		<svg:circle stroke-width='1' cx='415' cy='35' r='4.8' fill='white' stroke='black' />
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 375 288.6 L 380.5424 298.2 L 369.4576 298.2 Z '/>
-		<svg:circle stroke-width='1' cx='455' cy='215' r='4.8' fill='white' stroke='black' />
-		<svg:circle stroke-width='1' cx='35' cy='235' r='6.4' fill='white' stroke='black' />
-		<svg:circle stroke-width='1' cx='35' cy='235' r='4.268800000000001' fill='white' stroke='black' />
-		<svg:circle stroke-width='1' cx='35' cy='235' r='2.1376000000000004' fill='white' stroke='black' />
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 350.4609929078014 250.46099290780143 L 359.5390070921986 250.46099290780143 L 359.5390070921986 259.5390070921986 L 350.4609929078014 259.5390070921986  Z  M 351.97399527186764 252.7304964539007 L 358.02600472813236 252.7304964539007 M 351.97399527186764 255 L 358.02600472813236 255 M 351.97399527186764 257.2695035460993 L 358.02600472813236 257.2695035460993 '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 376.8809128073359 315.1888543819999 A 3.2 3.2 0 1 0 373.1190871926641 315.1888543819999 L 371.8 320.6 L 378.2 320.6 Z '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 595 268.6 L 591.2368 280.1776 L 601.0864 273.0224 L 588.9136 273.0224 L 598.7632 280.1776 Z '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 575 328.6 L 571.2368 340.1776 L 581.0864 333.0224 L 568.9136 333.0224 L 578.7632 340.1776 Z '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 475 88.6 L 471.2368 100.1776 L 481.0864 93.0224 L 468.9136 93.0224 L 478.7632 100.1776 Z '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 433.86524822695037 372.7304964539007 C 430.4609929078014 372.7304964539007 , 430.4609929078014 369.32624113475174 , 433.86524822695037 369.32624113475174 C 440.67375886524826 369.32624113475174 , 440.67375886524826 380.67375886524826 , 433.86524822695037 380.67375886524826 C 430.4609929078014 380.67375886524826 , 430.4609929078014 377.2695035460993 , 433.86524822695037 377.2695035460993 C 435.5673758865248 377.2695035460993 , 435.5673758865248 372.7304964539007 , 433.86524822695037 372.7304964539007 Z  '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 32.730496453900706 472.7304964539007 C 30.46099290780142 468.1914893617021, 39.53900709219858 468.1914893617021, 37.269503546099294 472.7304964539007 C 41.808510638297875 470.4609929078014, 41.808510638297875 479.5390070921986, 37.269503546099294 477.2695035460993 C 39.53900709219858 481.8085106382979, 30.46099290780142 481.8085106382979, 32.730496453900706 477.2695035460993 C 28.191489361702125 479.5390070921986, 28.191489361702125 470.4609929078014, 32.730496453900706 472.7304964539007 Z '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 28.6 495 C 31.8 489.88 , 38.2 489.88 , 41.4 495 C 38.2 500.12 , 31.8 500.12 , 28.6 495 Z  '/>
-		<svg:circle stroke-width='1' cx='35' cy='495' r='1.6' fill='transparent' stroke='black' />
-		<svg:circle stroke-width='1' cx='212.6' cy='455' r='6.4' fill='white' stroke='transparent' />
-		<svg:circle stroke-width='1' cx='217.4' cy='455' r='6.4' fill='white' stroke='transparent' />
-		<svg:circle stroke-width='1' cx='212.6' cy='455' r='6.4' fill='transparent' stroke='black' />
-		<svg:circle stroke-width='1' cx='217.4' cy='455' r='6.4' fill='transparent' stroke='black' />
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 437.83687943262413 408.758865248227 L 437.83687943262413 417.83687943262413 L 428.758865248227 417.83687943262413 Z  '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 93.56 549.88 L 92.12 555.64 C 89.24 561.4 , 100.76 561.4 , 97.88 555.64 L 96.44 549.88 '/>
-		<svg:circle stroke-width='1' cx='132.6' cy='395' r='6.4' fill='white' stroke='transparent' />
-		<svg:circle stroke-width='1' cx='137.4' cy='395' r='6.4' fill='white' stroke='transparent' />
-		<svg:circle stroke-width='1' cx='132.6' cy='395' r='6.4' fill='transparent' stroke='black' />
-		<svg:circle stroke-width='1' cx='137.4' cy='395' r='6.4' fill='transparent' stroke='black' />
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 301.4 435 A 6.4 6.4 0 1 0 301.4 435 '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 295 432.8666666666667 A 2.1333333333333333 2.1333333333333333 0 0 0 295 437.1333333333333 M 295 441.4 A 4.266666666666667 4.266666666666667 0 0 0 295 432.8666666666667 M 301.4 435 A 6.4 6.4 0 1 0 295 441.4 '/>
-		<svg:circle stroke-width='1' cx='312.6' cy='515' r='6.4' fill='white' stroke='transparent' />
-		<svg:circle stroke-width='1' cx='317.40000000000003' cy='515' r='6.4' fill='white' stroke='transparent' />
-		<svg:circle stroke-width='1' cx='312.6' cy='515' r='6.4' fill='transparent' stroke='black' />
-		<svg:circle stroke-width='1' cx='317.40000000000003' cy='515' r='6.4' fill='transparent' stroke='black' />
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 90.46099290780141 610.4609929078014 L 95 613.4869976359338 L 99.53900709219859 610.4609929078014 L 95 619.5390070921986 Z  '/>
-		<svg:circle stroke-width='1' cx='435' cy='535' r='6.4' fill='white' stroke='black' />
-		<svg:path  stroke-width='1' fill='transparent' stroke='black' d='M 430.47383309759545 539.5261669024045 L 439.52616690240455 530.4738330975955 M 439.52616690240455 539.5261669024045 L 435 535 '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 610.4609929078014 430.4609929078014 L 619.5390070921986 430.4609929078014 L 619.5390070921986 439.5390070921986 L 610.4609929078014 439.5390070921986  Z  M 611.9739952718676 432.7304964539007 L 618.0260047281324 432.7304964539007 M 611.9739952718676 435 L 618.0260047281324 435 M 611.9739952718676 437.2695035460993 L 618.0260047281324 437.2695035460993 '/>
-		<svg:circle stroke-width='1' cx='75' cy='635' r='4.8' fill='white' stroke='black' />
-		<svg:path  stroke-width='1' fill='black' stroke='transparent' d='M 70.2 635 A 4.8 4.8 0 0 0 79.8 635Z '/>
-		<svg:circle stroke-width='1' cx='72.85' cy='635' r='2.15' fill='black' stroke='transparent' />
-		<svg:circle stroke-width='1' cx='77.15' cy='635' r='2.15' fill='white' stroke='transparent' />
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 441.4 595 A 6.4 6.4 0 1 0 441.4 595 '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 435 592.8666666666667 A 2.1333333333333333 2.1333333333333333 0 0 0 435 597.1333333333333 M 435 601.4 A 4.266666666666667 4.266666666666667 0 0 0 435 592.8666666666667 M 441.4 595 A 6.4 6.4 0 1 0 435 601.4 '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 510.4609929078014 590.4609929078014 L 519.5390070921986 590.4609929078014 L 519.5390070921986 599.5390070921986 L 510.4609929078014 599.5390070921986  Z  M 511.97399527186764 592.7304964539007 L 518.0260047281324 592.7304964539007 M 511.97399527186764 595 L 518.0260047281324 595 M 511.97399527186764 597.2695035460993 L 518.0260047281324 597.2695035460993 '/>
-		<svg:circle stroke-width='1' cx='12.6' cy='315' r='6.4' fill='white' stroke='transparent' />
-		<svg:circle stroke-width='1' cx='17.4' cy='315' r='6.4' fill='white' stroke='transparent' />
-		<svg:circle stroke-width='1' cx='12.599999999999998' cy='315' r='6.4' fill='transparent' stroke='black' />
-		<svg:circle stroke-width='1' cx='17.4' cy='315' r='6.4' fill='transparent' stroke='black' />
-		<svg:circle stroke-width='1' cx='112.6' cy='475' r='6.4' fill='white' stroke='transparent' />
-		<svg:circle stroke-width='1' cx='117.39999999999999' cy='475' r='6.4' fill='white' stroke='transparent' />
-		<svg:circle stroke-width='1' cx='112.6' cy='475' r='6.4' fill='transparent' stroke='black' />
-		<svg:circle stroke-width='1' cx='117.39999999999999' cy='475' r='6.4' fill='transparent' stroke='black' />
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 550.4609929078014 650.4609929078014 L 559.5390070921986 650.4609929078014 L 559.5390070921986 659.5390070921986 L 550.4609929078014 659.5390070921986  Z  M 551.9739952718676 652.7304964539007 L 558.0260047281324 652.7304964539007 M 551.9739952718676 655 L 558.0260047281324 655 M 551.9739952718676 657.2695035460993 L 558.0260047281324 657.2695035460993 '/>
+	<svg:svg width='690mm' height='750mm' viewBox='0 0 690 750' version='1.1'>
+		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='#dcdcdc' d='M 15 0 L 15 2007 M 35 0 L 35 2007 M 95 0 L 95 2007 M 115 0 L 115 2007 M 135 0 L 135 2007 M 155 0 L 155 2007 M 175 0 L 175 2007 M 195 0 L 195 2007 M 215 0 L 215 2007 M 235 0 L 235 2007 M 255 0 L 255 2007 M 275 0 L 275 2007 M 295 0 L 295 2007 M 315 0 L 315 2007 M 335 0 L 335 2007 M 355 0 L 355 2007 M 375 0 L 375 2007 M 395 0 L 395 2007 M 415 0 L 415 2007 M 435 0 L 435 2007 M 455 0 L 455 2007 M 475 0 L 475 2007 M 495 0 L 495 2007 M 635 0 L 635 2007 M 655 0 L 655 2007 M 0 15 L 1842 15 M 0 35 L 1842 35 M 0 55 L 1842 55 M 0 75 L 1842 75 M 0 95 L 1842 95 M 0 115 L 1842 115 M 0 135 L 1842 135 M 0 155 L 1842 155 M 0 175 L 1842 175 M 0 195 L 1842 195 M 0 215 L 1842 215 M 0 255 L 1842 255 M 0 275 L 1842 275 M 0 295 L 1842 295 M 0 315 L 1842 315 M 0 335 L 1842 335 M 0 355 L 1842 355 M 0 375 L 1842 375 M 0 395 L 1842 395 M 0 415 L 1842 415 M 0 435 L 1842 435 M 0 455 L 1842 455 M 0 475 L 1842 475 M 0 495 L 1842 495 M 0 535 L 1842 535 M 0 575 L 1842 575 M 0 615 L 1842 615 M 0 655 L 1842 655 M 0 695 L 1842 695 M 0 715 L 1842 715 M -25 -25 L 1475 1475 M 15 -25 L 1515 1475 M 35 -25 L 1535 1475 M 55 -25 L 1555 1475 M 75 -25 L 1575 1475 M 95 -25 L 1595 1475 M 115 -25 L 1615 1475 M 175 -25 L 1675 1475 M 195 -25 L 1695 1475 M 275 -25 L 1775 1475 M 455 -25 L 1955 1475 M -45 -25 L 1455 1475 M -65 -25 L 1435 1475 M -85 -25 L 1415 1475 M -105 -25 L 1395 1475 M -125 -25 L 1375 1475 M -145 -25 L 1355 1475 M -165 -25 L 1335 1475 M -185 -25 L 1315 1475 M -205 -25 L 1295 1475 M -225 -25 L 1275 1475 M -245 -25 L 1255 1475 M -265 -25 L 1235 1475 M -285 -25 L 1215 1475 M -305 -25 L 1195 1475 M -325 -25 L 1175 1475 M -625 -25 L 875 1475 M -165 1475 L 1335 -25 M -345 1475 L 1155 -25 M -405 1475 L 1095 -25 M -465 1475 L 1035 -25 M -505 1475 L 995 -25 M -545 1475 L 955 -25 M -605 1475 L 895 -25 M -625 1475 L 875 -25 M -645 1475 L 855 -25 M -665 1475 L 835 -25 M -685 1475 L 815 -25 M -705 1475 L 795 -25 M -745 1475 L 755 -25 M -765 1475 L 735 -25 M -785 1475 L 715 -25 M -805 1475 L 695 -25 M -865 1475 L 635 -25 M -905 1475 L 595 -25 M -965 1475 L 535 -25 M -985 1475 L 515 -25 M -1025 1475 L 475 -25 M -1045 1475 L 455 -25 M -1085 1475 L 415 -25 M -1105 1475 L 395 -25 M -1145 1475 L 355 -25 M -1165 1475 L 335 -25 M -1185 1475 L 315 -25 M -1205 1475 L 295 -25 M -1225 1475 L 275 -25 M -1245 1475 L 255 -25 '/>
+		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='black' d='M 215 75 L 195 75 M 195 75 L 175 75 M 175 75 L 155 95 M 195 75 L 195 115 M 155 95 L 155 175 M 175 75 L 235 135 M 235 135 L 235 195 M 195 115 L 195 255 M 195 255 L 135 255 M 195 115 L 255 55 M 155 95 L 275 215 M 235 135 L 335 35 M 235 195 L 35 195 M 155 175 L 155 355 M 195 115 L 15 295 M 195 255 L 315 375 M 155 355 L 295 495 M 315 375 L 315 395 M 315 395 L 315 415 M 235 195 L 355 315 M 335 35 L 455 155 M 235 135 L 95 275 M 215 75 L 475 335 M 355 315 L 355 575 M 255 55 L 635 435 M 315 415 L 315 455 M 295 495 L 295 535 M 315 415 L 375 475 M 155 175 L 395 175 M 355 575 L 355 615 M 155 355 L 495 15 M 355 615 L 355 655 M 315 455 L 415 455 M 295 535 L 115 715 M 355 655 L 655 655 M 355 615 L 435 695 '/>
+		<svg:circle stroke-width='1' cx='215' cy='75' r='4.8' fill='white' stroke='black' />
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 195 69.24 L 192.12 75 C 189.24 80.76, 200.76 80.76, 197.88 75 Z '/>
+		<svg:path  stroke-width='1' fill='black' stroke='black' d='M 175 80.76 L 172.12 75 C 169.24 69.24, 180.76 69.24, 177.88 75 Z '/>
+		<svg:circle stroke-width='1' cx='155' cy='95' r='6.4' fill='white' stroke='black' />
+		<svg:circle stroke-width='1' cx='155' cy='95' r='4.268800000000001' fill='white' stroke='black' />
+		<svg:circle stroke-width='1' cx='155' cy='95' r='2.1376000000000004' fill='white' stroke='black' />
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 195 108.6 L 200.5424 118.2 L 189.4576 118.2 Z '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 152.7304964539007 172.7304964539007 C 150.46099290780143 168.19148936170214, 159.53900709219857 168.19148936170214, 157.2695035460993 172.7304964539007 C 161.80851063829786 170.46099290780143, 161.80851063829786 179.53900709219857, 157.2695035460993 177.2695035460993 C 159.53900709219857 181.80851063829786, 150.46099290780143 181.80851063829786, 152.7304964539007 177.2695035460993 C 148.19148936170214 179.53900709219857, 148.19148936170214 170.46099290780143, 152.7304964539007 172.7304964539007 Z '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 235 128.6 L 240.5424 138.2 L 229.4576 138.2 Z '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 236.8809128073359 195.18885438199985 A 3.2 3.2 0 1 0 233.1190871926641 195.18885438199985 L 231.8 200.60000000000002 L 238.2 200.60000000000002 Z '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 196.8809128073359 255.18885438199985 A 3.2 3.2 0 1 0 193.1190871926641 255.18885438199985 L 191.8 260.6 L 198.2 260.6 Z '/>
+		<svg:circle stroke-width='1' cx='132.6' cy='255' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='137.4' cy='255' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='132.6' cy='255' r='6.4' fill='transparent' stroke='black' />
+		<svg:circle stroke-width='1' cx='137.4' cy='255' r='6.4' fill='transparent' stroke='black' />
+		<svg:circle stroke-width='1' cx='255' cy='55' r='4.8' fill='white' stroke='black' />
+		<svg:circle stroke-width='1' cx='272.6' cy='215' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='277.40000000000003' cy='215' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='272.6' cy='215' r='6.4' fill='transparent' stroke='black' />
+		<svg:circle stroke-width='1' cx='277.40000000000003' cy='215' r='6.4' fill='transparent' stroke='black' />
+		<svg:circle stroke-width='1' cx='335' cy='35' r='4.8' fill='white' stroke='black' />
+		<svg:circle stroke-width='1' cx='32.6' cy='195' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='37.4' cy='195' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='32.6' cy='195' r='6.4' fill='transparent' stroke='black' />
+		<svg:circle stroke-width='1' cx='37.4' cy='195' r='6.4' fill='transparent' stroke='black' />
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 148.6 355 C 151.8 349.88 , 158.2 349.88 , 161.4 355 C 158.2 360.12 , 151.8 360.12 , 148.6 355 Z  '/>
+		<svg:circle stroke-width='1' cx='155' cy='355' r='1.6' fill='transparent' stroke='black' />
+		<svg:circle stroke-width='1' cx='12.6' cy='295' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='17.4' cy='295' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='12.599999999999998' cy='295' r='6.4' fill='transparent' stroke='black' />
+		<svg:circle stroke-width='1' cx='17.4' cy='295' r='6.4' fill='transparent' stroke='black' />
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 313.86524822695037 372.7304964539007 C 310.4609929078014 372.7304964539007 , 310.4609929078014 369.32624113475174 , 313.86524822695037 369.32624113475174 C 320.67375886524826 369.32624113475174 , 320.67375886524826 380.67375886524826 , 313.86524822695037 380.67375886524826 C 310.4609929078014 380.67375886524826 , 310.4609929078014 377.2695035460993 , 313.86524822695037 377.2695035460993 C 315.5673758865248 377.2695035460993 , 315.5673758865248 372.7304964539007 , 313.86524822695037 372.7304964539007 Z  '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 293.56 489.88 L 292.12 495.64 C 289.24 501.4 , 300.76 501.4 , 297.88 495.64 L 296.44 489.88 '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 317.83687943262413 388.758865248227 L 317.83687943262413 397.83687943262413 L 308.758865248227 397.83687943262413 Z  '/>
+		<svg:circle stroke-width='1' cx='315' cy='415' r='6.4' fill='white' stroke='black' />
+		<svg:path  stroke-width='1' fill='transparent' stroke='black' d='M 310.47383309759545 419.52616690240455 L 319.52616690240455 410.47383309759545 M 319.52616690240455 419.52616690240455 L 315 415 '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 353.86524822695037 312.7304964539007 C 350.4609929078014 312.7304964539007 , 350.4609929078014 309.32624113475174 , 353.86524822695037 309.32624113475174 C 360.67375886524826 309.32624113475174 , 360.67375886524826 320.67375886524826 , 353.86524822695037 320.67375886524826 C 350.4609929078014 320.67375886524826 , 350.4609929078014 317.2695035460993 , 353.86524822695037 317.2695035460993 C 355.5673758865248 317.2695035460993 , 355.5673758865248 312.7304964539007 , 353.86524822695037 312.7304964539007 Z  '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 455 148.6 L 451.2368 160.1776 L 461.0864 153.0224 L 448.9136 153.0224 L 458.7632 160.1776 Z '/>
+		<svg:circle stroke-width='1' cx='92.6' cy='275' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='97.39999999999999' cy='275' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='92.6' cy='275' r='6.4' fill='transparent' stroke='black' />
+		<svg:circle stroke-width='1' cx='97.39999999999999' cy='275' r='6.4' fill='transparent' stroke='black' />
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 475 328.6 L 471.2368 340.1776 L 481.0864 333.0224 L 468.9136 333.0224 L 478.7632 340.1776 Z '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 357.83687943262413 568.7588652482269 L 357.83687943262413 577.8368794326242 L 348.758865248227 577.8368794326242 Z  '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 635 428.6 L 631.2368 440.1776 L 641.0864 433.0224 L 628.9136 433.0224 L 638.7632 440.1776 Z '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 321.4 455 A 6.4 6.4 0 1 0 321.4 455 '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 315 452.8666666666667 A 2.1333333333333333 2.1333333333333333 0 0 0 315 457.1333333333333 M 315 461.4 A 4.266666666666667 4.266666666666667 0 0 0 315 452.8666666666667 M 321.4 455 A 6.4 6.4 0 1 0 315 461.4 '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 290.4609929078014 530.4609929078014 L 295 533.4869976359338 L 299.5390070921986 530.4609929078014 L 295 539.5390070921986 Z  '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 370.4609929078014 470.4609929078014 L 379.5390070921986 470.4609929078014 L 379.5390070921986 479.5390070921986 L 370.4609929078014 479.5390070921986  Z  M 371.97399527186764 472.7304964539007 L 378.02600472813236 472.7304964539007 M 371.97399527186764 475 L 378.02600472813236 475 M 371.97399527186764 477.2695035460993 L 378.02600472813236 477.2695035460993 '/>
+		<svg:circle stroke-width='1' cx='392.6' cy='175' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='397.40000000000003' cy='175' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='392.6' cy='175' r='6.4' fill='transparent' stroke='black' />
+		<svg:circle stroke-width='1' cx='397.40000000000003' cy='175' r='6.4' fill='transparent' stroke='black' />
+		<svg:circle stroke-width='1' cx='355' cy='615' r='6.4' fill='white' stroke='black' />
+		<svg:path  stroke-width='1' fill='transparent' stroke='black' d='M 350.47383309759545 619.5261669024045 L 359.52616690240455 610.4738330975955 M 359.52616690240455 619.5261669024045 L 355 615 '/>
+		<svg:circle stroke-width='1' cx='492.6' cy='15' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='497.40000000000003' cy='15' r='6.4' fill='white' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='492.6' cy='15' r='6.4' fill='transparent' stroke='black' />
+		<svg:circle stroke-width='1' cx='497.40000000000003' cy='15' r='6.4' fill='transparent' stroke='black' />
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 361.4 655 A 6.4 6.4 0 1 0 361.4 655 '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 355 652.8666666666667 A 2.1333333333333333 2.1333333333333333 0 0 0 355 657.1333333333333 M 355 661.4 A 4.266666666666667 4.266666666666667 0 0 0 355 652.8666666666667 M 361.4 655 A 6.4 6.4 0 1 0 355 661.4 '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 410.4609929078014 450.4609929078014 L 419.5390070921986 450.4609929078014 L 419.5390070921986 459.5390070921986 L 410.4609929078014 459.5390070921986  Z  M 411.97399527186764 452.7304964539007 L 418.02600472813236 452.7304964539007 M 411.97399527186764 455 L 418.02600472813236 455 M 411.97399527186764 457.2695035460993 L 418.02600472813236 457.2695035460993 '/>
+		<svg:circle stroke-width='1' cx='115' cy='715' r='4.8' fill='white' stroke='black' />
+		<svg:path  stroke-width='1' fill='black' stroke='transparent' d='M 110.2 715 A 4.8 4.8 0 0 0 119.8 715Z '/>
+		<svg:circle stroke-width='1' cx='112.85' cy='715' r='2.15' fill='black' stroke='transparent' />
+		<svg:circle stroke-width='1' cx='117.15' cy='715' r='2.15' fill='white' stroke='transparent' />
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 650.4609929078014 650.4609929078014 L 659.5390070921986 650.4609929078014 L 659.5390070921986 659.5390070921986 L 650.4609929078014 659.5390070921986  Z  M 651.9739952718676 652.7304964539007 L 658.0260047281324 652.7304964539007 M 651.9739952718676 655 L 658.0260047281324 655 M 651.9739952718676 657.2695035460993 L 658.0260047281324 657.2695035460993 '/>
+		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 430.4609929078014 690.4609929078014 L 439.5390070921986 690.4609929078014 L 439.5390070921986 699.5390070921986 L 430.4609929078014 699.5390070921986  Z  M 431.97399527186764 692.7304964539007 L 438.02600472813236 692.7304964539007 M 431.97399527186764 695 L 438.02600472813236 695 M 431.97399527186764 697.2695035460993 L 438.02600472813236 697.2695035460993 '/>
 	</svg:svg>
 	<!-- ... -->
 </parent>

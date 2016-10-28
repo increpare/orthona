@@ -8,13 +8,13 @@ module.exports.scaleMin=0.25;
 module.exports.scaleMax=1.0;
 
 var glyphNames = [
-"PersonA","PersonB","ThingA","ThingB","blank",//0-4
-"Identity","","","","",//5-9
-"","","","","",//10-14
-"","","","","",//15-19
-"","","","","",//20-24
-"","","","","",//25-29
-"","","","","",//30-34
+"Person","Person","Object","Object","blank",//0-4
+"Identity","Good","Alter","Collection","Event",//5-9
+"Plural","Friend","Ask","Want","Power",//10-14
+"See","Say","Touch","Hear","Eat",//15-19
+"Know","Smell","Time","Action","Go",//20-24
+"Size","Pain","Difficult","Cause","Able",//25-29
+"Sex","Internal","Familiar","Living","Read",//30-34
 ];
 
 for (var i=0;i<glyphNames.length;i++){

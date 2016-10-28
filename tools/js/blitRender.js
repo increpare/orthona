@@ -49,6 +49,17 @@ var tilesets = [
         spacing:40,
         fgcol:"#ffffff",
         bgcol:"#000000"
+    },
+    {
+        name:"octo",
+        tw:64,
+        th:64,
+        overlapx:0,
+        overlapy:0,
+        linew:2,
+        spacing:5,
+        fgcol:"#c05959",
+        bgcol:"#ffffff"
     }
 ]
 
@@ -92,17 +103,14 @@ function blitRender(_tileset) {
 
     if (glob.drawLines){
         ctx.beginPath();
-        log("gl"+glob.page.lines.length);
         for (var i=0;i<glob.page.lines.length;i++){
             var l = glob.page.lines[i];
-            log("l= ",l)
             var x1 = (tiledat.tw+tiledat.spacing)*l[0]+(tiledat.tw/2);
             var y1 = (tiledat.th+tiledat.spacing)*l[1]+(tiledat.th/2);
             var x2 = (tiledat.tw+tiledat.spacing)*l[2]+(tiledat.tw/2);
             var y2 = (tiledat.th+tiledat.spacing)*l[3]+(tiledat.th/2);
             ctx.moveTo(x1,y1);
             ctx.lineTo(x2,y2);
-            log(x1,y1,x2,y2)
             if (l[4]===1){
                 var mx = (x1+x2)/2;
                 var my = (y1+y2)/2;
@@ -117,7 +125,6 @@ function blitRender(_tileset) {
                     my+dy*2*tiledat.linew);
             }
         }
-        log("ra")
         ctx.stroke();
     }
 

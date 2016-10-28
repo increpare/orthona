@@ -31,8 +31,9 @@ var startPosY=0;
 function SaveState(){
     var sketch_save = JSON.stringify({book:glob.sketchBook,page:glob.sketchBookIndex});
     localStorage.setItem("glob.sketchBookDat",sketch_save);
-    console.log(JSON.stringify(glob.page))
+    console.log(JSON.stringify(glob.sketchBook))
 }
+
 function TryRestoreState(){
     var sketch_save = localStorage.getItem("glob.sketchBookDat");
     if (sketch_save!==null){
@@ -113,6 +114,7 @@ function clearEverything(){
         glob.sketchBookIndex--;
     }
     LoadPage();
+    SaveState();
 }
 
 function iconAt(tx,ty){
@@ -249,9 +251,9 @@ function handleStart(evt) {
 function newTitle(){        
     var onSucess = function(){};
     var s = prompt("enter title",glob.page.sketchTitle).toUpperCase();
-    if (s.length>5){
-        s=s.substr(0,5);
-    }
+//    if (s.length>5){
+//        s=s.substr(0,5);
+//    }
     glob.page.sketchTitle=s;
     SaveState();
 }
