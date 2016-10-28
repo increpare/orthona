@@ -5,22 +5,9 @@
                 11,
                 6,
                 0
-            ],
-            [
-                10,
-                5,
-                0
             ]
         ],
-        "lines": [
-            [
-                11,
-                6,
-                10,
-                5,
-                0
-            ]
-        ],
+        "lines": [],
         "offsetX": 0,
         "offsetY": 0,
         "scale": 1,
@@ -37,411 +24,6 @@
                 10,
                 5,
                 0
-            ]
-        ],
-        "lines": [
-            [
-                11,
-                6,
-                10,
-                5,
-                1
-            ]
-        ],
-        "offsetX": 0,
-        "offsetY": 0,
-        "scale": 1,
-        "sketchTitle": ""
-    },
-    {
-        "elements": [
-            [
-                11,
-                6,
-                0
-            ],
-            [
-                10,
-                6,
-                0
-            ]
-        ],
-        "lines": [
-            [
-                11,
-                6,
-                10,
-                6,
-                0
-            ]
-        ],
-        "offsetX": 0,
-        "offsetY": 0,
-        "scale": 1,
-        "sketchTitle": ""
-    },
-    {
-        "elements": [
-            [
-                11,
-                6,
-                0
-            ],
-            [
-                10,
-                6,
-                0
-            ]
-        ],
-        "lines": [
-            [
-                11,
-                6,
-                10,
-                6,
-                1
-            ]
-        ],
-        "offsetX": 0,
-        "offsetY": 0,
-        "scale": 1,
-        "sketchTitle": ""
-    },
-    {
-        "elements": [
-            [
-                11,
-                6,
-                0
-            ],
-            [
-                10,
-                7,
-                0
-            ]
-        ],
-        "lines": [
-            [
-                11,
-                6,
-                10,
-                7,
-                0
-            ]
-        ],
-        "offsetX": 0,
-        "offsetY": 0,
-        "scale": 1,
-        "sketchTitle": ""
-    },
-    {
-        "elements": [
-            [
-                11,
-                6,
-                0
-            ],
-            [
-                10,
-                7,
-                0
-            ]
-        ],
-        "lines": [
-            [
-                11,
-                6,
-                10,
-                7,
-                1
-            ]
-        ],
-        "offsetX": 0,
-        "offsetY": 0,
-        "scale": 1,
-        "sketchTitle": ""
-    },
-    {
-        "elements": [
-            [
-                11,
-                6,
-                0
-            ],
-            [
-                11,
-                5,
-                0
-            ]
-        ],
-        "lines": [
-            [
-                11,
-                6,
-                11,
-                5,
-                0
-            ]
-        ],
-        "offsetX": 0,
-        "offsetY": 0,
-        "scale": 1,
-        "sketchTitle": ""
-    },
-    {
-        "elements": [
-            [
-                11,
-                6,
-                0
-            ],
-            [
-                11,
-                5,
-                0
-            ]
-        ],
-        "lines": [
-            [
-                11,
-                6,
-                11,
-                5,
-                1
-            ]
-        ],
-        "offsetX": 0,
-        "offsetY": 0,
-        "scale": 1,
-        "sketchTitle": ""
-    },
-    {
-        "elements": [
-            [
-                11,
-                6,
-                0
-            ],
-            [
-                11,
-                7,
-                0
-            ]
-        ],
-        "lines": [
-            [
-                11,
-                6,
-                11,
-                7,
-                0
-            ]
-        ],
-        "offsetX": 0,
-        "offsetY": 0,
-        "scale": 1,
-        "sketchTitle": ""
-    },
-    {
-        "elements": [
-            [
-                11,
-                6,
-                0
-            ],
-            [
-                11,
-                7,
-                0
-            ]
-        ],
-        "lines": [
-            [
-                11,
-                6,
-                11,
-                7,
-                1
-            ]
-        ],
-        "offsetX": 0,
-        "offsetY": 0,
-        "scale": 1,
-        "sketchTitle": ""
-    },
-    {
-        "elements": [
-            [
-                11,
-                6,
-                0
-            ],
-            [
-                12,
-                5,
-                0
-            ]
-        ],
-        "lines": [
-            [
-                11,
-                6,
-                12,
-                5,
-                0
-            ]
-        ],
-        "offsetX": 0,
-        "offsetY": 0,
-        "scale": 1,
-        "sketchTitle": ""
-    },
-    {
-        "elements": [
-            [
-                11,
-                6,
-                0
-            ],
-            [
-                12,
-                5,
-                0
-            ]
-        ],
-        "lines": [
-            [
-                11,
-                6,
-                12,
-                5,
-                1
-            ]
-        ],
-        "offsetX": 0,
-        "offsetY": 0,
-        "scale": 1,
-        "sketchTitle": ""
-    },
-    {
-        "elements": [
-            [
-                11,
-                6,
-                0
-            ],
-            [
-                12,
-                6,
-                0
-            ]
-        ],
-        "lines": [
-            [
-                11,
-                6,
-                12,
-                6,
-                0
-            ]
-        ],
-        "offsetX": 0,
-        "offsetY": 0,
-        "scale": 1,
-        "sketchTitle": ""
-    },
-    {
-        "elements": [
-            [
-                11,
-                6,
-                0
-            ],
-            [
-                12,
-                6,
-                0
-            ]
-        ],
-        "lines": [
-            [
-                11,
-                6,
-                12,
-                6,
-                1
-            ]
-        ],
-        "offsetX": 0,
-        "offsetY": 0,
-        "scale": 1,
-        "sketchTitle": ""
-    },
-    {
-        "elements": [
-            [
-                11,
-                6,
-                0
-            ],
-            [
-                12,
-                7,
-                0
-            ]
-        ],
-        "lines": [
-            [
-                11,
-                6,
-                12,
-                7,
-                0
-            ]
-        ],
-        "offsetX": 0,
-        "offsetY": 0,
-        "scale": 1,
-        "sketchTitle": ""
-    },
-    {
-        "elements": [
-            [
-                11,
-                6,
-                0
-            ],
-            [
-                12,
-                7,
-                0
-            ]
-        ],
-        "lines": [
-            [
-                11,
-                6,
-                12,
-                7,
-                1
-            ]
-        ],
-        "offsetX": 0,
-        "offsetY": 0,
-        "scale": 1,
-        "sketchTitle": ""
-    },
-    {
-        "elements": [
-            [
-                11,
-                6,
-                0
-            ],
-            [
-                10,
-                5,
-                1
             ]
         ],
         "lines": [
@@ -468,6 +50,452 @@
             [
                 10,
                 5,
+                0
+            ]
+        ],
+        "lines": [
+            [
+                11,
+                6,
+                10,
+                5,
+                1
+            ]
+        ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                0
+            ],
+            [
+                10,
+                6,
+                0
+            ]
+        ],
+        "lines": [
+            [
+                11,
+                6,
+                10,
+                6,
+                0
+            ]
+        ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                0
+            ],
+            [
+                10,
+                6,
+                0
+            ]
+        ],
+        "lines": [
+            [
+                11,
+                6,
+                10,
+                6,
+                1
+            ]
+        ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                0
+            ],
+            [
+                10,
+                7,
+                0
+            ]
+        ],
+        "lines": [
+            [
+                11,
+                6,
+                10,
+                7,
+                0
+            ]
+        ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                0
+            ],
+            [
+                10,
+                7,
+                0
+            ]
+        ],
+        "lines": [
+            [
+                11,
+                6,
+                10,
+                7,
+                1
+            ]
+        ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                0
+            ],
+            [
+                11,
+                5,
+                0
+            ]
+        ],
+        "lines": [
+            [
+                11,
+                6,
+                11,
+                5,
+                0
+            ]
+        ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                0
+            ],
+            [
+                11,
+                5,
+                0
+            ]
+        ],
+        "lines": [
+            [
+                11,
+                6,
+                11,
+                5,
+                1
+            ]
+        ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                0
+            ],
+            [
+                11,
+                7,
+                0
+            ]
+        ],
+        "lines": [
+            [
+                11,
+                6,
+                11,
+                7,
+                0
+            ]
+        ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                0
+            ],
+            [
+                11,
+                7,
+                0
+            ]
+        ],
+        "lines": [
+            [
+                11,
+                6,
+                11,
+                7,
+                1
+            ]
+        ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                0
+            ],
+            [
+                12,
+                5,
+                0
+            ]
+        ],
+        "lines": [
+            [
+                11,
+                6,
+                12,
+                5,
+                0
+            ]
+        ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                0
+            ],
+            [
+                12,
+                5,
+                0
+            ]
+        ],
+        "lines": [
+            [
+                11,
+                6,
+                12,
+                5,
+                1
+            ]
+        ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                0
+            ],
+            [
+                12,
+                6,
+                0
+            ]
+        ],
+        "lines": [
+            [
+                11,
+                6,
+                12,
+                6,
+                0
+            ]
+        ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                0
+            ],
+            [
+                12,
+                6,
+                0
+            ]
+        ],
+        "lines": [
+            [
+                11,
+                6,
+                12,
+                6,
+                1
+            ]
+        ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                0
+            ],
+            [
+                12,
+                7,
+                0
+            ]
+        ],
+        "lines": [
+            [
+                11,
+                6,
+                12,
+                7,
+                0
+            ]
+        ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                0
+            ],
+            [
+                12,
+                7,
+                0
+            ]
+        ],
+        "lines": [
+            [
+                11,
+                6,
+                12,
+                7,
+                1
+            ]
+        ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                1
+            ]
+        ],
+        "lines": [],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                0
+            ],
+            [
+                10,
+                5,
+                1
+            ]
+        ],
+        "lines": [
+            [
+                11,
+                6,
+                10,
+                5,
+                0
+            ]
+        ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                0
+            ],
+            [
+                10,
+                5,
                 1
             ]
         ],
@@ -858,6 +886,20 @@
                 1
             ]
         ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                2
+            ]
+        ],
+        "lines": [],
         "offsetX": 0,
         "offsetY": 0,
         "scale": 1,
@@ -1300,6 +1342,20 @@
             [
                 11,
                 6,
+                3
+            ]
+        ],
+        "lines": [],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
                 0
             ],
             [
@@ -1722,6 +1778,20 @@
                 1
             ]
         ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                4
+            ]
+        ],
+        "lines": [],
         "offsetX": 0,
         "offsetY": 0,
         "scale": 1,
@@ -2164,6 +2234,20 @@
             [
                 11,
                 6,
+                5
+            ]
+        ],
+        "lines": [],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
                 0
             ],
             [
@@ -2586,6 +2670,20 @@
                 1
             ]
         ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                6
+            ]
+        ],
+        "lines": [],
         "offsetX": 0,
         "offsetY": 0,
         "scale": 1,
@@ -3028,6 +3126,20 @@
             [
                 11,
                 6,
+                7
+            ]
+        ],
+        "lines": [],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
                 0
             ],
             [
@@ -3450,6 +3562,20 @@
                 1
             ]
         ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                8
+            ]
+        ],
+        "lines": [],
         "offsetX": 0,
         "offsetY": 0,
         "scale": 1,
@@ -3892,6 +4018,20 @@
             [
                 11,
                 6,
+                9
+            ]
+        ],
+        "lines": [],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
                 0
             ],
             [
@@ -4314,6 +4454,20 @@
                 1
             ]
         ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                10
+            ]
+        ],
+        "lines": [],
         "offsetX": 0,
         "offsetY": 0,
         "scale": 1,
@@ -4756,6 +4910,20 @@
             [
                 11,
                 6,
+                11
+            ]
+        ],
+        "lines": [],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
                 0
             ],
             [
@@ -5178,6 +5346,20 @@
                 1
             ]
         ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                12
+            ]
+        ],
+        "lines": [],
         "offsetX": 0,
         "offsetY": 0,
         "scale": 1,
@@ -5620,6 +5802,20 @@
             [
                 11,
                 6,
+                13
+            ]
+        ],
+        "lines": [],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
                 0
             ],
             [
@@ -6042,6 +6238,20 @@
                 1
             ]
         ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                14
+            ]
+        ],
+        "lines": [],
         "offsetX": 0,
         "offsetY": 0,
         "scale": 1,
@@ -6484,6 +6694,20 @@
             [
                 11,
                 6,
+                15
+            ]
+        ],
+        "lines": [],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
                 0
             ],
             [
@@ -6906,6 +7130,20 @@
                 1
             ]
         ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                16
+            ]
+        ],
+        "lines": [],
         "offsetX": 0,
         "offsetY": 0,
         "scale": 1,
@@ -7348,6 +7586,20 @@
             [
                 11,
                 6,
+                17
+            ]
+        ],
+        "lines": [],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
                 0
             ],
             [
@@ -7770,6 +8022,20 @@
                 1
             ]
         ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                18
+            ]
+        ],
+        "lines": [],
         "offsetX": 0,
         "offsetY": 0,
         "scale": 1,
@@ -8212,6 +8478,20 @@
             [
                 11,
                 6,
+                19
+            ]
+        ],
+        "lines": [],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
                 0
             ],
             [
@@ -8634,6 +8914,20 @@
                 1
             ]
         ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                20
+            ]
+        ],
+        "lines": [],
         "offsetX": 0,
         "offsetY": 0,
         "scale": 1,
@@ -9076,6 +9370,20 @@
             [
                 11,
                 6,
+                21
+            ]
+        ],
+        "lines": [],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
                 0
             ],
             [
@@ -9498,6 +9806,20 @@
                 1
             ]
         ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                22
+            ]
+        ],
+        "lines": [],
         "offsetX": 0,
         "offsetY": 0,
         "scale": 1,
@@ -9940,6 +10262,20 @@
             [
                 11,
                 6,
+                23
+            ]
+        ],
+        "lines": [],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
                 0
             ],
             [
@@ -10362,6 +10698,20 @@
                 1
             ]
         ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                24
+            ]
+        ],
+        "lines": [],
         "offsetX": 0,
         "offsetY": 0,
         "scale": 1,
@@ -10804,6 +11154,20 @@
             [
                 11,
                 6,
+                25
+            ]
+        ],
+        "lines": [],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
                 0
             ],
             [
@@ -11226,6 +11590,20 @@
                 1
             ]
         ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                26
+            ]
+        ],
+        "lines": [],
         "offsetX": 0,
         "offsetY": 0,
         "scale": 1,
@@ -11668,6 +12046,20 @@
             [
                 11,
                 6,
+                27
+            ]
+        ],
+        "lines": [],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
                 0
             ],
             [
@@ -12090,6 +12482,20 @@
                 1
             ]
         ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                28
+            ]
+        ],
+        "lines": [],
         "offsetX": 0,
         "offsetY": 0,
         "scale": 1,
@@ -12532,6 +12938,20 @@
             [
                 11,
                 6,
+                29
+            ]
+        ],
+        "lines": [],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
                 0
             ],
             [
@@ -12954,6 +13374,20 @@
                 1
             ]
         ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                30
+            ]
+        ],
+        "lines": [],
         "offsetX": 0,
         "offsetY": 0,
         "scale": 1,
@@ -13396,6 +13830,20 @@
             [
                 11,
                 6,
+                31
+            ]
+        ],
+        "lines": [],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
                 0
             ],
             [
@@ -13818,6 +14266,20 @@
                 1
             ]
         ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                32
+            ]
+        ],
+        "lines": [],
         "offsetX": 0,
         "offsetY": 0,
         "scale": 1,
@@ -14260,6 +14722,20 @@
             [
                 11,
                 6,
+                33
+            ]
+        ],
+        "lines": [],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
                 0
             ],
             [
@@ -14682,6 +15158,20 @@
                 1
             ]
         ],
+        "offsetX": 0,
+        "offsetY": 0,
+        "scale": 1,
+        "sketchTitle": ""
+    },
+    {
+        "elements": [
+            [
+                11,
+                6,
+                34
+            ]
+        ],
+        "lines": [],
         "offsetX": 0,
         "offsetY": 0,
         "scale": 1,

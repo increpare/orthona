@@ -36,6 +36,13 @@ function SaveState(){
 }
 
 function TryRestoreState(){
+/*
+
+       var dict = require("../../dat/scrapbook/dictionarytemplate.json")
+        glob.sketchBook=dict;
+        glob.sketchBookIndex=0;
+        LoadPage();
+*/
     var sketch_save = localStorage.getItem("glob.sketchBookDat");
     if (sketch_save!==null){
         var dat = JSON.parse(sketch_save);
@@ -53,7 +60,24 @@ function doStart(){
     ctx.imageSmoothingEnabled = false;
 
 
+function handleKeyDown(evt){
+    if (evt.keyCode===13){
+        //return
+        newTitle();
+        renderApp();
+    } else if (evt.keyCode===37){
+        //return
+        PageLeft();
+    } else if (evt.keyCode===39){
+        //return
+        PageRight();
+    } 
+
+}
+
 handleStart
+    document.addEventListener('keydown', handleKeyDown, false);
+
     glob.canvas.addEventListener("mousedown", handleStart, false);
     glob.canvas.addEventListener("mousemove", handleMove, false);
     glob.canvas.addEventListener("mouseup", handleEnd, false);
@@ -707,10 +731,11 @@ module.exports.drawSelectiveGridLines=false;
 module.exports.scaleMin=0.25;
 module.exports.scaleMax=1.0;
 
+
 var glyphNames = [
-"Person","Person","Object","Object","blank",//0-4
+"Person A","Person B","Object X","Object Y","blank",//0-4
 "Identity","Good","Alter","Collection","Event",//5-9
-"Plural","Friend","Ask","Want","Power",//10-14
+"Necessary","Friend","Ask","Want","Power",//10-14
 "See","Say","Touch","Hear","Eat",//15-19
 "Know","Smell","Time","Action","Go",//20-24
 "Size","Pain","Difficult","Cause","Able",//25-29

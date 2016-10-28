@@ -35,6 +35,13 @@ function SaveState(){
 }
 
 function TryRestoreState(){
+/*
+
+       var dict = require("../../dat/scrapbook/dictionarytemplate.json")
+        glob.sketchBook=dict;
+        glob.sketchBookIndex=0;
+        LoadPage();
+*/
     var sketch_save = localStorage.getItem("glob.sketchBookDat");
     if (sketch_save!==null){
         var dat = JSON.parse(sketch_save);
@@ -52,7 +59,24 @@ function doStart(){
     ctx.imageSmoothingEnabled = false;
 
 
+function handleKeyDown(evt){
+    if (evt.keyCode===13){
+        //return
+        newTitle();
+        renderApp();
+    } else if (evt.keyCode===37){
+        //return
+        PageLeft();
+    } else if (evt.keyCode===39){
+        //return
+        PageRight();
+    } 
+
+}
+
 handleStart
+    document.addEventListener('keydown', handleKeyDown, false);
+
     glob.canvas.addEventListener("mousedown", handleStart, false);
     glob.canvas.addEventListener("mousemove", handleMove, false);
     glob.canvas.addEventListener("mouseup", handleEnd, false);

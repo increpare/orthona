@@ -7,10 +7,11 @@ module.exports.drawSelectiveGridLines=false;
 module.exports.scaleMin=0.25;
 module.exports.scaleMax=1.0;
 
+
 var glyphNames = [
-"Person","Person","Object","Object","blank",//0-4
+"Person A","Person B","Object X","Object Y","blank",//0-4
 "Identity","Good","Alter","Collection","Event",//5-9
-"Plural","Friend","Ask","Want","Power",//10-14
+"Necessary","Friend","Ask","Want","Power",//10-14
 "See","Say","Touch","Hear","Eat",//15-19
 "Know","Smell","Time","Action","Go",//20-24
 "Size","Pain","Difficult","Cause","Able",//25-29

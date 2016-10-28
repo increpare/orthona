@@ -15,22 +15,31 @@ function ar_shuffle(a) {
     }
 }
 
-var index=0;
 for (var s=0;s<35;s++){
+	var page = {
+		elements:[],
+		lines:[],
+		offsetX:0,
+		offsetY:0,
+		scale:1,
+		sketchTitle:""
+	};
+	page.elements.push([11,6,s]);
+	scrapbook.push(page)
+
 	for (var i=-1;i<2;i++){
 		for (var j=-1;j<2;j++){	
 			for (var lt=0;lt<2;lt++){	
 				if (i===0&&j===0){
 					continue;
 				}
-				if (i==0&&j==)
 				var page = {
 					elements:[],
 					lines:[],
 					offsetX:0,
 					offsetY:0,
 					scale:1,
-					sketchTitle:index.toString()
+					sketchTitle:""
 				};
 
 				var px = 11;
