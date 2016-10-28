@@ -4,7 +4,7 @@ log = console.log
 
 var glob = require('./js/app/orthoGlobals')
 var lib = require('./js/orthoLib')
-var svgRender = require("./js/svgRender")
+var svgRender = require("./js/svgRenderStraight")
 
 if (process.argv.length===2){
 	console.log("USAGE: json2svg [-noGridLines] [-diagonals] [-noIcons] [-noLines] [-selectiveGridLines] FILENAME [OUTPUT]");

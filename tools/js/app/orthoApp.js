@@ -42,12 +42,19 @@ function TryRestoreState(){
         LoadPage();
     }
 }
+
 var ctx
 function doStart(){
     glob.canvas = document.getElementById("mainCanvas");
     glob.ctx=glob.canvas.getContext('2d');
     ctx = glob.ctx;
     ctx.imageSmoothingEnabled = false;
+
+
+handleStart
+    glob.canvas.addEventListener("mousedown", handleStart, false);
+    glob.canvas.addEventListener("mousemove", handleMove, false);
+    glob.canvas.addEventListener("mouseup", handleEnd, false);
 
     glob.canvas.addEventListener("touchstart", handleStart, false);
     glob.canvas.addEventListener("touchend", handleEnd, false);
@@ -118,19 +125,81 @@ function iconAt(tx,ty){
     return false;
 }
 
+function triggerPan(evt){
+    if ("touches" in evt){
+        if (evt.touches.length===2){
+            return true;
+        }
+        return false;
+    } else {
+        return evt.button===2;
+    }
+}
+
+function zoomCoords(evt){
+    if ("touches" in evt){
+         return evt.touches.length===2 ?
+                [evt.touches[0].clientX,evt.touches[0].clientY,evt.touches[1].clientX,evt.touches[1].clientY] :
+                [evt.touches[0].clientX,evt.touches[0].clientY,evt.touches[0].clientX,evt.touches[0].clientY];
+    } else {
+        return [evt.clientX,event.clientY,event.clientX,event.clientY]
+    }
+}
+
+function exactlyOneDown(evt){
+    if ("touches" in evt){
+        return evt.touches.length===1;
+    } else {
+        return true;
+    }
+}
+
+function noTouches(evt){
+    if ("touches" in evt){
+        return evt.touches.length===0;
+    } else {
+        return true
+    }
+}
+function getTouch(evt){
+    if ("touches" in evt){
+        return evt.touches[0];
+    } else {
+        return evt;
+    }
+
+}
+
+function changedTouch(evt){
+    if ("touches" in evt){
+        return evt.changedTouches[0];
+    } else {
+        return evt;
+    }
+}
+
+
+function changedTouches(evt){
+    if ("touches" in evt){
+        return evt.changedTouches;
+    } else {
+        return [evt];
+    }
+}
+
 function handleStart(evt) {
     if (iconSelect===true){
         iconSelect=false;
     }
     evt.preventDefault();
 
-    if (evt.touches.length===2){
+    if (triggerPan(evt)){
         moved=true;
-        oldtouches=[evt.touches[0].clientX,evt.touches[0].clientY,evt.touches[1].clientX,evt.touches[1].clientY];
+        oldtouches=zoomCoords(evt);
     } 
-   if (evt.touches.length===1){
+   if (exactlyOneDown(evt)){
 
-        var t= evt.changedTouches[0];
+        var t= changedTouch(evt);
 
         var cx = t.clientX-glob.page.offsetX;
         var cy = t.clientY-glob.page.offsetY;
@@ -156,7 +225,7 @@ function handleStart(evt) {
             renderApp();
             return;
         }
-        oldtouches=[evt.touches[0].clientX,evt.touches[0].clientY,evt.touches[0].clientX,evt.touches[0].clientY];
+        oldtouches=zoomCoords(evt);
 
         var gx = Math.round(cx/(cellSize*glob.page.scale));
         var gy = Math.round(cy/(cellSize*glob.page.scale));
@@ -281,7 +350,7 @@ function makeLine(x1,y1,x2,y2){
 function handleEnd(evt){
     evt.preventDefault();
     if (cleared===true || moved===true || toolbarSelect===true){
-        if (evt.touches.length===0){
+        if (noTouches(evt)){
             cleared=false;
             moved=false;
             toolbarSelect=false;
@@ -297,9 +366,9 @@ function handleEnd(evt){
         return;
     }
 
-    if (evt.touches.length===0){
+    if (noTouches(evt)){
         if (iconSelect&&minDistHit){
-            var t = evt.changedTouches[0];
+            var t = changedTouch(evt);
             var px = t.clientX;
             var py = t.clientY;
             drawSelectionPanel(true,px,py);
@@ -309,9 +378,10 @@ function handleEnd(evt){
         }
     }
 
-    for (var i=0;i<evt.changedTouches.length;i++){
+    var ct = changedTouches(evt)
+    for (var i=0;i<ct.length;i++){
 
-        var t= evt.changedTouches[i];
+        var t= ct[i];
 
         var cx = t.clientX-glob.page.offsetX;
         var cy = t.clientY-glob.page.offsetY;
@@ -344,8 +414,8 @@ function handleMove(evt) {
     if (cleared===true){
         return;
     }
-    if (evt.touches.length===1&&glob.page.scale>scaleMin){  
-        var t = evt.touches[0];          
+    if (exactlyOneDown(evt)&&glob.page.scale>scaleMin){  
+        var t = getTouch(evt);          
         mousex=t.clientX;
         mousey=t.clientY;
         var d = dist([startPosX,startPosY,mousex,mousey]);
@@ -355,10 +425,8 @@ function handleMove(evt) {
         renderApp();
     }
 
-    if (evt.touches.length===2||(evt.touches.length===1&&glob.page.scale<=scaleMin)){
-        var curtouches = evt.touches.length===2 ?
-                [evt.touches[0].clientX,evt.touches[0].clientY,evt.touches[1].clientX,evt.touches[1].clientY] :
-                [evt.touches[0].clientX,evt.touches[0].clientY,evt.touches[0].clientX,evt.touches[0].clientY];
+    if (triggerPan(evt)||(exactlyOneDown(evt)&&glob.page.scale<=scaleMin)){
+        var curtouches = zoomCoords(evt);
                 
         if (oldtouches===null){
             oldtouches=curtouches;
@@ -378,7 +446,7 @@ function handleMove(evt) {
         var newDist = dist(curtouches);
         var scaleMultiplier = newDist/oldDist;
         var oldScale=glob.page.scale;
-        if ( evt.touches.length===2){
+        if ( triggerPan(evt)){
             glob.page.scale = glob.page.scale * scaleMultiplier;
             if (glob.page.scale<scaleMin){
                 glob.page.scale=scaleMin;
