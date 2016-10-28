@@ -13,7 +13,7 @@
 		<svg:circle stroke-width='1' cx='95' cy='35' r='2.1376000000000004' fill='white' stroke='black' />
 		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 53.56 49.88 L 52.12 55.64 C 49.24 61.4 , 60.76 61.4 , 57.88 55.64 L 56.44 49.88 '/>
 		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 15 8.6 C 9.879999999999999 11.8 , 9.879999999999999 18.2 , 15 21.4 C 20.12 18.2 , 20.12 11.8 , 15 8.6 Z  '/>
-		<svg:circle stroke-width='1' cx='15' cy='15' r='1.6' fill='transparent' stroke='black' />
+		<svg:circle stroke-width='1' cx='15' cy='15' r='1.6' fill='black' stroke='black' />
 		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 33.56 9.879999999999999 L 32.12 15.64 C 29.24 21.400000000000002 , 40.76 21.400000000000002 , 37.88 15.64 L 36.44 9.879999999999999 '/>
 		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 50.2 10.2 L 59.8 10.2 C 55.8 15 , 55.8 15 , 59.8 19.8 L 50.2 19.8 C 54.2 15 , 54.2 15 , 50.2 10.2 Z  '/>
 		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 77.83687943262412 8.75886524822695 L 77.83687943262412 17.836879432624112 L 68.75886524822694 17.836879432624112 Z  '/>

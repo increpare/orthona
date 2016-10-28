@@ -1,0 +1,72 @@
+#!/usr/bin/env node
+var fs = require('fs')
+log = console.log
+
+var glob = require('./js/app/orthoGlobals')
+var lib = require('./js/orthoLib')
+var blitRender = require("./js/blitRender")
+
+if (process.argv.length===2){
+	console.log("USAGE: json2tiledpng [-noGridLines] [-noIcons] [-noLines] TILESET FILENAME [OUTPUT]");
+	return;
+}
+
+var tileset=-555;
+var inputFileName=""
+var outputFileName=""
+for (var i=2;i<process.argv.length;i++){
+	var t = process.argv[i];
+	if (t==="-noGridLines"){
+		glob.drawGridLines=false;
+	} else if (t==="-diagonals"){
+		glob.drawGridLines_Diagonal=true;
+	} else if (t==="-noIcons"){
+		glob.drawElements=false;
+	} else if (t==="-noLines"){
+		glob.drawLines=false;
+	} else if (t==="-selectiveGridLines"){
+		glob.drawSelectiveGridLines=true;
+	} else if (tileset===-555){
+		tileset=parseInt(t);
+		console.log("input file "+t)
+	}  else if (inputFileName===""){
+		inputFileName=t;
+		console.log("input file "+t)
+	} else if (outputFileName===""){
+		outputFileName=t;
+	} else {
+		console.log("Too many arguments. Unexpected argument \""+t+"\".");		
+	}
+}
+
+if (tileset===-555){
+	tileset=0;
+}
+if (inputFileName==="")
+{
+	console.log("need to supply input file");
+}
+
+if (outputFileName===""){
+
+	var path = require('path');
+	var globalPath = path.resolve(inputFileName)
+	var parsed = path.parse(globalPath)
+	parsed.ext=".png"
+	parsed.dir+="/../tiled/"+tileset
+	parsed.base=parsed.name+"_"+tileset+parsed.ext;
+	outputFileName = path.format(parsed)
+	log("outputFileName = "+outputFileName)
+}
+
+lib.loadFile(inputFileName);
+
+log("gl"+glob.page.lines.length);
+
+var canvasDimensions = lib.canvasSize();
+
+lib.MoveOriginToTopLeft();
+
+var blitDat = blitRender(tileset);
+fs.writeFileSync(outputFileName, blitDat);
+console.log("generated "+ outputFileName);

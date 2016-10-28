@@ -3,7 +3,6 @@
 	xmlns:svg='http://www.w3.org/2000/svg'>
 	<!-- parent contents here -->
 	<svg:svg width='130mm' height='170mm' viewBox='0 0 130 170' version='1.1'>
-		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='#dcdcdc' d='M -25 0 L -25 412 M -5 0 L -5 412 M 15 0 L 15 412 M 35 0 L 35 412 M 55 0 L 55 412 M 75 0 L 75 412 M 95 0 L 95 412 M 115 0 L 115 412 M 0 -25 L 302 -25 M 0 -5 L 302 -5 M 0 15 L 302 15 M 0 35 L 302 35 M 0 55 L 302 55 M 0 75 L 302 75 M 0 95 L 302 95 M 0 115 L 302 115 M 0 135 L 302 135 M 0 155 L 302 155 '/>
 		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='black' d=''/>
 		<svg:rect stroke-width='1' x='11.595744680851064' y='11.595744680851064' width='6.808510638297872' height='6.808510638297872' fill='black' stroke='black' />
 		<svg:path  stroke-width='1' fill='black' stroke='black' d='M 35 20.76 L 32.12 15 C 29.24 9.239999999999998, 40.76 9.239999999999998, 37.88 15 Z '/>

@@ -5,6 +5,8 @@ var glob = require('./js/app/orthoGlobals')
 var lib = require('./js/orthoLib')
 var orthoRender = require("./js/app/orthoRender")
 var log = console.log
+var Canvas = require('canvas')
+var Image = Canvas.Image
 
 
 if (process.argv.length===2){
@@ -59,8 +61,6 @@ var canvasDimensions = lib.canvasSize();
 
 lib.setOffsetToTopLeft();
 
-var Canvas = require('canvas')
-var Image = Canvas.Image
 
 glob.canvas = new Canvas(canvasDimensions[0], canvasDimensions[1])
 glob.ctx = glob.canvas.getContext('2d');

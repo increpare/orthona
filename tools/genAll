@@ -9,6 +9,10 @@ do
 	echo "processing $fn"
 	./json2png -noGridLines $fn
 	./json2svg -noGridLines $fn
+	./json2tiledpng 0 $fn
+	./json2tiledpng 1 $fn
+	./json2tiledpng 2 $fn
+	./json2tiledpng 3 $fn
 	./json2bin $fn
 	./retop $fn
 done
@@ -18,6 +22,10 @@ do
 	echo "processing $fn"
 	./json2png -diagonals -selectiveGridLines $fn
 	./json2svg -diagonals -selectiveGridLines $fn
+	./json2tiledpng -noLines 0 $fn
+	./json2tiledpng -noLines 1 $fn
+	./json2tiledpng -noLines 2 $fn
+	./json2tiledpng -noLines 3 $fn
 	./json2bin $fn
 done
 

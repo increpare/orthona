@@ -143,7 +143,7 @@ function loadBinary(fileName){
 
 }
 
-function MoveOriginToTopLeft(){
+function MoveOriginToTopLeft(dx=0,dy=0){
 	var minx=10000;
 	var miny=10000;
 	for (var i=0;i<glob.page.elements.length;i++){
@@ -161,15 +161,15 @@ function MoveOriginToTopLeft(){
 
 	for (var i=0;i<glob.page.elements.length;i++){
 		var e = glob.page.elements[i];
-		e[0]-=minx
-		e[1]-=miny
+		e[0]-=minx-dx
+		e[1]-=miny-dx
 	}
 	for (var i=0;i<glob.page.lines.length;i++){
 		var l = glob.page.lines[i];
-		l[0]-=minx
-		l[1]-=miny
-		l[2]-=minx
-		l[3]-=miny
+		l[0]-=minx-dx
+		l[1]-=miny-dx
+		l[2]-=minx-dx
+		l[3]-=miny-dx
 	}
 }
 
