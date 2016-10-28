@@ -14,7 +14,7 @@ var glyphNames = [
 "Necessary","Friend","Ask","Want","Power",//10-14
 "See","Say","Touch","Hear","Eat",//15-19
 "Know","Smell","Time","Action","Go",//20-24
-"Size","Pain","Difficult","Cause","Able",//25-29
+"Size","Pain","Ease","Cause","Able",//25-29
 "Sex","Internal","Familiar","Living","Read",//30-34
 ];
 
