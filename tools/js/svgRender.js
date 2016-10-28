@@ -348,7 +348,7 @@ function drawIcon(x, y, icon) {
                     "'/>\n"
                 ].join(" ");
 
-                result += `\t\t<svg:circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r/4}' fill='transparent' stroke='black' />\n`
+                result += `\t\t<svg:circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r/4}' fill='black' stroke='black' />\n`
                 break;
             }
         case 21: //nose
