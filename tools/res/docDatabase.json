@@ -35,7 +35,7 @@
 		"triple":""
 	},
 	{
-		"name":"blank",
+		"name":"Blank",
 		"uses":["A","B","G","H"],
 		"lines":[
 			""

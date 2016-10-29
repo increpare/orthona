@@ -3,3 +3,4 @@ rm cload
 rm dat/png/*
 rm dat/bin/*
 rm dat/retop/*
+rm docs/*

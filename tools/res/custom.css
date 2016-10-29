@@ -12,7 +12,7 @@ body{
 }
 
 svg {
-  stroke: var(--fg);
+  stroke:var(--fg);
   fill:var(--bg);
   stroke-linecap:round;
   font-family:Helvetica;

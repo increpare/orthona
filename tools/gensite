@@ -13,6 +13,8 @@ var minify = require('html-minifier').minify;
 var Image = Canvas.Image
 var Inliner = require('inliner');
 
+execSync("rm -rf ./docs/*")
+execSync("mkdir ./docs/sym")
 
 var fast=false;
 var inline=true;
@@ -39,7 +41,7 @@ function findCssVar(cssDat,varName){
 	return null;
 }
 
-var cssPath = ("./docs/css/custom.css")
+var cssPath = ("./res/custom.css")
 var cssFileStr=fs.readFileSync(cssPath,'utf8')
 var cssDat = css.parse(cssFileStr,{},cssPath)
 var fgCol = findCssVar(cssDat,"--fg")
@@ -58,7 +60,7 @@ function saveHTML(filePath,htmlDat){
 	if(inline===false){
 		return;
 	}
-	new Inliner(filePath, function (error, htmlMinified) {
+	new Inliner(filePath, {},function (error, htmlMinified) {
 		htmlMinified = minify(
 			htmlMinified,
 			{
@@ -87,7 +89,7 @@ function saveHTML(filePath,htmlDat){
 }
 function symbolName(i){
 	var s = db[i];
-	s = s.name.split(' ').join('_')
+	s = s.name.split(' ').join('_').toLowerCase();
 	return s
 }
 
@@ -171,7 +173,7 @@ for (var s=0;s<glob.symbolCount;s++){
 var genericHeader = "<!DOCTYPE html>"
     genericHeader += '<meta charset=utf-8>'
     genericHeader += '<title>Orthona Documentation</title>'
-    genericHeader += '<link href="css/custom.css" rel="stylesheet">'
+    genericHeader +=`<style>${fs.readFileSync("./res/custom.css")}</style>`
 
 
 String.prototype.replaceAll = function(search, replacement) {
@@ -197,6 +199,7 @@ function embedSvg(name,width,height,className){
 	svgStr = svgStr.replaceAll(`text-anchor="middle"`,"")  
 	svgStr = svgStr.replaceAll(`<path   fill='transparent'  d=''/>`,"")  
 	svgStr = svgStr.replaceAll(`version='1.1'`,"")  
+	svgStr = svgStr.replaceAll(`transparent`,"none")  
 	return svgStr;
 }
 
@@ -209,7 +212,7 @@ for (var i=0;i<7;i++){
 	for (var j=0;j<5;j++){
 		var s = j+5*i;
 		index+="<td>"
-		index+=`<a href='${symbolName(s)}.html'>`
+		index+=`<a href='sym/${symbolName(s)}.html'>`
 		index+=embedSvg(symbolName(s),"50px","50px")+"";
 		index+="</a>"
 	}
@@ -234,7 +237,7 @@ for (var i=0;i<7;i++){
 	for (var j=0;j<5;j++){
 		var s = j+5*i;
 		index+="<td>"
-		index+=`<a   href='${symbolName(s)}.html'>`
+		index+=`<a   href='sym/${symbolName(s)}.html'>`
 		index+=embedSvg(symbolName(s),"40px","40px")+"";
 		index+=`<br>${db[s].name}</a>`
 	}
@@ -281,6 +284,6 @@ for (var s=0;s<glob.symbolCount;s++){
 		}
 		page+="</table>"
 		page+="<p>"
-		page+="[ <a href='index.html'>back</a> ]"
-		saveHTML(`./docs/${symbolName(s)}.html`,page);
+		page+="[ <a href='../index.html'>back</a> ]"
+		saveHTML(`./docs/sym/${symbolName(s)}.html`,page);
 }

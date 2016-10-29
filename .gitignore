@@ -24,3 +24,5 @@ tools/docs/svg
 
 tools/dat/json_random
 *.svg
+
+tools/docs/sym/*.*
