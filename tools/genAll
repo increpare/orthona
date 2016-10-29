@@ -61,5 +61,12 @@ do
 done
 wait
 
+for fn in dat/svg/*.svg
+do
+	svgo $fn $fn &
+done
+wait
+
+
 ./testbin
 ./gensite

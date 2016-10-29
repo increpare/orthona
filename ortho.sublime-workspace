@@ -4,12 +4,104 @@
 		"selected_items":
 		[
 			[
+				"stroke",
+				"strokeCol"
+			],
+			[
+				"strok",
+				"strokeCol"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"text-a",
+				"text-align"
+			],
+			[
+				"padd",
+				"padding-top"
+			],
+			[
+				"generi",
+				"genericHeader"
+			],
+			[
+				"gener",
+				"genericFooter"
+			],
+			[
+				"align",
+				"align-self"
+			],
+			[
 				"ske",
-				"sketchBookIndex"
+				"sketchBook"
 			],
 			[
 				"sket",
-				"sketchBook"
+				"sketchBookIndex"
+			],
+			[
+				"clear",
+				"clearEverything"
+			],
+			[
+				"spri",
+				"spritesheet_path"
+			],
+			[
+				"ch",
+				"changedTouch"
+			],
+			[
+				"clien",
+				"clientX"
+			],
+			[
+				"CEL",
+				"DOC_CELLSIZE"
+			],
+			[
+				"DOC",
+				"DOC_CELLSIZE"
+			],
+			[
+				"DOC_",
+				"DOC_PADDING"
+			],
+			[
+				"svg",
+				"svgRender"
+			],
+			[
+				"sae",
+				"saveFile"
+			],
+			[
+				"load",
+				"loadFile"
+			],
+			[
+				"poin",
+				"PointOnLine"
+			],
+			[
+				"sv",
+				"svgRender"
+			],
+			[
+				"file",
+				"fileName"
+			],
+			[
+				"closes",
+				"closestcoords"
+			],
+			[
+				"adj",
+				"adjustY"
 			],
 			[
 				"arr",
@@ -312,10 +404,6 @@
 				"draggingTarget"
 			],
 			[
-				"spri",
-				"sprite_editor_container"
-			],
-			[
 				"sele",
 				"maskSelected"
 			],
@@ -426,180 +514,11 @@
 			[
 				"seriali",
 				"serializer2"
-			],
-			[
-				"seria",
-				"serializer"
-			],
-			[
-				"unseri",
-				"unserialize"
-			],
-			[
-				"stri",
-				"String"
-			],
-			[
-				"cur",
-				"curTarget"
-			],
-			[
-				"curtar",
-				"curTarget"
-			],
-			[
-				"target",
-				"targetTPS"
-			],
-			[
-				"tp",
-				"TPS"
-			],
-			[
-				"curt",
-				"curTarget"
-			],
-			[
-				"cut",
-				"curTargetStack"
-			],
-			[
-				"curta",
-				"curTarget"
-			],
-			[
-				"tar",
-				"target"
-			],
-			[
-				"targe",
-				"altTarget"
-			],
-			[
-				"letter",
-				"letterSpaceH"
-			],
-			[
-				"margi",
-				"marginV"
-			],
-			[
-				"lett",
-				"letterSpaceH"
-			],
-			[
-				"margin",
-				"marginH"
-			],
-			[
-				"box",
-				"scriptBoxHeight"
-			],
-			[
-				"pa",
-				"placeholderScriptText"
-			],
-			[
-				"e_tr",
-				"e_Trapeziums"
-			],
-			[
-				"e_",
-				"e_Triangles"
-			],
-			[
-				"marker",
-				"markerdy"
-			],
-			[
-				"encodin",
-				"encoding_spliced"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "ortho/platforms/browser/www/js/orthoRender.js",
-			"settings":
-			{
-				"buffer_size": 25668,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 928 files for \"\"/tmp\"\n\n/Users/stephenlavelle/Documents/Ortho/ortho/platforms/browser/cordova/node_modules/nopt/test/basic.js:\n   18  test(\"~ path is resolved to $HOME\", function (t) {\n   19    var path = require(\"path\")\n   20:   if (!process.env.HOME) process.env.HOME = \"/tmp\"\n   21    var parsed = nopt({key: path}, {}, [\"--key=~/val\"], 0)\n   22    t.same(parsed.key, path.resolve(process.env.HOME, \"val\"))\n   ..\n  149      ,[\"--color=true\", {color:true}, []]\n  150      ,[\"--logfd=10\", {logfd:10}, []]\n  151:     ,[\"--tmp=/tmp -tar=gtar\",{tmp:\"/tmp\",tar:\"gtar\"},[]]\n  152      ,[\"--tmp=tmp -tar=gtar\",\n  153        {tmp:path.resolve(process.cwd(), \"tmp\"),tar:\"gtar\"},[]]\n\n/Users/stephenlavelle/Documents/Ortho/ortho/platforms/browser/cordova/node_modules/shelljs/README.md:\n  600  \n  601  ```javascript\n  602: var tmp = tempdir(); // \"/tmp\" for most *nix platforms\n  603  ```\n  604  \n\n/Users/stephenlavelle/Documents/Ortho/ortho/platforms/browser/cordova/node_modules/shelljs/build/output.js:\n 2024  //@\n 2025  //@ ```javascript\n 2026: //@ var tmp = tempdir(); // \"/tmp\" for most *nix platforms\n 2027  //@ ```\n 2028  //@\n\n/Users/stephenlavelle/Documents/Ortho/ortho/platforms/browser/cordova/node_modules/shelljs/src/tempdir.js:\n   28  //@\n   29  //@ ```javascript\n   30: //@ var tmp = tempdir(); // \"/tmp\" for most *nix platforms\n   31  //@ ```\n   32  //@\n\n/Users/stephenlavelle/Documents/Ortho/ortho/platforms/ios/CordovaLib/CordovaLib.xcodeproj/project.pbxproj:\n  387  \t\t\t\tCLANG_ENABLE_OBJC_ARC = YES;\n  388  \t\t\t\tCOPY_PHASE_STRIP = NO;\n  389: \t\t\t\tDSTROOT = \"/tmp/$(PROJECT_NAME).dst\";\n  390  \t\t\t\tGCC_DYNAMIC_NO_PIC = NO;\n  391  \t\t\t\tGCC_MODEL_TUNING = G5;\n  ...\n  409  \t\t\t\tALWAYS_SEARCH_USER_PATHS = NO;\n  410  \t\t\t\tCLANG_ENABLE_OBJC_ARC = YES;\n  411: \t\t\t\tDSTROOT = \"/tmp/$(PROJECT_NAME).dst\";\n  412  \t\t\t\tGCC_MODEL_TUNING = G5;\n  413  \t\t\t\tGCC_PRECOMPILE_PREFIX_HEADER = YES;\n\n/Users/stephenlavelle/Documents/Ortho/tools/js/orthoLib.js:\n   14  var blah=0;\n   15  function SaveImage(filename){\n   16: \tsaveFile(\"/tmp/temp.json\")\n   17  \tvar cmd = './printJson /tmp/temp.json';\n   18  \tvar capturedOutput = require('child_process').execSync(cmd, {stdio:[0,1,2]})\n\n8 matches across 6 files\n\n\nSearching 933 files for \"temp.json\" (regex)\n\n/Users/stephenlavelle/Documents/Ortho/tools/js/orthoLib.js:\n   14  var blah=0;\n   15  function SaveImage(filename){\n   16: \tsaveFile(\"/tmp/temp.json\")\n   17: \tvar cmd = './printJson /tmp/temp.json';\n   18  \tvar capturedOutput = require('child_process').execSync(cmd, {stdio:[0,1,2]})\n   19  \n\n2 matches in 1 file\n\n\nSearching 933 files for \"SaveImage\" (regex)\n\n/Users/stephenlavelle/Documents/Ortho/tools/js/orthoLib.js:\n   13  \n   14  var blah=0;\n   15: function SaveImage(filename){\n   16  \tsaveFile(\"/tmp/temp.json\")\n   17  \tvar cmd = './printJson /tmp/temp.json';\n\n/Users/stephenlavelle/Documents/Ortho/tools/js/orthoTopology.js:\n  291  \t\t\t\t\tvisited.push(uv)\n  292  \n  293: \t\t\t\t\tSaveImage(blah+\".png\");\n  294  \t\t\t\t\tblah++;\n  295  \t\t\t\t}\n  ...\n  313  \t\t\tvisited.push(uv)\n  314  \n  315: \t\t\tSaveImage(blah+\".png\");\n  316  \t\t\tblah++;\n  317  \t\t}\n\n3 matches across 2 files\n\n\nSearching 933 files for \"SaveImage\" (regex)\n\n/Users/stephenlavelle/Documents/Ortho/tools/js/orthoLib.js:\n   13  \n   14  var blah=0;\n   15: function SaveImage(filename){\n   16  \tsaveFile(\"/tmp/temp.json\")\n   17  \tvar cmd = './printJson /tmp/temp.json';\n\n/Users/stephenlavelle/Documents/Ortho/tools/js/orthoTopology.js:\n  291  \t\t\t\t\tvisited.push(uv)\n  292  \n  293: \t\t\t\t\tSaveImage(blah+\".png\");\n  294  \t\t\t\t\tblah++;\n  295  \t\t\t\t}\n  ...\n  313  \t\t\tvisited.push(uv)\n  314  \n  315: \t\t\tSaveImage(blah+\".png\");\n  316  \t\t\tblah++;\n  317  \t\t}\n\n3 matches across 2 files\n\n\nSearching 933 files for \"saveimage\" (regex)\n\n/Users/stephenlavelle/Documents/Ortho/tools/js/orthoTopology.js:\n  291  \t\t\t\t\tvisited.push(uv)\n  292  \n  293: \t\t\t\t\tSaveImage(blah+\".png\");\n  294  \t\t\t\t\tblah++;\n  295  \t\t\t\t}\n  ...\n  313  \t\t\tvisited.push(uv)\n  314  \n  315: \t\t\tSaveImage(blah+\".png\");\n  316  \t\t\tblah++;\n  317  \t\t}\n\n2 matches in 1 file\n\n\nSearching 937 files for \"drawGridLines_Diagonal\" (regex)\n\n/Users/stephenlavelle/Documents/Ortho/ortho/platforms/browser/www/js/orthoGlobals.js:\n    1  var drawGridLines = true;\n    2: var drawGridLines_Diagonal = false;\n    3  var drawLines = true;\n    4  var drawElements = true;\n\n/Users/stephenlavelle/Documents/Ortho/ortho/platforms/browser/www/js/orthoRender.js:\n  749          }\n  750  \n  751:         if (drawGridLines_Diagonal){     \n  752              for (var i=startX;i<canvas.width;i+=cellSize*page.scale){\n  753                  ctx.moveTo(i+adjustX,0);\n\n/Users/stephenlavelle/Documents/Ortho/ortho/platforms/ios/www/js/orthoGlobals.js:\n    1  var drawGridLines = true;\n    2: var drawGridLines_Diagonal = false;\n    3  var drawLines = true;\n    4  var drawElements = true;\n\n/Users/stephenlavelle/Documents/Ortho/ortho/platforms/ios/www/js/orthoRender.js:\n  749          }\n  750  \n  751:         if (drawGridLines_Diagonal){     \n  752              for (var i=startX;i<canvas.width;i+=cellSize*page.scale){\n  753                  ctx.moveTo(i+adjustX,0);\n\n/Users/stephenlavelle/Documents/Ortho/ortho/www/js/orthoGlobals.js:\n    1  var drawGridLines = true;\n    2: var drawGridLines_Diagonal = false;\n    3  var drawLines = true;\n    4  var drawElements = true;\n\n/Users/stephenlavelle/Documents/Ortho/ortho/www/js/orthoRender.js:\n  749          }\n  750  \n  751:         if (drawGridLines_Diagonal){     \n  752              for (var i=startX;i<canvas.width;i+=cellSize*page.scale){\n  753                  ctx.moveTo(i+adjustX,0);\n\n/Users/stephenlavelle/Documents/Ortho/tools/json2png:\n   19  \t\tdrawGridLines=false;\n   20  \t} else if (t==\"-diagonals\"){\n   21: \t\tdrawGridLines_Diagonal=true;\n   22  \t} else if (t==\"-noIcons\"){\n   23  \t\tdrawElements=false;\n\n7 matches across 7 files\n\n\nSearching 937 files for \"drawGridLines_Diagonal\" (regex)\n\n/Users/stephenlavelle/Documents/Ortho/ortho/platforms/browser/www/js/orthoGlobals.js:\n    1  var drawGridLines = true;\n    2: var drawGridLines_Diagonal = false;\n    3  var drawLines = true;\n    4  var drawElements = true;\n\n/Users/stephenlavelle/Documents/Ortho/ortho/platforms/browser/www/js/orthoRender.js:\n  749          }\n  750  \n  751:         if (drawGridLines_Diagonal){     \n  752              for (var i=startX;i<canvas.width;i+=cellSize*page.scale){\n  753                  ctx.moveTo(i+adjustX,adjustY);\n\n/Users/stephenlavelle/Documents/Ortho/ortho/platforms/ios/www/js/orthoGlobals.js:\n    1  var drawGridLines = true;\n    2: var drawGridLines_Diagonal = false;\n    3  var drawLines = true;\n    4  var drawElements = true;\n\n/Users/stephenlavelle/Documents/Ortho/ortho/platforms/ios/www/js/orthoRender.js:\n  749          }\n  750  \n  751:         if (drawGridLines_Diagonal){     \n  752              for (var i=startX;i<canvas.width;i+=cellSize*page.scale){\n  753                  ctx.moveTo(i+adjustX,0);\n\n/Users/stephenlavelle/Documents/Ortho/ortho/www/js/orthoGlobals.js:\n    1  var drawGridLines = true;\n    2: var drawGridLines_Diagonal = false;\n    3  var drawLines = true;\n    4  var drawElements = true;\n\n/Users/stephenlavelle/Documents/Ortho/ortho/www/js/orthoRender.js:\n  749          }\n  750  \n  751:         if (drawGridLines_Diagonal){     \n  752              for (var i=startX;i<canvas.width;i+=cellSize*page.scale){\n  753                  ctx.moveTo(i+adjustX,0);\n\n/Users/stephenlavelle/Documents/Ortho/tools/json2png:\n   19  \t\tdrawGridLines=false;\n   20  \t} else if (t==\"-diagonals\"){\n   21: \t\tdrawGridLines_Diagonal=true;\n   22  \t} else if (t==\"-noIcons\"){\n   23  \t\tdrawElements=false;\n\n7 matches across 7 files\n",
-			"settings":
-			{
-				"buffer_size": 7605,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "tools/js/orthoLib.js",
-			"settings":
-			{
-				"buffer_size": 4800,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "tools/printJson",
-			"settings":
-			{
-				"buffer_size": 3186,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "tools/json2png",
-			"settings":
-			{
-				"buffer_size": 1775,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "tools/genAll",
-			"settings":
-			{
-				"buffer_size": 226,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "tools/json2bin",
-			"settings":
-			{
-				"buffer_size": 1088,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "tools/retop",
-			"settings":
-			{
-				"buffer_size": 1152,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "tools/js/orthoTopology.js",
-			"settings":
-			{
-				"buffer_size": 6064,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -687,37 +606,105 @@
 	"expanded_folders":
 	[
 		"/Users/stephenlavelle/Documents/Ortho",
-		"/Users/stephenlavelle/Documents/Ortho/ortho",
-		"/Users/stephenlavelle/Documents/Ortho/ortho/platforms/browser",
-		"/Users/stephenlavelle/Documents/Ortho/ortho/www",
+		"/Users/stephenlavelle/Documents/Ortho/mis",
 		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js",
+		"/Users/stephenlavelle/Documents/Ortho/ortho/www/res",
 		"/Users/stephenlavelle/Documents/Ortho/tools",
-		"/Users/stephenlavelle/Documents/Ortho/tools/dat",
-		"/Users/stephenlavelle/Documents/Ortho/tools/dat/json",
 		"/Users/stephenlavelle/Documents/Ortho/tools/dat/png",
-		"/Users/stephenlavelle/Documents/Ortho/tools/dat/retop",
-		"/Users/stephenlavelle/Documents/Ortho/tools/js"
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/tiled/0",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/tiled/3",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/tiled/4",
+		"/Users/stephenlavelle/Documents/Ortho/tools/docs",
+		"/Users/stephenlavelle/Documents/Ortho/tools/js/app"
 	],
 	"file_history":
 	[
-		"/Users/stephenlavelle/Documents/Ortho/tools/printJson",
-		"/Users/stephenlavelle/Documents/Ortho/tools/dat/json/1.json",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/svg/1.svg",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/svg/1o.svg",
+		"/Users/stephenlavelle/Documents/Ortho/tools/gensite",
+		"/Users/stephenlavelle/Documents/Ortho/tools/docs/css/custom.css",
+		"/Users/stephenlavelle/Documents/Ortho/tools/csstest.js",
+		"/Users/stephenlavelle/Documents/Ortho/tools/js/svgRender.js",
 		"/Users/stephenlavelle/Documents/Ortho/tools/js/orthoLib.js",
-		"/Users/stephenlavelle/Documents/Ortho/tools/retop",
-		"/Users/stephenlavelle/Documents/Ortho/tools/genAll",
+		"/Users/stephenlavelle/Documents/Ortho/tools/docs/css/bootstrap.css",
+		"/Users/stephenlavelle/Documents/Ortho/tools/js/app/orthoApp.js",
+		"/Users/stephenlavelle/Documents/Ortho/ortho/platforms/browser/www/js/compiled.js",
+		"/Users/stephenlavelle/Documents/Ortho/tools/randomizejson",
+		"/Users/stephenlavelle/Documents/Ortho/tools/genall",
 		"/Users/stephenlavelle/Documents/Ortho/tools/json2png",
+		"/Users/stephenlavelle/Documents/Ortho/tools/js/standAlone.js",
+		"/Users/stephenlavelle/Documents/Ortho/tools/retop",
+		"/Users/stephenlavelle/Documents/Ortho/tools/json2svg",
+		"/Users/stephenlavelle/Documents/Ortho/tools/js/orthoTopology.js",
+		"/Users/stephenlavelle/Documents/Ortho/tools/bin2json",
+		"/Users/stephenlavelle/Documents/Ortho/.gitignore",
+		"/Users/stephenlavelle/Documents/Ortho/tools/printjson",
+		"/Users/stephenlavelle/Documents/Ortho/tools/docs/bootstrap.html",
+		"/Users/stephenlavelle/Documents/Ortho/tools/json/docDatabase.json",
+		"/Users/stephenlavelle/Documents/Ortho/ortho/platforms/ios/build/emulator/Orthona.app/www/css/index.css",
+		"/Users/stephenlavelle/Documents/Ortho/ortho/platforms/browser/css/index.css",
+		"/Users/stephenlavelle/Documents/Ortho/tools/js/app/orthoRender.js",
+		"/Users/stephenlavelle/Documents/Ortho/tools/js/app/orthoGlobals.js",
+		"/Users/stephenlavelle/Documents/Ortho/tools/docs/css/style.css",
+		"/Users/stephenlavelle/Documents/Ortho/tools/docs/svg/header0.svg",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/json/12.json",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/svg/12.svg",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/svg/2.svg",
+		"/Users/stephenlavelle/Documents/Ortho/tools/docs/index.html",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/scrapbook/dictionarytemplate.json",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/scrapbook/preminimary",
+		"/Users/stephenlavelle/Documents/Ortho/tools/gensite.js",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/json/11.json",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/json/9.json",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dictionary",
+		"/Users/stephenlavelle/Documents/Ortho/tools/cload",
+		"/Users/stephenlavelle/Documents/Ortho/ortho/platforms/ios/CordovaLib/build/CordovaLib.build/Release-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap",
 		"/Users/stephenlavelle/Documents/Ortho/tools/dat/json/2.json",
+		"/Users/stephenlavelle/Documents/Ortho/tools/json2tiledpng",
+		"/Users/stephenlavelle/Documents/Ortho/tools/js/blitRender.js",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/png/2_0.png",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/json/10.json",
+		"/Users/stephenlavelle/Documents/Ortho/tools/js/svgRenderStraight.js",
+		"/Users/stephenlavelle/Documents/Ortho/tools/c/cload.c",
+		"/Users/stephenlavelle/Documents/Ortho/tools/js/svgRenderPretty.js",
+		"/Users/stephenlavelle/Documents/Ortho/mis/binaryFormatDescription.txt",
+		"/Users/stephenlavelle/Documents/Ortho/mis/letter characteristics.txt",
+		"/Users/stephenlavelle/Documents/Ortho/mis/chinese",
 		"/Users/stephenlavelle/Documents/Ortho/tools/json2bin",
+		"/Users/stephenlavelle/Documents/Ortho/ortho/platforms/ios/www/js/compiled.js",
+		"/Users/stephenlavelle/Documents/Ortho/ortho/www/index.html",
+		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/compiled.js",
+		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/orthoApp.js",
+		"/Users/stephenlavelle/Documents/Ortho/ortho/platforms/browser/www/js/orthoApp.js",
+		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/orthoGlobals.js",
+		"/Users/stephenlavelle/Documents/Ortho/ortho/platforms/ios/build/emulator/Orthona.app/www/onsen-css/stylus/dark-theme.styl",
+		"/Users/stephenlavelle/Documents/Ortho/tools/clean",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/retop/3b_retop.json",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/json/1.json",
+		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/orthoRender.js",
+		"/Users/stephenlavelle/Documents/Ortho/ortho/platforms/browser/www/js/orthoRender.js",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/json/8.json",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/json/7.json",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/png/2.png",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/json/6.json",
+		"/Users/stephenlavelle/Documents/Ortho/tools/testbin",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/json/3b.json",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/retop/3b_retop.json2",
+		"/private/tmp/1.json0",
+		"/private/tmp/1.json1",
+		"/private/tmp/1.json2",
+		"/Users/stephenlavelle/Documents/Ortho/tools/genAll",
+		"/Users/stephenlavelle/Documents/Ortho/tools/binTest",
+		"/Users/stephenlavelle/Documents/Ortho/tools/dat/json/2_b.json",
+		"/Users/stephenlavelle/Documents/Ortho/tools/printJson",
+		"/Users/stephenlavelle/Documents/Ortho/ortho.sublime-workspace",
 		"/Users/stephenlavelle/Documents/Ortho/ortho/platforms/browser/www/index.html",
 		"/Users/stephenlavelle/Documents/Ortho/ortho/platforms/browser/cordova/node_modules/nopt/README.md",
-		"/Users/stephenlavelle/Documents/Ortho/tools/bin2json",
-		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/orthoApp.js",
 		"/Users/stephenlavelle/Documents/Ortho/tools/printOrtho",
 		"/Users/stephenlavelle/Documents/Ortho/tools/drawOrtho",
 		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/-diagonals",
 		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/bin2json.js",
 		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/json2bin",
-		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/orthoGlobals.js",
 		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/json/5.json",
 		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/orthoLib.js",
 		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/binaryFormatDescription.txt",
@@ -759,85 +746,25 @@
 		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/dat/test3.json",
 		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/dat/test4.json",
 		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/doSomething",
-		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/dat/test2_normalized.png",
-		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/drawOrtho",
-		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/dat/test2_normalized.json",
-		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/orthoRender.js",
-		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/drawOrtho.js",
-		"/Users/stephenlavelle/Documents/Ortho/ortho/www/index.html",
-		"/Users/stephenlavelle/Documents/Ortho/ortho/www/fonts/glyphicons-halflings-regular.ttf",
-		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/dat/test1.json",
-		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/{\"book\":[{\"elements\":[[4,6,17],[6,6,12],[5,3,18],[",
-		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/index.js",
-		"/Users/stephenlavelle/Documents/emsc/tests/simplerule2.cpp",
-		"/Users/stephenlavelle/Documents/emsc/a.out.beautified.js",
-		"/Users/stephenlavelle/Documents/emsc/tests/simplerule.cpp",
-		"/Users/stephenlavelle/Documents/emsc/a.out.js",
-		"/Users/stephenlavelle/Documents/emsc/a.out.js.mem",
-		"/Users/stephenlavelle/Documents/decalengine/js/eventEditor.js",
-		"/Users/stephenlavelle/Documents/decalengine/js/state.js",
-		"/Users/stephenlavelle/Documents/decalengine/js/interactiveCanvas.js",
-		"/Users/stephenlavelle/Documents/decalengine/js/global.js",
-		"/Users/stephenlavelle/Documents/decalengine/index.html",
-		"/Users/stephenlavelle/Documents/decalengine/js/pixi/pixi.js",
-		"/Users/stephenlavelle/Documents/decalengine/js/editor.js",
-		"/Users/stephenlavelle/Documents/decalengine/js/sceneEditor.js",
-		"/Users/stephenlavelle/Documents/decalengine/js/sprite_editor.js",
-		"/Users/stephenlavelle/Documents/decalengine/js/gui.js",
-		"/Users/stephenlavelle/Documents/decalengine/js/scenechooser.js",
-		"/Users/stephenlavelle/Documents/decalengine/.editorconfig",
-		"/Users/stephenlavelle/Documents/terrylib/examples/Simple Examples/go_straight/project.xml",
-		"/Users/stephenlavelle/Documents/terrylib/examples/Simple Examples/go_straight/src/haxegon/Text.hx",
-		"/Users/stephenlavelle/Documents/terrylib/examples/Simple Examples/go_straight/src/haxegon/Input.hx",
-		"/Users/stephenlavelle/Documents/terrylib/examples/Simple Examples/go_straight/src/haxegon/Random.hx",
-		"/Users/stephenlavelle/Documents/terrylib/examples/Simple Examples/go_straight/src/mainold.hx",
-		"/Users/stephenlavelle/Documents/terrylib/examples/Simple Examples/go_straight/src/haxegon/Gfx.hx",
-		"/Users/stephenlavelle/Documents/terrylib/examples/Simple Examples/go_straight/data/graphics/prompt.png",
-		"/Users/stephenlavelle/Documents/terrylib/examples/Simple Examples/go_straight/src/Main.hx",
-		"/Users/stephenlavelle/Documents/terrylib/examples/Simple Examples/go_straight/src/haxegon/Convert.hx",
-		"/Users/stephenlavelle/Documents/terrylib/examples/Simple Examples/go_straight/src/haxegon/Key.hx",
-		"/Users/stephenlavelle/Documents/edick/wget/www.bartleby.com/113/1005.html",
-		"/Users/stephenlavelle/Documents/ana-3-grams/phonetic-palindromes.js",
-		"/Users/stephenlavelle/Documents/edick/process.py",
-		"/Users/stephenlavelle/Documents/ana-3-grams/100 Names of God",
-		"/Users/stephenlavelle/Documents/ana-3-grams/nested_pronunciations.js",
-		"/Users/stephenlavelle/Documents/ana-3-grams/just_nestable_words.txt",
-		"/Users/stephenlavelle/Documents/ana-3-grams/pronunciations_noaccen.txt",
-		"/Users/stephenlavelle/.Trash/germanwords.txt",
-		"/Users/stephenlavelle/Documents/ana-3-grams/anagrams.js",
-		"/Users/stephenlavelle/Documents/ana-3-grams/samesounds_differentaccents.js",
-		"/Users/stephenlavelle/Documents/ana-3-grams/phonetic-palindromes.txt",
-		"/Users/stephenlavelle/Documents/ana-3-grams/anagrams_phonetic.txt",
-		"/Users/stephenlavelle/Documents/ana-3-grams/pronunciations.txt",
-		"/Users/stephenlavelle/Documents/Assonancer/pronunciations.txt",
-		"/Users/stephenlavelle/Documents/ana-3-grams/ambigrams.go",
-		"/Users/stephenlavelle/Documents/ana-3-grams/ambigrams",
-		"/Users/stephenlavelle/Documents/ana-3-grams/germanwords.txt",
-		"/Users/stephenlavelle/Documents/ana-3-grams/pairs.go",
-		"/Users/stephenlavelle/Documents/decalengine/gfx/ui/handle_rotate1.png",
-		"/Users/stephenlavelle/Documents/ana-3-grams/gofind.go",
-		"/Users/stephenlavelle/Documents/ana-3-grams/interestingwords.txt",
-		"/Users/stephenlavelle/Documents/ana-3-grams/commonwords.txt",
-		"/Users/stephenlavelle/Documents/ana-3-grams/words.txt",
-		"/Users/stephenlavelle/Documents/ana-3-grams/100kwords.txt",
-		"/Users/stephenlavelle/Documents/ana-3-grams/_smallertriples.txt",
-		"/Users/stephenlavelle/Documents/ana-3-grams/index.html",
-		"/Users/stephenlavelle/Documents/Assonancer/poemparser.js",
-		"/Users/stephenlavelle/Documents/Assonancer/index.html",
-		"/Users/stephenlavelle/Documents/Assonancer/strip_unpronouncable_synonyms.js",
-		"/Users/stephenlavelle/Documents/Assonancer/synsets.js",
-		"/Users/stephenlavelle/Documents/Assonancer/pronunciations.js",
-		"/Users/stephenlavelle/Documents/Assonancer/synsets_stripped.js"
+		"/Users/stephenlavelle/Documents/Ortho/ortho/www/js/dat/test2_normalized.png"
 	],
 	"find":
 	{
-		"height": 41.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
 		"height": 111.0,
 		"where_history":
 		[
+			"*",
+			"",
+			"*.js",
+			"tools/",
+			"*",
+			"*.js",
+			"*",
+			"*.js",
 			"*",
 			"*.js",
 			"/Users/stephenlavelle/Documents/Ortho",
@@ -957,15 +884,7 @@
 			"*.*",
 			"*.js",
 			"*.hx",
-			"*.jhx",
-			"*.js",
-			"*.hx",
-			"*.js",
-			"*.*",
-			"*.js",
-			"*.*",
-			"*.js",
-			"*.hx"
+			"*.jhx"
 		]
 	},
 	"find_state":
@@ -973,141 +892,201 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"drawGridLines_Diagonal",
-			"drawGridLines",
-			"drawGridLines_Diagonal",
-			"asciiCharacters",
-			"saveimage",
-			"SaveImage",
-			"temp.json",
-			"(\\t*)log\\(",
-			"\\s*log(",
-			"//console.log",
-			"console.log",
-			"uv",
-			"FindInsertionPosition",
-			"Topologize",
-			"\"/tmp",
-			"/tmp",
-			"tmp",
-			"orthoGlobals.js",
-			"orthoglobal",
-			"printOrtho",
-			"\"temp",
-			"temp",
-			"path",
-			"log(parsed)",
+			"cheet",
+			"<a",
+			"class='gridlink'",
+			"grid",
+			"<a",
+			"header",
+			"cheetsh",
+			"symbolName",
+			"genericHeader",
+			"page-head",
+			"header",
+			"Helvetica Neue",
+			"font-family",
+			"<text",
+			"color",
+			"docdatabase",
+			"fillCol=",
+			"fillCol",
+			"drop",
+			"setColours",
+			"fillCol",
+			"fill",
+			"ffffff",
+			"'white'",
+			"'black'",
+			"float",
+			"container2",
+			"body",
+			"float",
+			"getRandomInt",
+			"log(",
+			"svgrender(",
 			"outputFileName",
-			"var es = symbols",
-			"⬡",
-			".ortho",
-			"var fs",
-			"fs",
-			"2i",
-			"var page",
-			"var page =",
-			";",
+			"render",
+			".render",
+			"setPadding",
+			"setPaddins",
+			"setPadding",
+			"DOC_PADDING",
+			"genericheader",
+			"center",
+			"triple",
+			".svg",
+			"log",
+			"drawselectionpanel",
+			"spider",
+			"glyphicons",
+			"glyph",
+			"symbolname",
+			"\"head",
+			"docdata",
+			"docdaba",
+			"<img",
 			"]",
-			"\\\\",
-			" \"",
-			"\\\\",
-			"//",
-			"\\\\",
-			"|/",
-			"...",
-			"Instantiate",
-			"function instantiate",
-			"Topologize",
-			"\"l4=\"",
-			"[4]",
-			"tringstream",
-			"ib/codemirr",
-			"return \"draggable\" in div",
-			"var div",
-			"var ss = new CodeMirror",
-			"window.console.log",
-			"'loadFile'",
-			"\"loadFile\"",
-			"'loadFile'",
-			"window.console.log",
-			"Level",
-			"Level =",
-			"var level = ",
-			"var level",
-			"compiler.js",
-			"function compile",
-			"dataarray",
-			"ndow.CodeMirror.defin",
-			"window.CodeMirr",
-			"ument.createElement('TEXTARE",
-			"canvasresize",
-			"var gecko",
-			"typeof exports",
-			"riffwave",
-			"module",
-			"modul",
-			"RIFFWAVE",
-			"'+'",
-			"js/",
-			"var fs",
-			"runtest",
-			"\"",
-			"\"></script>",
-			"\t<script src=\"../",
-			"<!",
-			"connection",
-			"Connection",
-			"connection",
-			"var connection",
-			"Connection",
-			"Topologize",
-			"getBounds",
-			"w",
-			" \"",
-			"log",
-			" is connected to",
-			"log",
-			"ound on",
+			"//.*",
+			"bug-wo",
+			"../../assets/",
+			"../../dist/",
+			"../../assets/",
+			".js",
+			"../../dist/",
+			"initOrthoRender",
+			"canvas",
+			"require(",
+			"require",
+			"\"canvas\"",
+			"canvas",
+			"\"canvas\"",
+			"\"Canvas\"",
+			"\"canvas\"",
+			"build/Release",
+			"dictionarytemplate",
+			"glyphnames",
+			"<html",
+			"svg:",
+			"png",
+			"ortho",
+			"svg:",
+			"{S}",
+			"svg",
+			"alignment-baseline",
+			"1.6",
+			"6]",
+			"+3",
+			"clearEverything",
+			"loadpage(",
+			"pageleft",
+			"newTitle",
+			"friend",
+			"saveFile",
+			"writefile",
+			"SaveState",
+			"clearEverything",
+			"clear",
 			"log(",
-			"FindInsertionPosition",
-			"outputfilename",
-			"log",
-			"FindInsertionPosition",
-			"illing eleme",
-			"nts;",
-			"ts;i",
-			"FindInsertionPosition",
-			"bounds",
-			"LineAtPoint",
-			"connected",
-			"linedirection",
-			"LineAtPoint",
-			"var axes",
-			"LineDirection",
-			"LineAtPoint",
-			"log(",
-			"function log",
-			"lineatpoint",
-			"LineAtPoint",
-			"getbounds",
-			"canvasSize",
-			"output",
-			"elemen",
-			"axes",
-			"parentNode_Physical",
-			"splice",
-			"var l ",
-			"var l",
-			":",
-			"-4",
-			"pointonline"
+			"drawLines",
+			"nolines",
+			"drawIcon",
+			"image(",
+			"image",
+			"image =",
+			"blit",
+			"glob.draw",
+			"setOffsetToTopLeft",
+			"origintotop",
+			"setOffsetToTopLeft",
+			"origin",
+			"setOffsetToTopLeft",
+			"loadFile",
+			"page",
+			"strokewidth",
+			"linewidth",
+			"glob.",
+			"tilesets[",
+			"function ",
+			"clear",
+			"fill",
+			"canvas",
+			"([\\da-f]) ",
+			"(\\da-f) ",
+			"(\\d) ",
+			"exactlyOneDown",
+			"onedown",
+			"mostone",
+			"atMostOneDown",
+			"touches in evt",
+			"touches.",
+			"zoomCoords"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": true,
+		"regex": false,
 		"replace_history":
 		[
+			"",
+			"<text fill='${strokeCol}'",
+			"'${fillCol}'",
+			"'${strokeCol}'",
+			"",
+			"svg",
+			"",
+			"dominant-baseline",
+			"7",
+			"10",
+			"4]",
+			"$1,",
+			"\"touches\" in evt",
+			"\"L\",",
+			"glob.page",
+			"\",\"",
+			"",
+			"inputFileName===\"\"",
+			"DOC_CELLSIZE",
+			"describeArc",
+			"",
+			"\"'/>\\n\"",
+			"",
+			"     \"'/>\\n\"\n            ].join(\" \");",
+			"\"'/>\\n\"\n            ].join(\" \");",
+			"            \"'/>\\n\"\n            ].join(\" \");",
+			"\"Z \",",
+			"result+=`\\t\\t<svg:path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`\n            result += [ ",
+			"\"C\",",
+			",",
+			"\"M\",",
+			"\"L\",",
+			"\"M\",",
+			"fill='black'",
+			"DOC_CELLSIZE",
+			"",
+			"stroke-width='${STROKE_WIDTH}'",
+			"`",
+			"var ",
+			"d='`,",
+			"\"Z \"",
+			"\"'/>\\n\"",
+			" `,",
+			"result+=`",
+			"${}",
+			"DOC_CELLSIZE",
+			"pageArea",
+			"$1glob.page",
+			"lib.axes",
+			"$1glob.axes",
+			"$1glob.sketchBook",
+			"glob.sketchBookIndex",
+			"ctx.",
+			"glob.canvas",
+			"glob.",
+			"glob.page.",
+			"scale",
+			"glob.cellSize",
+			"module.exports.",
+			"'",
 			"//log",
 			"//console.log",
 			"",
@@ -1175,67 +1154,7 @@
 			"\\t",
 			"\\\\'",
 			"\\'",
-			"\\\\\\n",
-			"\\'",
-			"\t\"$1\": [",
-			"\t$1: [",
-			"],",
-			"\",\"",
-			"\"]",
-			"[\"",
-			"[",
-			"],",
-			"[",
-			",",
-			"",
-			"starting_states",
-			"t_s",
-			"gen_starting_decks",
-			"starting_states",
-			"states_used",
-			"]",
-			"[",
-			"$2",
-			"right",
-			"left",
-			"float64",
-			"State",
-			"",
-			"\\n",
-			"",
-			"\\n",
-			",\\n",
-			"0x",
-			"",
-			",\\n",
-			"$1",
-			"C",
-			"",
-			"scene_editor_",
-			"SC_",
-			"128",
-			"var",
-			"let",
-			"SPR_THUMBNAIL",
-			"S_THUMBNAIL",
-			"colDat,",
-			"colDat",
-			"monsters",
-			"\"$1\"",
-			"],",
-			"]",
-			"[",
-			",",
-			" ",
-			"\\n",
-			"",
-			"$1",
-			"\\t\\t",
-			"|",
-			"$1",
-			"remove",
-			"",
-			"em"
+			"\\\\\\n"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -1252,497 +1171,14 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "ortho/platforms/browser/www/js/orthoRender.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 25668,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								23377,
-								23377
-							]
-						],
-						"settings":
-						{
-							"WordCount":
-							{
-								"changes": -1,
-								"modified": true,
-								"selection": true,
-								"status": -1,
-								"syntax": "javascript"
-							},
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 18437.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"file": "tools/dat/png/1_retop_old.png",
-					"semi_transient": true,
-					"stack_index": 2,
-					"type": "image"
-				},
-				{
-					"buffer": 1,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7605,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										281,
-										286
-									],
-									[
-										556,
-										561
-									],
-									[
-										847,
-										852
-									],
-									[
-										1077,
-										1082
-									],
-									[
-										1313,
-										1318
-									],
-									[
-										1573,
-										1578
-									],
-									[
-										1780,
-										1785
-									],
-									[
-										2023,
-										2028
-									],
-									[
-										2386,
-										2395
-									],
-									[
-										2434,
-										2443
-									],
-									[
-										2710,
-										2719
-									],
-									[
-										2929,
-										2938
-									],
-									[
-										3037,
-										3046
-									],
-									[
-										3266,
-										3275
-									],
-									[
-										3485,
-										3494
-									],
-									[
-										3593,
-										3602
-									],
-									[
-										3833,
-										3842
-									],
-									[
-										3941,
-										3950
-									],
-									[
-										4205,
-										4227
-									],
-									[
-										4428,
-										4450
-									],
-									[
-										4710,
-										4732
-									],
-									[
-										4929,
-										4951
-									],
-									[
-										5197,
-										5219
-									],
-									[
-										5402,
-										5424
-									],
-									[
-										5688,
-										5710
-									],
-									[
-										5997,
-										6019
-									],
-									[
-										6220,
-										6242
-									],
-									[
-										6508,
-										6530
-									],
-									[
-										6727,
-										6749
-									],
-									[
-										6995,
-										7017
-									],
-									[
-										7200,
-										7222
-									],
-									[
-										7486,
-										7508
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								5809,
-								5809
-							]
-						],
-						"settings":
-						{
-							"WordCount":
-							{
-								"changes": 46,
-								"count": 281,
-								"modified": false,
-								"selection": false,
-								"status": -1,
-								"syntax": "plain text"
-							},
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 7,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ \t].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 5520.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "tools/js/orthoLib.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4800,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								300,
-								300
-							]
-						],
-						"settings":
-						{
-							"WordCount":
-							{
-								"changes": -1,
-								"modified": true,
-								"selection": true,
-								"status": -1,
-								"syntax": "javascript"
-							},
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 118.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "tools/printJson",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3186,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1003,
-								1003
-							]
-						],
-						"settings":
-						{
-							"WordCount":
-							{
-								"changes": -1,
-								"modified": true,
-								"selection": true,
-								"status": -1,
-								"syntax": "javascript"
-							},
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 541.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "tools/json2png",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1775,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								589,
-								611
-							]
-						],
-						"settings":
-						{
-							"WordCount":
-							{
-								"changes": -1,
-								"modified": true,
-								"selection": true,
-								"status": -1,
-								"syntax": "javascript"
-							},
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 423.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "tools/genAll",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 226,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								201,
-								201
-							]
-						],
-						"settings":
-						{
-							"WordCount":
-							{
-								"changes": 68,
-								"count": 24,
-								"modified": false,
-								"selection": false,
-								"status": -1,
-								"syntax": "plain text"
-							},
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "tools/json2bin",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1088,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"WordCount":
-							{
-								"changes": -1,
-								"modified": true,
-								"selection": true,
-								"status": -1,
-								"syntax": "javascript"
-							},
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "tools/retop",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1152,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								260,
-								262
-							]
-						],
-						"settings":
-						{
-							"WordCount":
-							{
-								"changes": -1,
-								"modified": true,
-								"selection": true,
-								"status": -1,
-								"syntax": "javascript"
-							},
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 650.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "tools/js/orthoTopology.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6064,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6030,
-								6030
-							]
-						],
-						"settings":
-						{
-							"WordCount":
-							{
-								"changes": -1,
-								"modified": true,
-								"selection": true,
-								"status": -1,
-								"syntax": "javascript"
-							},
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 7350.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 33.0
+		"height": 40.0
 	},
 	"input":
 	{
@@ -1787,7 +1223,7 @@
 	"project": "",
 	"replace":
 	{
-		"height": 76.0
+		"height": 74.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1797,12 +1233,372 @@
 		"selected_items":
 		[
 			[
+				"1o.",
+				"tools/dat/svg/1o.svg"
+			],
+			[
+				"1.svg",
+				"tools/dat/svg/1.svg"
+			],
+			[
+				"svgr",
+				"tools/js/svgRender.js"
+			],
+			[
+				"bootst",
+				"tools/docs/css/bootstrap.css"
+			],
+			[
+				"csste",
+				"tools/csstest.js"
+			],
+			[
+				"lib",
+				"tools/js/orthoLib.js"
+			],
+			[
+				"custom.",
+				"tools/docs/css/custom.css"
+			],
+			[
+				"cuso",
+				"tools/docs/css/custom.css"
+			],
+			[
+				"app",
+				"tools/js/app/orthoApp.js"
+			],
+			[
+				"gesi",
+				"tools/gensite"
+			],
+			[
+				"gens",
+				"tools/gensite"
+			],
+			[
+				"cust",
+				"tools/docs/css/custom.css"
+			],
+			[
+				"svg",
+				"tools/js/svgRender.js"
+			],
+			[
+				"2svg",
+				"tools/json2svg"
+			],
+			[
+				"retop",
+				"tools/retop"
+			],
+			[
+				"topo",
+				"tools/js/orthoTopology.js"
+			],
+			[
+				"json2sv",
+				"tools/json2svg"
+			],
+			[
+				"standalone",
+				"tools/js/standAlone.js"
+			],
+			[
 				"json2",
 				"tools/json2png"
 			],
 			[
+				"gen",
+				"tools/genall"
+			],
+			[
+				"",
+				"tools/randomizejson"
+			],
+			[
+				"2js",
+				"tools/bin2json"
+			],
+			[
+				"top",
+				"tools/js/orthoTopology.js"
+			],
+			[
+				"giti",
+				".gitignore"
+			],
+			[
+				"custo",
+				"tools/docs/css/custom.css"
+			],
+			[
 				"prin",
-				"tools/printJson"
+				"tools/printjson"
+			],
+			[
+				"custom",
+				"tools/docs/css/custom.css"
+			],
+			[
+				"data",
+				"tools/json/docDatabase.json"
+			],
+			[
+				"custom.c",
+				"tools/docs/css/custom.css"
+			],
+			[
+				"svg.",
+				"tools/js/svgRender.js"
+			],
+			[
+				".css",
+				"ortho/platforms/ios/build/emulator/Orthona.app/www/css/index.css"
+			],
+			[
+				"docat",
+				"tools/json/docDatabase.json"
+			],
+			[
+				"ge",
+				"tools/gensite"
+			],
+			[
+				"do",
+				"tools/json/docDatabase.json"
+			],
+			[
+				"lib.",
+				"tools/js/orthoLib.js"
+			],
+			[
+				"render",
+				"tools/js/app/orthoRender.js"
+			],
+			[
+				"rende",
+				"tools/js/svgRender.js"
+			],
+			[
+				"2sv",
+				"tools/json2svg"
+			],
+			[
+				"rend",
+				"tools/js/svgRender.js"
+			],
+			[
+				"ortholi",
+				"tools/js/orthoLib.js"
+			],
+			[
+				"glob",
+				"tools/js/app/orthoGlobals.js"
+			],
+			[
+				"gensi",
+				"tools/gensite"
+			],
+			[
+				"globa",
+				"tools/js/app/orthoGlobals.js"
+			],
+			[
+				"svgre",
+				"tools/js/svgRender.js"
+			],
+			[
+				"header0.",
+				"tools/docs/svg/header0.svg"
+			],
+			[
+				"header",
+				"tools/docs/svg/header0.svg"
+			],
+			[
+				"sv",
+				"tools/js/svgRender.js"
+			],
+			[
+				"2png",
+				"tools/json2png"
+			],
+			[
+				"orthore",
+				"tools/js/app/orthoRender.js"
+			],
+			[
+				"12.js",
+				"tools/dat/json/12.json"
+			],
+			[
+				"11.jso",
+				"tools/dat/json/11.json"
+			],
+			[
+				"9.js",
+				"tools/dat/json/9.json"
+			],
+			[
+				"glo",
+				"tools/js/app/orthoGlobals.js"
+			],
+			[
+				"orthol",
+				"tools/js/orthoLib.js"
+			],
+			[
+				"libo",
+				"ortho/platforms/ios/CordovaLib/build/CordovaLib.build/Release-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap"
+			],
+			[
+				"2so",
+				"tools/bin2json"
+			],
+			[
+				"2son",
+				"tools/dat/json/2.json"
+			],
+			[
+				"genal",
+				"tools/genall"
+			],
+			[
+				"bli",
+				"tools/js/blitRender.js"
+			],
+			[
+				"gena",
+				"tools/genall"
+			],
+			[
+				"orthren",
+				"tools/js/app/orthoRender.js"
+			],
+			[
+				"ren",
+				"tools/js/svgRender.js"
+			],
+			[
+				"printj",
+				"tools/printjson"
+			],
+			[
+				"print",
+				"tools/printjson"
+			],
+			[
+				"descri",
+				"mis/binaryFormatDescription.txt"
+			],
+			[
+				"json2pn",
+				"tools/json2png"
+			],
+			[
+				"orthoren",
+				"tools/js/app/orthoRender.js"
+			],
+			[
+				"gl",
+				"tools/js/app/orthoGlobals.js"
+			],
+			[
+				"orthotop",
+				"tools/js/orthoTopology.js"
+			],
+			[
+				"topolo",
+				"tools/js/orthoTopology.js"
+			],
+			[
+				"orthorender",
+				"tools/js/app/orthoRender.js"
+			],
+			[
+				"bin2",
+				"tools/bin2json"
+			],
+			[
+				"orthoto",
+				"tools/js/orthoTopology.js"
+			],
+			[
+				"inde",
+				"ortho/www/index.html"
+			],
+			[
+				"global",
+				"tools/js/app/orthoGlobals.js"
+			],
+			[
+				"compi",
+				"ortho/www/js/compiled.js"
+			],
+			[
+				"orthoap",
+				"ortho/www/js/orthoApp.js"
+			],
+			[
+				"index.",
+				"ortho/www/index.html"
+			],
+			[
+				"orthoglob",
+				"ortho/www/js/orthoGlobals.js"
+			],
+			[
+				"bounds",
+				"ortho/platforms/ios/build/emulator/Orthona.app/www/onsen-css/stylus/dark-theme.styl"
+			],
+			[
+				"2bin",
+				"tools/json2bin"
+			],
+			[
+				"clea",
+				"tools/clean"
+			],
+			[
+				"1.jso",
+				"tools/dat/json/1.json"
+			],
+			[
+				"json",
+				"tools/json2png"
+			],
+			[
+				"ortho",
+				"ortho/www/js/orthoApp.js"
+			],
+			[
+				"reto",
+				"tools/retop"
+			],
+			[
+				"or",
+				"tools/js/orthoTopology.js"
+			],
+			[
+				"ret",
+				"tools/retop"
+			],
+			[
+				"testbi",
+				"tools/testbin"
+			],
+			[
+				"topol",
+				"tools/js/orthoTopology.js"
+			],
+			[
+				"bin2j",
+				"tools/bin2json"
+			],
+			[
+				"ort",
+				"tools/js/orthoTopology.js"
 			],
 			[
 				"json2bi",
@@ -1813,44 +1609,12 @@
 				"tools/genAll"
 			],
 			[
-				"top",
-				"tools/js/orthoTopology.js"
-			],
-			[
-				"reto",
-				"tools/retop"
-			],
-			[
-				"print",
-				"tools/printJson"
-			],
-			[
-				"retop",
-				"tools/retop"
-			],
-			[
-				"app",
-				"js/orthoApp.js"
-			],
-			[
 				"json2b",
 				"js/json2bin"
 			],
 			[
-				"glob",
-				"js/orthoGlobals.js"
-			],
-			[
 				"test5.orth",
 				"js/dat/test5.ortho"
-			],
-			[
-				"2bin",
-				"js/json2bin"
-			],
-			[
-				"lib",
-				"js/orthoLib.js"
 			],
 			[
 				"binar",
@@ -1901,10 +1665,6 @@
 				"js/soundbar.js"
 			],
 			[
-				"topo",
-				"js/orthoTopology.js"
-			],
-			[
 				"drawor",
 				"js/drawOrtho"
 			],
@@ -1917,40 +1677,12 @@
 				"js/dat/test2_normalized.json"
 			],
 			[
-				"ortholi",
-				"js/orthoLib.js"
-			],
-			[
 				"draw",
 				"js/drawOrtho"
 			],
 			[
-				"ren",
-				"js/orthoRender.js"
-			],
-			[
-				"global",
-				"js/orthoGlobals.js"
-			],
-			[
-				"rend",
-				"js/orthoRender.js"
-			],
-			[
-				"orthoap",
-				"js/orthoApp.js"
-			],
-			[
 				"g",
 				"js/orthoGlobals.js"
-			],
-			[
-				"globa",
-				"js/orthoGlobals.js"
-			],
-			[
-				"rende",
-				"js/soRender.js"
 			],
 			[
 				"inter",
@@ -1967,10 +1699,6 @@
 			[
 				"sceneed",
 				"js/sceneEditor.js"
-			],
-			[
-				"index.",
-				"index.html"
 			],
 			[
 				"random",
@@ -2015,298 +1743,6 @@
 			[
 				"spri",
 				"js/sprite_editor.js"
-			],
-			[
-				"ed",
-				"js/sprite_editor.js"
-			],
-			[
-				"pi",
-				"js/pixi/pixi.js"
-			],
-			[
-				"edito",
-				"js/editor.js"
-			],
-			[
-				"pixi.",
-				"js/pixi/pixi.js"
-			],
-			[
-				"inde",
-				"index.html"
-			],
-			[
-				"sprite",
-				"js/sprite_editor.js"
-			],
-			[
-				"intera",
-				"js/interactiveCanvas.js"
-			],
-			[
-				"test.ht",
-				"test.html"
-			],
-			[
-				"test.js",
-				"test.js"
-			],
-			[
-				"pixi.min",
-				"bin/pixi.min.js"
-			],
-			[
-				"pixi.j",
-				"bin/pixi.js"
-			],
-			[
-				"pixi",
-				"decalSources/exporters/pixi-as/pixi.js"
-			],
-			[
-				"main",
-				"src/Main.hx"
-			],
-			[
-				"defaul",
-				"data/text/default.txt"
-			],
-			[
-				"t",
-				"src/TPS.hx"
-			],
-			[
-				"main.",
-				"src/Main.hx"
-			],
-			[
-				"buff",
-				"src/Buffer.hx"
-			],
-			[
-				"simu",
-				"src/Simulator.hx"
-			],
-			[
-				"tps",
-				"src/TPS.hx"
-			],
-			[
-				"defau",
-				"data/text/default.txt"
-			],
-			[
-				"defa",
-				"data/text/default.txt"
-			],
-			[
-				"simul",
-				"src/Simulator.hx"
-			],
-			[
-				"sta",
-				"src/State.hx"
-			],
-			[
-				"data",
-				"src/haxegon/Data.hx"
-			],
-			[
-				"inpu",
-				"src/haxegon/Input.hx"
-			],
-			[
-				"tp",
-				"src/TPS.hx"
-			],
-			[
-				"conve",
-				"src/haxegon/Convert.hx"
-			],
-			[
-				"text",
-				"src/haxegon/Text.hx"
-			],
-			[
-				"gf",
-				"src/haxegon/Gfx.hx"
-			],
-			[
-				"bitmaptextfi",
-				"src/haxegon/bitmapFont/BitmapTextField.hx"
-			],
-			[
-				"bitmpa",
-				"src/haxegon/bitmapFont/BitmapFont.hx"
-			],
-			[
-				"fontfi",
-				"src/haxegon/util/Fontfile.hx"
-			],
-			[
-				"tex",
-				"src/haxegon/Text.hx"
-			],
-			[
-				"engine",
-				"js/engine.js"
-			],
-			[
-				"codemi",
-				"js/codemirror/codemirror.js"
-			],
-			[
-				"compile",
-				"js/compiler.js"
-			],
-			[
-				"inputou",
-				"js/inputoutput.js"
-			],
-			[
-				"inputout",
-				"js/inputoutput.js"
-			],
-			[
-				"to",
-				"js/toolbar.js"
-			],
-			[
-				"input.js",
-				"js/inputoutput.js"
-			],
-			[
-				"applic",
-				"bin/html5/haxe/ApplicationMain.hx"
-			],
-			[
-				"gfx.",
-				"src/haxegon/Gfx.hx"
-			],
-			[
-				"conver",
-				"src/haxegon/Convert.hx"
-			],
-			[
-				"canon",
-				"canongenerate.html"
-			],
-			[
-				"graphgen",
-				"graphgenerate.html"
-			],
-			[
-				"make",
-				"Makefile"
-			],
-			[
-				"text.",
-				"src/haxegon/Text.hx"
-			],
-			[
-				"random.h",
-				"src/haxegon/Random.hx"
-			],
-			[
-				"projec",
-				"project.xml"
-			],
-			[
-				"gfx.h",
-				"src/haxegon/Gfx.hx"
-			],
-			[
-				"mouse.",
-				"src/haxegon/Mouse.hx"
-			],
-			[
-				"q",
-				"Documentation/Questions.html"
-			],
-			[
-				"colorpicker.js",
-				"FlexiColorPicker/colorpicker.js"
-			],
-			[
-				"webthing.",
-				"haxegonweb/bin/html5/bin/webthing.js"
-			],
-			[
-				"webthing.js",
-				"haxegonweb/bin/html5/bin/webthing.js"
-			],
-			[
-				"webthing.j",
-				"bin/zeedonk/haxegonweb/bin/html5/bin/webthing.js"
-			],
-			[
-				"buildscript",
-				"buildscripts"
-			],
-			[
-				"buildsc",
-				"haxegonweb/buildscripts"
-			],
-			[
-				"buildscr",
-				"buildscripts"
-			],
-			[
-				"compil",
-				"compile"
-			],
-			[
-				"editor.ht",
-				"editor.html"
-			],
-			[
-				"editor.j",
-				"js/editor.js"
-			],
-			[
-				"interp",
-				"haxegonweb/src/InterpExtended.hx"
-			],
-			[
-				"toolbar.",
-				"js/toolbar.js"
-			],
-			[
-				"colorpick",
-				"FlexiColorPicker/colorpicker.js"
-			],
-			[
-				"toolb",
-				"js/toolbar.js"
-			],
-			[
-				"console",
-				"js/console.js"
-			],
-			[
-				"text.hx",
-				"haxegonweb/src/haxegon/Text.hx"
-			],
-			[
-				"webgfx",
-				"haxegonweb/src/haxegon/Gfx.hx"
-			],
-			[
-				"autocom",
-				"js/autocompleteArrays.js"
-			],
-			[
-				"musicloo",
-				"demo/doc/Music.musicloop.hx"
-			],
-			[
-				"sfxr",
-				"js/sfxr.js"
-			],
-			[
-				"colorpi",
-				"FlexiColorPicker/colorpicker.js"
 			]
 		],
 		"width": 0.0
@@ -2337,7 +1773,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 364.0,
+	"side_bar_width": 50.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

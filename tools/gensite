@@ -10,7 +10,16 @@ var Canvas = require('canvas')
 var db = require('./res/docDatabase')
 var css = require('css');
 var Image = Canvas.Image
+var Inliner = require('inliner');
 
+
+var fast=false;
+for (var i=2;i<process.argv.length;i++){
+	var t = process.argv[i];
+	if (t==="-fast"){
+		fast=true;
+	}
+}
 
 function findCssVar(cssDat,varName){
 	for (var i=0;i<cssDat.stylesheet.rules.length;i++){
@@ -39,6 +48,13 @@ if (bgCol===null){
 svgRender.setPadding(0.5)
 svgRender.setColours(bgCol,fgCol,bgCol)
 
+function saveHTML(filePath,htmlDat){
+	fs.writeFileSync(filePath,htmlDat);
+	new Inliner(filePath, function (error, htmlMinified) {
+		fs.writeFileSync(filePath,htmlMinified);
+		log("written "+filePath)
+	})
+}
 function symbolName(i){
 	var s = db[i];
 	s = s.name.split(' ').join('_')
@@ -60,13 +76,20 @@ glob.sketchBook = [{
 glob.sketchBookIndex=0
 glob.page=glob.sketchBook[0]
 
+function compressSVG(filePath){
+	if (fast){
+		return;
+	}
+	execSync(`svgo --multipass ${filePath}`)		
+}
 
 for (var s=0;s<glob.symbolCount;s++){
 	glob.page.elements[0][2]=s;
 	
 	var svgDat = svgRender.render();
-	fs.writeFileSync(`./docs/svg/${symbolName(s)}.svg`, svgDat);
-
+	var filePath = `./tmp/${symbolName(s)}.svg`;
+	fs.writeFileSync(filePath, svgDat);
+	compressSVG(filePath)
 }
 
 //1b generate triple images
@@ -85,8 +108,9 @@ for (var s=0;s<glob.symbolCount;s++){
 	glob.page.elements[1][2]=s;
 	
 	var svgDat = svgRender.render();
-	fs.writeFileSync(`./docs/svg/triple_${symbolName(s)}.svg`, svgDat);
-
+	var filePath = `./tmp/triple_${symbolName(s)}.svg`
+	fs.writeFileSync(filePath, svgDat);
+	compressSVG(filePath)
 }
 
 
@@ -117,9 +141,10 @@ for (var s=0;s<glob.symbolCount;s++){
 	}
 
 
-
 	var svgDat = svgRender.render();
-	fs.writeFileSync(`./docs/svg/spider_${symbolName(s)}.svg`, svgDat);
+	var filePath = `./tmp/spider_${symbolName(s)}.svg`
+	fs.writeFileSync(filePath, svgDat)
+	compressSVG(filePath)
 }
 
 var genericHeader = `<!DOCTYPE html>
@@ -135,8 +160,7 @@ var genericHeader = `<!DOCTYPE html>
 
     <title>Orthona Documentation</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
+   
     <link href="css/custom.css" rel="stylesheet">
 
   </head>
@@ -147,6 +171,19 @@ var genericFooter = `</div>
   </body>
 </html>`
 
+
+function embedSvg(name,size,className){
+	var svgStr=fs.readFileSync(`./tmp/${name}.svg`,'utf8')
+	var startIdx = svgStr.indexOf("viewBox=");
+	svgStr = svgStr.substr(startIdx);
+	classStr="";
+	if (className!=null){
+		classStr+=`class ="${className}"`
+	}
+	svgStr=`<svg ${classStr} width="${size}" height=${size} `+svgStr;
+
+	return svgStr;
+}
 
 var index = genericHeader;
 index+='<div class="container">'
@@ -163,7 +200,7 @@ for (var i=0;i<7;i++){
 		var s = j+5*i;
 		index+="<td>\n"
 		index+=`<a   href='${symbolName(s)}.html'>\n`
-		index+=`<img width='50px' height='50px' src='svg/${symbolName(s)}.svg'/>\n`;
+		index+=embedSvg(symbolName(s),"50px");
 		index+="</a></td>\n"
 	}
 	index+="</tr>\n"
@@ -176,7 +213,7 @@ index+="<a class='sitelink'   href='cheatsheat.html'>cheatsheat</a>"
 index+="</div>"
 index+=genericFooter
 
-fs.writeFileSync("./docs/index.html",index);
+saveHTML("./docs/index.html",index);
 
 
 //cheatsheet
@@ -192,7 +229,7 @@ for (var i=0;i<7;i++){
 		var s = j+5*i;
 		index+="<td width=80px height=80px><div class='text-center'>\n"
 		index+=`<a   href='${symbolName(s)}.html'>\n`
-		index+=`<img width='40px' height='40px' src='svg/${symbolName(s)}.svg'/>\n`;
+		index+=embedSvg(symbolName(s),"40px");
 		index+=`<br>${db[i].name}</a>`
 		index+="</div></td>\n"
 	}
@@ -206,7 +243,8 @@ index+="<a class='sitelink'  class='sitelink' href='index.html'>home</a>"
 index+="</div>"
 index+=genericFooter
 
-fs.writeFileSync("./docs/cheatsheat.html",index);
+
+saveHTML("./docs/cheatsheat.html",index);
 
 
 //generate individual pages
@@ -217,9 +255,9 @@ for (var s=0;s<glob.symbolCount;s++){
 		page+='<div class="container">'
 		page+='<div class="page-header">'
 		page+='<div>'
-		page+=`<h1 class="under"><img  src="svg/${symbolName(s)}.svg">\n`
-	
-		page+=`${db[s].name}</h1>`
+		page+=`<h1 class="under">`
+		page+=embedSvg(symbolName(s),"20mm")+"<br>\n"
+		page+=db[s].name+"</h1>"
 		page+='</div>'
 		page+='</div>'
 
@@ -228,7 +266,7 @@ for (var s=0;s<glob.symbolCount;s++){
 			page+=`<div class="col-xs-6">`
 		}
 
-		page+=`<img class="center-block spider"  src="svg/spider_${symbolName(s)}.svg">\n`
+		page+=embedSvg(`spider_${symbolName(s)}`,"250px","center-block spider")+"\n"
 
 		var lines=db[s].lines;
 		if (lines.length>0){
@@ -260,5 +298,5 @@ for (var s=0;s<glob.symbolCount;s++){
 		page+="</div>"
 		page+="<div class='endpagediv'></div>"
 		page+=genericFooter
-		fs.writeFileSync(`./docs/${symbolName(s)}.html`,page);
+		saveHTML(`./docs/${symbolName(s)}.html`,page);
 }
