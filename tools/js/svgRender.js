@@ -16,9 +16,12 @@ var triangle = [
 ];
 
 var DOC_CELLSIZE = 20.0;
-const DOC_PADDING = 0.75;
+var DOC_PADDING = 0.75;
 const STROKE_WIDTH = 1;
 
+function setPadding(p){
+    DOC_PADDING=p;
+}
 
 function tr(x) {
     return (x + DOC_PADDING) * DOC_CELLSIZE;
@@ -822,4 +825,5 @@ function svgRender() {
     return svg;
 }
 
-module.exports = svgRender;
+module.exports.render = svgRender;
+module.exports.setPadding = setPadding

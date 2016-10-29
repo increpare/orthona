@@ -13,4 +13,7 @@ tools/dat/retop/*.*
 tools/dat/bin/*.*
 *.log
 
-tools/docs/*
+tools/docs/*.*
+tools/docs/fonts
+tools/docs/js
+tools/docs/svg

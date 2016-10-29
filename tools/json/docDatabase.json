@@ -1,29 +1,32 @@
 [
-	{//0
+	{
 		"name":"Person A",
-		"uses":["A","B","G","H"],
+		"uses":["A","H"],
 		"lines":[
-			""
+			"Posessed by A",
+			"Posesses H"		
 		],
-		"triple":""
+		"triple":"A knows B"
 	},
-	{//1
+	{
 		"name":"Person B",
-		"uses":["A","B","G","H"],
+		"uses":["B","G","H"],
 		"lines":[
-			""
+			"Nobody knows"
 		],
 		"triple":""
 	},
-	{//2
+	{
 		"name":"Object X",
 		"uses":["A","B","G","H"],
 		"lines":[
-			""
+			"Who is",
+			"as amazing as ever",
+			"while nobody watches"
 		],
-		"triple":""
+		"triple":"asd fas df asdf"
 	},
-	{//3
+	{
 		"name":"Object Y",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -31,7 +34,7 @@
 		],
 		"triple":""
 	},
-	{//4
+	{
 		"name":"blank",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -39,7 +42,7 @@
 		],
 		"triple":""
 	},
-	{//5
+	{
 		"name":"Identity",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -47,7 +50,7 @@
 		],
 		"triple":""
 	},
-	{//6
+	{
 		"name":"Good",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -55,7 +58,7 @@
 		],
 		"triple":""
 	},
-	{//7
+	{
 		"name":"Alter",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -63,7 +66,7 @@
 		],
 		"triple":""
 	},
-	{//8
+	{
 		"name":"Collection",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -71,7 +74,7 @@
 		],
 		"triple":""
 	},
-	{//9
+	{
 		"name":"Event",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -79,7 +82,7 @@
 		],
 		"triple":""
 	},
-	{//10
+	{
 		"name":"Necessary",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -87,7 +90,7 @@
 		],
 		"triple":""
 	},
-	{//11
+	{
 		"name":"Friend",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -95,7 +98,7 @@
 		],
 		"triple":""
 	},
-	{//12
+	{
 		"name":"Ask",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -103,7 +106,7 @@
 		],
 		"triple":""
 	},
-	{//13
+	{
 		"name":"Want",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -111,7 +114,7 @@
 		],
 		"triple":""
 	},
-	{//14
+	{
 		"name":"Power",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -119,7 +122,7 @@
 		],
 		"triple":""
 	},
-	{//15
+	{
 		"name":"See",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -127,7 +130,7 @@
 		],
 		"triple":""
 	},
-	{//16
+	{
 		"name":"Say",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -135,7 +138,7 @@
 		],
 		"triple":""
 	},
-	{//17
+	{
 		"name":"Touch",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -143,7 +146,7 @@
 		],
 		"triple":""
 	},
-	{//18
+	{
 		"name":"Hear",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -151,7 +154,7 @@
 		],
 		"triple":""
 	},
-	{//19
+	{
 		"name":"Eat",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -159,7 +162,7 @@
 		],
 		"triple":""
 	},
-	{//20
+	{
 		"name":"Know",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -167,7 +170,7 @@
 		],
 		"triple":""
 	},
-	{//21
+	{
 		"name":"Smell",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -175,7 +178,7 @@
 		],
 		"triple":""
 	},
-	{//22
+	{
 		"name":"Time",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -183,7 +186,7 @@
 		],
 		"triple":""
 	},
-	{//23
+	{
 		"name":"Action",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -191,7 +194,7 @@
 		],
 		"triple":""
 	},
-	{//24
+	{
 		"name":"Go",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -199,7 +202,7 @@
 		],
 		"triple":""
 	},
-	{//25
+	{
 		"name":"Size",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -207,7 +210,7 @@
 		],
 		"triple":""
 	},
-	{//26
+	{
 		"name":"Pain",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -215,7 +218,7 @@
 		],
 		"triple":""
 	},
-	{//27
+	{
 		"name":"Ease",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -223,7 +226,7 @@
 		],
 		"triple":""
 	},
-	{//28
+	{
 		"name":"Cause",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -231,7 +234,7 @@
 		],
 		"triple":""
 	},
-	{//29
+	{
 		"name":"Able",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -239,7 +242,7 @@
 		],
 		"triple":""
 	},
-	{//30
+	{
 		"name":"Sex",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -247,7 +250,7 @@
 		],
 		"triple":""
 	},
-	{//31
+	{
 		"name":"Internal",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -255,7 +258,7 @@
 		],
 		"triple":""
 	},
-	{//32
+	{
 		"name":"Familiar",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -263,7 +266,7 @@
 		],
 		"triple":""
 	},
-	{//33
+	{
 		"name":"Living",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -271,12 +274,12 @@
 		],
 		"triple":""
 	},
-	{//34
+	{
 		"name":"Read",
 		"uses":["A","B","G","H"],
 		"lines":[
 			""
 		],
 		"triple":""
-	},
+	}
 ]

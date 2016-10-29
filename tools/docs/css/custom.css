@@ -1,0 +1,57 @@
+.container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
+.container2 {
+  width: auto;
+  max-width: 680px;
+  padding: 0;
+  margin:10px 15px;
+}
+
+.container2 .page-header {
+  padding: 0;
+  margin:0;
+}
+
+.container .text-muted {
+  margin: 20px 0;
+}
+
+.center-table
+{
+  margin: 0 auto !important;
+  float: none !important;
+}
+
+h1{
+	text-align: center;
+}
+
+h1.under {
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+ul{
+width: 200px;
+margin: auto;
+}
+
+.spider {
+	transform: scale(0.5);
+}
+
+.triple {
+	transform: scale(0.5);
+}
+
+.endpagediv{
+	height:100px;
+}
+
+.footertext{
+	text-align: center;
+	width:100%;
+}

@@ -2074,23 +2074,23 @@ module.exports.saveCanvasToPng=saveCanvasToPng
 }).call(this,require("buffer").Buffer)
 },{"./app/orthoGlobals":2,"buffer":10,"child_process":8,"fs":8,"tmp":6}],5:[function(require,module,exports){
 module.exports=[
-	{//0
-		"name":"PersAon A",
+	{
+		"name":"Person A",
 		"uses":["A","B","G","H"],
 		"lines":[
 			""
 		],
 		"triple":""
 	},
-	{//1
+	{
 		"name":"Person B",
-		"uses":["A","B","G","H"],
+		"uses":["B","G","H"],
 		"lines":[
 			""
 		],
 		"triple":""
 	},
-	{//2
+	{
 		"name":"Object X",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2098,7 +2098,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//3
+	{
 		"name":"Object Y",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2106,7 +2106,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//4
+	{
 		"name":"blank",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2114,7 +2114,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//5
+	{
 		"name":"Identity",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2122,7 +2122,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//6
+	{
 		"name":"Good",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2130,7 +2130,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//7
+	{
 		"name":"Alter",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2138,7 +2138,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//8
+	{
 		"name":"Collection",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2146,7 +2146,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//9
+	{
 		"name":"Event",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2154,7 +2154,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//10
+	{
 		"name":"Necessary",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2162,7 +2162,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//11
+	{
 		"name":"Friend",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2170,7 +2170,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//12
+	{
 		"name":"Ask",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2178,7 +2178,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//13
+	{
 		"name":"Want",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2186,7 +2186,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//14
+	{
 		"name":"Power",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2194,7 +2194,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//15
+	{
 		"name":"See",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2202,7 +2202,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//16
+	{
 		"name":"Say",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2210,7 +2210,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//17
+	{
 		"name":"Touch",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2218,7 +2218,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//18
+	{
 		"name":"Hear",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2226,7 +2226,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//19
+	{
 		"name":"Eat",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2234,7 +2234,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//20
+	{
 		"name":"Know",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2242,7 +2242,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//21
+	{
 		"name":"Smell",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2250,7 +2250,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//22
+	{
 		"name":"Time",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2258,7 +2258,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//23
+	{
 		"name":"Action",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2266,7 +2266,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//24
+	{
 		"name":"Go",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2274,7 +2274,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//25
+	{
 		"name":"Size",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2282,7 +2282,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//26
+	{
 		"name":"Pain",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2290,7 +2290,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//27
+	{
 		"name":"Ease",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2298,7 +2298,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//28
+	{
 		"name":"Cause",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2306,7 +2306,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//29
+	{
 		"name":"Able",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2314,7 +2314,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//30
+	{
 		"name":"Sex",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2322,7 +2322,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//31
+	{
 		"name":"Internal",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2330,7 +2330,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//32
+	{
 		"name":"Familiar",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2338,7 +2338,7 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//33
+	{
 		"name":"Living",
 		"uses":["A","B","G","H"],
 		"lines":[
@@ -2346,14 +2346,14 @@ module.exports=[
 		],
 		"triple":""
 	},
-	{//34
+	{
 		"name":"Read",
 		"uses":["A","B","G","H"],
 		"lines":[
 			""
 		],
 		"triple":""
-	},
+	}
 ]
 },{}],6:[function(require,module,exports){
 (function (process){

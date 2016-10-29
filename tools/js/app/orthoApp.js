@@ -550,7 +550,6 @@ function drawSelectionPanel(select,x,y){
     var panelRight = centerX+panelRows*cellSize/2;
     var panelTop = centerY-panelCols*cellSize/2;
     var panelBottom = centerY+panelCols*cellSize/2;
-    log(panelLeft,panelTop,panelRight,panelBottom)
     panelTop+=cellSize/2;
     panelBottom+=cellSize/2;
 

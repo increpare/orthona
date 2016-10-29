@@ -7,8 +7,16 @@ var lib = require('./js/orthoLib')
 var svgRender = require("./js/svgRender")
 var log = console.log
 var Canvas = require('canvas')
-var docDatabase = require('./json/docDatabase')
+var db = require('./json/docDatabase')
 var Image = Canvas.Image
+
+svgRender.setPadding(0.5)
+
+function symbolName(i){
+	var s = db[i];
+	s = s.name.split(' ').join('_')
+	return s
+}
 
 glob.drawGridLines=false;
 
@@ -29,14 +37,15 @@ glob.page=glob.sketchBook[0]
 for (var s=0;s<glob.symbolCount;s++){
 	glob.page.elements[0][2]=s;
 	
-	var svgDat = svgRender();
-	fs.writeFileSync("./docs/svg/header"+s+".svg", svgDat);
+	var svgDat = svgRender.render();
+	fs.writeFileSync(`./docs/svg/${symbolName(s)}.svg`, svgDat);
 
 }
 
+//1b generate triple images
 glob.sketchBook = [{
-	elements:[[8,6,0],[7,5,35],[8,5,36],[9,5,37],[7,6,38],[9,6,39],[7,7,40],[8,7,41],[9,7,42]],
-	lines:[[8,6,7,5,0],[8,6,8,5,0],[9,5,8,6,0],[9,6,8,6,0],[9,7,8,6,0],[8,7,8,6,0],[8,6,7,7,0],[8,6,7,6,0]],
+	elements:[[7,4,35],[7,5,0],[7,6,36]],
+	lines:[[7,6,7,4,0]],
 	offsetX:0,
 	offsetY:0,
 	scale:1,
@@ -45,66 +54,145 @@ glob.sketchBook = [{
 glob.sketchBookIndex=0
 glob.page=glob.sketchBook[0]
 
+for (var s=0;s<glob.symbolCount;s++){
+	glob.page.elements[1][2]=s;
+	
+	var svgDat = svgRender.render();
+	fs.writeFileSync(`./docs/svg/triple_${symbolName(s)}.svg`, svgDat);
+
+}
+
+
 
 for (var s=0;s<glob.symbolCount;s++){
+		glob.sketchBook = [{
+		elements:[[8,6,0],[7,5,35],[8,5,36],[9,5,37],[7,6,38],[9,6,39],[7,7,40],[8,7,41],[9,7,42]],
+		lines:[[8,6,7,5,0],[8,6,8,5,0],[9,5,8,6,0],[7,6,8,6,0],[9,6,8,6,0],[7,7,8,6,0],[8,7,8,6,0],[9,7,8,6,0]],
+		offsetX:0,
+		offsetY:0,
+		scale:1,
+		sketchTitle:""
+	}]
+	glob.sketchBookIndex=0
+	glob.page=glob.sketchBook[0]
 	glob.page.elements[0][2]=s;
 
 
-	var svgDat = svgRender();
-	fs.writeFileSync("./docs/svg/spider"+s+".svg", svgDat);
+	//show/hide things as needed
+	var dbs=db[s];
+	var letters = ["A","B","C","D","E","F","G","H"];
+	for (var i=letters.length-1;i>=0;i--){
+		var L = letters[i]
+		if (dbs.uses.indexOf(L)===-1){
+			glob.page.elements.splice(i+1,1);
+			glob.page.lines.splice(i,1);
+		}
+	}
+
+
+
+	var svgDat = svgRender.render();
+	fs.writeFileSync(`./docs/svg/spider_${symbolName(s)}.svg`, svgDat);
 }
 
-//generate index page
+var genericHeader = `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-index = `<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Orthona Documentation</title>
-<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-<table>`
+    <title>Orthona Documentation</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/custom.css" rel="stylesheet">
+
+  </head>
+
+  <body>`
+
+var genericFooter = `</div>
+  </body>
+</html>`
+
+
+var index = genericHeader;
+index+='<div class="container">'
+index+='<div class="page-header">'
+index+='<h1>Orthona</h1>'
+index+='</div>'
+index+='<table class="span5 center-table" >'
 
 for (var i=0;i<7;i++){
 	index+="<tr>\n"
 	for (var j=0;j<5;j++){
 		var s = j+5*i;
 		index+="<td>\n"
-		index+=`<a href='symbol${s}.html'>\n`
-		index+=`<img width='50px' height='50px' src='svg/header${s}.svg'/>\n`;
+		index+=`<a href='${symbolName(s)}.html'>\n`
+		index+=`<img width='50px' height='50px' src='svg/${symbolName(s)}.svg'/>\n`;
 		index+="</a></td>\n"
 	}
 	index+="</tr>\n"
 }
 
-index+=`
-</table>
-</body>
-</html>`
+index+="</table>"
+index+=genericFooter
 
 fs.writeFileSync("./docs/index.html",index);
 
 //generate individual pages
 
 for (var s=0;s<glob.symbolCount;s++){
-	var page = `<!DOCTYPE html>
-		<html>
-		<head>
-		<meta charset="utf-8">
-		<title>Orthona Documentation</title>
-		<link rel="stylesheet" href="css/style.css">
-		</head>
-		<body>`
+	var page = genericHeader
 
-		page+=`<img src="svg/header${s}.svg">\n`
+		page+='<div class="container2">'
+		page+='<div class="page-header">'
+		page+=`<img class="center-block"  src="svg/${symbolName(s)}.svg">\n`
+		page+="<p>"
+		page+=`<h1 class="under">${db[s].name}</h1>`
+		page+='</div>'
 
-		page+="<p>\n"
-		page+=`<img src="svg/spider${s}.svg">\n`
+		page+="<div class='row'>"
+		if (db[s].triple.length>0){
+			page+=`<div class="col-xs-6">`
+		}
 
-		page+="<p>\n"
+		page+=`<img class="center-block spider"  src="svg/spider_${symbolName(s)}.svg">\n`
+
+		var lines=db[s].lines;
+		if (lines.length>0){
+			page+="<ul>"
+			for (var i=0;i<lines.length;i++){
+				var L=lines[i]
+				page+=`<li>${L}</li>\n`
+			}		
+			page+="</ul>"
+		}
+
+		if (db[s].triple.length>0){
+			page+=`</div>`
+		}
+
+		if (db[s].triple.length>0){
+			page+=`<div class="col-xs-6">`
 		
-		page+=`</body>
-		</html>`
-		fs.writeFileSync(`./docs/symbol${s}.html`,page);
+			var L = db[s].triple;
+			page+=`<img class="center-block triple"  src="svg/triple_${symbolName(s)}.svg">\n`
+			page+=`<ul><li>${L}</li></ul>`
+			page+=`</div>`
+
+		}
+		page+="</div>"
+		page+="<p>"
+		page+="<div class='text-center'>"
+		page+="<a   href='index.html'>back</a>"
+		page+="</div>"
+		page+="<div class='endpagediv'></div>"
+		page+=genericFooter
+		fs.writeFileSync(`./docs/${symbolName(s)}.html`,page);
 }
