@@ -9,6 +9,7 @@ var log = console.log
 var Canvas = require('canvas')
 var db = require('./res/docDatabase')
 var css = require('css');
+var minify = require('html-minifier').minify;
 var Image = Canvas.Image
 var Inliner = require('inliner');
 
@@ -58,6 +59,29 @@ function saveHTML(filePath,htmlDat){
 		return;
 	}
 	new Inliner(filePath, function (error, htmlMinified) {
+		htmlMinified = minify(
+			htmlMinified,
+			{
+				collapseBooleanAttributes:true,
+				collapseInlineTagWhitespace:true,
+				collapseWhitespace:true,
+				decodeEntities:true,
+				minifyCSS:true,
+				minifyJS:true,
+				processConditionalComments:true,
+				removeAttributeQuotes:true,
+				removeComments:true,
+				removeEmptyAttributes:true,
+				removeEmptyElements:true,
+				removeOptionalTags:true,
+				removeRedundantAttributes:true,
+				removeScriptTypeAttributes:true,
+				removeStyleLinkTypeAttributes:true,
+				sortAttributes:true,
+				sortClassName:true,
+				trimCustomFragments:true,
+				useShortDoctype:true
+			})
 		fs.writeFileSync(filePath,htmlMinified);
 	})
 }
@@ -144,17 +168,11 @@ for (var s=0;s<glob.symbolCount;s++){
 	fs.writeFileSync(filePath, svgDat)
 }
 
-var genericHeader = `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Orthona Documentation</title>
-    <link href="css/custom.css" rel="stylesheet">
-  </head>
-  <body>`
+var genericHeader = "<!DOCTYPE html>"
+    genericHeader += '<meta charset=utf-8>'
+    genericHeader += '<title>Orthona Documentation</title>'
+    genericHeader += '<link href="css/custom.css" rel="stylesheet">'
 
-var genericFooter = `</body>
-</html>`
 
 String.prototype.replaceAll = function(search, replacement) {
     var target = this;
@@ -169,11 +187,11 @@ function embedSvg(name,width,height,className){
 	if (className!=null){
 		classStr+=`class ="${className}"`
 	}
-	svgStr=`<svg ${classStr} width="${width}" height=${height} `+svgStr;
+	svgStr=`<svg ${classStr} width=${width} height=${height} `+svgStr;
 	svgStr = svgStr.replaceAll(`stroke-linecap="round"`,"") 
 	svgStr = svgStr.replaceAll(`stroke-width='1'`,"") 
-	svgStr = svgStr.replaceAll(`stroke='${fgCol}'`,"") 
-	svgStr = svgStr.replaceAll(`fill='${bgCol}'`,"") 
+	svgStr = svgStr.replaceAll(`stroke=${fgCol}`,"") 
+	svgStr = svgStr.replaceAll(`fill=${bgCol}`,"") 
 	svgStr = svgStr.replaceAll(`font-family="Helvetica"`,"") 
 	svgStr = svgStr.replaceAll(`font-size="12px"`,"")  
 	svgStr = svgStr.replaceAll(`text-anchor="middle"`,"")  
@@ -183,25 +201,23 @@ function embedSvg(name,width,height,className){
 }
 
 var index = genericHeader;
-index+='<h1>Orthona</h1>\n'
-index+='<table >\n'
+index+='<h1>Orthona</h1>'
+index+='<table >'
 
 for (var i=0;i<7;i++){
-	index+="<tr>\n"
+	index+="<tr>"
 	for (var j=0;j<5;j++){
 		var s = j+5*i;
-		index+="<td>\n"
-		index+=`<a   href='${symbolName(s)}.html'>\n`
-		index+=embedSvg(symbolName(s),"50px","50px")+"\n";
-		index+="</a></td>\n"
+		index+="<td>"
+		index+=`<a href='${symbolName(s)}.html'>`
+		index+=embedSvg(symbolName(s),"50px","50px")+"";
+		index+="</a>"
 	}
-	index+="</tr>\n"
 }
 
-index+="</table>\n"
-index+="<p>\n"
-index+="[ <a href='cheatsheet.html'>cheatsheet</a> ]\n"
-index+=genericFooter
+index+="</table>"
+index+="<p>"
+index+="[ <a href='cheatsheet.html'>cheatsheet</a> ]"
 
 saveHTML("./docs/index.html",index);
 
@@ -210,26 +226,23 @@ saveHTML("./docs/index.html",index);
 
 
 var index = genericHeader;
-index+='<h1>Orthona Cheatsheet</h1>\n'
-index+='<table class="cheat" >\n'
+index+='<h1>Orthona Cheatsheet</h1>'
+index+='<table class="cheat" >'
 
 for (var i=0;i<7;i++){
-	index+="<tr>\n"
+	index+="<tr>"
 	for (var j=0;j<5;j++){
 		var s = j+5*i;
-		index+="<td>\n"
-		index+=`<a   href='${symbolName(s)}.html'>\n`
-		index+=embedSvg(symbolName(s),"40px","40px")+"\n";
-		index+=`<br>${db[s].name}</a>\n`
-		index+="</td>\n"
+		index+="<td>"
+		index+=`<a   href='${symbolName(s)}.html'>`
+		index+=embedSvg(symbolName(s),"40px","40px")+"";
+		index+=`<br>${db[s].name}</a>`
 	}
-	index+="</tr>\n"
 }
 
-index+="</table>\n"
-index+="<p>\n"
-index+="[ <a href='index.html'>home</a> ]\n"
-index+=genericFooter
+index+="</table>"
+index+="<p>"
+index+="[ <a href='index.html'>home</a> ]"
 
 
 saveHTML("./docs/cheatsheet.html",index);
@@ -241,36 +254,33 @@ for (var s=0;s<glob.symbolCount;s++){
 	var page = genericHeader
 
 		page+=`<h1>`
-		page+=embedSvg(symbolName(s),"20mm","20mm")+"<br>\n"
+		page+=embedSvg(symbolName(s),"20mm","20mm")+"<br>"
 		page+=db[s].name+"</h1>"
 
 		page+='<table ><tr>'
 		page+="<td>"
-		page+=embedSvg(`spider_${symbolName(s)}`,"30mm","30mm","center-block")+"\n"
+		page+=embedSvg(`spider_${symbolName(s)}`,"30mm","30mm","center-block")+""
 
 		var lines=db[s].lines;
 		if (lines.length>0){
 			page+="<ul>"
 			for (var i=0;i<lines.length;i++){
 				var L=lines[i]
-				page+=`<li>${L}</li>\n`
+				page+=`<li>${L}`
 			}		
 			page+="</ul>"
 		}
-		page+="</td>"
 
 		if (db[s].triple.length>0){
 			page+=`<td>`
 		
 			var L = db[s].triple;
-			page+=embedSvg(`triple_${symbolName(s)}`,"10mm","30mm","center-block")+"\n"
+			page+=embedSvg(`triple_${symbolName(s)}`,"10mm","30mm","center-block")+""
 			page+=`<ul><li>${L}</li></ul>`
-			page+=`</td>`
 
 		}
-		page+="</tr></table>"
+		page+="</table>"
 		page+="<p>"
 		page+="[ <a href='index.html'>back</a> ]"
-		page+=genericFooter
 		saveHTML(`./docs/${symbolName(s)}.html`,page);
 }
