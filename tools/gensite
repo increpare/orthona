@@ -84,6 +84,9 @@ function saveHTML(filePath,htmlDat){
 				trimCustomFragments:true,
 				useShortDoctype:true
 			})
+
+		htmlMinified = htmlMinified.replaceAll("\\[<a","[ <a ")  
+		htmlMinified = htmlMinified.replaceAll("a>]","a> ]")  
 		fs.writeFileSync(filePath,htmlMinified);
 	})
 }
@@ -137,6 +140,21 @@ for (var s=0;s<glob.symbolCount;s++){
 	fs.writeFileSync(filePath, svgDat);
 }
 
+//1c generate example images
+
+
+for (var s=0;s<glob.symbolCount;s++){
+	var doc=db[s];
+	for (var j=0;j<doc.examples.length;j++){
+		var fn = doc.examples[j].file
+		var jsonPath = `./dat/json/${fn}.json`;
+		var jsonDat = fs.readFileSync(jsonPath,'utf8');
+		glob.page=JSON.parse(jsonDat);		
+		var svgDat = svgRender.render();
+		var filePath = `./tmp/ex_${fn}.svg`
+		fs.writeFileSync(filePath, svgDat);
+	}
+}
 
 
 for (var s=0;s<glob.symbolCount;s++){
@@ -170,11 +188,19 @@ for (var s=0;s<glob.symbolCount;s++){
 	fs.writeFileSync(filePath, svgDat)
 }
 
+var postcss = require('postcss');
+var cssvariables = require('postcss-css-variables');
+var myCssFile = fs.readFileSync("./res/custom.css",'utf8');
+var myCssFile = postcss([
+        cssvariables(/*options*/)
+    ])
+    .process(myCssFile)
+    .css;
+
 var genericHeader = "<!DOCTYPE html>"
     genericHeader += '<meta charset=utf-8>'
     genericHeader += '<title>Orthona Documentation</title>'
-    genericHeader +=`<style>${fs.readFileSync("./res/custom.css")}</style>`
-
+    genericHeader +=`<style>${myCssFile}</style>`
 
 String.prototype.replaceAll = function(search, replacement) {
     var target = this;
@@ -184,12 +210,18 @@ String.prototype.replaceAll = function(search, replacement) {
 function embedSvg(name,width,height,className){
 	var svgStr=fs.readFileSync(`./tmp/${name}.svg`,'utf8')
 	var startIdx = svgStr.indexOf("viewBox=");
-	svgStr = svgStr.substr(startIdx);
-	classStr="";
+	var classStr="";
 	if (className!=null){
 		classStr+=`class ="${className}"`
 	}
-	svgStr=`<svg ${classStr} width=${width} height=${height} `+svgStr;
+	if (width>=0){
+		svgStr = svgStr.substr(startIdx);
+		svgStr=`<svg ${classStr} width=${width} height=${height} `+svgStr;
+	} else {
+		svgPart1 = svgStr.substr(0,startIdx);
+		svgPart2 = svgStr.substr(startIdx);
+		svgStr=svgPart1+" "+classStr+" "+svgPart2;
+	}
 	svgStr = svgStr.replaceAll(`stroke-linecap="round"`,"") 
 	svgStr = svgStr.replaceAll(`stroke-width='1'`,"") 
 	svgStr = svgStr.replaceAll(`stroke=${fgCol}`,"") 
@@ -199,7 +231,6 @@ function embedSvg(name,width,height,className){
 	svgStr = svgStr.replaceAll(`text-anchor="middle"`,"")  
 	svgStr = svgStr.replaceAll(`<path   fill='transparent'  d=''/>`,"")  
 	svgStr = svgStr.replaceAll(`version='1.1'`,"")  
-	svgStr = svgStr.replaceAll(`transparent`,"none")  
 	return svgStr;
 }
 
@@ -260,8 +291,13 @@ for (var s=0;s<glob.symbolCount;s++){
 		page+=embedSvg(symbolName(s),"20mm","20mm")+"<br>"
 		page+=db[s].name+"</h1>"
 
-		page+='<table ><tr>'
+		if (db[s].description.length>0){
+			page+=`<div class="leadDescription">${db[s].description}</div><p>`
+		}
+		var itemCount=0;
+		page+='<table ><tr>'		
 		page+="<td>"
+		itemCount++
 		page+=embedSvg(`spider_${symbolName(s)}`,"30mm","30mm","center-block")+""
 
 		var lines=db[s].lines;
@@ -273,14 +309,27 @@ for (var s=0;s<glob.symbolCount;s++){
 			}		
 			page+="</ul>"
 		}
-
 		if (db[s].triple.length>0){
 			page+=`<td>`
+			itemCount++
 		
 			var L = db[s].triple;
 			page+=embedSvg(`triple_${symbolName(s)}`,"10mm","30mm","center-block")+""
 			page+=`<ul><li>${L}</li></ul>`
 
+		}
+
+		for (var i=0;i<db[s].examples.length;i++){
+			if (itemCount%2===0){
+				page+="<tr>"
+			}
+			page+="<td>"
+			var eg = db[s].examples[i];
+			var fn = eg.file;
+			var filePath = `ex_${fn}`
+			page+=eg.description+"<br>";
+			page+=embedSvg(filePath,"10mm","30mm","center-block")+"<br>"
+			page+=`<em>${eg.translation}</em><br>`;
 		}
 		page+="</table>"
 		page+="<p>"

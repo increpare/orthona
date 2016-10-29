@@ -1,285 +1,535 @@
 [
 	{
 		"name":"Person A",
-		"uses":["A","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			"Posessed by A",
-			"Posesses H"		
+			"A has Person A.",
+			"C is Person A.",
+			"D, then Person A.",
+			"Person A, then E.",
+			"F is Person A.",
+			"Person A has H."		
 		],
-		"triple":"A knows B"
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Person B",
-		"uses":["B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			"Nobody knows"
+			"A has Person B.",
+			"C is Person B.",
+			"D, then Person B.",
+			"Person B, then E.",
+			"F is Person B.",
+			"Person B has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Object X",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			"Who is",
-			"as amazing as ever",
-			"while nobody watches"
+			"A has Object X.",
+			"C is Object X.",
+			"D, then Object X.",
+			"Object X, then E.",
+			"F is Object X.",
+			"Object X has H."		
 		],
-		"triple":"asd fas df asdf"
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Object Y",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has Object Y.",
+			"C is Object Y.",
+			"D, then Object Y.",
+			"Object Y, then E.",
+			"F is Object Y.",
+			"Object Y has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
-		"name":"Blank",
-		"uses":["A","B","G","H"],
+		"name":"Dot",
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has ...",
+			"C is ...",
+			"D, then ...",
+			"..., then E.",
+			"F is ...",
+			"... has H."
 		],
-		"triple":""
+		"triple":"",
+		"examples":[
+			{
+				"file":"dotExample",
+				"description":"A dot sign is used to split lines into multiple parts, to allow aggregate statements.",
+				"translation":"Person A watches Person B while touching themselves."
+			}
+		]
 	},
 	{
 		"name":"Identity",
-		"uses":["A","B","G","H"],
+		"description":"Used to indicate who the speaker is, and who they are addressing.",
+		"uses":["A","B","C","D","E","F","H","H"],
 		"lines":[
-			""
+			"A has an identity.",
+			"B is you",
+			"C is an identity.",
+			"D, then an identity.",
+			"An identity, then E.",
+			"F is an identity.",
+			"I am G",
+			"An identity has H."
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Good",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Alter",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Collection",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Event",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Necessary",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Friend",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Ask",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Want",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Power",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"See",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Say",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Touch",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Hear",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Eat",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Know",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Smell",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Time",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Action",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Go",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Size",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Pain",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Ease",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Cause",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Able",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Sex",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Internal",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Familiar",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Living",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	},
 	{
 		"name":"Read",
-		"uses":["A","B","G","H"],
+		"description":"",
+		"uses":["A","C","D","E","F","H"],
 		"lines":[
-			""
+			"A has X.",
+			"C is X.",
+			"D, then X.",
+			"X, then E.",
+			"F is X.",
+			"X has H."		
 		],
-		"triple":""
+		"triple":"",
+		"examples":[]
 	}
 ]
