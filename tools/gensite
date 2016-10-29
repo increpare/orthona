@@ -1,0 +1,107 @@
+#!/usr/bin/env node
+var execSync = require('child_process').execSync
+
+var fs = require('fs')
+var glob = require('./js/app/orthoGlobals')
+var lib = require('./js/orthoLib')
+var orthoRender = require("./js/app/orthoRender")
+var log = console.log
+var Canvas = require('canvas')
+var Image = Canvas.Image
+
+glob.drawGridLines=false;
+
+//1 generate simple images
+
+glob.sketchBook = [{
+	elements:[[8,4,0]],
+	lines:[],
+	offsetX:0,
+	offsetY:0,
+	scale:1,
+	sketchTitle:""
+}]
+glob.sketchBookIndex=0
+glob.page=glob.sketchBook[0]
+
+
+orthoRender.initOrthoRender();
+
+for (var s=0;s<glob.symbolCount;s++){
+	glob.page.elements[0][2]=s;
+	orthoRender.render();
+	lib.saveCanvasToPng("./docs/png/header"+s+".png")
+}
+
+glob.sketchBook = [{
+	elements:[[8,6,0],[7,5,35],[8,5,36],[9,5,37],[7,6,38],[9,6,39],[7,7,40],[8,7,41],[9,7,42]],
+	lines:[[8,6,7,5,0],[8,6,8,5,0],[9,5,8,6,0],[9,6,8,6,0],[9,7,8,6,0],[8,7,8,6,0],[8,6,7,7,0],[8,6,7,6,0]],
+	offsetX:0,
+	offsetY:0,
+	scale:1,
+	sketchTitle:""
+}]
+glob.sketchBookIndex=0
+glob.page=glob.sketchBook[0]
+
+orthoRender.initOrthoRender();
+
+for (var s=0;s<glob.symbolCount;s++){
+	glob.page.elements[0][2]=s;
+
+	orthoRender.render();
+	lib.saveCanvasToPng("./docs/png/spider"+s+".png")
+}
+
+//generate index page
+
+index = `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Orthona Documentation</title>
+</head>
+<body>
+<table>`
+
+for (var i=0;i<7;i++){
+	index+="<tr>\n"
+	for (var j=0;j<5;j++){
+		var s = j+5*i;
+		index+="<td>\n"
+		index+=`<a href='symbol${s}.html'>\n`
+		index+=`<img width='50px' height='50px' src='png/header${s}.png'/>\n`;
+		index+="</a></td>\n"
+	}
+	index+="</tr>\n"
+}
+
+index+=`
+</table>
+</body>
+</html>`
+
+fs.writeFileSync("./docs/index.html",index);
+
+//generate individual pages
+
+for (var s=0;s<glob.symbolCount;s++){
+	var page = `<!DOCTYPE html>
+		<html>
+		<head>
+		<meta charset="utf-8">
+		<title>Orthona Documentation</title>
+		</head>
+		<body>`
+
+		page+=`<img src="png/header${s}.png">\n`
+
+		page+="<p>\n"
+		page+=`<img src="png/spider${s}.png">\n`
+
+		page+="<p>\n"
+		
+		page+=`</body>
+		</html>`
+		fs.writeFileSync(`./docs/symbol${s}.html`,page);
+}

@@ -12,3 +12,5 @@ tools/dat/retop/*.*
 
 tools/dat/bin/*.*
 *.log
+
+tools/docs/*

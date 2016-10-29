@@ -31,7 +31,7 @@ var startPosY=0;
 function SaveState(){
     var sketch_save = JSON.stringify({book:glob.sketchBook,page:glob.sketchBookIndex});
     localStorage.setItem("glob.sketchBookDat",sketch_save);
-    console.log(JSON.stringify(glob.sketchBook))
+    console.log(JSON.stringify(glob.sketchBook[glob.sketchBookIndex]))
 }
 
 function TryRestoreState(){

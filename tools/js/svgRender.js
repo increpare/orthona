@@ -622,6 +622,54 @@ function drawIcon(x, y, icon) {
 
                 break;
             }
+        case 35://documentation circle /w letter A inside
+            {
+                result += `\t\t<svg:circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='white' stroke='black' />\n`
+                result += `<svg:text font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">A</svg:text>\n`
+                break
+            }
+        case 36://documentation circle /w letter B inside
+            {
+                result += `\t\t<svg:circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='white' stroke='black' />\n`
+                result += `<svg:text font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">B</svg:text>\n`
+                break
+            }
+        case 37://documentation circle /w letter C inside
+            {
+                result += `\t\t<svg:circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='white' stroke='black' />\n`
+                result += `<svg:text font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">C</svg:text>\n`
+                break
+            }
+        case 38://documentation circle /w letter D inside
+            {
+                result += `\t\t<svg:circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='white' stroke='black' />\n`
+                result += `<svg:text font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">D</svg:text>\n`
+                break
+            }
+        case 39://documentation circle /w letter E inside
+            {
+                result += `\t\t<svg:circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='white' stroke='black' />\n`
+                result += `<svg:text font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">E</svg:text>\n`
+                break
+            }
+        case 40://documentation circle /w letter F inside
+            {
+                result += `\t\t<svg:circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='white' stroke='black' />\n`
+                result += `<svg:text font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">F</svg:text>\n`
+                break
+            }
+        case 41://documentation circle /w letter G inside
+            {
+                result += `\t\t<svg:circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='white' stroke='black' />\n`
+                result += `<svg:text font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">G</svg:text>\n`
+                break
+            }
+        case 42://documentation circle /w letter H inside
+            {
+                result += `\t\t<svg:circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='white' stroke='black' />\n`
+                result += `<svg:text font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">H</svg:text>\n`
+                break
+            }
         default:
             { //circle
                 result += `\t\t<svg:circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${0.4*DOC_CELLSIZE}' fill='transparent' stroke='black' />\n`
@@ -634,10 +682,18 @@ function drawIcon(x, y, icon) {
 }
 
 function svgRender() {
+    var canvasDimensions = lib.canvasSize();
+
+    var Canvas = require('canvas')
+    var Image = Canvas.Image
+
+    canvas = new Canvas(canvasDimensions[0], canvasDimensions[1])
+    ctx = canvas.getContext('2d');
+
     lib.MoveOriginToTopLeft()
     var [top, bottom, left, right] = lib.getBounds();
-    var w = right - left + 1;
-    var h = bottom - top + 1;
+    var w = right - left ;
+    var h = bottom - top ;
     const docWidth = (w + 2 * DOC_PADDING) * DOC_CELLSIZE;
     const docHeight = (h + 2 * DOC_PADDING) * DOC_CELLSIZE;
 

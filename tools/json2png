@@ -5,8 +5,6 @@ var glob = require('./js/app/orthoGlobals')
 var lib = require('./js/orthoLib')
 var orthoRender = require("./js/app/orthoRender")
 var log = console.log
-var Canvas = require('canvas')
-var Image = Canvas.Image
 
 
 if (process.argv.length===2){
@@ -55,20 +53,12 @@ if (outputFileName===""){
 	log("outputFileName = "+outputFileName)
 }
 
-lib.loadFile(inputFileName);
+lib.loadFile(inputFileName)
 
-var canvasDimensions = lib.canvasSize();
+orthoRender.initOrthoRender()
 
-lib.setOffsetToTopLeft();
+orthoRender.render()
 
+lib.saveCanvasToPng(outputFileName)
 
-glob.canvas = new Canvas(canvasDimensions[0], canvasDimensions[1])
-glob.ctx = glob.canvas.getContext('2d');
-
-orthoRender.render();
-
-var dataURL = glob.canvas.toDataURL();
-var data = dataURL.replace(/^data:image\/\w+;base64,/, "");
-var buf = new Buffer(data, 'base64');
-fs.writeFile(outputFileName, buf);
 console.log("generated "+ outputFileName);

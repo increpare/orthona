@@ -54,17 +54,6 @@ if (outputFileName===""){
 
 lib.loadFile(inputFileName);
 
-
-var canvasDimensions = lib.canvasSize();
-
-lib.setOffsetToTopLeft();
-
-var Canvas = require('canvas')
-var Image = Canvas.Image
-
-canvas = new Canvas(canvasDimensions[0], canvasDimensions[1])
-ctx = canvas.getContext('2d');
-
 var svgDat = svgRender();
 fs.writeFileSync(outputFileName, svgDat);
 console.log("generated "+ outputFileName);

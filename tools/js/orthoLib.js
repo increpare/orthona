@@ -414,6 +414,13 @@ function Relation(e1,e2){
 	return dx+3*dy
 }
 
+function saveCanvasToPng(fileName){
+	var dataURL = glob.canvas.toDataURL();
+	var data = dataURL.replace(/^data:image\/\w+;base64,/, "");
+	var buf = new Buffer(data, 'base64');
+	fs.writeFile(fileName, buf);
+}
+
 module.exports.Relation=Relation
 module.exports.LineDirection=LineDirection
 module.exports.ConnectLines=ConnectLines
@@ -435,3 +442,4 @@ module.exports.getBounds=getBounds
 module.exports.canvasSize=canvasSize
 module.exports.axes=axes
 module.exports.MoveOriginToTopLeft=MoveOriginToTopLeft
+module.exports.saveCanvasToPng=saveCanvasToPng
