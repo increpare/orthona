@@ -1,5 +1,7 @@
 var glob = require('./orthoGlobals')
 var orthoRender = require('./orthoRender')
+var docDatabase = require('./../../json/docDatabase.json')
+
 log=console.log
 
 const cellSize = glob.cellSize;
@@ -615,7 +617,8 @@ function drawSelectionPanel(select,x,y){
         gridy=ypos;
         var i = xpos+ypos*panelRows;
         highlightedglyphicon=i;
-        highlightedglyphtext=glob.glyphNames[i];
+
+        highlightedglyphtext=docDatabase[i].name.toUpperCase();
         if (select===true){
             clickCell(oldX,oldY,i);
         }

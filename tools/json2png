@@ -3,6 +3,7 @@
 var fs = require('fs')
 var glob = require('./js/app/orthoGlobals')
 var lib = require('./js/orthoLib')
+var standAlone = require('./js/standAlone')
 var orthoRender = require("./js/app/orthoRender")
 var log = console.log
 
@@ -55,7 +56,7 @@ if (outputFileName===""){
 
 lib.loadFile(inputFileName)
 
-orthoRender.initOrthoRender()
+standAlone.initOrthoRender()
 
 orthoRender.render()
 

@@ -4,9 +4,10 @@ var execSync = require('child_process').execSync
 var fs = require('fs')
 var glob = require('./js/app/orthoGlobals')
 var lib = require('./js/orthoLib')
-var orthoRender = require("./js/app/orthoRender")
+var svgRender = require("./js/svgRender")
 var log = console.log
 var Canvas = require('canvas')
+var docDatabase = require('./json/docDatabase')
 var Image = Canvas.Image
 
 glob.drawGridLines=false;
@@ -25,12 +26,12 @@ glob.sketchBookIndex=0
 glob.page=glob.sketchBook[0]
 
 
-orthoRender.initOrthoRender();
-
 for (var s=0;s<glob.symbolCount;s++){
 	glob.page.elements[0][2]=s;
-	orthoRender.render();
-	lib.saveCanvasToPng("./docs/png/header"+s+".png")
+	
+	var svgDat = svgRender();
+	fs.writeFileSync("./docs/svg/header"+s+".svg", svgDat);
+
 }
 
 glob.sketchBook = [{
@@ -44,13 +45,13 @@ glob.sketchBook = [{
 glob.sketchBookIndex=0
 glob.page=glob.sketchBook[0]
 
-orthoRender.initOrthoRender();
 
 for (var s=0;s<glob.symbolCount;s++){
 	glob.page.elements[0][2]=s;
 
-	orthoRender.render();
-	lib.saveCanvasToPng("./docs/png/spider"+s+".png")
+
+	var svgDat = svgRender();
+	fs.writeFileSync("./docs/svg/spider"+s+".svg", svgDat);
 }
 
 //generate index page
@@ -60,6 +61,7 @@ index = `<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <title>Orthona Documentation</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <table>`
@@ -70,7 +72,7 @@ for (var i=0;i<7;i++){
 		var s = j+5*i;
 		index+="<td>\n"
 		index+=`<a href='symbol${s}.html'>\n`
-		index+=`<img width='50px' height='50px' src='png/header${s}.png'/>\n`;
+		index+=`<img width='50px' height='50px' src='svg/header${s}.svg'/>\n`;
 		index+="</a></td>\n"
 	}
 	index+="</tr>\n"
@@ -91,13 +93,14 @@ for (var s=0;s<glob.symbolCount;s++){
 		<head>
 		<meta charset="utf-8">
 		<title>Orthona Documentation</title>
+		<link rel="stylesheet" href="css/style.css">
 		</head>
 		<body>`
 
-		page+=`<img src="png/header${s}.png">\n`
+		page+=`<img src="svg/header${s}.svg">\n`
 
 		page+="<p>\n"
-		page+=`<img src="png/spider${s}.png">\n`
+		page+=`<img src="svg/spider${s}.svg">\n`
 
 		page+="<p>\n"
 		

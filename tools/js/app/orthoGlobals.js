@@ -7,23 +7,6 @@ module.exports.drawSelectiveGridLines=false;
 module.exports.scaleMin=0.25;
 module.exports.scaleMax=1.0;
 
-
-var glyphNames = [
-"Person A","Person B","Object X","Object Y","blank",//0-4
-"Identity","Good","Alter","Collection","Event",//5-9
-"Necessary","Friend","Ask","Want","Power",//10-14
-"See","Say","Touch","Hear","Eat",//15-19
-"Know","Smell","Time","Action","Go",//20-24
-"Size","Pain","Ease","Cause","Able",//25-29
-"Sex","Internal","Familiar","Living","Read",//30-34
-];
-
-for (var i=0;i<glyphNames.length;i++){
-    glyphNames[i]=glyphNames[i].toUpperCase();
-}
-
-module.exports.glyphNames=glyphNames
-
 module.exports.sketchBookIndex=0;
 module.exports.sketchBook=[
 {
