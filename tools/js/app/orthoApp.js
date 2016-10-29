@@ -1,6 +1,6 @@
 var glob = require('./orthoGlobals')
 var orthoRender = require('./orthoRender')
-var docDatabase = require('./../../json/docDatabase.json')
+var docDatabase = require('./../../res/docDatabase.json')
 
 log=console.log
 

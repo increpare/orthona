@@ -19,8 +19,17 @@ var DOC_CELLSIZE = 20.0;
 var DOC_PADDING = 0.75;
 const STROKE_WIDTH = 1;
 
+var fillCol="#ffffff"
+var strokeCol="#000000"
+var gridCol="#dcdcdc"
 function setPadding(p){
     DOC_PADDING=p;
+}
+
+function setColours(fill,stroke,grid){
+    fillCol=fill
+    strokeCol=stroke
+    gridCol=grid
 }
 
 function tr(x) {
@@ -73,13 +82,13 @@ function drawIcon(x, y, icon) {
         case 0: //square - solid
             {
                 var s = DOC_CELLSIZE * 0.3 / 1.41;
-                result += `\t\t<rect stroke-width='${STROKE_WIDTH}' x='${x-s}' y='${y-s}' width='${2*s}' height='${2*s}' fill='black' stroke='black' />\n`;
+                result += `\t\t<rect stroke-width='${STROKE_WIDTH}' x='${x-s}' y='${y-s}' width='${2*s}' height='${2*s}' fill='${strokeCol}' stroke='${strokeCol}' />\n`;
                 break;
             }
         case 1: //place marker - solid
             {
                 var r = DOC_CELLSIZE * 0.4 * 0.9;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='black' stroke='black' d='`;
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${strokeCol}' stroke='${strokeCol}' d='`;
                 result += `M ${x} ${y+r} `
                 result += `L ${x-r/2} ${y} `
                 result += `C ${x-r} ${y-r}, ${x+r} ${y-r}, ${x+r/2} ${y} `
@@ -91,7 +100,7 @@ function drawIcon(x, y, icon) {
             {
 
                 var r = DOC_CELLSIZE * 0.4 * 0.9;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += `M ${x} ${y-r} `
                 result += `L ${x-r/2} ${y} `
                 result += `C ${x-r} ${y+r}, ${x+r} ${y+r}, ${x+r/2} ${y} `
@@ -102,30 +111,30 @@ function drawIcon(x, y, icon) {
         case 3: //circle - outline
             {
                 var r = DOC_CELLSIZE * 0.3;
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r}' fill='white' stroke='black' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r}' fill='${fillCol}' stroke='${strokeCol}' />\n`
                 break;
             }
         case 4: //dot
             {
                 var r = DOC_CELLSIZE * 0.1;
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r}' fill='black' stroke='black' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r}' fill='${strokeCol}' stroke='${strokeCol}' />\n`
                 break;
             }
         case 5: //concentric circles
             {
                 var r = DOC_CELLSIZE * 0.4;
                 var oldR = r;
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r}' fill='white' stroke='black' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r}' fill='${fillCol}' stroke='${strokeCol}' />\n`
                 r -= 0.333 * oldR;
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r}' fill='white' stroke='black' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r}' fill='${fillCol}' stroke='${strokeCol}' />\n`
                 r -= 0.333 * oldR;
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r}' fill='white' stroke='black' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r}' fill='${fillCol}' stroke='${strokeCol}' />\n`
                 break;
             }
         case 6: //diamond
             {
                 var s = DOC_CELLSIZE * 0.4;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += `M ${x-s} ${y} `
                 result += `L ${x} ${y+s} `
                 result += `L ${x+s} ${y} `
@@ -137,7 +146,7 @@ function drawIcon(x, y, icon) {
         case 7: //triangle outline
             {
                 var s = DOC_CELLSIZE * 0.4 / 1000;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += `M ${x+triangle[2*0+0]*s} ${y+triangle[2*0+1]*s} `
                 result += `L ${x+triangle[2*2+0]*s} ${y+triangle[2*2+1]*s} `
                 result += `L ${x+triangle[2*1+0]*s} ${y+triangle[2*1+1]*s} `
@@ -148,13 +157,13 @@ function drawIcon(x, y, icon) {
         case 8: //square - outline
             {
                 var s = DOC_CELLSIZE * 0.4 / 1.41;
-                result += `\t\t<rect stroke-width='${STROKE_WIDTH}' x='${x-s}' y='${y-s}' width='${2*s}' height='${2*s}' fill='white' stroke='black' />\n`
+                result += `\t\t<rect stroke-width='${STROKE_WIDTH}' x='${x-s}' y='${y-s}' width='${2*s}' height='${2*s}' fill='${fillCol}' stroke='${strokeCol}' />\n`
                 break;
             }
         case 9: //star
             {
                 var s = DOC_CELLSIZE * 0.4 / 1000;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += `M ${x+pentagon[2*0+0]*s} ${y+pentagon[2*0+1]*s} `
                 result += `L ${x+pentagon[2*2+0]*s} ${y+pentagon[2*2+1]*s} `
                 result += `L ${x+pentagon[2*4+0]*s} ${y+pentagon[2*4+1]*s} `
@@ -167,7 +176,7 @@ function drawIcon(x, y, icon) {
         case 10: //clover
             {
                 var s = DOC_CELLSIZE * 0.2 / 1.41;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += `M ${x-s} ${y-s} `
                 result += `C ${x-2*s} ${y-3*s}, ${x+2*s} ${y-3*s}, ${x+s} ${y-s} `
                 result += `C ${x+3*s} ${y-2*s}, ${x+3*s} ${y+2*s}, ${x+s} ${y+s} `
@@ -182,14 +191,14 @@ function drawIcon(x, y, icon) {
                 var r = DOC_CELLSIZE * 0.3;
                 var r2 = 0.4 * DOC_CELLSIZE
                 x -= r / 2;
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r2}' fill='white' stroke='transparent' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r2}' fill='${fillCol}' stroke='transparent' />\n`
                 x += r;
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r2}' fill='white' stroke='transparent' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r2}' fill='${fillCol}' stroke='transparent' />\n`
 
                 x -= r;
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r2}' fill='transparent' stroke='black' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r2}' fill='transparent' stroke='${strokeCol}' />\n`
                 x += r;
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r2}' fill='transparent' stroke='black' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r2}' fill='transparent' stroke='${strokeCol}' />\n`
                 break;
             }
         case 12: //keyhole
@@ -200,7 +209,7 @@ function drawIcon(x, y, icon) {
                 var a = 0.8 * Math.PI / 4;
                 var dy = DOC_CELLSIZE * 0.05;
 
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += describeArc(x, y - r + dy, r, Math.PI / 2 + a, Math.PI * 5 / 2 - a) + " "
                 result += `L ${x-t} ${y+s+dy} `
                 result += `L ${x+t} ${y+s+dy} `
@@ -211,7 +220,7 @@ function drawIcon(x, y, icon) {
             }
         case 13: //half-circle, outline
             {
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 var r = DOC_CELLSIZE * 0.3
                 result += describeArc(x + r / 3, y, r, Math.PI / 2, 3 * Math.PI / 2);
                 result += "Z ";
@@ -228,7 +237,7 @@ function drawIcon(x, y, icon) {
                 var apex = y - s - pointHeight;
                 var pointBottom = y - s;
                 var dy = DOC_CELLSIZE * 0.1 / 1.41;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", l, dy + apex,
                     "L", l, dy + y + s,
@@ -247,7 +256,7 @@ function drawIcon(x, y, icon) {
             {
                 var r = DOC_CELLSIZE * 0.4;
                 var top = r * 0.8;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - r, y,
                     "C", x - r / 2, y - top, ",", x + r / 2, y - top, ",", x + r, y,
@@ -256,7 +265,7 @@ function drawIcon(x, y, icon) {
                     "'/>\n"
                 ].join(" ");
 
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r/4}' fill='transparent' stroke='black' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r/4}' fill='transparent' stroke='${strokeCol}' />\n`
 
                 break;
             }
@@ -264,7 +273,7 @@ function drawIcon(x, y, icon) {
             {
                 var r = DOC_CELLSIZE * 0.4;
                 var top = r * 0.8;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - r, y,
                     "C", x - r / 2, y - 1.5 * top, ",", x + r / 2, y - 1.5 * top, ",", x + r, y,
@@ -279,7 +288,7 @@ function drawIcon(x, y, icon) {
         case 17: //hand
             {
                 var s = DOC_CELLSIZE * 0.4 / 1.41;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - s * 0.8, y - 2 * s + s / 2,
                     "L", x - s * 0.8, y + s,
@@ -302,7 +311,7 @@ function drawIcon(x, y, icon) {
                 var t = DOC_CELLSIZE * 0.3 / 1.41;
                 var u = DOC_CELLSIZE * 0.2 / 1.41;
                 x += dx;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x, y - u,
                     "C", x - s, y - u, ",", x - s, y - u - t, ",", x, y - u - t,
@@ -318,7 +327,7 @@ function drawIcon(x, y, icon) {
             {
                 var r = DOC_CELLSIZE * 0.4;
                 var top = r * 0.8;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - r, y,
                     "C", x - r / 2, y - top, ",", x + r / 2, y - top, ",", x + r, y,
@@ -342,7 +351,7 @@ function drawIcon(x, y, icon) {
 
                 var top = r * 0.8;
 
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x, y - r,
                     "C", x - top, y - r / 2, ",", x - top, y + r / 2, ",", x, y + r,
@@ -351,7 +360,7 @@ function drawIcon(x, y, icon) {
                     "'/>\n"
                 ].join(" ");
 
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r/4}' fill='black' stroke='black' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r/4}' fill='${strokeCol}' stroke='${strokeCol}' />\n`
                 break;
             }
         case 21: //nose
@@ -359,7 +368,7 @@ function drawIcon(x, y, icon) {
                 var r = DOC_CELLSIZE * 0.4 * 0.9;
                 var dy = DOC_CELLSIZE * 0.4 * 0.1;
                 y += dy;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - r / 4, y - r,
                     "L", x - r / 2, y,
@@ -374,7 +383,7 @@ function drawIcon(x, y, icon) {
                 var r = DOC_CELLSIZE * 0.3;
                 var s = DOC_CELLSIZE * 0.3;
                 var t = DOC_CELLSIZE * 0.05;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - s, y - r,
                     "L", x + s, y - r,
@@ -394,7 +403,7 @@ function drawIcon(x, y, icon) {
                 var s = DOC_CELLSIZE * 0.4 / 1.41;
                 x -= DOC_CELLSIZE * 0.15 / 1.41;
                 y -= DOC_CELLSIZE * 0.15 / 1.41;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x + s, y - s,
                     "L", x + s, y + s,
@@ -406,7 +415,7 @@ function drawIcon(x, y, icon) {
             }
         case 24: //banana peel
             {
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
 
                 var e = DOC_CELLSIZE * 0.1;
                 var r = DOC_CELLSIZE * 0.4;
@@ -428,7 +437,7 @@ function drawIcon(x, y, icon) {
             }
         case 25: //hexagon
             {
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
 
                 var a = Math.PI / 3;
                 var r = DOC_CELLSIZE * 0.4 / 1.41;
@@ -456,7 +465,7 @@ function drawIcon(x, y, icon) {
             {
                 var s = DOC_CELLSIZE * 0.4 / 1.41;
                 var t = DOC_CELLSIZE * 0.4 / 1.41;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - s, y - t,
                     "L", x, y - t / 3,
@@ -472,7 +481,7 @@ function drawIcon(x, y, icon) {
                 var r = DOC_CELLSIZE * 0.4;
                 var s = DOC_CELLSIZE * 0.4;
                 var t = DOC_CELLSIZE * 0.05;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - s, y - r,
                     "C", x, y - t, ",", x, y - t, ",", x + s, y - r,
@@ -486,8 +495,8 @@ function drawIcon(x, y, icon) {
         case 28: //lambda            
             {
                 var r = DOC_CELLSIZE * 0.4;
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r}' fill='white' stroke='black' />\n`
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='transparent' stroke='black' d='`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r}' fill='${fillCol}' stroke='${strokeCol}' />\n`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='transparent' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - r / 1.414, y + r / 1.414,
                     "L", x + r / 1.414, y - r / 1.414,
@@ -502,7 +511,7 @@ function drawIcon(x, y, icon) {
             {
                 var s = DOC_CELLSIZE * 0.15 / 1.41;
                 var t = 3 * s;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - s, y - s,
                     "L", x - s, y - t,
@@ -526,22 +535,22 @@ function drawIcon(x, y, icon) {
             {
 
                 var r = DOC_CELLSIZE * 0.3
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r}' fill='white' stroke='black' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r}' fill='${fillCol}' stroke='${strokeCol}' />\n`
 
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='black' stroke='transparent' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${strokeCol}' stroke='transparent' d='`
                 result += describeArc(x, y, r, 0, Math.PI);
                 result += "Z ";
                 result += "'/>\n";
                 var r2 = r - STROKE_WIDTH / 2;
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x-r2/2}' cy='${y}' r='${r2/2}' fill='black' stroke='transparent' />\n`
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x+r2/2}' cy='${y}' r='${r2/2}' fill='white' stroke='transparent' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x-r2/2}' cy='${y}' r='${r2/2}' fill='${strokeCol}' stroke='transparent' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x+r2/2}' cy='${y}' r='${r2/2}' fill='${fillCol}' stroke='transparent' />\n`
 
                 break;
             }
 
         case 31: //inside/outside box in box
             {
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 var s = DOC_CELLSIZE * 0.3;
                 var ar = [
                     "M", x - s, y - s,
@@ -566,18 +575,18 @@ function drawIcon(x, y, icon) {
             {
                 var r = DOC_CELLSIZE * 0.4;
 
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r}' fill='white' stroke='black' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${r}' fill='${fillCol}' stroke='${strokeCol}' />\n`
 
 
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - r, y,
                     "L", x + r, y,
                     "'/>\n"
                 ].join(" ");
 
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y-r/2}' r='${r/5}' fill='black' stroke='transparent' />\n`
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y+r/2}' r='${r/5}' fill='black' stroke='transparent' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y-r/2}' r='${r/5}' fill='${strokeCol}' stroke='transparent' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y+r/2}' r='${r/5}' fill='${strokeCol}' stroke='transparent' />\n`
 
 
                 break;
@@ -585,14 +594,14 @@ function drawIcon(x, y, icon) {
         case 33: //desire spiral
             {
                 var r = DOC_CELLSIZE * 0.4;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     describeArc(x, y, r, 0, 2 * Math.PI),
                     "'/>\n"
                 ].join(" ");
                 var r2 = r * 2 / 3;
                 var r3 = r2 / 2;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     describeArc(x, y + r - r2 - r3, r3, Math.PI / 2, Math.PI * 3 / 2),
                     describeArc(x, y + r - r2, r2, 3 * Math.PI / 2, Math.PI / 2),
@@ -606,7 +615,7 @@ function drawIcon(x, y, icon) {
         case 34: //page
             {
                 var s = DOC_CELLSIZE * 0.4 / 1.41;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='white' stroke='black' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - s, y - s,
                     "L", x + s, y - s,
@@ -627,55 +636,55 @@ function drawIcon(x, y, icon) {
             }
         case 35://documentation circle /w letter A inside
             {
-                result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='white' stroke='black' />\n`
-                result += `<text font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">A</text>\n`
+                result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='${fillCol}' stroke='${strokeCol}' />\n`
+                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">A</text>\n`
                 break
             }
         case 36://documentation circle /w letter B inside
             {
-                result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='white' stroke='black' />\n`
-                result += `<text font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">B</text>\n`
+                result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='${fillCol}' stroke='${strokeCol}' />\n`
+                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">B</text>\n`
                 break
             }
         case 37://documentation circle /w letter C inside
             {
-                result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='white' stroke='black' />\n`
-                result += `<text font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">C</text>\n`
+                result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='${fillCol}' stroke='${strokeCol}' />\n`
+                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">C</text>\n`
                 break
             }
         case 38://documentation circle /w letter D inside
             {
-                result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='white' stroke='black' />\n`
-                result += `<text font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">D</text>\n`
+                result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='${fillCol}' stroke='${strokeCol}' />\n`
+                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">D</text>\n`
                 break
             }
         case 39://documentation circle /w letter E inside
             {
-                result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='white' stroke='black' />\n`
-                result += `<text font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">E</text>\n`
+                result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='${fillCol}' stroke='${strokeCol}' />\n`
+                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">E</text>\n`
                 break
             }
         case 40://documentation circle /w letter F inside
             {
-                result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='white' stroke='black' />\n`
-                result += `<text font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">F</text>\n`
+                result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='${fillCol}' stroke='${strokeCol}' />\n`
+                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">F</text>\n`
                 break
             }
         case 41://documentation circle /w letter G inside
             {
-                result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='white' stroke='black' />\n`
-                result += `<text font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">G</text>\n`
+                result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='${fillCol}' stroke='${strokeCol}' />\n`
+                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">G</text>\n`
                 break
             }
         case 42://documentation circle /w letter H inside
             {
-                result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='white' stroke='black' />\n`
-                result += `<text font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">H</text>\n`
+                result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='${fillCol}' stroke='${strokeCol}' />\n`
+                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">H</text>\n`
                 break
             }
         default:
             { //circle
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${0.4*DOC_CELLSIZE}' fill='transparent' stroke='black' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${x}' cy='${y}' r='${0.4*DOC_CELLSIZE}' fill='transparent' stroke='${strokeCol}' />\n`
                 break;
             }
     }
@@ -774,15 +783,18 @@ function svgRender() {
 
         ar.push("'/>\n");
 
-        var a = Math.round(220 + 35 * pc).toString(16);
-        var col = "#" + a + a + a;
+//#dcdcdc
+//        var a = Math.round(220 + 35 * pc).toString(16);
+//        var col = "#" + a + a + a;
+        log ("oldcol="+col)
+        col=gridCol;
         svg += `\t\t<path stroke-linecap="round" stroke-width='${STROKE_WIDTH}' fill='transparent' stroke='${col}' d='`;
         svg += ar.join(" ");
     }
 
     //draw lines
     if (glob.drawLines) {
-        svg += `\t\t<path stroke-linecap="round" stroke-width='${STROKE_WIDTH}' fill='transparent' stroke='black' d='`;
+        svg += `\t\t<path stroke-linecap="round" stroke-width='${STROKE_WIDTH}' fill='transparent' stroke='${strokeCol}' d='`;
         for (var i = 0; i < glob.page.lines.length; i++) {
             var l = glob.page.lines[i];
             var x1 = Math.floor(tr(l[0]));
@@ -826,3 +838,4 @@ function svgRender() {
 
 module.exports.render = svgRender;
 module.exports.setPadding = setPadding
+module.exports.setColours = setColours

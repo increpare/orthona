@@ -7,10 +7,37 @@ var lib = require('./js/orthoLib')
 var svgRender = require("./js/svgRender")
 var log = console.log
 var Canvas = require('canvas')
-var db = require('./json/docDatabase')
+var db = require('./res/docDatabase')
+var css = require('css');
 var Image = Canvas.Image
 
+
+function findCssVar(cssDat,varName){
+	for (var i=0;i<cssDat.stylesheet.rules.length;i++){
+		var r = cssDat.stylesheet.rules[i];
+		for (var j=0;j<r.declarations.length;j++){
+			var d = r.declarations[j];
+			if (d.type==='declaration' && d.property===varName){
+				return d.value;
+			}
+		}
+	}
+	return null;
+}
+
+var cssPath = ("./docs/css/custom.css")
+var cssFileStr=fs.readFileSync(cssPath,'utf8')
+var cssDat = css.parse(cssFileStr,{},cssPath)
+var fgCol = findCssVar(cssDat,"--fg")
+var bgCol = findCssVar(cssDat,"--bg")
+if (fgCol===null){
+	fgCol="#000000"
+}
+if (bgCol===null){
+	bgCol="#ffffff"
+}
 svgRender.setPadding(0.5)
+svgRender.setColours(bgCol,fgCol,bgCol)
 
 function symbolName(i){
 	var s = db[i];
@@ -124,7 +151,9 @@ var genericFooter = `</div>
 var index = genericHeader;
 index+='<div class="container">'
 index+='<div class="page-header">'
+index+='<div>'
 index+='<h1>Orthona</h1>'
+index+='</div>'
 index+='</div>'
 index+='<table class="span5 center-table" >'
 
@@ -133,7 +162,7 @@ for (var i=0;i<7;i++){
 	for (var j=0;j<5;j++){
 		var s = j+5*i;
 		index+="<td>\n"
-		index+=`<a href='${symbolName(s)}.html'>\n`
+		index+=`<a   href='${symbolName(s)}.html'>\n`
 		index+=`<img width='50px' height='50px' src='svg/${symbolName(s)}.svg'/>\n`;
 		index+="</a></td>\n"
 	}
@@ -141,20 +170,57 @@ for (var i=0;i<7;i++){
 }
 
 index+="</table>"
+index+="<p>"
+index+="<div class='text-center'>"
+index+="<a class='sitelink'   href='cheatsheat.html'>cheatsheat</a>"
+index+="</div>"
 index+=genericFooter
 
 fs.writeFileSync("./docs/index.html",index);
+
+
+//cheatsheet
+
+
+var index = genericHeader;
+index+='<h1>Orthona Cheatsheet</h1>'
+index+='<table class="span5 center-table" >'
+
+for (var i=0;i<7;i++){
+	index+="<tr>\n"
+	for (var j=0;j<5;j++){
+		var s = j+5*i;
+		index+="<td width=80px height=80px><div class='text-center'>\n"
+		index+=`<a   href='${symbolName(s)}.html'>\n`
+		index+=`<img width='40px' height='40px' src='svg/${symbolName(s)}.svg'/>\n`;
+		index+=`<br>${db[i].name}</a>`
+		index+="</div></td>\n"
+	}
+	index+="</tr>\n"
+}
+
+index+="</table>"
+index+="<p>"
+index+="<div class='text-center'>"
+index+="<a class='sitelink'  class='sitelink' href='index.html'>home</a>"
+index+="</div>"
+index+=genericFooter
+
+fs.writeFileSync("./docs/cheatsheat.html",index);
+
 
 //generate individual pages
 
 for (var s=0;s<glob.symbolCount;s++){
 	var page = genericHeader
 
-		page+='<div class="container2">'
+		page+='<div class="container">'
 		page+='<div class="page-header">'
-		page+=`<img class="center-block"  src="svg/${symbolName(s)}.svg">\n`
-		page+="<p>"
-		page+=`<h1 class="under">${db[s].name}</h1>`
+		page+='<div>'
+		page+=`<h1 class="under"><img  src="svg/${symbolName(s)}.svg">\n`
+	
+		page+=`${db[s].name}</h1>`
+		page+='</div>'
 		page+='</div>'
 
 		page+="<div class='row'>"
@@ -190,7 +256,7 @@ for (var s=0;s<glob.symbolCount;s++){
 		page+="</div>"
 		page+="<p>"
 		page+="<div class='text-center'>"
-		page+="<a   href='index.html'>back</a>"
+		page+="<a class='sitelink'  href='index.html'>back</a>"
 		page+="</div>"
 		page+="<div class='endpagediv'></div>"
 		page+=genericFooter
