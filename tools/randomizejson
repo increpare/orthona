@@ -1,0 +1,69 @@
+#!/usr/bin/env node
+
+var emoji = require('node-emoji');
+
+
+
+var fs 				= require('fs')
+var glob 			= require('./js/app/orthoGlobals')
+var lib 			= require('./js/orthoLib')
+var log=console.log
+
+if (process.argv.length===2){
+	console.log("USAGE: randomizejson INFILE [OUTFILE] ");
+	return;
+}
+
+var asciiCharacters=false;
+var skeleton=false;
+var inputFileName=""
+var outputFileName=""
+for (var i=2;i<process.argv.length;i++){
+	var t = process.argv[i];
+	if (inputFileName===""){
+		inputFileName=t;
+	} else if (outputFileName===""){
+		outputFileName=t;
+	} else {
+		console.log("Too many arguments. Unexpected argument \""+t+"\".");		
+	}
+}
+
+
+if (inputFileName==="")
+{
+	console.log("need to supply input file");
+}
+
+if (outputFileName===""){
+
+	var path = require('path');
+	var globalPath = path.resolve(inputFileName)
+	var parsed = path.parse(globalPath)
+	parsed.ext=".json"
+	parsed.dir+="/../json_random"
+	parsed.base=parsed.name+"_r"+parsed.ext;
+	outputFileName = path.format(parsed)
+	log("outputFileName = "+outputFileName)
+}
+
+// Returns a random integer between min (included) and max (excluded)
+// Using Math.round() will give you a non-uniform distribution!
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+lib.loadFile(inputFileName)
+for (var i=0;i<glob.page.elements.length;i++){
+	var e = glob.page.elements[i]
+	if (e[2]!==4){
+		e[2]=getRandomInt(0,34)
+		if (e[2]===4){
+			e[2]=34;
+		}
+	}
+}
+lib.saveFile(outputFileName)
+log("generated "+ outputFileName);

@@ -756,7 +756,6 @@ function svgRender() {
             for (var i = startX - DOC_CELLSIZE; i > -canvas.height; i -= DOC_CELLSIZE) {
                 var [x1, y1] = [i, startY + 2 * docHeight];
                 var [x2, y2] = [i + 2 * docHeight, startY];
-                log(x1, y1, x2, y2)
                 if (shouldDrawGridLine(x1, y1, x2, y2)) {
                     ar.push(
                         "M", x1, y1,

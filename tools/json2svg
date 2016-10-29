@@ -54,6 +54,6 @@ if (outputFileName===""){
 
 lib.loadFile(inputFileName);
 
-var svgDat = svgRender();
+var svgDat = svgRender.render();
 fs.writeFileSync(outputFileName, svgDat);
 console.log("generated "+ outputFileName);

@@ -29,7 +29,9 @@ do
 	./json2tiledpng 3 $fn &
 	./json2tiledpng 4 $fn &
 	./json2bin $fn &
+	./randomizejson $fn &
 done
+wait
 
 for fn in dat/retop/*.json
 do
@@ -43,6 +45,21 @@ do
 	./json2tiledpng -noLines 4 $fn &
 	./json2bin $fn &
 done
-
 wait
+
+for fn in dat/json_random/*.json
+do
+	echo "processing $fn"  &
+	./json2png -diagonals -noGridLines $fn  &
+	./json2svg -diagonals -noGridLines $fn &
+	./json2tiledpng -noLines 0 $fn &
+	./json2tiledpng -noLines 1 $fn &
+	./json2tiledpng -noLines 2 $fn &
+	./json2tiledpng -noLines 3 $fn &
+	./json2tiledpng -noLines 4 $fn &
+	./json2bin $fn &
+done
+wait
+
 ./testbin
+./gensite

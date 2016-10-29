@@ -1,25 +1,20 @@
-<?xml version='1.0' standalone='yes'?>
-<parent xmlns='http://example.org'
-	xmlns:svg='http://www.w3.org/2000/svg'>
-	<!-- parent contents here -->
-	<svg:svg width='210mm' height='210mm' viewBox='0 0 210 210' version='1.1'>
-		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='#dcdcdc' d='M 15 0 L 15 522 M 35 0 L 35 522 M 55 0 L 55 522 M 75 0 L 75 522 M 95 0 L 95 522 M 115 0 L 115 522 M 135 0 L 135 522 M 155 0 L 155 522 M 175 0 L 175 522 M 0 15 L 522 15 M 0 35 L 522 35 M 0 55 L 522 55 M 0 75 L 522 75 M 0 95 L 522 95 M 0 115 L 522 115 M 0 135 L 522 135 M 0 155 L 522 155 M 0 175 L 522 175 M -25 -25 L 395 395 M 15 -25 L 435 395 M 35 -25 L 455 395 M 75 -25 L 495 395 M -45 -25 L 375 395 M -65 -25 L 355 395 M -145 -25 L 275 395 M -85 395 L 335 -25 M -125 395 L 295 -25 M -205 395 L 215 -25 M -225 395 L 195 -25 M -245 395 L 175 -25 M -265 395 L 155 -25 M -325 395 L 95 -25 M -345 395 L 75 -25 M -365 395 L 55 -25 '/>
-		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='black' d='M 15 15 L 15 35 M 15 15 L 55 15 M 15 15 L 75 75 M 75 75 L 95 95 M 55 15 L 155 115 M 95 95 L 35 155 M 62.17157287525381 122.17157287525382 L 67.82842712474618 127.82842712474618 M 155 115 L 175 135 M 175 135 L 135 175 M 55 15 L 115 15 M 115 15 L 115 55 '/>
-		<svg:path  stroke-width='1' fill='black' stroke='black' d='M 15 20.76 L 12.12 15 C 9.239999999999998 9.239999999999998, 20.76 9.239999999999998, 17.88 15 Z '/>
-		<svg:circle stroke-width='1' cx='15' cy='35' r='6.4' fill='white' stroke='black' />
-		<svg:circle stroke-width='1' cx='15' cy='35' r='4.268800000000001' fill='white' stroke='black' />
-		<svg:circle stroke-width='1' cx='15' cy='35' r='2.1376000000000004' fill='white' stroke='black' />
-		<svg:rect stroke-width='1' x='51.59574468085106' y='11.595744680851064' width='6.808510638297872' height='6.808510638297872' fill='black' stroke='black' />
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 81.4 75 A 6.4 6.4 0 1 0 81.4 75 '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 75 72.86666666666666 A 2.1333333333333333 2.1333333333333333 0 0 0 75 77.13333333333334 M 75 81.4 A 4.266666666666667 4.266666666666667 0 0 0 75 72.86666666666667 M 81.4 75 A 6.4 6.4 0 1 0 75 81.4 '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 95 89.24 L 92.12 95 C 89.24 100.76, 100.76 100.76, 97.88 95 Z '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 148.6 115 C 151.8 109.88 , 158.2 109.88 , 161.4 115 C 158.2 120.12 , 151.8 120.12 , 148.6 115 Z  '/>
-		<svg:circle stroke-width='1' cx='155' cy='115' r='1.6' fill='transparent' stroke='black' />
-		<svg:circle stroke-width='1' cx='35' cy='155' r='4.8' fill='white' stroke='black' />
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 175 129.24 L 172.12 135 C 169.24 140.76, 180.76 140.76, 177.88 135 Z '/>
-		<svg:circle stroke-width='1' cx='135' cy='175' r='4.8' fill='white' stroke='black' />
-		<svg:path  stroke-width='1' fill='black' stroke='black' d='M 115 20.76 L 112.12 15 C 109.24 9.239999999999998, 120.76 9.239999999999998, 117.88 15 Z '/>
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 108.6 55 L 115 61.4 L 121.4 55 L 115 48.6 Z '/>
-	</svg:svg>
-	<!-- ... -->
-</parent>
+<svg xmlns="http://www.w3.org/2000/svg" 
+     xmlns:xlink="http://www.w3.org/1999/xlink" width='190mm' height='190mm' viewBox='0 0 190 190' version='1.1'>
+		<path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='#dcdcdc' d='M 15 0 L 15 522 M 35 0 L 35 522 M 55 0 L 55 522 M 75 0 L 75 522 M 95 0 L 95 522 M 115 0 L 115 522 M 135 0 L 135 522 M 155 0 L 155 522 M 175 0 L 175 522 M 0 15 L 522 15 M 0 35 L 522 35 M 0 55 L 522 55 M 0 75 L 522 75 M 0 95 L 522 95 M 0 115 L 522 115 M 0 135 L 522 135 M 0 155 L 522 155 M 0 175 L 522 175 M -25 -25 L 355 355 M 15 -25 L 395 355 M 35 -25 L 415 355 M 75 -25 L 455 355 M -45 -25 L 335 355 M -65 -25 L 315 355 M -145 -25 L 235 355 M -45 355 L 335 -25 M -85 355 L 295 -25 M -165 355 L 215 -25 M -185 355 L 195 -25 M -205 355 L 175 -25 M -225 355 L 155 -25 M -285 355 L 95 -25 M -305 355 L 75 -25 M -325 355 L 55 -25 '/>
+		<path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='black' d='M 15 15 L 15 35 M 15 15 L 55 15 M 15 15 L 75 75 M 75 75 L 95 95 M 55 15 L 155 115 M 95 95 L 35 155 M 62.17157287525381 122.17157287525382 L 67.82842712474618 127.82842712474618 M 155 115 L 175 135 M 175 135 L 135 175 M 55 15 L 115 15 M 115 15 L 115 55 '/>
+		<path  stroke-width='1' fill='black' stroke='black' d='M 15 20.76 L 12.12 15 C 9.239999999999998 9.239999999999998, 20.76 9.239999999999998, 17.88 15 Z '/>
+		<circle stroke-width='1' cx='15' cy='35' r='6.4' fill='white' stroke='black' />
+		<circle stroke-width='1' cx='15' cy='35' r='4.268800000000001' fill='white' stroke='black' />
+		<circle stroke-width='1' cx='15' cy='35' r='2.1376000000000004' fill='white' stroke='black' />
+		<rect stroke-width='1' x='51.59574468085106' y='11.595744680851064' width='6.808510638297872' height='6.808510638297872' fill='black' stroke='black' />
+		<path  stroke-width='1' fill='white' stroke='black' d='M 81.4 75 A 6.4 6.4 0 1 0 81.4 75 '/>
+		<path  stroke-width='1' fill='white' stroke='black' d='M 75 72.86666666666666 A 2.1333333333333333 2.1333333333333333 0 0 0 75 77.13333333333334 M 75 81.4 A 4.266666666666667 4.266666666666667 0 0 0 75 72.86666666666667 M 81.4 75 A 6.4 6.4 0 1 0 75 81.4 '/>
+		<path  stroke-width='1' fill='white' stroke='black' d='M 95 89.24 L 92.12 95 C 89.24 100.76, 100.76 100.76, 97.88 95 Z '/>
+		<path  stroke-width='1' fill='white' stroke='black' d='M 148.6 115 C 151.8 109.88 , 158.2 109.88 , 161.4 115 C 158.2 120.12 , 151.8 120.12 , 148.6 115 Z  '/>
+		<circle stroke-width='1' cx='155' cy='115' r='1.6' fill='transparent' stroke='black' />
+		<circle stroke-width='1' cx='35' cy='155' r='4.8' fill='white' stroke='black' />
+		<path  stroke-width='1' fill='white' stroke='black' d='M 175 129.24 L 172.12 135 C 169.24 140.76, 180.76 140.76, 177.88 135 Z '/>
+		<circle stroke-width='1' cx='135' cy='175' r='4.8' fill='white' stroke='black' />
+		<path  stroke-width='1' fill='black' stroke='black' d='M 115 20.76 L 112.12 15 C 109.24 9.239999999999998, 120.76 9.239999999999998, 117.88 15 Z '/>
+		<path  stroke-width='1' fill='white' stroke='black' d='M 108.6 55 L 115 61.4 L 121.4 55 L 115 48.6 Z '/>
+	</svg>

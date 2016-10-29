@@ -1,21 +1,16 @@
-<?xml version='1.0' standalone='yes'?>
-<parent xmlns='http://example.org'
-	xmlns:svg='http://www.w3.org/2000/svg'>
-	<!-- parent contents here -->
-	<svg:svg width='90mm' height='150mm' viewBox='0 0 90 150' version='1.1'>
-		<svg:path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='black' d='M 15 115 L 15 95 M 35 95 L 15 95 M 55 95 L 35 95 M 55 115 L 55 95 M 35 95 L 35 75 M 35 75 L 35 55 M 35 75 L 15 55 M 35 35 L 15 55 M 35 35 L 35 15 '/>
-		<svg:circle stroke-width='1' cx='35' cy='15' r='6.4' fill='white' stroke='black' />
-		<svg:circle stroke-width='1' cx='35' cy='15' r='4.268800000000001' fill='white' stroke='black' />
-		<svg:circle stroke-width='1' cx='35' cy='15' r='2.1376000000000004' fill='white' stroke='black' />
-		<svg:rect stroke-width='1' x='31.595744680851062' y='31.595744680851062' width='6.808510638297872' height='6.808510638297872' fill='black' stroke='black' />
-		<svg:rect stroke-width='1' x='10.460992907801419' y='50.46099290780142' width='9.078014184397164' height='9.078014184397164' fill='white' stroke='black' />
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 32.730496453900706 52.730496453900706 C 30.46099290780142 48.191489361702125, 39.53900709219858 48.191489361702125, 37.269503546099294 52.730496453900706 C 41.808510638297875 50.46099290780142, 41.808510638297875 59.53900709219858, 37.269503546099294 57.269503546099294 C 39.53900709219858 61.808510638297875, 30.46099290780142 61.808510638297875, 32.730496453900706 57.269503546099294 C 28.191489361702125 59.53900709219858, 28.191489361702125 50.46099290780142, 32.730496453900706 52.730496453900706 Z '/>
-		<svg:path  stroke-width='1' fill='black' stroke='black' d='M 35 80.76 L 32.12 75 C 29.24 69.24, 40.76 69.24, 37.88 75 Z '/>
-		<svg:circle stroke-width='1' cx='15' cy='95' r='1.6' fill='black' stroke='black' />
-		<svg:circle stroke-width='1' cx='35' cy='95' r='1.6' fill='black' stroke='black' />
-		<svg:circle stroke-width='1' cx='55' cy='95' r='1.6' fill='black' stroke='black' />
-		<svg:path  stroke-width='1' fill='white' stroke='black' d='M 48.6 115 L 55 121.4 L 61.4 115 L 55 108.6 Z '/>
-		<svg:rect stroke-width='1' x='10.460992907801419' y='110.46099290780141' width='9.078014184397164' height='9.078014184397164' fill='white' stroke='black' />
-	</svg:svg>
-	<!-- ... -->
-</parent>
+<svg xmlns="http://www.w3.org/2000/svg" 
+     xmlns:xlink="http://www.w3.org/1999/xlink" width='70mm' height='130mm' viewBox='0 0 70 130' version='1.1'>
+		<path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='black' d='M 15 115 L 15 95 M 35 95 L 15 95 M 55 95 L 35 95 M 55 115 L 55 95 M 35 95 L 35 75 M 35 75 L 35 55 M 35 75 L 15 55 M 35 35 L 15 55 M 35 35 L 35 15 '/>
+		<circle stroke-width='1' cx='35' cy='15' r='6.4' fill='white' stroke='black' />
+		<circle stroke-width='1' cx='35' cy='15' r='4.268800000000001' fill='white' stroke='black' />
+		<circle stroke-width='1' cx='35' cy='15' r='2.1376000000000004' fill='white' stroke='black' />
+		<rect stroke-width='1' x='31.595744680851062' y='31.595744680851062' width='6.808510638297872' height='6.808510638297872' fill='black' stroke='black' />
+		<rect stroke-width='1' x='10.460992907801419' y='50.46099290780142' width='9.078014184397164' height='9.078014184397164' fill='white' stroke='black' />
+		<path  stroke-width='1' fill='white' stroke='black' d='M 32.730496453900706 52.730496453900706 C 30.46099290780142 48.191489361702125, 39.53900709219858 48.191489361702125, 37.269503546099294 52.730496453900706 C 41.808510638297875 50.46099290780142, 41.808510638297875 59.53900709219858, 37.269503546099294 57.269503546099294 C 39.53900709219858 61.808510638297875, 30.46099290780142 61.808510638297875, 32.730496453900706 57.269503546099294 C 28.191489361702125 59.53900709219858, 28.191489361702125 50.46099290780142, 32.730496453900706 52.730496453900706 Z '/>
+		<path  stroke-width='1' fill='black' stroke='black' d='M 35 80.76 L 32.12 75 C 29.24 69.24, 40.76 69.24, 37.88 75 Z '/>
+		<circle stroke-width='1' cx='15' cy='95' r='1.6' fill='black' stroke='black' />
+		<circle stroke-width='1' cx='35' cy='95' r='1.6' fill='black' stroke='black' />
+		<circle stroke-width='1' cx='55' cy='95' r='1.6' fill='black' stroke='black' />
+		<path  stroke-width='1' fill='white' stroke='black' d='M 48.6 115 L 55 121.4 L 61.4 115 L 55 108.6 Z '/>
+		<rect stroke-width='1' x='10.460992907801419' y='110.46099290780141' width='9.078014184397164' height='9.078014184397164' fill='white' stroke='black' />
+	</svg>

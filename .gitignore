@@ -17,3 +17,10 @@ tools/docs/*.*
 tools/docs/fonts
 tools/docs/js
 tools/docs/svg
+
+*.svg
+
+*.svg
+
+tools/dat/json_random
+*.svg
