@@ -637,49 +637,49 @@ function drawIcon(x, y, icon) {
         case 35://documentation circle /w letter A inside
             {
                 result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='${fillCol}' stroke='${strokeCol}' />\n`
-                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">A</text>\n`
+                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+4}"  font-family="Helvetica" text-anchor="middle">A</text>\n`
                 break
             }
         case 36://documentation circle /w letter B inside
             {
                 result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='${fillCol}' stroke='${strokeCol}' />\n`
-                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">B</text>\n`
+                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+4}"  font-family="Helvetica" text-anchor="middle">B</text>\n`
                 break
             }
         case 37://documentation circle /w letter C inside
             {
                 result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='${fillCol}' stroke='${strokeCol}' />\n`
-                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">C</text>\n`
+                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+4}"  font-family="Helvetica" text-anchor="middle">C</text>\n`
                 break
             }
         case 38://documentation circle /w letter D inside
             {
                 result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='${fillCol}' stroke='${strokeCol}' />\n`
-                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">D</text>\n`
+                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+4}"  font-family="Helvetica" text-anchor="middle">D</text>\n`
                 break
             }
         case 39://documentation circle /w letter E inside
             {
                 result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='${fillCol}' stroke='${strokeCol}' />\n`
-                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">E</text>\n`
+                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+4}"  font-family="Helvetica" text-anchor="middle">E</text>\n`
                 break
             }
         case 40://documentation circle /w letter F inside
             {
                 result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='${fillCol}' stroke='${strokeCol}' />\n`
-                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">F</text>\n`
+                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+4}"  font-family="Helvetica" text-anchor="middle">F</text>\n`
                 break
             }
         case 41://documentation circle /w letter G inside
             {
                 result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='${fillCol}' stroke='${strokeCol}' />\n`
-                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">G</text>\n`
+                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+4}"  font-family="Helvetica" text-anchor="middle">G</text>\n`
                 break
             }
         case 42://documentation circle /w letter H inside
             {
                 result += `\t\t<circle stroke-width='0.4' cx='${x}' cy='${y}' r='7' fill='${fillCol}' stroke='${strokeCol}' />\n`
-                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+1}" dominant-baseline="middle" font-family="Helvetica" text-anchor="middle">H</text>\n`
+                result += `<text fill='${strokeCol}' font-size="12px" x="${x}" y="${y+4}"  font-family="Helvetica" text-anchor="middle">H</text>\n`
                 break
             }
         default:

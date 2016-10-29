@@ -14,10 +14,14 @@ var Inliner = require('inliner');
 
 
 var fast=false;
+var inline=true;
 for (var i=2;i<process.argv.length;i++){
 	var t = process.argv[i];
-	if (t==="-fast"){
-		fast=true;
+	if (t==="-noinline"){
+		inline=false;
+	} else {
+		log("Don't undesratnd argument '"+t+"'.")
+		return;
 	}
 }
 
@@ -50,9 +54,11 @@ svgRender.setColours(bgCol,fgCol,bgCol)
 
 function saveHTML(filePath,htmlDat){
 	fs.writeFileSync(filePath,htmlDat);
+	if(inline===false){
+		return;
+	}
 	new Inliner(filePath, function (error, htmlMinified) {
 		fs.writeFileSync(filePath,htmlMinified);
-		log("written "+filePath)
 	})
 }
 function symbolName(i){
@@ -76,12 +82,6 @@ glob.sketchBook = [{
 glob.sketchBookIndex=0
 glob.page=glob.sketchBook[0]
 
-function compressSVG(filePath){
-	if (fast){
-		return;
-	}
-	execSync(`svgo --multipass ${filePath}`)		
-}
 
 for (var s=0;s<glob.symbolCount;s++){
 	glob.page.elements[0][2]=s;
@@ -89,7 +89,6 @@ for (var s=0;s<glob.symbolCount;s++){
 	var svgDat = svgRender.render();
 	var filePath = `./tmp/${symbolName(s)}.svg`;
 	fs.writeFileSync(filePath, svgDat);
-	compressSVG(filePath)
 }
 
 //1b generate triple images
@@ -110,7 +109,6 @@ for (var s=0;s<glob.symbolCount;s++){
 	var svgDat = svgRender.render();
 	var filePath = `./tmp/triple_${symbolName(s)}.svg`
 	fs.writeFileSync(filePath, svgDat);
-	compressSVG(filePath)
 }
 
 
@@ -144,35 +142,26 @@ for (var s=0;s<glob.symbolCount;s++){
 	var svgDat = svgRender.render();
 	var filePath = `./tmp/spider_${symbolName(s)}.svg`
 	fs.writeFileSync(filePath, svgDat)
-	compressSVG(filePath)
 }
 
 var genericHeader = `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
     <title>Orthona Documentation</title>
-
-   
     <link href="css/custom.css" rel="stylesheet">
-
   </head>
-
   <body>`
 
-var genericFooter = `</div>
-  </body>
+var genericFooter = `</body>
 </html>`
 
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+};
 
-function embedSvg(name,size,className){
+function embedSvg(name,width,height,className){
 	var svgStr=fs.readFileSync(`./tmp/${name}.svg`,'utf8')
 	var startIdx = svgStr.indexOf("viewBox=");
 	svgStr = svgStr.substr(startIdx);
@@ -180,19 +169,22 @@ function embedSvg(name,size,className){
 	if (className!=null){
 		classStr+=`class ="${className}"`
 	}
-	svgStr=`<svg ${classStr} width="${size}" height=${size} `+svgStr;
-
+	svgStr=`<svg ${classStr} width="${width}" height=${height} `+svgStr;
+	svgStr = svgStr.replaceAll(`stroke-linecap="round"`,"") 
+	svgStr = svgStr.replaceAll(`stroke-width='1'`,"") 
+	svgStr = svgStr.replaceAll(`stroke='${fgCol}'`,"") 
+	svgStr = svgStr.replaceAll(`fill='${bgCol}'`,"") 
+	svgStr = svgStr.replaceAll(`font-family="Helvetica"`,"") 
+	svgStr = svgStr.replaceAll(`font-size="12px"`,"")  
+	svgStr = svgStr.replaceAll(`text-anchor="middle"`,"")  
+	svgStr = svgStr.replaceAll(`<path   fill='transparent'  d=''/>`,"")  
+	svgStr = svgStr.replaceAll(`version='1.1'`,"")  
 	return svgStr;
 }
 
 var index = genericHeader;
-index+='<div class="container">'
-index+='<div class="page-header">'
-index+='<div>'
-index+='<h1>Orthona</h1>'
-index+='</div>'
-index+='</div>'
-index+='<table class="span5 center-table" >'
+index+='<h1>Orthona</h1>\n'
+index+='<table >\n'
 
 for (var i=0;i<7;i++){
 	index+="<tr>\n"
@@ -200,17 +192,15 @@ for (var i=0;i<7;i++){
 		var s = j+5*i;
 		index+="<td>\n"
 		index+=`<a   href='${symbolName(s)}.html'>\n`
-		index+=embedSvg(symbolName(s),"50px");
+		index+=embedSvg(symbolName(s),"50px","50px")+"\n";
 		index+="</a></td>\n"
 	}
 	index+="</tr>\n"
 }
 
-index+="</table>"
-index+="<p>"
-index+="<div class='text-center'>"
-index+="<a class='sitelink'   href='cheatsheat.html'>cheatsheat</a>"
-index+="</div>"
+index+="</table>\n"
+index+="<p>\n"
+index+="[ <a href='cheatsheet.html'>cheatsheet</a> ]\n"
 index+=genericFooter
 
 saveHTML("./docs/index.html",index);
@@ -220,31 +210,29 @@ saveHTML("./docs/index.html",index);
 
 
 var index = genericHeader;
-index+='<h1>Orthona Cheatsheet</h1>'
-index+='<table class="span5 center-table" >'
+index+='<h1>Orthona Cheatsheet</h1>\n'
+index+='<table class="cheat" >\n'
 
 for (var i=0;i<7;i++){
 	index+="<tr>\n"
 	for (var j=0;j<5;j++){
 		var s = j+5*i;
-		index+="<td width=80px height=80px><div class='text-center'>\n"
+		index+="<td>\n"
 		index+=`<a   href='${symbolName(s)}.html'>\n`
-		index+=embedSvg(symbolName(s),"40px");
-		index+=`<br>${db[i].name}</a>`
-		index+="</div></td>\n"
+		index+=embedSvg(symbolName(s),"40px","40px")+"\n";
+		index+=`<br>${db[s].name}</a>\n`
+		index+="</td>\n"
 	}
 	index+="</tr>\n"
 }
 
-index+="</table>"
-index+="<p>"
-index+="<div class='text-center'>"
-index+="<a class='sitelink'  class='sitelink' href='index.html'>home</a>"
-index+="</div>"
+index+="</table>\n"
+index+="<p>\n"
+index+="[ <a href='index.html'>home</a> ]\n"
 index+=genericFooter
 
 
-saveHTML("./docs/cheatsheat.html",index);
+saveHTML("./docs/cheatsheet.html",index);
 
 
 //generate individual pages
@@ -252,21 +240,13 @@ saveHTML("./docs/cheatsheat.html",index);
 for (var s=0;s<glob.symbolCount;s++){
 	var page = genericHeader
 
-		page+='<div class="container">'
-		page+='<div class="page-header">'
-		page+='<div>'
-		page+=`<h1 class="under">`
-		page+=embedSvg(symbolName(s),"20mm")+"<br>\n"
+		page+=`<h1>`
+		page+=embedSvg(symbolName(s),"20mm","20mm")+"<br>\n"
 		page+=db[s].name+"</h1>"
-		page+='</div>'
-		page+='</div>'
 
-		page+="<div class='row'>"
-		if (db[s].triple.length>0){
-			page+=`<div class="col-xs-6">`
-		}
-
-		page+=embedSvg(`spider_${symbolName(s)}`,"250px","center-block spider")+"\n"
+		page+='<table ><tr>'
+		page+="<td>"
+		page+=embedSvg(`spider_${symbolName(s)}`,"30mm","30mm","center-block")+"\n"
 
 		var lines=db[s].lines;
 		if (lines.length>0){
@@ -277,26 +257,20 @@ for (var s=0;s<glob.symbolCount;s++){
 			}		
 			page+="</ul>"
 		}
+		page+="</td>"
 
 		if (db[s].triple.length>0){
-			page+=`</div>`
-		}
-
-		if (db[s].triple.length>0){
-			page+=`<div class="col-xs-6">`
+			page+=`<td>`
 		
 			var L = db[s].triple;
-			page+=`<img class="center-block triple"  src="svg/triple_${symbolName(s)}.svg">\n`
+			page+=embedSvg(`triple_${symbolName(s)}`,"10mm","30mm","center-block")+"\n"
 			page+=`<ul><li>${L}</li></ul>`
-			page+=`</div>`
+			page+=`</td>`
 
 		}
-		page+="</div>"
+		page+="</tr></table>"
 		page+="<p>"
-		page+="<div class='text-center'>"
-		page+="<a class='sitelink'  href='index.html'>back</a>"
-		page+="</div>"
-		page+="<div class='endpagediv'></div>"
+		page+="[ <a href='index.html'>back</a> ]"
 		page+=genericFooter
 		saveHTML(`./docs/${symbolName(s)}.html`,page);
 }

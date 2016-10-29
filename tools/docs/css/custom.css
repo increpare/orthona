@@ -1,148 +1,45 @@
 :root {
-  /*bluish*/
-  
   --bg: #002244;
   --fg: #cccccc;
-  --link: #cccccc;
-  
-  /*brownish*/
-  /*
-  --bg: #211e1e;
-  --fg: #c1c145;
-  --link: #46d8b6;*/
-  /*blueish*/
-  /*
-  --bg: #042029;
-  --fg: #536871;
-  --link: #269186;*/
-}
-
-.col-xs-15,
-.col-sm-15,
-.col-md-15,
-.col-lg-15 {
-    position: relative;
-    min-height: 1px;
-    padding-right: 10px;
-    padding-left: 10px;
-}
-.col-xs-15 {
-    width: 20%;
-    float: left;
-}
-@media (min-width: 768px) {
-.col-sm-15 {
-        width: 20%;
-        float: left;
-    }
-}
-@media (min-width: 992px) {
-    .col-md-15 {
-        width: 20%;
-        float: left;
-    }
-}
-@media (min-width: 1200px) {
-    .col-lg-15 {
-        width: 20%;
-        float: left;
-    }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
 }
 
 body{
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif ;
   background-color: var(--bg);
   color:var(--fg);
+  text-align: center;
+  padding-bottom: 5px;
 }
 
-.row{
-  margin:0;
-  padding:0;
-}
-.page-header{
-  border-bottom:0
-}
-h1{
-  margin-bottom: 0
-}
-
-
-a.sitelink:before {
-   content: "[ ";
-}
-a.sitelink:after {
-   content: " ]";
+svg {
+  stroke: var(--fg);
+  fill:var(--bg);
+  stroke-linecap:round;
+  font-family:"Helvetica";
+  font-size:12px;
+  text-anchor:middle;
+  version:1.1;
 }
 
-
-a{
-  color:var(--link);
-}
-a:hover { 
-    color:var(--link);
-    text-decoration: none;
-}
-.container {
-  width: auto;
-  max-width: 680px;
-  padding: 0 15px;
-}
-.container2 {  
-  width: auto;
-  left:auto;
-  right:auto;
-  margin: 0 auto !important;
-  max-width: 680px;
-  padding: 0;
-  margin:10px 15px;
+.cheat td {
+  padding:10px;
 }
 
-.container2 .page-header {
-  padding: 0;
-  margin:0;
+a, a:hover, a:visited {
+  color:var(--fg);
+  text-decoration: none;
 }
 
-.container .text-muted {
-  margin: 20px 0;
+table{
+    margin-left:auto; 
+    margin-right:auto;
 }
 
-.center-table
-{
-  margin: 0 auto !important;
-  float: none !important;
-}
-
-h1{
-	text-align: center;
-}
-
-h1.under {
-	margin-top: 0px;
-	padding-top: 0px;
+td{
+  vertical-align: top;
 }
 
 ul{
-width: 200px;
-margin: auto;
-}
-
-.spider {
-	transform: scale(0.5);
-}
-
-.triple {
-	transform: scale(0.5);
-}
-
-.endpagediv{
-	height:100px;
-}
-
-.footertext{
-	text-align: center;
-	width:100%;
+  width: 150px;
+  list-style: none;
 }
