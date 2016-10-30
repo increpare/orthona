@@ -242,7 +242,7 @@ function embedSvg(name,width,height,className){
 
 var index = genericHeader;
 index+='<h1>Orthona</h1>'
-index+='<table >'
+index+='<table class="frontTable">'
 
 for (var i=0;i<7;i++){
 	index+="<tr>"
@@ -301,7 +301,7 @@ for (var s=0;s<glob.symbolCount;s++){
 			page+=`<div class="leadDescription">${db[s].description}</div><p>`
 		}
 		var itemCount=0;
-		page+='<table><tr>'		
+		page+='<table class="documentationTable"><tr>'		
 		page+="<td>"
 		itemCount++
 		page+=embedSvg(`spider_${symbolName(s)}`,"30mm","30mm","center-block")+""

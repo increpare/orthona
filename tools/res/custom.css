@@ -11,6 +11,9 @@ body{
   padding-bottom: 5px;
 }
 
+h1 {
+  margin-bottom: 10px;
+}
 
 svg {
   stroke:var(--fg);
@@ -26,6 +29,17 @@ svg {
   padding:10px;
 }
 
+.frontTable td {
+  padding:0;
+  height:75.58px;
+  margin:0;
+  line-height: 0;
+}
+
+td.padAbove {
+  padding-top: 50px;
+}
+
 a,a:hover,a:visited {
   color:var(--fg);
   text-decoration: none;
@@ -36,16 +50,13 @@ table{
     margin-right:auto;
 }
 
-td{
+.documentationTable td{
   vertical-align: top;
   max-width: 300px;
   padding-left:10px;
   padding-right: 10px;
 }
 
-td.padAbove {
-  padding-top: 50px;
-}
 
 .leadDescription{
   margin-left:auto; 

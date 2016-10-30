@@ -304,7 +304,7 @@ name: Able
 description: none
 uses: ABGH
 lines:
-	A is capable.
+	A has talent.
 	C is X.
 	F is X.
 	X has H.		
@@ -315,10 +315,9 @@ name: Sex
 description: none
 uses: ABGH
 lines:
-	A has X.
-	C is X.
-	F is X.
-	X has H.		
+	A fucks H.
+	B is a man.
+	G is a woman.		
 triple: none
 examples: none
 
@@ -326,10 +325,9 @@ name: Internal
 description: none
 uses: ABGH
 lines:
-	A has X.
-	C is X.
-	F is X.
-	X has H.		
+	H is inside A.
+	G enters H from A.
+	B leaves H from A.
 triple: none
 examples: none
 

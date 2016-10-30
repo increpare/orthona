@@ -30,17 +30,33 @@ var mousey=0;
 var startPosX=0;
 var startPosY=0;
 
-function SaveState(fullbooksave=false){
+var UndoStack = []
+
+function DoUndo(){
+    if (UndoStack.length<2){
+        return;
+    }
+
+    UndoStack.splice(UndoStack.length-1,1);
+    var last = UndoStack[UndoStack.length-1];
+    TryRestoreState(last) 
+    SaveState(false,false);
+}
+
+function SaveState(fullbookprint=false,pushToUndoStack=true){
     var sketch_save = JSON.stringify({book:glob.sketchBook,page:glob.sketchBookIndex});
     localStorage.setItem("glob.sketchBookDat",sketch_save);
-    if(fullbooksave){
+    if (pushToUndoStack){
+        UndoStack.push(sketch_save)
+    }
+    if(fullbookprint){
         console.log(JSON.stringify(glob.sketchBook))
     } else {
-        console.log(JSON.stringify(glob.sketchBook[glob.sketchBookIndex]))
+        console.log(sketch_save)
     }
 }
 
-function TryRestoreState(){
+function TryRestoreState(sketch_save){
 /*
 
        var dict = require("../../dat/scrapbook/dictionarytemplate.json")
@@ -48,12 +64,19 @@ function TryRestoreState(){
         glob.sketchBookIndex=0;
         LoadPage();
 */
-    var sketch_save = localStorage.getItem("glob.sketchBookDat");
+    var undoing=sketch_save!=null;
+
+    sketch_save = sketch_save || localStorage.getItem("glob.sketchBookDat");
     if (sketch_save!==null){
+        if (!undoing){
+            UndoStack.push(sketch_save);
+        }
         var dat = JSON.parse(sketch_save);
         glob.sketchBook=dat.book;
         glob.sketchBookIndex=dat.page;
         LoadPage();
+    } else {        
+        SaveState();
     }
 }
 
@@ -65,22 +88,27 @@ function doStart(){
     ctx.imageSmoothingEnabled = false;
 
 
-function handleKeyDown(evt){
-    if (evt.keyCode===13){
-        //return
-        newTitle();
-        renderApp();
-    } else if (evt.keyCode===37){
-        //return
-        PageLeft();
-    } else if (evt.keyCode===39){
-        //return
-        PageRight();
-    } 
+    function handleKeyDown(evt){
+        if (evt.keyCode===13){
+            //return
+            newTitle();
+            renderApp();
+        } else if (evt.keyCode===37){
+            //left
+            PageLeft();
+            renderApp();
+        } else if (evt.keyCode===39){
+            //right
+            PageRight();
+            renderApp();
+        }  else if (evt.keyCode===90){
+            //undo
+            DoUndo();
+            renderApp();
+        } 
 
-}
+    }
 
-handleStart
     document.addEventListener('keydown', handleKeyDown, false);
 
     glob.canvas.addEventListener("mousedown", handleStart, false);
@@ -498,9 +526,9 @@ function handleMove(evt) {
         return;
     } else {
         oldtouches=null;
+        renderApp();
     }
     
-    renderApp();
 /*
     if (evt.touches.length===1 && iconSelect===false && moved===false)
     {
