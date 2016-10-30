@@ -1,7 +1,3 @@
-var glob = require('./orthoGlobals')
-var canvasRender = require('./canvasRender')
-var docDatabase = require('../tmp/docDatabase.json')
-
 log=console.log
 
 const cellSize = glob.cellSize;
@@ -34,9 +30,8 @@ var UndoStack = []
 
 var ctx
 function doStart(){
-    glob.canvas = document.getElementById("mainCanvas");
-    glob.ctx=glob.canvas.getContext('2d');
-    ctx = glob.ctx;
+    canvas = document.getElementById("mainCanvas");
+    ctx=glob.canvas.getContext('2d');
     ctx.imageSmoothingEnabled = false;
 
     function handleKeyDown(evt){
@@ -50,15 +45,22 @@ function doStart(){
 }
 
 function renderApp(){
-    if (glob.canvas.getContext) {
-        ctx.canvas.width  = window.innerWidth;
-        ctx.canvas.height = window.innerHeight;
+    if (!canvas.getContext) {
+        return;
     }
+    ctx.canvas.width  = window.innerWidth;
+    ctx.canvas.height = window.innerHeight;    
 
-    if (iconSelect&&minDistHit)
-    {            
-        drawSelectionPanel(false,mousex,mousey);
-    }
+    ctx.fillStyle = "#ffffff";
+
+    ctx.strokeStyle="#000000";
+
+    ctx.fillRect(0, 0, canvas.width, canvas.height);  
+
+    ctx.beginPath();
+    ctx.moveTo(0,0);      
+    ctx.lineTo(canvas.width,canvas.height)
+    ctx.stroke()
 }
 
 window.onload = doStart
