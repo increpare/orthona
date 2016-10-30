@@ -77,17 +77,17 @@ name: Collection
 description: none
 uses: ABGH
 lines:
-	a is a collection of h
-	one b
-	all g
+	A is a collection of H
+	one B
+	all G
 triple: none
 examples:
 	file: notOnePerson
-	description: Not applied to One means none
+	description: "Not" applied to "One" means "None".
 	translation: No person
 
 	file: notAllPeople
-	description: Not applied to All means some
+	description: "Not" applied to "All" means "Some".
 	translation: Some people
 
 name: Event
@@ -139,95 +139,88 @@ uses: ABGH
 lines:
 	A has control of their desires.
 	B desires G.
-	H is desired.		
+	H is dominated by their desires.		
 triple: none
 examples: none
 
 name: Power
 description: none
-uses: ACFH
+uses: ABGH
 lines:
-	A has X.
-	C is X.
-	F is X.
-	X has H.		
+	A has power over H.
+	B is weak
+	G is powerful.		
 triple: none
 examples: none
 
 name: See
 description: none
-uses: ACFH
+uses: AGH
 lines:
-	A has X.
-	C is X.
-	F is X.
-	X has H.		
+	A sees H.
+	H is visible.
+	A shows G to H.
 triple: none
 examples: none
 
 name: Say
 description: none
-uses: ACFH
+uses: AGH
 lines:
-	A has X.
-	C is X.
-	F is X.
-	X has H.		
+	A speaks to H.
+	H is audible.
+	A talks about G to H.	
 triple: none
 examples: none
 
 name: Touch
 description: none
-uses: ACFH
+uses: AGH
 lines:
-	A has X.
-	C is X.
-	F is X.
-	X has H.		
+	A touches H.
+	H is being touched.
+	G can be touched.
 triple: none
 examples: none
 
 name: Hear
 description: none
-uses: ACFH
+uses: AGH
 lines:
-	A has X.
-	C is X.
-	F is X.
-	X has H.		
+	A hears H.
+	H is audible.
+	A shows G to H.	
 triple: none
 examples: none
 
 name: Eat
 description: none
-uses: ACFH
+uses: ABGH
 lines:
-	A has X.
-	C is X.
-	F is X.
-	X has H.		
+	A is hungry.
+	H is delicious.
+	B eats G.		
 triple: none
 examples: none
 
 name: Know
 description: none
-uses: ACFH
+uses: ABGH
 lines:
-	A has X.
-	C is X.
-	F is X.
-	X has H.		
+	A knows.
+	A knows H.
+	G believes.
+	B supposes.
 triple: none
 examples: none
 
 name: Smell
 description: none
-uses: ACFH
+uses: AGH
 lines:
-	A has X.
-	C is X.
-	F is X.
-	X has H.		
+	A smells H.
+	H is smelly.
+	A shows G to H.		
 triple: none
 examples: none
 
@@ -235,16 +228,16 @@ name: Time
 description: none
 uses: ABGH
 lines:
-	A has much time left
-	B is old
-	G is young/new
+	A has much time left.
+	B is old.
+	G is young/new.
 	H is old-fashioned.		
 triple: none
 examples: none
 
 name: Action
 description: none
-uses: ACFH
+uses: ABGH
 lines:
 	A has X.
 	C is X.
@@ -255,64 +248,63 @@ examples: none
 
 name: Go
 description: none
-uses: ACFH
+uses: ABGH
 lines:
-	A has X.
-	C is X.
-	F is X.
-	X has H.		
+	A takes H from B to G.
+	A is our current location.
+	G is a destination.
 triple: none
 examples: none
 
 name: Size
 description: none
-uses: ACFH
+uses: ABGH
 lines:
-	A has X.
-	C is X.
-	F is X.
-	X has H.		
+	A is big.
+	G is bigger than B.
+	H is bulky.		
 triple: none
 examples: none
 
 name: Pain
 description: none
-uses: ACFH
+uses: ABGH
 lines:
-	A has X.
-	C is X.
-	F is X.
-	X has H.		
+	A hurts B with G.
+	H is in pain.
+	B relieves pain.
 triple: none
 examples: none
 
 name: Ease
 description: none
-uses: ACFH
+uses: ABGH
 lines:
-	A has X.
-	C is X.
-	F is X.
-	X has H.		
+	G is easy.
+	B is hard.
+	G is easier than B.
+	A does things effortlessly.
+	H is lazy.
 triple: none
 examples: none
 
 name: Cause
 description: none
-uses: ACFH
+uses: ABCFGH
 lines:
-	A has X.
-	C is X.
-	F is X.
-	X has H.		
+	A is unrelated to C.
+	B is emotional.
+	F implies  C.
+	F prevents H.
+	G is rational.
 triple: none
 examples: none
 
 name: Able
 description: none
-uses: ACFH
+uses: ABGH
 lines:
-	A has X.
+	A is capable.
 	C is X.
 	F is X.
 	X has H.		
@@ -321,7 +313,7 @@ examples: none
 
 name: Sex
 description: none
-uses: ACFH
+uses: ABGH
 lines:
 	A has X.
 	C is X.
@@ -332,7 +324,7 @@ examples: none
 
 name: Internal
 description: none
-uses: ACFH
+uses: ABGH
 lines:
 	A has X.
 	C is X.
@@ -343,7 +335,7 @@ examples: none
 
 name: Familiar
 description: none
-uses: ACFH
+uses: ABGH
 lines:
 	A has X.
 	C is X.
@@ -354,7 +346,7 @@ examples: none
 
 name: Living
 description: none
-uses: ACFH
+uses: ABGH
 lines:
 	A has X.
 	C is X.
@@ -365,7 +357,7 @@ examples: none
 
 name: Read
 description: none
-uses: ACFH
+uses: ABGH
 lines:
 	A has X.
 	C is X.

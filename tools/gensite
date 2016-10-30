@@ -301,7 +301,7 @@ for (var s=0;s<glob.symbolCount;s++){
 			page+=`<div class="leadDescription">${db[s].description}</div><p>`
 		}
 		var itemCount=0;
-		page+='<table class="manualTable"><tr>'		
+		page+='<table><tr>'		
 		page+="<td>"
 		itemCount++
 		page+=embedSvg(`spider_${symbolName(s)}`,"30mm","30mm","center-block")+""
@@ -331,7 +331,11 @@ for (var s=0;s<glob.symbolCount;s++){
 				if (itemCount%2===0){
 					page+="<tr>"
 				}
-				page+="<td>"
+				if (itemCount>1){
+					page+="<td class='padAbove'>"
+				} else {
+					page+="<td>"					
+				}
 				itemCount++;
 				var eg = db[s].examples[i];
 				var fn = eg.file;
