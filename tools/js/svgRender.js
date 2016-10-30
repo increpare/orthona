@@ -307,7 +307,7 @@ function drawIcon(x, y, icon) {
             {
                 var r = DOC_CELLSIZE * 0.4;
                 var top = r * 0.8;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
+                result += `\t\t<path  stroke-linejoin="round" stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - r, y,
                     "C", x - r / 2, y - 1.5 * top, ",", x + r / 2, y - 1.5 * top, ",", x + r, y,
@@ -322,7 +322,7 @@ function drawIcon(x, y, icon) {
         case 17: //hand
             {
                 var s = DOC_CELLSIZE * 0.4 / 1.41;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
+                result += `\t\t<path stroke-linejoin="round" stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - s * 0.8, y - 2 * s + s / 2,
                     "L", x - s * 0.8, y + s,

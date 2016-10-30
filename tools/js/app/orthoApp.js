@@ -1,6 +1,6 @@
 var glob = require('./orthoGlobals')
 var orthoRender = require('./orthoRender')
-var docDatabase = require('./../../res/docDatabase.json')
+var docDatabase = require('./../../res/docDatabase.js')
 
 log=console.log
 
@@ -30,10 +30,14 @@ var mousey=0;
 var startPosX=0;
 var startPosY=0;
 
-function SaveState(){
+function SaveState(fullbooksave=false){
     var sketch_save = JSON.stringify({book:glob.sketchBook,page:glob.sketchBookIndex});
     localStorage.setItem("glob.sketchBookDat",sketch_save);
-    console.log(JSON.stringify(glob.sketchBook[glob.sketchBookIndex]))
+    if(fullbooksave){
+        console.log(JSON.stringify(glob.sketchBook))
+    } else {
+        console.log(JSON.stringify(glob.sketchBook[glob.sketchBookIndex]))
+    }
 }
 
 function TryRestoreState(){
@@ -119,7 +123,7 @@ function PageLeft(){
     }
     glob.sketchBookIndex--;  
     LoadPage();      
-    SaveState();
+    SaveState(true);
 }
 
 function PageEmpty(){
@@ -129,7 +133,7 @@ function PageRight(){
     if (PageEmpty()===false){
         glob.sketchBookIndex++;
         LoadPage();
-        SaveState();
+        SaveState(true);
     }
 }
 

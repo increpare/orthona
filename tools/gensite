@@ -55,7 +55,8 @@ if (bgCol===null){
 svgRender.setPadding(0.5)
 svgRender.setColours(bgCol,fgCol,bgCol)
 
-function saveHTML(filePath,htmlDat){
+function saveHTML(filePath,htmlDat,pageTitle){
+	htmlDat=htmlDat.replaceAll("PAGETITLE",pageTitle)
 	fs.writeFileSync(filePath,htmlDat);
 	if(inline===false){
 		return;
@@ -199,7 +200,7 @@ var myCssFile = postcss([
 
 var genericHeader = "<!DOCTYPE html>"
     genericHeader += '<meta charset=utf-8>'
-    genericHeader += '<title>Orthona Documentation</title>'
+    genericHeader += '<title>PAGETITLE</title>'
     genericHeader +=`<style>${myCssFile}</style>`
 
 String.prototype.replaceAll = function(search, replacement) {
@@ -253,7 +254,7 @@ index+="</table>"
 index+="<p>"
 index+="[ <a href='cheatsheet.html'>cheatsheet</a> ]"
 
-saveHTML("./docs/index.html",index);
+saveHTML("./docs/index.html",index,"Orthona");
 
 
 //cheatsheet
@@ -279,7 +280,7 @@ index+="<p>"
 index+="[ <a href='index.html'>home</a> ]"
 
 
-saveHTML("./docs/cheatsheet.html",index);
+saveHTML("./docs/cheatsheet.html",index,"Cheat Sheet");
 
 
 //generate individual pages
@@ -295,7 +296,7 @@ for (var s=0;s<glob.symbolCount;s++){
 			page+=`<div class="leadDescription">${db[s].description}</div><p>`
 		}
 		var itemCount=0;
-		page+='<table ><tr>'		
+		page+='<table class="manualTable"><tr>'		
 		page+="<td>"
 		itemCount++
 		page+=embedSvg(`spider_${symbolName(s)}`,"30mm","30mm","center-block")+""
@@ -324,15 +325,18 @@ for (var s=0;s<glob.symbolCount;s++){
 				page+="<tr>"
 			}
 			page+="<td>"
+			itemCount++;
 			var eg = db[s].examples[i];
 			var fn = eg.file;
 			var filePath = `ex_${fn}`
-			page+=eg.description+"<br>";
+			if (eg.description.length>0){
+				page+=eg.description+"<br>";
+			}
 			page+=embedSvg(filePath,"10mm","30mm","center-block")+"<br>"
 			page+=`<em>${eg.translation}</em><br>`;
 		}
 		page+="</table>"
 		page+="<p>"
-		page+="[ <a href='../index.html'>back</a> ]"
-		saveHTML(`./docs/sym/${symbolName(s)}.html`,page);
+		page+="[ <a href='../index.html'>home</a> ]"
+		saveHTML(`./docs/sym/${symbolName(s)}.html`,page,db[s].name);
 }
