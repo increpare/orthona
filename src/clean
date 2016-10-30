@@ -1,4 +1,3 @@
-echo "cleaning directories"
 rm -rf ../docs
 rm -rf tmp
 rm -rf dat/bin

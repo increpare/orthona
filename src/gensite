@@ -160,7 +160,7 @@ for (var s=0;s<glob.symbolCount;s++){
 	}
 	for (var j=0;j<doc.examples.length;j++){
 		var fn = doc.examples[j].file
-		var jsonPath = `./dat/json/${fn}.json`;
+		var jsonPath = `./res/json/${fn}.json`;
 		var jsonDat = fs.readFileSync(jsonPath,'utf8');
 		glob.page=JSON.parse(jsonDat);		
 		var svgDat = svgRender.render();
