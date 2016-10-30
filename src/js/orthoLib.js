@@ -1,6 +1,6 @@
 var fs = require('fs')
 
-var glob = require('./app/orthoGlobals')
+var glob = require('./orthoGlobals')
 
 var ORTHO_VERSION=0;
 

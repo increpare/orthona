@@ -2,7 +2,7 @@
 var execSync = require('child_process').execSync
 
 var fs = require('fs')
-var glob = require('./js/app/orthoGlobals')
+var glob = require('./js/orthoGlobals')
 var lib = require('./js/orthoLib')
 var svgRender = require("./js/svgRender")
 var log = console.log
@@ -15,8 +15,8 @@ var Inliner = require('inliner');
 
 var db = slab.parseFileSync('./res/docDatabase.slab');
 
-execSync("rm -rf ./docs/*")
-execSync("mkdir ./docs/sym")
+execSync("rm -rf ../docs/*")
+execSync("mkdir -p ../docs/sym")
 
 var fast=false;
 var inline=true;
@@ -118,7 +118,7 @@ glob.page=glob.sketchBook[0]
 	glob.page.elements[0][2]=-2;
 	
 	var svgDat = svgRender.render();
-	var filePath = `../tmp/arrow.svg`;
+	var filePath = `./tmp/arrow.svg`;
 	fs.writeFileSync(filePath, svgDat);
 }
 
@@ -126,7 +126,7 @@ for (var s=0;s<glob.symbolCount;s++){
 	glob.page.elements[0][2]=s;
 	
 	var svgDat = svgRender.render();
-	var filePath = `../tmp/${symbolName(s)}.svg`;
+	var filePath = `./tmp/${symbolName(s)}.svg`;
 	fs.writeFileSync(filePath, svgDat);
 }
 
@@ -146,7 +146,7 @@ for (var s=0;s<glob.symbolCount;s++){
 	glob.page.elements[1][2]=s;
 	
 	var svgDat = svgRender.render();
-	var filePath = `../tmp/triple_${symbolName(s)}.svg`
+	var filePath = `./tmp/triple_${symbolName(s)}.svg`
 	fs.writeFileSync(filePath, svgDat);
 }
 
@@ -164,7 +164,7 @@ for (var s=0;s<glob.symbolCount;s++){
 		var jsonDat = fs.readFileSync(jsonPath,'utf8');
 		glob.page=JSON.parse(jsonDat);		
 		var svgDat = svgRender.render();
-		var filePath = `../tmp/ex_${fn}.svg`
+		var filePath = `./tmp/ex_${fn}.svg`
 		fs.writeFileSync(filePath, svgDat);
 	}
 }
@@ -197,7 +197,7 @@ for (var s=0;s<glob.symbolCount;s++){
 
 
 	var svgDat = svgRender.render();
-	var filePath = `../tmp/spider_${symbolName(s)}.svg`
+	var filePath = `./tmp/spider_${symbolName(s)}.svg`
 	fs.writeFileSync(filePath, svgDat)
 }
 
@@ -221,7 +221,7 @@ String.prototype.replaceAll = function(search, replacement) {
 };
 
 function embedSvg(name,width,height,className){
-	var svgStr=fs.readFileSync(`../tmp/${name}.svg`,'utf8')
+	var svgStr=fs.readFileSync(`./tmp/${name}.svg`,'utf8')
 	var startIdx = svgStr.indexOf("viewBox=");
 	var classStr="";
 	if (className!=null){
@@ -266,7 +266,7 @@ index+="</table>"
 index+="<p>"
 index+="[ <a href='cheatsheet.html'>cheatsheet</a> ]"
 
-saveHTML("./docs/index.html",index,"Orthona");
+saveHTML("../docs/index.html",index,"Orthona");
 
 
 //cheatsheet
@@ -292,7 +292,7 @@ index+="<p>"
 index+="[ <a href='index.html'>home</a> ]"
 
 
-saveHTML("./docs/cheatsheet.html",index,"Cheat Sheet");
+saveHTML("../docs/cheatsheet.html",index,"Cheat Sheet");
 
 
 //generate individual pages
@@ -357,5 +357,5 @@ for (var s=0;s<glob.symbolCount;s++){
 		page+="</table>"
 		page+="<p>"
 		page+="[ <a href='../index.html'>home</a> ]"
-		saveHTML(`./docs/sym/${symbolName(s)}.html`,page,db[s].name);
+		saveHTML(`../docs/sym/${symbolName(s)}.html`,page,db[s].name);
 }

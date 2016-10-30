@@ -1,5 +1,5 @@
 var fs = require('fs')
-var glob = require('./app/orthoGlobals')
+var glob = require('./orthoGlobals')
 var lib = require('./orthoLib')
 var log = console.log
 

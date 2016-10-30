@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 var fs 				= require('fs')
-var glob 			= require('./js/app/orthoGlobals')
-var canvasRender 	= require('./js/app/canvasRender')
+var glob 			= require('./js/orthoGlobals')
+var canvasRender 	= require('./js/canvasRender')
 var lib 			= require('./js/orthoLib')
 var svgRender 		= require("./js/svgRender")
 var log=console.log
@@ -36,7 +36,7 @@ if (outputFileName===""){
 	var globalPath = path.resolve(inputFileName)
 	var parsed = path.parse(globalPath)
 	parsed.ext=".json"
-	parsed.dir+="/../json"
+	parsed.dir+="../../../renders/json"
 	parsed.base=parsed.name+"_b"+parsed.ext;
 	outputFileName = path.format(parsed)
 	log("outputFileName = "+outputFileName)

@@ -2,7 +2,7 @@
 var fs = require('fs')
 log = console.log
 
-var glob = require('./js/app/orthoGlobals')
+var glob = require('./js/orthoGlobals')
 var lib = require('./js/orthoLib')
 var svgRender = require("./js/svgRender")
 

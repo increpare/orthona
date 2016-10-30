@@ -3,8 +3,11 @@ ortho/platforms/*.*
 ortho/plugins
 ortho/www/js/dat/*.png
 orthoTouch
-renders
-tmp
+src/dat/bin
+src/dat/json_random
+src/dat/png
+src/dat/retop
+src/dat/svg
+src/dat/tiled
+src/tmp
 docs
-
-*.svg

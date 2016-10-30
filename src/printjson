@@ -5,7 +5,7 @@ var emoji = require('node-emoji');
 
 
 var fs 				= require('fs')
-var glob 			= require('./js/app/orthoGlobals')
+var glob 			= require('./js/orthoGlobals')
 var lib 			= require('./js/orthoLib')
 var svgRender 		= require("./js/orthoTopology")
 var log=console.log

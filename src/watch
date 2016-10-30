@@ -1,1 +1,1 @@
-watchify js/app/orthoApp.js -o ../orthoTouch/www/js/compiled.js
+watchify js/orthoApp.js -o ../orthoTouch/www/js/compiled.js

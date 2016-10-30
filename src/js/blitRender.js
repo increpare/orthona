@@ -1,6 +1,6 @@
 var fs = require('fs')
 var lib = require('./orthoLib')
-var glob = require('./app/orthoGlobals')
+var glob = require('./orthoGlobals')
 var Canvas = require('canvas')
 var Image = Canvas.Image 
 

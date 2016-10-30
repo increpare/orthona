@@ -1,5 +1,5 @@
 var lib = require('./orthoLib')
-var glob = require('./app/orthoGlobals')
+var glob = require('./orthoGlobals')
 
 var pentagon = [
     0, -1000, -951, -309, -588, 809,

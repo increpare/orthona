@@ -1,6 +1,6 @@
 var glob = require('./orthoGlobals')
 var canvasRender = require('./canvasRender')
-var docDatabase = require('../../../tmp/docDatabase.json')
+var docDatabase = require('../tmp/docDatabase.json')
 
 log=console.log
 

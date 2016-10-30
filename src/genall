@@ -1,18 +1,19 @@
 ./clean
 
-cd c
-make
-cd ..
-
 mkdir ../docs
-mkdir ../renders
-mkdir ../renders/bin
-mkdir ../renders/svg
-mkdir ../renders/tiled/0
-mkdir ../renders/tiled/1
-mkdir ../renders/tiled/2
-mkdir ../renders/tiled/3
-mkdir ../renders/tiled/4
+mkdir tmp
+mkdir dat
+mkdir dat/bin
+mkdir dat/png
+mkdir dat/json_random
+mkdir dat/retop
+mkdir dat/svg
+mkdir dat/tiled
+mkdir dat/tiled/0
+mkdir dat/tiled/1
+mkdir dat/tiled/2
+mkdir dat/tiled/3
+mkdir dat/tiled/4
 
 for fn in dat/json/*.json
 do
@@ -24,6 +25,7 @@ for fn in dat/json/*.json
 do
 	echo "processing $fn"
 	./json2png -noGridLines $fn &
+	echo AAAA ./json2svg -noGridLines $fn
 	./json2svg -noGridLines $fn &
 	./json2tiledpng 0 $fn &
 	./json2tiledpng 1 $fn &

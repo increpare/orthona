@@ -1,6 +1,9 @@
 echo "cleaning directories"
-rm cload
-rm dat/png/*
-rm dat/bin/*
-rm dat/retop/*
-rm -rf ../docs/*
+rm -rf ../docs
+rm -rf tmp
+rm -rf dat/bin
+rm -rf dat/svg
+rm -rf dat/png
+rm -rf dat/tiled
+rm -rf dat/retop
+rm -rf dat/json_random

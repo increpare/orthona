@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 var fs = require('fs')
-var glob = require('./js/app/orthoGlobals')
+var glob = require('./js/orthoGlobals')
 var lib = require('./js/orthoLib')
 var top = require('./js/orthoTopology')
-var canvasRender = require("./js/app/canvasRender")
+var canvasRender = require("./js/canvasRender")
 var log = console.log
 
 

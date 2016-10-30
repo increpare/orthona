@@ -1,5 +1,5 @@
 var glob = require('./orthoGlobals')
-var lib = require('../orthoLib')
+var lib = require('./orthoLib')
 var log=console.log
 
 const cellSize = glob.cellSize;

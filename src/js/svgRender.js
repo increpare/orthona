@@ -1,5 +1,5 @@
 var lib = require('./orthoLib')
-var glob = require('./app/orthoGlobals')
+var glob = require('./orthoGlobals')
 
 var pentagon = [
     0, -1000, 
@@ -307,8 +307,8 @@ function drawIcon(x, y, icon) {
                 result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - r, y,
-                    "C", x - r / 2, y - top, ",", x + r / 2, y - top, ",", x + r, y,
-                    "C", x + r / 2, y + top, ",", x - r / 2, y + top, ",", x - r, y,
+                    "C", x - r / 2, y - top, x + r / 2, y - top, x + r, y,
+                    "C", x + r / 2, y + top, x - r / 2, y + top, x - r, y,
                     "Z ",
                     "'/>\n"
                 ].compileList();
@@ -324,10 +324,10 @@ function drawIcon(x, y, icon) {
                 result += `\t\t<path  stroke-linejoin="round" stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - r, y,
-                    "C", x - r / 2, y - 1.5 * top, ",", x + r / 2, y - 1.5 * top, ",", x + r, y,
-                    "C", x + r / 2, y + 1.5 * top, ",", x - r / 2, y + 1.5 * top, ",", x - r, y,
-                    "C", x - r / 2, y - top, ",", x + r / 2, y - top, ",", x + r, y,
-                    "C", x + r / 2, y + top, ",", x - r / 2, y + top, ",", x - r, y,
+                    "C", x - r / 2, y - 1.5 * top, x + r / 2, y - 1.5 * top, x + r, y,
+                    "C", x + r / 2, y + 1.5 * top, x - r / 2, y + 1.5 * top, x - r, y,
+                    "C", x - r / 2, y - top, x + r / 2, y - top, x + r, y,
+                    "C", x + r / 2, y + top, x - r / 2, y + top, x - r, y,
                     "Z ",
                     "'/>\n"
                 ].compileList();
@@ -344,7 +344,7 @@ function drawIcon(x, y, icon) {
                     "L", x + s * 0.8, y - s / 2,
                     "L", x - s / 4, y - s + s / 2,
                     "L", x - s / 4, y - 2 * s + s / 2,
-                    "C", x - s / 4, y - 2 * s + s / 2 - s / 2, ",", x - s * 0.8, y - 2 * s + s / 2 - s / 2, ",", x - s * 0.8, y - 2 * s + s / 2,
+                    "C", x - s / 4, y - 2 * s + s / 2 - s / 2, x - s * 0.8, y - 2 * s + s / 2 - s / 2, x - s * 0.8, y - 2 * s + s / 2,
                     "Z ",
                     "'/>\n"
                 ].compileList();
@@ -362,10 +362,10 @@ function drawIcon(x, y, icon) {
                 result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x, y - u,
-                    "C", x - s, y - u, ",", x - s, y - u - t, ",", x, y - u - t,
-                    "C", x + 2 * s, y - u - t, ",", x + 2 * s, y + u + t, ",", x, y + u + t,
-                    "C", x - s, y + u + t, ",", x - s, y + u, ",", x, y + u,
-                    "C", x + s / 2, y + u, ",", x + s / 2, y - u, ",", x, y - u,
+                    "C", x - s, y - u, x - s, y - u - t, x, y - u - t,
+                    "C", x + 2 * s, y - u - t, x + 2 * s, y + u + t, x, y + u + t,
+                    "C", x - s, y + u + t, x - s, y + u, x, y + u,
+                    "C", x + s / 2, y + u, x + s / 2, y - u, x, y - u,
                     "Z ",
                     "'/>\n"
                 ].compileList();
@@ -378,8 +378,8 @@ function drawIcon(x, y, icon) {
                 result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - r, y,
-                    "C", x - r / 2, y - top, ",", x + r / 2, y - top, ",", x + r, y,
-                    "C", x + r / 2, y + top, ",", x - r / 2, y + top, ",", x - r, y,
+                    "C", x - r / 2, y - top, x + r / 2, y - top, x + r, y,
+                    "C", x + r / 2, y + top, x - r / 2, y + top, x - r, y,
                     "Z ",
                     "L", x + r, y,
                     "M", x, y - r / 2,
@@ -402,8 +402,8 @@ function drawIcon(x, y, icon) {
                 result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x, y - r,
-                    "C", x - top, y - r / 2, ",", x - top, y + r / 2, ",", x, y + r,
-                    "C", x + top, y + r / 2, ",", x + top, y - r / 2, ",", x, y - r,
+                    "C", x - top, y - r / 2, x - top, y + r / 2, x, y + r,
+                    "C", x + top, y + r / 2, x + top, y - r / 2, x, y - r,
                     "Z ",
                     "'/>\n"
                 ].compileList();
@@ -420,7 +420,7 @@ function drawIcon(x, y, icon) {
                 result += [
                     "M", x - r / 4, y - r,
                     "L", x - r / 2, y,
-                    "C", x - r, y + r, ",", x + r, y + r, ",", x + r / 2, y,
+                    "C", x - r, y + r, x + r, y + r, x + r / 2, y,
                     "L", x + r / 4, y - r,
                     "'/>\n"
                 ].compileList();
@@ -436,10 +436,10 @@ function drawIcon(x, y, icon) {
                     "M", x - s, y - r,
                     "L", x + s, y - r,
                     //"C",x,y-t,x,y-t,x+s,y-r,    
-                    "C", x + t, y, ",", x + t, y, ",", x + s, y + r,
+                    "C", x + t, y, x + t, y, x + s, y + r,
                     "L", x - s, y + r,
                     //"C",x,y+t,x,y+t,x-s,y+r, 
-                    "C", x - t, y, ",", x - t, y, ",", x - s, y - r,
+                    "C", x - t, y, x - t, y, x - s, y - r,
                     "Z ",
                     "'/>\n"
                 ].compileList();
@@ -532,10 +532,10 @@ function drawIcon(x, y, icon) {
                 result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - s, y - r,
-                    "C", x, y - t, ",", x, y - t, ",", x + s, y - r,
-                    "C", x + t, y, ",", x + t, y, ",", x + s, y + r,
-                    "C", x, y + t, ",", x, y + t, ",", x - s, y + r,
-                    "C", x - t, y, ",", x - t, y, ",", x - s, y - r,
+                    "C", x, y - t, x, y - t, x + s, y - r,
+                    "C", x + t, y, x + t, y, x + s, y + r,
+                    "C", x, y + t, x, y + t, x - s, y + r,
+                    "C", x - t, y, x - t, y, x - s, y - r,
                     "'/>\n"
                 ].compileList();
                 break;
@@ -834,7 +834,7 @@ function svgRender() {
 //#dcdcdc
 //        var a = Math.round(220 + 35 * pc).toString(16);
 //        var col = "#" + a + a + a;
-        log ("oldcol="+col)
+//        log ("oldcol="+col)
         col=gridCol;
         svg += `\t\t<path stroke-linecap="round" stroke-width='${STROKE_WIDTH}' fill='transparent' stroke='${col}' d='`;
         svg += ar.compileList();
