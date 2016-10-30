@@ -3,7 +3,7 @@
 #convert jsons to binary and back to jsons and back to #binary, and compare the two binary files
 
 echo "testing out binary formats are stable"
-for fn in dat/json/*.json
+for fn in res/json/*.json
 do
 	bn=$(basename $fn ".json")
 	tmpjson0=../tmp/$bn.json0

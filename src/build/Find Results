@@ -1,0 +1,36 @@
+Searching 1221 files for "dat/json" (case sensitive)
+
+/Users/stephenlavelle/Documents/Ortho/src/genall:
+   15  mkdir ../renders/tiled/4
+   16  
+   17: for fn in dat/json/*.json
+   18  do
+   19  	./retop $fn &
+   ..
+   21  wait
+   22  
+   23: for fn in dat/json/*.json
+   24  do
+   25  	echo "processing $fn"
+   ..
+   50  wait
+   51  
+   52: for fn in dat/json_random/*.json
+   53  do
+   54  	echo "processing $fn"  &
+
+/Users/stephenlavelle/Documents/Ortho/src/gensite:
+  161  	for (var j=0;j<doc.examples.length;j++){
+  162  		var fn = doc.examples[j].file
+  163: 		var jsonPath = `./dat/json/${fn}.json`;
+  164  		var jsonDat = fs.readFileSync(jsonPath,'utf8');
+  165  		glob.page=JSON.parse(jsonDat);		
+
+/Users/stephenlavelle/Documents/Ortho/src/testbin:
+    4  
+    5  echo "testing out binary formats are stable"
+    6: for fn in dat/json/*.json
+    7  do
+    8  	bn=$(basename $fn ".json")
+
+5 matches across 3 files
