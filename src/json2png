@@ -1,0 +1,65 @@
+#!/usr/bin/env node
+
+var fs = require('fs')
+var glob = require('./js/app/orthoGlobals')
+var lib = require('./js/orthoLib')
+var standAlone = require('./js/standAlone')
+var canvasRender = require("./js/app/canvasRender")
+var log = console.log
+
+
+if (process.argv.length===2){
+	console.log("USAGE: json2png [-noGridLines] [-diagonals] [-noIcons] [-noLines] [-selectiveGridLines] FILENAME [OUTPUT]");
+	return;
+}
+
+var inputFileName=""
+var outputFileName=""
+for (var i=2;i<process.argv.length;i++){
+	var t = process.argv[i];
+	if (t==="-noGridLines"){
+		glob.drawGridLines=false;
+	} else if (t==="-diagonals"){
+		glob.drawGridLines_Diagonal=true;
+	} else if (t==="-noIcons"){
+		glob.drawElements=false;
+	} else if (t==="-noLines"){
+		glob.drawLines=false;
+	} else if (t==="-selectiveGridLines"){
+		glob.drawSelectiveGridLines=true;
+	} else if (inputFileName===""){
+		inputFileName=t;
+		console.log("input file "+t)
+	} else if (outputFileName===""){
+		outputFileName=t;
+	} else {
+		console.log("Too many arguments. Unexpected argument \""+t+"\".");		
+	}
+}
+
+if (inputFileName==="")
+{
+	console.log("need to supply input file");
+}
+
+if (outputFileName===""){
+
+	var path = require('path');
+	var globalPath = path.resolve(inputFileName)
+	var parsed = path.parse(globalPath)
+	parsed.ext=".png"
+	parsed.dir+="/../png"
+	parsed.base=parsed.name+parsed.ext;
+	outputFileName = path.format(parsed)
+	log("outputFileName = "+outputFileName)
+}
+
+lib.loadFile(inputFileName)
+
+standAlone.initOrthoRender()
+
+canvasRender.render()
+
+lib.saveCanvasToPng(outputFileName)
+
+console.log("generated "+ outputFileName);

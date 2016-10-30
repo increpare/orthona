@@ -1,0 +1,361 @@
+#!/usr/bin/env node
+var execSync = require('child_process').execSync
+
+var fs = require('fs')
+var glob = require('./js/app/orthoGlobals')
+var lib = require('./js/orthoLib')
+var svgRender = require("./js/svgRender")
+var log = console.log
+var Canvas = require('canvas')
+var slab = require("slab-markup")
+var css = require('css');
+var minify = require('html-minifier').minify;
+var Image = Canvas.Image
+var Inliner = require('inliner');
+
+var db = slab.parseFileSync('./res/docDatabase.slab');
+
+execSync("rm -rf ./docs/*")
+execSync("mkdir ./docs/sym")
+
+var fast=false;
+var inline=true;
+for (var i=2;i<process.argv.length;i++){
+	var t = process.argv[i];
+	if (t==="-noinline"){
+		inline=false;
+	} else {
+		log("Don't undesratnd argument '"+t+"'.")
+		return;
+	}
+}
+
+function findCssVar(cssDat,varName){
+	for (var i=0;i<cssDat.stylesheet.rules.length;i++){
+		var r = cssDat.stylesheet.rules[i];
+		for (var j=0;j<r.declarations.length;j++){
+			var d = r.declarations[j];
+			if (d.type==='declaration' && d.property===varName){
+				return d.value;
+			}
+		}
+	}
+	return null;
+}
+
+var cssPath = ("./res/custom.css")
+var cssFileStr=fs.readFileSync(cssPath,'utf8')
+var cssDat = css.parse(cssFileStr,{},cssPath)
+var fgCol = findCssVar(cssDat,"--fg")
+var bgCol = findCssVar(cssDat,"--bg")
+if (fgCol===null){
+	fgCol="#000000"
+}
+if (bgCol===null){
+	bgCol="#ffffff"
+}
+svgRender.setPadding(0.5)
+svgRender.setColours(bgCol,fgCol,bgCol)
+
+function saveHTML(filePath,htmlDat,pageTitle){
+	htmlDat=htmlDat.replaceAll("PAGETITLE",pageTitle)
+	fs.writeFileSync(filePath,htmlDat);
+	if(inline===false){
+		return;
+	}
+	new Inliner(filePath, {},function (error, htmlMinified) {
+		htmlMinified = minify(
+			htmlMinified,
+			{
+				collapseBooleanAttributes:true,
+				collapseInlineTagWhitespace:true,
+				collapseWhitespace:true,
+				decodeEntities:true,
+				minifyCSS:true,
+				minifyJS:true,
+				processConditionalComments:true,
+				removeAttributeQuotes:true,
+				removeComments:true,
+				removeEmptyAttributes:true,
+				removeEmptyElements:true,
+				removeOptionalTags:true,
+				removeRedundantAttributes:true,
+				removeScriptTypeAttributes:true,
+				removeStyleLinkTypeAttributes:true,
+				sortAttributes:true,
+				sortClassName:true,
+				trimCustomFragments:true,
+				useShortDoctype:true
+			})
+
+		htmlMinified = htmlMinified.replaceAll("\\[<a","[ <a ")  
+		htmlMinified = htmlMinified.replaceAll("a>]","a> ]")  
+		fs.writeFileSync(filePath,htmlMinified);
+	})
+}
+function symbolName(i){
+	var s = db[i];
+	s = s.name.split(' ').join('_').toLowerCase();
+	return s
+}
+
+glob.drawGridLines=false;
+
+//1 generate simple images
+
+glob.sketchBook = [{
+	elements:[[8,4,0]],
+	lines:[],
+	offsetX:0,
+	offsetY:0,
+	scale:1,
+	sketchTitle:""
+}]
+glob.sketchBookIndex=0
+glob.page=glob.sketchBook[0]
+
+{
+	glob.page.elements[0][2]=-2;
+	
+	var svgDat = svgRender.render();
+	var filePath = `../tmp/arrow.svg`;
+	fs.writeFileSync(filePath, svgDat);
+}
+
+for (var s=0;s<glob.symbolCount;s++){
+	glob.page.elements[0][2]=s;
+	
+	var svgDat = svgRender.render();
+	var filePath = `../tmp/${symbolName(s)}.svg`;
+	fs.writeFileSync(filePath, svgDat);
+}
+
+//1b generate triple images
+glob.sketchBook = [{
+	elements:[[7,4,35],[7,5,0],[7,6,36]],
+	lines:[[7,6,7,4,0]],
+	offsetX:0,
+	offsetY:0,
+	scale:1,
+	sketchTitle:""
+}]
+glob.sketchBookIndex=0
+glob.page=glob.sketchBook[0]
+
+for (var s=0;s<glob.symbolCount;s++){
+	glob.page.elements[1][2]=s;
+	
+	var svgDat = svgRender.render();
+	var filePath = `../tmp/triple_${symbolName(s)}.svg`
+	fs.writeFileSync(filePath, svgDat);
+}
+
+//1c generate example images
+
+
+for (var s=0;s<glob.symbolCount;s++){
+	var doc=db[s];
+	if (doc.examples===null){
+		continue;
+	}
+	for (var j=0;j<doc.examples.length;j++){
+		var fn = doc.examples[j].file
+		var jsonPath = `./dat/json/${fn}.json`;
+		var jsonDat = fs.readFileSync(jsonPath,'utf8');
+		glob.page=JSON.parse(jsonDat);		
+		var svgDat = svgRender.render();
+		var filePath = `../tmp/ex_${fn}.svg`
+		fs.writeFileSync(filePath, svgDat);
+	}
+}
+
+
+for (var s=0;s<glob.symbolCount;s++){
+		glob.sketchBook = [{
+		elements:[[8,6,0],[7,5,35],[8,5,36],[9,5,37],[7,6,38],[9,6,39],[7,7,40],[8,7,41],[9,7,42]],
+		lines:[[8,6,7,5,0],[8,6,8,5,0],[9,5,8,6,0],[7,6,8,6,0],[9,6,8,6,0],[7,7,8,6,0],[8,7,8,6,0],[9,7,8,6,0]],
+		offsetX:0,
+		offsetY:0,
+		scale:1,
+		sketchTitle:""
+	}]
+	glob.sketchBookIndex=0
+	glob.page=glob.sketchBook[0]
+	glob.page.elements[0][2]=s;
+
+
+	//show/hide things as needed
+	var dbs=db[s];
+	var letters = ["A","B","C","D","E","F","G","H"];
+	for (var i=letters.length-1;i>=0;i--){
+		var L = letters[i]
+		if (dbs.uses==null||dbs.uses.indexOf(L)===-1){
+			glob.page.elements.splice(i+1,1);
+			glob.page.lines.splice(i,1);
+		}
+	}
+
+
+	var svgDat = svgRender.render();
+	var filePath = `../tmp/spider_${symbolName(s)}.svg`
+	fs.writeFileSync(filePath, svgDat)
+}
+
+var postcss = require('postcss');
+var cssvariables = require('postcss-css-variables');
+var myCssFile = fs.readFileSync("./res/custom.css",'utf8');
+var myCssFile = postcss([
+        cssvariables(/*options*/)
+    ])
+    .process(myCssFile)
+    .css;
+
+var genericHeader = "<!DOCTYPE html>"
+    genericHeader += '<meta charset=utf-8>'
+    genericHeader += '<title>PAGETITLE</title>'
+    genericHeader +=`<style>${myCssFile}</style>`
+
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+};
+
+function embedSvg(name,width,height,className){
+	var svgStr=fs.readFileSync(`../tmp/${name}.svg`,'utf8')
+	var startIdx = svgStr.indexOf("viewBox=");
+	var classStr="";
+	if (className!=null){
+		classStr+=`class ="${className}"`
+	}
+	if (width>=0){
+		svgStr = svgStr.substr(startIdx);
+		svgStr=`<svg ${classStr} width=${width} height=${height} `+svgStr;
+	} else {
+		svgPart1 = svgStr.substr(0,startIdx);
+		svgPart2 = svgStr.substr(startIdx);
+		svgStr=svgPart1+" "+classStr+" "+svgPart2;
+	}
+	svgStr = svgStr.replaceAll(`stroke-linecap="round"`,"") 
+	svgStr = svgStr.replaceAll(`stroke-width='1'`,"") 
+	svgStr = svgStr.replaceAll(`stroke=${fgCol}`,"") 
+	svgStr = svgStr.replaceAll(`fill=${bgCol}`,"") 
+	svgStr = svgStr.replaceAll(`font-family="Helvetica"`,"") 
+	svgStr = svgStr.replaceAll(`font-size="12px"`,"")  
+	svgStr = svgStr.replaceAll(`text-anchor="middle"`,"")  
+	svgStr = svgStr.replaceAll(`<path   fill='transparent'  d=''/>`,"")  
+	svgStr = svgStr.replaceAll(`version='1.1'`,"")  
+	return svgStr;
+}
+
+var index = genericHeader;
+index+='<h1>Orthona</h1>'
+index+='<table class="frontTable">'
+
+for (var i=0;i<7;i++){
+	index+="<tr>"
+	for (var j=0;j<5;j++){
+		var s = j+5*i;
+		index+="<td>"
+		index+=`<a href='sym/${symbolName(s)}.html'>`
+		index+=embedSvg(symbolName(s),"50px","50px")+"";
+		index+="</a>"
+	}
+}
+
+index+="</table>"
+index+="<p>"
+index+="[ <a href='cheatsheet.html'>cheatsheet</a> ]"
+
+saveHTML("./docs/index.html",index,"Orthona");
+
+
+//cheatsheet
+
+
+var index = genericHeader;
+index+='<h1>Orthona Cheatsheet</h1>'
+index+='<table class="cheat" >'
+
+for (var i=0;i<7;i++){
+	index+="<tr>"
+	for (var j=0;j<5;j++){
+		var s = j+5*i;
+		index+="<td>"
+		index+=`<a   href='sym/${symbolName(s)}.html'>`
+		index+=embedSvg(symbolName(s),"40px","40px")+"";
+		index+=`<br>${db[s].name}</a>`
+	}
+}
+
+index+="</table>"
+index+="<p>"
+index+="[ <a href='index.html'>home</a> ]"
+
+
+saveHTML("./docs/cheatsheet.html",index,"Cheat Sheet");
+
+
+//generate individual pages
+
+for (var s=0;s<glob.symbolCount;s++){
+	var page = genericHeader
+
+		page+=`<h1>`
+		page+=embedSvg(symbolName(s),"20mm","20mm")+"<br>"
+		page+=db[s].name+"</h1>"
+
+		if (db[s].description!==null&&db[s].description.length>0){
+			page+=`<div class="leadDescription">${db[s].description}</div><p>`
+		}
+		var itemCount=0;
+		page+='<table class="documentationTable"><tr>'		
+		page+="<td>"
+		itemCount++
+		page+=embedSvg(`spider_${symbolName(s)}`,"30mm","30mm","center-block")+""
+
+		var lines=db[s].lines;
+		if (lines!==null&&lines.length>0){
+			page+="<ul>"
+			for (var i=0;i<lines.length;i++){
+				var L=lines[i]
+				page+=`<li>${L}`
+			}		
+			page+="</ul>"
+		}
+		var triple=db[s].triple
+		if (triple!==null&&triple.length>0){
+			page+=`<td>`
+			itemCount++
+		
+			var L = db[s].triple;
+			page+=embedSvg(`triple_${symbolName(s)}`,"10mm","30mm","center-block")+""
+			page+=`<ul><li>${L}</li></ul>`
+
+		}
+
+		if (db[s].examples!==null){
+			for (var i=0;i<db[s].examples.length;i++){
+				if (itemCount%2===0){
+					page+="<tr>"
+				}
+				if (itemCount>1){
+					page+="<td class='padAbove'>"
+				} else {
+					page+="<td>"					
+				}
+				itemCount++;
+				var eg = db[s].examples[i];
+				var fn = eg.file;
+				var filePath = `ex_${fn}`
+				if (eg.description!==null&&eg.description.length>0){
+					page+=eg.description+"<br>";
+				}
+				page+=embedSvg(filePath,"10mm","30mm","center-block")+"<br>"
+				page+=`<em>${eg.translation}</em><br>`;
+			}
+		}
+		page+="</table>"
+		page+="<p>"
+		page+="[ <a href='../index.html'>home</a> ]"
+		saveHTML(`./docs/sym/${symbolName(s)}.html`,page,db[s].name);
+}

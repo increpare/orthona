@@ -1,0 +1,6 @@
+echo "cleaning directories"
+rm cload
+rm dat/png/*
+rm dat/bin/*
+rm dat/retop/*
+rm -rf ../docs/*

@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+var slab = require("slab-markup")
+var fs = require('fs')
+
+var dat = slab.parseFileSync("../res/docDatabase.slab")
+fs.writeFileSync("../../tmp/docDatabase.json",JSON.stringify(dat))

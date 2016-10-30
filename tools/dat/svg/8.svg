@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" 
-     xmlns:xlink="http://www.w3.org/1999/xlink" width='70mm' height='30mm' viewBox='0 0 70 30' version='1.1'>
-		<path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='black' d='M 35 15 L 15 15 M 25 11 L 25 19 M 55 15 L 35 15 M 45 11 L 45 19 '/>
-		<path  stroke-width='1' fill='white' stroke='black' d='M 13.56 9.879999999999999 L 12.12 15.64 C 9.239999999999998 21.400000000000002 , 20.76 21.400000000000002 , 17.88 15.64 L 16.44 9.879999999999999 '/>
-		<path  stroke-width='1' fill='white' stroke='black' d='M 50.2 10.2 L 59.8 10.2 C 55.8 15 , 55.8 15 , 59.8 19.8 L 50.2 19.8 C 54.2 15 , 54.2 15 , 50.2 10.2 Z  '/>
-	</svg>
