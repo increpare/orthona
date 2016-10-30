@@ -85,7 +85,7 @@ function blitRender(_tileset) {
 
 //  ctx.drawImage(img, 0, 0, img.width / 4, img.height / 4);
 
-    var spritesheet_path = "tiles/"+tiledat.name+".png";
+    var spritesheet_path = "res/tiles/"+tiledat.name+".png";
     var spritesheetdat = fs.readFileSync(spritesheet_path);
     var spritesheet = new Image
     spritesheet.src = spritesheetdat
