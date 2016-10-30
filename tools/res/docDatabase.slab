@@ -1,0 +1,376 @@
+name: Person A
+description: none
+uses: none
+lines: none
+triple: none
+examples: none
+
+name: Person B
+description: none
+uses: none
+lines: none
+triple: none
+examples: none
+
+name: Object X
+description: none
+uses: none
+lines: none
+triple: none
+examples: none
+
+name: Object Y
+description: none
+uses: none
+lines: none
+triple: none
+examples: none
+
+name: Dot
+description: none
+uses: none
+lines: none
+triple: none
+examples: 
+	file: dotExample
+	description: A dot sign is used to split lines 
+			into multiple parts to allow aggregate 
+			statements.
+	translation: Person A watches Person B while 
+			touching themselves.
+
+name: Identity
+description: Used to indicate who the speaker is and who they are addressing.
+uses: ABGH
+lines:
+	A has an identity
+	You are B.
+	I am G.
+	Any H
+triple: none
+examples:
+	file: personExample
+	description: none
+	translation: I am Person A you are Person B.
+
+name: Good
+description: Used to indicate something is positive 
+		or negative (good/bad, happy/unhappy, &c.).
+uses: BG
+lines:
+	B is bad.
+	G is good.
+triple: none
+examples: none
+
+name: Change
+description: none
+uses: ABGH
+lines:
+	A changes H.
+	B is changed.
+	G is static.
+triple: none
+examples: none
+
+name: Collection
+description: none
+uses: ABGH
+lines:
+	a is a collection of h
+	one b
+	all g
+triple: none
+examples:
+	file: notOnePerson
+	description: Not applied to One means none
+	translation: No person
+
+	file: notAllPeople
+	description: Not applied to All means some
+	translation: Some people
+
+name: Event
+description: none
+uses: AH
+lines:
+	A's event.
+	H is at an event.		
+triple: none
+examples:
+	file: afterParty
+	description: none
+	translation: Party and after-party.
+
+name: Necessary
+description: none
+uses: ABGH
+lines:
+	A requires H.
+	B is possible.
+	G is necessary.		
+triple: none
+examples: none
+
+name: Relationship
+description: none
+uses: ABGH
+lines:
+	A has a relationship with H.
+	B is self-interested.
+	G is friendly.		
+triple: none
+examples: none
+
+	
+name: Ask
+description: none
+uses: ABGH
+lines:
+	A asks G about H.
+	B answers
+triple: none
+examples: none
+	
+	
+name: Want
+description: none
+uses: ABGH
+lines:
+	A has control of their desires.
+	B desires G.
+	H is desired.		
+triple: none
+examples: none
+
+name: Power
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+
+name: See
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+
+name: Say
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+
+name: Touch
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+
+name: Hear
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+
+name: Eat
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+
+name: Know
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+
+name: Smell
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+
+name: Time
+description: none
+uses: ABGH
+lines:
+	A has much time left
+	B is old
+	G is young/new
+	H is old-fashioned.		
+triple: none
+examples: none
+
+name: Action
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+
+name: Go
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+
+name: Size
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+
+name: Pain
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+
+name: Ease
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+
+name: Cause
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+
+name: Able
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+
+name: Sex
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+
+name: Internal
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+
+name: Familiar
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+
+name: Living
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+
+name: Read
+description: none
+uses: ACFH
+lines:
+	A has X.
+	C is X.
+	F is X.
+	X has H.		
+triple: none
+examples: none
+

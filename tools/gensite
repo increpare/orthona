@@ -7,11 +7,13 @@ var lib = require('./js/orthoLib')
 var svgRender = require("./js/svgRender")
 var log = console.log
 var Canvas = require('canvas')
-var db = require('./res/docDatabase')
+var slab = require("./js/slab")
 var css = require('css');
 var minify = require('html-minifier').minify;
 var Image = Canvas.Image
 var Inliner = require('inliner');
+
+var db = slab.loadFile('./res/docDatabase.slab');
 
 execSync("rm -rf ./docs/*")
 execSync("mkdir ./docs/sym")
@@ -146,6 +148,9 @@ for (var s=0;s<glob.symbolCount;s++){
 
 for (var s=0;s<glob.symbolCount;s++){
 	var doc=db[s];
+	if (doc.examples===null){
+		continue;
+	}
 	for (var j=0;j<doc.examples.length;j++){
 		var fn = doc.examples[j].file
 		var jsonPath = `./dat/json/${fn}.json`;
@@ -177,7 +182,7 @@ for (var s=0;s<glob.symbolCount;s++){
 	var letters = ["A","B","C","D","E","F","G","H"];
 	for (var i=letters.length-1;i>=0;i--){
 		var L = letters[i]
-		if (dbs.uses.indexOf(L)===-1){
+		if (dbs.uses==null||dbs.uses.indexOf(L)===-1){
 			glob.page.elements.splice(i+1,1);
 			glob.page.lines.splice(i,1);
 		}
@@ -292,7 +297,7 @@ for (var s=0;s<glob.symbolCount;s++){
 		page+=embedSvg(symbolName(s),"20mm","20mm")+"<br>"
 		page+=db[s].name+"</h1>"
 
-		if (db[s].description.length>0){
+		if (db[s].description!==null&&db[s].description.length>0){
 			page+=`<div class="leadDescription">${db[s].description}</div><p>`
 		}
 		var itemCount=0;
@@ -302,7 +307,7 @@ for (var s=0;s<glob.symbolCount;s++){
 		page+=embedSvg(`spider_${symbolName(s)}`,"30mm","30mm","center-block")+""
 
 		var lines=db[s].lines;
-		if (lines.length>0){
+		if (lines!==null&&lines.length>0){
 			page+="<ul>"
 			for (var i=0;i<lines.length;i++){
 				var L=lines[i]
@@ -310,7 +315,8 @@ for (var s=0;s<glob.symbolCount;s++){
 			}		
 			page+="</ul>"
 		}
-		if (db[s].triple.length>0){
+		var triple=db[s].triple
+		if (triple!==null&&triple.length>0){
 			page+=`<td>`
 			itemCount++
 		
@@ -320,20 +326,22 @@ for (var s=0;s<glob.symbolCount;s++){
 
 		}
 
-		for (var i=0;i<db[s].examples.length;i++){
-			if (itemCount%2===0){
-				page+="<tr>"
+		if (db[s].examples!==null){
+			for (var i=0;i<db[s].examples.length;i++){
+				if (itemCount%2===0){
+					page+="<tr>"
+				}
+				page+="<td>"
+				itemCount++;
+				var eg = db[s].examples[i];
+				var fn = eg.file;
+				var filePath = `ex_${fn}`
+				if (eg.description!==null&&eg.description.length>0){
+					page+=eg.description+"<br>";
+				}
+				page+=embedSvg(filePath,"10mm","30mm","center-block")+"<br>"
+				page+=`<em>${eg.translation}</em><br>`;
 			}
-			page+="<td>"
-			itemCount++;
-			var eg = db[s].examples[i];
-			var fn = eg.file;
-			var filePath = `ex_${fn}`
-			if (eg.description.length>0){
-				page+=eg.description+"<br>";
-			}
-			page+=embedSvg(filePath,"10mm","30mm","center-block")+"<br>"
-			page+=`<em>${eg.translation}</em><br>`;
 		}
 		page+="</table>"
 		page+="<p>"

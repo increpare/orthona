@@ -160,7 +160,6 @@ module.exports=[
 		lines:[
 			"A asks G about H.",
 			"B answers",
-			"X has H."		
 		],
 		triple:"",
 		examples:[]
