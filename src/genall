@@ -14,13 +14,13 @@ mkdir ../renders/tiled/2
 mkdir ../renders/tiled/3
 mkdir ../renders/tiled/4
 
-for fn in dat/json/*.json
+for fn in res/json/*.json
 do
 	./retop $fn &
 done
 wait
 
-for fn in dat/json/*.json
+for fn in res/json/*.json
 do
 	echo "processing $fn"
 	./json2png -noGridLines $fn &
@@ -49,7 +49,7 @@ do
 done
 wait
 
-for fn in dat/json_random/*.json
+for fn in res/json_random/*.json
 do
 	echo "processing $fn"  &
 	./json2png -diagonals -noGridLines $fn  &
