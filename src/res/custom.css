@@ -25,6 +25,8 @@ svg {
   version:1.1;
 }
 
+
+
 svg text {
   cursor: default;
   -webkit-user-select: none;
@@ -32,6 +34,7 @@ svg text {
   -ms-user-select: none;
   user-select: none;
 }
+
 .cheat td {
   padding:10px;
 }

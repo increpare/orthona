@@ -1,4 +1,4 @@
-all: ../orthona/www/js/compiled.js ../orthotope/js/compiled.js tmp/docDatabase.json ../orthotope/js/compiled.js
+all: ../orthona/www/js/compiled.js ../orthotope/js/compiled.js tmp/docDatabase.json ../orthotope/js/compiled.js 
 
 tmp/docdatabase.json: res/docDatabase.slab
 	cd build;\

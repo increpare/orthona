@@ -67,6 +67,6 @@ var canvasDimensions = lib.canvasSize();
 
 lib.MoveOriginToTopLeft();
 
-var blitDat = blitRender(tileset);
+var blitDat = blitRender.render(tileset);
 fs.writeFileSync(outputFileName, blitDat);
 console.log("generated "+ outputFileName);

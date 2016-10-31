@@ -15,6 +15,53 @@ axes[3]=[0,1]
 axes[4]=[1,1]
 
 
+
+function iconAt(tx,ty){
+    for (var i=0;i<glob.page.elements.length;i++){
+        var el = glob.page.elements[i];
+        if (el[0]===tx&&el[1]===ty){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+function tryRemoveCellAt(x,y,shouldRemoveLines=true){
+	var result=false;
+    for (var i=0;i<glob.page.elements.length;i++){
+        var e = glob.page.elements[i];
+        if (e[0]===x&&e[1]===y){
+            glob.page.elements.splice(i,1);
+            result=true;
+            break;
+        }
+    }   
+
+    if (shouldRemoveLines){
+	    for (var i=0;i<glob.page.lines.length;i++){
+	        var l = glob.page.lines[i];
+	        var x1=l[0];
+	        var y1=l[1];
+	        var x2=l[2];
+	        var y2=l[3];
+	        if (x1===x&&y1===y){
+	            if (!iconAt(x2,y2)){
+	                glob.page.lines.splice(i,1);
+	                i--;
+	            }
+	        } else if (x2===x&&y2===y){
+	            if (!iconAt(x1,y1)){
+	                glob.page.lines.splice(i,1);
+	                i--;
+	            }
+	        }
+	    }
+	}
+
+	return result;
+}
+
 function ar_shuffle(a) {
     for (let i = a.length; i; i--) {
         let j = Math.floor(Math.random() * i);
@@ -421,6 +468,86 @@ function saveCanvasToPng(fileName){
 	fs.writeFile(fileName, buf);
 }
 
+//adds a line unless there's a line there already
+function tryAddLine(x1,y1,x2,y2,lineMode){
+    var dx=x2-x1;
+    var dy=y2-y1;
+
+    var l = Math.max(Math.abs(dx),Math.abs(dy));
+    dx = Math.sign(dx)*l;
+    dy = Math.sign(dy)*l;
+    x2=x1+dx;
+    y2=y1+dy;
+
+    if (x1<x2|| (x1===x2&&y1<y2)){
+        var tx=x1;
+        x1=x2;
+        x2=tx;
+
+        var ty=y1;
+        y1=y2;
+        y2=ty;
+    }
+
+    for (var i=0;i<glob.page.lines.length;i++){
+        var l = glob.page.lines[i];
+        if (l[0]===x1&&l[1]===y1&&l[2]===x2&&l[3]===y2) {
+            l[4]=lineMode;
+            return;
+        }
+    }
+    
+    glob.page.lines.push([x1,y1,x2,y2,lineMode]);
+}
+
+//slightly fancier variation, for the touch program
+function makeLine(x1,y1,x2,y2,lineMode=0){
+    /*if (x2>x1+1){
+        x2=x1+1;
+    } else if (x2<x1-1){
+        x2=x1-1;
+    }
+    if (y2>y1+1){
+        y2=y1+1;
+    } else if (y2<y1-1){
+        y2=y1-1;
+    }*/
+
+
+    var dx=x2-x1;
+    var dy=y2-y1;
+
+    var l = Math.max(Math.abs(dx),Math.abs(dy));
+    dx = Math.sign(dx)*l;
+    dy = Math.sign(dy)*l;
+    x2=x1+dx;
+    y2=y1+dy;
+
+    if (x1<x2|| (x1===x2&&y1<y2)){
+        var tx=x1;
+        x1=x2;
+        x2=tx;
+
+        var ty=y1;
+        y1=y2;
+        y2=ty;
+    }
+
+    for (var i=0;i<glob.page.lines.length;i++){
+        var l = glob.page.lines[i];
+        if (l[0]===x1&&l[1]===y1&&l[2]===x2&&l[3]===y2) {
+            if (l[4]===0){
+                l[4]=1;
+            } else {
+                glob.page.lines.splice(i,1);
+            }
+            return;
+        }
+    }
+
+    glob.page.lines.push([x1,y1,x2,y2,lineMode]);
+}
+
 module.exports.Relation=Relation
 module.exports.LineDirection=LineDirection
 module.exports.ConnectLines=ConnectLines
@@ -443,3 +570,7 @@ module.exports.canvasSize=canvasSize
 module.exports.axes=axes
 module.exports.MoveOriginToTopLeft=MoveOriginToTopLeft
 module.exports.saveCanvasToPng=saveCanvasToPng
+module.exports.tryRemoveCellAt=tryRemoveCellAt
+module.exports.iconAt=iconAt
+module.exports.makeLine=makeLine
+module.exports.tryAddLine=tryAddLine

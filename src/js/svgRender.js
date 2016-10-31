@@ -304,7 +304,7 @@ function drawIcon(x, y, icon) {
             {
                 var r = DOC_CELLSIZE * 0.4;
                 var top = r * 0.8;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='transparent' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - r, y,
                     "C", x - r / 2, y - top, x + r / 2, y - top, x + r, y,

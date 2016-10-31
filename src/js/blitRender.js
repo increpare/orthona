@@ -147,4 +147,5 @@ function blitRender(_tileset) {
 
 }
 
-module.exports = blitRender;
+module.exports.render = blitRender;
+module.exports.drawIcon = drawIcon
