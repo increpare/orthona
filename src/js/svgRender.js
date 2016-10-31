@@ -317,22 +317,6 @@ function drawIcon(x, y, icon) {
 
                 break;
             }
-        case 16: //open mouth
-            {
-                var r = DOC_CELLSIZE * 0.4;
-                var top = r * 0.8;
-                result += `\t\t<path  stroke-linejoin="round" stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
-                result += [
-                    "M", x - r, y,
-                    "C", x - r / 2, y - 1.5 * top, x + r / 2, y - 1.5 * top, x + r, y,
-                    "C", x + r / 2, y + 1.5 * top, x - r / 2, y + 1.5 * top, x - r, y,
-                    "C", x - r / 2, y - top, x + r / 2, y - top, x + r, y,
-                    "C", x + r / 2, y + top, x - r / 2, y + top, x - r, y,
-                    "Z ",
-                    "'/>\n"
-                ].compileList();
-                break
-            }
         case 17: //hand
             {
                 var s = DOC_CELLSIZE * 0.4 / 1.41;
@@ -461,28 +445,6 @@ function drawIcon(x, y, icon) {
                 ].compileList();
                 break;
             }
-        case 24: //banana peel
-            {
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
-
-                var e = DOC_CELLSIZE * 0.1;
-                var r = DOC_CELLSIZE * 0.4;
-                var t = DOC_CELLSIZE * 0.4;
-                var dy = -DOC_CELLSIZE * 0.1;
-                var yc = y - dy;
-                y += dy;
-                result += [
-                    "M", x - e, y - r / 2,
-                    "C", x - 2 * e, y + r / 5, x - e / 5, y + r / 5, x - t, y + r,
-                    "C", x, y + r, x - e / 5, y + r / 5, x, yc,
-
-                    "C", x + e / 5, y + r / 5, x, y + r, x + t, y + r,
-                    "C", x + e / 5, y + r / 5, x + 2 * e, y + r / 5, x + e, y - r / 2,
-                    "Z ",
-                    "'/>\n"
-                ].compileList();
-                break;
-            }
         case 25: //hexagon
             {
                 result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
@@ -546,39 +508,15 @@ function drawIcon(x, y, icon) {
                 result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${tof(x)}' cy='${tof(y)}' r='${tof(r)}' fill='${fillCol}' stroke='${strokeCol}' />\n`
                 result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='transparent' stroke='${strokeCol}' d='`
                 result += [
-                    "M", x - r / 1.414, y + r / 1.414,
-                    "L", x + r / 1.414, y - r / 1.414,
-                    "M", x + r / 1.414, y + r / 1.414,
+                    "M", x - r / 1.414, y - r / 1.414,
+                    "L", x + r / 1.414, y + r / 1.414,
+                    "M", x, y + r,
                     "L", x, y,
                     "'/>\n"
                 ].compileList();
                 break;
             }
 
-        case 29: //cross - outline
-            {
-                var s = DOC_CELLSIZE * 0.15 / 1.41;
-                var t = 3 * s;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
-                result += [
-                    "M", x - s, y - s,
-                    "L", x - s, y - t,
-                    "L", x + s, y - t,
-                    "L", x + s, y - s,
-                    "L", x + t, y - s,
-                    "L", x + t, y + s,
-                    "L", x + s, y + s,
-                    "L", x + s, y + t,
-                    "L", x - s, y + t,
-                    "L", x - s, y + s,
-                    "L", x - t, y + s,
-                    "L", x - t, y - s,
-                    "Z ",
-                    "'/>\n"
-                ].compileList();
-
-                break;
-            }
         case 30: //yin yang
             {
 
@@ -657,28 +595,6 @@ function drawIcon(x, y, icon) {
                     "'/>\n"
                 ].compileList();
 
-
-                break;
-            }
-        case 34: //page
-            {
-                var s = DOC_CELLSIZE * 0.4 / 1.41;
-                result += `\t\t<path stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
-                result += [
-                    "M", x - s, y - s,
-                    "L", x + s, y - s,
-                    "L", x + s, y + s,
-                    "L", x - s, y + s,
-                    "Z",
-                    "M", x - s * 0.6, y - s / 2,
-                    "L", x + s * 0.6, y - s / 2,
-                    "M", x - s * 0.6, y,
-                    "L", x + s * 0.6, y,
-                    "M", x - s * 0.6, y + s / 2,
-                    "L", x + s * 0.6, y + s / 2,
-                    "'/>\n"
-                ].compileList();
-                
 
                 break;
             }

@@ -584,9 +584,9 @@ function drawIcon(x,y,n){
             ctx.strokeStyle="#000000"
             ctx.fillStyle="#ffffff"
             ctx.fill();
-            ctx.moveTo(x-r/1.414,y+r/1.414);
-            ctx.lineTo(x+r/1.414,y-r/1.414);
-            ctx.moveTo(x+r/1.414,y+r/1.414);
+            ctx.moveTo(x-r/1.414,y-r/1.414);
+            ctx.lineTo(x+r/1.414,y+r/1.414);
+            ctx.moveTo(x,y+r);
             ctx.lineTo(x,y);
             ctx.stroke();
             break;   

@@ -5,6 +5,7 @@ ortho/www/js/dat/*.png
 orthona/platform
 orthona/plugins
 src/dat/bin
+src/dat/icons
 src/dat/json_random
 src/dat/png
 src/dat/retop
@@ -15,3 +16,5 @@ docs
 orthotope/js/compiled.js
 orthona/www/js/compiled.js
 *.swp
+
+orthona/platforms/browser/www/js/compiled.js

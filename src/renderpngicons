@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+var fs = require('fs')
+var glob = require('./js/orthoGlobals')
+var lib = require('./js/orthoLib')
+var standAlone = require('./js/standAlone')
+var canvasRender = require("./js/canvasRender")
+log = console.log
+
+glob.drawGridLines=false;
+glob.sketchBook = [{
+	elements:[[8,4,0]],
+	lines:[],
+	offsetX:0,
+	offsetY:0,
+	scale:1,
+	sketchTitle:""
+}]
+glob.sketchBookIndex=0
+glob.page=glob.sketchBook[0]
+
+standAlone.initOrthoRender()
+
+for (var s=0;s<glob.symbolCount;s++){
+	glob.page.elements[0][2]=s;
+	
+	canvasRender.render()
+
+	var outputFileName = `./dat/icons/${s}.png`;
+
+	lib.saveCanvasToPng(outputFileName)
+}

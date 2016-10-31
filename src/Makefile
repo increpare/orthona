@@ -5,9 +5,9 @@ tmp/docdatabase.json: res/docDatabase.slab
 	./transformDocDatabase;\
 	cd ..
 
-../orthona/www/js/compiled.js: ./js/orthonaApp.js
+../orthona/www/js/compiled.js: ./js/*.js
 	browserify ./js/orthonaApp.js -o ../orthona/www/js/compiled.js
 
-../orthotope/js/compiled.js: ./js/orthotopeApp.js
+../orthotope/js/compiled.js: ./js/*.js
 	 browserify ./js/orthotopeApp.js -o ../orthotope/js/compiled.js
 

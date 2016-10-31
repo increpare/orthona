@@ -260,9 +260,9 @@ name: Size
 description: none
 uses: ABGH
 lines:
-	A is big.
-	G is bigger than B.
-	H is bulky.		
+	A measures H
+	G is big 
+	B is the right size	
 triple: none
 examples: none
 

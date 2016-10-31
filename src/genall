@@ -3,6 +3,7 @@
 mkdir ../docs
 mkdir tmp
 mkdir dat
+mkdir dat/icons
 mkdir dat/bin
 mkdir dat/png
 mkdir dat/json_random
