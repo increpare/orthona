@@ -9,7 +9,7 @@ var log = console.log
 
 
 if (process.argv.length===2){
-	console.log("USAGE: json2png [-noGridLines] [-diagonals] [-noIcons] [-noLines] [-selectiveGridLines] FILENAME [OUTPUT]");
+	console.log("USAGE: json2png [-noGridLines] [-big] [-diagonals] [-noIcons] [-noLines] [-selectiveGridLines] FILENAME [OUTPUT]");
 	return;
 }
 
@@ -23,6 +23,8 @@ for (var i=2;i<process.argv.length;i++){
 		glob.drawGridLines_Diagonal=true;
 	} else if (t==="-noIcons"){
 		glob.drawElements=false;
+	} else  if (t==="-big"){
+		glob.cellSize=256;
 	} else if (t==="-noLines"){
 		glob.drawLines=false;
 	} else if (t==="-selectiveGridLines"){

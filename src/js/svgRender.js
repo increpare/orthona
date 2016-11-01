@@ -304,7 +304,7 @@ function drawIcon(x, y, icon) {
             {
                 var r = DOC_CELLSIZE * 0.4;
                 var top = r * 0.8;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='transparent' stroke='${strokeCol}' d='`
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     "M", x - r, y,
                     "C", x - r / 2, y - top, x + r / 2, y - top, x + r, y,
@@ -752,6 +752,20 @@ function drawIcon(x, y, icon) {
     return result;
 }
 
+
+function renderSquare(s){
+
+    var canvasDimensions = [10*glob.cellSize,10*glob.cellSize];
+
+    var Canvas = require('canvas')
+    var Image = Canvas.Image
+
+    canvas = new Canvas(canvasDimensions[0], canvasDimensions[1])
+    ctx = canvas.getContext('2d');
+    lib.CenterPortrait(s);
+    return renderMain();
+}
+
 function svgRender() {
     var canvasDimensions = lib.canvasSize();
 
@@ -762,6 +776,11 @@ function svgRender() {
     ctx = canvas.getContext('2d');
 
     lib.MoveOriginToTopLeft()
+    return renderMain();
+}
+
+function renderMain(){
+
     var [top, bottom, left, right] = lib.getBounds();
     var w = right - left ;
     var h = bottom - top ;
@@ -769,7 +788,7 @@ function svgRender() {
     const docHeight = (h + 2 * DOC_PADDING) * DOC_CELLSIZE;
 
     var svg = "";
-    svg += `<svg xmlns="http://www.w3.org/2000/svg" 
+    svg += `<svg preserveAspectRatio="xMidYMid" xmlns="http://www.w3.org/2000/svg" 
      xmlns:xlink="http://www.w3.org/1999/xlink" width='${docWidth}mm' height='${docHeight}mm' viewBox='0 0 ${docWidth} ${docHeight}' version='1.1'>\n`
     
 
@@ -894,7 +913,7 @@ function svgRender() {
     svg += "\t</svg>";
     return svg;
 }
-
 module.exports.render = svgRender;
+module.exports.renderSquare = renderSquare;
 module.exports.setPadding = setPadding
 module.exports.setColours = setColours

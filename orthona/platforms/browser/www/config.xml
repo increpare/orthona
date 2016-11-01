@@ -36,9 +36,6 @@
     <gap:splash gap:platform="ios" height="2048" src="Default-Portrait@2x.png" width="1536" />
     <gap:splash gap:platform="ios" height="1536" src="Default-Landscape@2x.png" width="2048" />
     <gap:splash gap:platform="winphone" src="www/res/screen/windows-phone/screen-portrait.jpg" />
-    <icon src="www/res/icon.png" />
-    <icon gap:platform="ios" height="72" src="icon72.png" width="72" />
-    <icon gap:platform="ios" height="57" src="icon57.png" width="57" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

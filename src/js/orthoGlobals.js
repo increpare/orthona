@@ -26,7 +26,6 @@ module.exports.canvas=null;
 module.exports.ctx=null;
 
 
-
 module.exports.cellSize=55;
 
 module.exports.symbolCount=35;

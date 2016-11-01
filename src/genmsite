@@ -4,20 +4,23 @@ var execSync = require('child_process').execSync
 var fs = require('fs')
 var glob = require('./js/orthoGlobals')
 var lib = require('./js/orthoLib')
+var css = require('css')
 var svgRender = require("./js/svgRender")
 var log = console.log
 var Canvas = require('canvas')
-var slab = require("slab-markup")
-var css = require('css');
 var minify = require('html-minifier').minify;
 var Image = Canvas.Image
 var Inliner = require('inliner');
 var csvparse = require('csv-parse/lib/sync');
 
 
-var db = slab.parseFileSync('./res/docDatabase.slab');
 
-execSync("rm -rf ../orthology/www/*")
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+};
+
+//execSync("rm -rf ../orthology/www/*")
 execSync("mkdir -p ../orthology/www/sym")
 
 var fast=false;
@@ -45,17 +48,9 @@ function findCssVar(cssDat,varName){
 	return null;
 }
 
-var cssPath = ("./res/custommobdocs.css")
-var cssFileStr=fs.readFileSync(cssPath,'utf8')
-var cssDat = css.parse(cssFileStr,{},cssPath)
-var fgCol = findCssVar(cssDat,"--fg")
-var bgCol = findCssVar(cssDat,"--bg")
-if (fgCol===null){
-	fgCol="#000000"
-}
-if (bgCol===null){
-	bgCol="#ffffff"
-}
+fgCol="black"
+bgCol="white"
+
 svgRender.setPadding(0.5)
 svgRender.setColours(bgCol,fgCol,bgCol)
 
@@ -95,15 +90,29 @@ function saveHTML(filePath,htmlDat,pageTitle){
 		fs.writeFileSync(filePath,htmlMinified);
 	})
 }
+
+
+
+//1 load csv database
+var datasheet_raw = fs.readFileSync("./res/datasheet.csv",'utf8');
+var datasheet = csvparse(datasheet_raw)
+var heading = datasheet[0]
+var exampleNames=[]
+for (var i=2;i<heading.length;i++){
+	if (heading[i].trim()!=""){
+		exampleNames.push(heading[i])
+	}
+}
+
 function symbolName(i){
-	var s = db[i];
-	s = s.name.split(' ').join('_').toLowerCase();
+	var s = datasheet[i+1][1];
+	s = s.split(' ').join('_');
 	return s
 }
 
 glob.drawGridLines=false;
 
-//1 generate simple images
+//2 generate simple images
 
 glob.sketchBook = [{
 	elements:[[8,4,0]],
@@ -132,17 +141,6 @@ for (var s=0;s<glob.symbolCount;s++){
 	fs.writeFileSync(filePath, svgDat);
 }
 
-//1 load csv database
-var datasheet_raw = fs.readFileSync("./res/datasheet.csv",'utf8');
-var datasheet = csvparse(datasheet_raw)
-var heading = datasheet[0]
-var exampleNames=[]
-for (var i=3;i<heading.length;i++){
-	if (heading[i].trim()!=""){
-		exampleNames.push(heading[i])
-	}
-}
-
 var svgExDict={}
 //1c generate example images
 
@@ -166,9 +164,8 @@ for (var fn of exampleNames){
 				el[2]=38;
 			}
 		}
-		log(glob.page.elements)
-		var svgDat = svgRender.render();
-		svgExDict[`${s}_${fn}`]=svgDat;
+		var svgDat = svgRender.render(s);
+		svgExDict[`${fn}_${s}`]=svgDat;
 	}
 
 }
@@ -177,37 +174,202 @@ for (var fn of exampleNames){
 
 //INDEX
 
+var index=`<!DOCTYPE html>
+<html>
+<head>
+    <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
 
-var index = genericHeader;
-index+='<table class="cheat" >'
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Your app title -->
+    <title>Orthology</title>
+
+    <!-- This template defaults to the iOS CSS theme. To support both iOS and material design themes, see the Framework7 Tutorial at the link below:
+        http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
+     -->
+
+    <link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="">
+    <!-- Status bar overlay for full screen mode (PhoneGap) -->
+    <div class="statusbar-overlay"></div>
+
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+
+    <!-- Views -->
+    <div class="views">
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Top Navbar-->
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                    <div class="center sliding">Orthology</div>
+                    <div class="right">
+                        <!--
+                          Right link contains only icon - additional "icon-only" class
+                          Additional "open-panel" class tells app to open panel when we click on this link
+                        -->
+                    </div>
+                </div>
+            </div>
+            <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+            <div class="pages navbar-through toolbar-through">
+                <!-- Page, "data-page" contains page name -->
+                <div data-page="index" class="page">
+                    <!-- Scrollable page content -->
+                    <div class="page-content bigcontent">
+                        <div class="content-block unpadded">`
 
 for (var i=0;i<7;i++){
-	index+="<tr>"
+	index+=`<div class="row">\n`
 	for (var j=0;j<5;j++){
 		var s = j+5*i;
-		index+="<td>"
-		if (i===0){
-			index+="<br>"
-		}
-		index+=`<a   href='sym/${symbolName(s)}.html'>`
-		index+=embedSvg(symbolName(s),"100%",null)+"";
-		//index+=`<br>${db[s].name}</a>`
+		index+=`<div class="col-20">\n`
+		index+=`<a   href='sym/${symbolName(s)}.html'>\n`
+		index+=embedSvg(symbolName(s),"100%",0)+symbolName(s).replaceAll('_',' ')+"</a>";
+		index+='</div>\n'
 	}
+	index+=`</div>\n`
 }
 
-index+="</table>"
+
+
+
+function embedSvg(name,width=0,height=0,className){
+	var svgStr=fs.readFileSync(`./tmp/${name}.svg`,'utf8')
+	var startIdx = svgStr.indexOf("viewBox=");
+	var classStr="";
+	if (className!=null){
+		classStr+=`class ="${className}"`
+	}
+	if (width!==0){
+		svgStr = svgStr.substr(startIdx);
+		if (height!==0){
+			svgStr=`<svg ${classStr} width=${width} height=${height} `+svgStr;
+		} else {
+			svgStr=`<svg ${classStr} width=${width} `+svgStr;
+		}
+	} else if (height!==0){
+		svgStr = svgStr.substr(startIdx);
+		svgStr=`<svg ${classStr} height=${height} `+svgStr;
+	} else {
+		svgPart1 = svgStr.substr(0,startIdx);
+		svgPart2 = svgStr.substr(startIdx);
+		svgStr=svgPart1+" "+classStr+" "+svgPart2;
+	}/*
+	svgStr = svgStr.replaceAll(`stroke-linecap="round"`,"") 
+	svgStr = svgStr.replaceAll(`stroke-width='1'`,"") 
+	svgStr = svgStr.replaceAll(`stroke=${fgCol}`,"") 
+	svgStr = svgStr.replaceAll(`fill=${bgCol}`,"") 
+	svgStr = svgStr.replaceAll(`font-family="Helvetica"`,"") 
+	svgStr = svgStr.replaceAll(`font-size="12px"`,"")  
+	svgStr = svgStr.replaceAll(`text-anchor="middle"`,"")  
+	svgStr = svgStr.replaceAll(`<path   fill='transparent'  d=''/>`,"")  
+	svgStr = svgStr.replaceAll(`version='1.1'`,"")  */
+	return svgStr;
+}
+
+index+=`
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+    <script type="text/javascript" src="js/my-app.js"></script>
+</body>
+
+</html>`
 
 saveHTML("../orthology/www/index.html",index,"Orthology");
 
 
-genericHeader ="<html><body>"
-genericFooter ="</body></html>"
+var genericHeader=`<!-- We don't need a full layout in this file because this page will be parsed with Ajax. -->
+
+<!-- Top Navbar-->
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="back link">
+                <i class="icon icon-back"></i>
+                <span>Back</span>
+            </a>
+        </div>
+        <div class="center sliding">PAGETITLE</div>
+    </div>
+</div>
+<div class="pages">
+    <div data-page="about" class="page">
+        <div class="page-content">
+            <div class="content-block">`
 
 //generate individual pages
+for (var i=1;i<datasheet.length;i++){
+	var s=i-1;
+	var r = datasheet[i];
+	var page = genericHeader.replaceAll("PAGETITLE",`${embedSvg(symbolName(s))} ${r[1]} ${embedSvg(symbolName(s))}`);
+	r[2]=r[2].trim();
+	if (r[2].length>0){
+		page+=`<p>${r[2]}`
+	}
+	
+	var count=0;
+	for (var j=2;j<r.length;j++){
+		var ex_name = datasheet[0][j].trim();
+		var ex_descr = r[j].trim();
+		if (ex_descr!=""){
+			if (count%2===0){
+				if (count>0){
+					page+=`</div>`
+				}
+				page+=`<div class="row">\n`
+			}
+			count++;
 
-for (var s=0;s<glob.symbolCount;s++){
-	var page = genericHeader;
+			var svgStr = svgExDict[ex_name+"_"+s]
+			page+=`<div class="col-50">\n`
+			page+=`<div class="card">`
+			page+=`    <div class="card-content">`
+			page+=`        <div class="card-content-inner">${svgStr}</div>`
+			page+=`    </div>`
+			page+=`    <div class="card-footer">${ex_descr}</div>`
+			page+=`</div> `
+			page+=`</div> `
 
-	page += genericFooter;
-	fs.writeFileSync(`../orthology/www/sym/${symbolName(s)}`);
+		}
+	}
+	while(count<2){
+		page += `<div class="col-33"></div>`;		
+		count++;
+	}
+	page += `</div>
+            </div>
+        </div>
+    </div>
+</div>`;
+	fs.writeFileSync(`../orthology/www/sym/${symbolName(s)}.html`,page);
 }

@@ -209,14 +209,42 @@ function MoveOriginToTopLeft(dx=0,dy=0){
 	for (var i=0;i<glob.page.elements.length;i++){
 		var e = glob.page.elements[i];
 		e[0]-=minx-dx
-		e[1]-=miny-dx
+		e[1]-=miny-dy
 	}
 	for (var i=0;i<glob.page.lines.length;i++){
 		var l = glob.page.lines[i];
 		l[0]-=minx-dx
-		l[1]-=miny-dx
+		l[1]-=miny-dy
 		l[2]-=minx-dx
-		l[3]-=miny-dx
+		l[3]-=miny-dy
+	}
+}
+
+function CenterPortrait(s){
+	//find 
+	var dx=0;
+	var dy=0;
+	for (var i=0;i<glob.page.elements.length;i++){
+		var e = glob.page.elements[i];
+		if (e[2]==s){
+			[dx,dy]=e;
+		}
+	}
+
+	dx--;
+	dy--;
+
+	for (var i=0;i<glob.page.elements.length;i++){
+		var e = glob.page.elements[i];
+		e[0]-=dx
+		e[1]-=dy
+	}
+	for (var i=0;i<glob.page.lines.length;i++){
+		var l = glob.page.lines[i];
+		l[0]-=dx
+		l[1]-=dy
+		l[2]-=dx
+		l[3]-=dy
 	}
 }
 
@@ -569,6 +597,7 @@ module.exports.getBounds=getBounds
 module.exports.canvasSize=canvasSize
 module.exports.axes=axes
 module.exports.MoveOriginToTopLeft=MoveOriginToTopLeft
+module.exports.CenterPortrait=CenterPortrait
 module.exports.saveCanvasToPng=saveCanvasToPng
 module.exports.tryRemoveCellAt=tryRemoveCellAt
 module.exports.iconAt=iconAt
