@@ -710,20 +710,22 @@ function drawIcon(x,y,n){
         {
             ctx.beginPath();
             var s = cellSize*glob.page.scale*0.4/1.41;
+            var t = cellSize*glob.page.scale*0.3/1.41;
             ctx.moveTo(x-s,y-s);
             ctx.lineTo(x+s,y-s);
             ctx.lineTo(x+s,y+s);
+
+            ctx.moveTo(x+s,y-s);
+            ctx.bezierCurveTo(x+s+t,y-s,x+s+t,y+s,x+s,y+s);
+
             ctx.lineTo(x-s,y+s);
-            ctx.closePath();
+            ctx.lineTo(x-s,y-s);
+
+            ctx.moveTo(x-s,y+s);
+            ctx.bezierCurveTo(x-s-t,y+s,x-s-t,y-s,x-s,y-s);
             ctx.strokeStyle="#000000"
             ctx.fillStyle="#ffffff"
             ctx.fill();
-            ctx.moveTo(x-s*2/3,y-s/2);
-            ctx.lineTo(x+s*2/3,y-s/2);
-            ctx.moveTo(x-s*2/3,y);
-            ctx.lineTo(x+s*2/3,y);
-            ctx.moveTo(x-s*2/3,y+s/2);
-            ctx.lineTo(x+s*2/3,y+s/2);
             ctx.stroke();
             break;   
         }

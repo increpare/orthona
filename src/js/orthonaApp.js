@@ -81,9 +81,11 @@ function TryRestoreState(sketch_save){
 }
 
 var ctx
+var canvas
 function doStart(){
     glob.canvas = document.getElementById("mainCanvas");
     glob.ctx=glob.canvas.getContext('2d');
+    canvas=glob.canvas
     ctx = glob.ctx;
     ctx.imageSmoothingEnabled = false;
 
@@ -614,11 +616,9 @@ function drawSelectionPanel(select,x,y){
 }
 
 function renderApp(){
-    if (glob.canvas.getContext) {
-        ctx.canvas.width  = window.innerWidth;
-        ctx.canvas.height = window.innerHeight;
-    }
-
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
     canvasRender.render();
 
 
