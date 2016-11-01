@@ -2,8 +2,9 @@ ortho/platforms
 ortho/platforms/*.*
 ortho/plugins
 ortho/www/js/dat/*.png
-orthona/platform
+orthona/platforms
 orthona/plugins
+orthology
 src/dat/bin
 src/dat/icons
 src/dat/json_random
@@ -13,6 +14,7 @@ src/dat/svg
 src/dat/tiled
 src/tmp
 docs
+mdocs
 orthotope/js/compiled.js
 orthona/www/js/compiled.js
 *.swp

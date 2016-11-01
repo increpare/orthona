@@ -317,21 +317,20 @@ function drawIcon(x, y, icon) {
 
                 break;
             }
-                    case 16: //open mouth
+        case 16: //nose
             {
-                var r = DOC_CELLSIZE * 0.4;
-                var top = r * 0.8;
-                result += `\t\t<path  stroke-linejoin="round" stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
+                var r = DOC_CELLSIZE * 0.4 * 0.9;
+                var dy = DOC_CELLSIZE * 0.4 * 0.1;
+                y += dy;
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
-                    "M", x - r, y,
-                    "C", x - r / 2, y - 1.5 * top, x + r / 2, y - 1.5 * top, x + r, y,
-                    "C", x + r / 2, y + 1.5 * top, x - r / 2, y + 1.5 * top, x - r, y,
-                    "C", x - r / 2, y - top, x + r / 2, y - top, x + r, y,
-                    "C", x + r / 2, y + top, x - r / 2, y + top, x - r, y,
-                    "Z ",
+                    "M", x - r / 4, y - r,
+                    "L", x - r / 2, y,
+                    "C", x - r, y + r, x + r, y + r, x + r / 2, y,
+                    "L", x + r / 4, y - r,
                     "'/>\n"
                 ].compileList();
-                break
+                break;
             }
         case 17: //hand
             {
@@ -411,21 +410,29 @@ function drawIcon(x, y, icon) {
                 result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${tof(x)}' cy='${tof(y)}' r='${r/4}' fill='${strokeCol}' stroke='${strokeCol}' />\n`
                 break;
             }
-        case 21: //nose
-            {
-                var r = DOC_CELLSIZE * 0.4 * 0.9;
-                var dy = DOC_CELLSIZE * 0.4 * 0.1;
-                y += dy;
+
+        case 21://scared
+        {
+            var r = DOC_CELLSIZE*0.1;
+            var R = DOC_CELLSIZE*0.4;
+            var s = DOC_CELLSIZE*0.1;
+            var S = DOC_CELLSIZE*0.2;
                 result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
-                    "M", x - r / 4, y - r,
-                    "L", x - r / 2, y,
-                    "C", x - r, y + r, x + r, y + r, x + r / 2, y,
-                    "L", x + r / 4, y - r,
+                    "M",x-R,y-S,
+                    "C",x-R,y-S-s, x-R+2*R/3,y-S-s, x-R+2*R/3,y-S,
+                    "C",x-R+2*R/3,y-S+s, x-R+4*R/3,y-S+s, x-R+4*R/3,y-S,
+                    "C",x-R+4*R/3,y-S-s, x+R,y-S-s, x+R,y-S,
+                    "L",x+R,y+S,
+                    "C",x+R,y+S+s, x+R-2*R/3,y+S+s, x+R-2*R/3,y+S,
+                    "C",x+R-2*R/3,y+S-s, x+R-4*R/3,y+S-s, x+R-4*R/3,y+S,
+                    "C",x+R-4*R/3,y+S+s, x-R,y+S+s, x-R,y+S,
+                    "Z ",
                     "'/>\n"
                 ].compileList();
-                break;
-            }
+            break;   
+        }
+
         case 22: //box with bent sides
             {
                 var r = DOC_CELLSIZE * 0.3;
@@ -556,6 +563,30 @@ function drawIcon(x, y, icon) {
                 break;
             }
 
+         case 29: //cross - outline
+             {
+                 var s = DOC_CELLSIZE * 0.15 / 1.41;
+                 var t = 3 * s;
+                 result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
+                 result += [
+                     "M", x - s, y - s,
+                     "L", x - s, y - t,
+                     "L", x + s, y - t,
+                     "L", x + s, y - s,
+                     "L", x + t, y - s,
+                     "L", x + t, y + s,
+                     "L", x + s, y + s,
+                     "L", x + s, y + t,
+                     "L", x - s, y + t,
+                     "L", x - s, y + s,
+                     "L", x - t, y + s,
+                     "L", x - t, y - s,
+                     "Z ",
+                     "'/>\n"
+                 ].compileList();
+ 
+                 break;
+             }
         case 30: //yin yang
             {
 
@@ -637,22 +668,25 @@ function drawIcon(x, y, icon) {
 
                 break;
             }
-        case 34: //page
+        case 34: //pill
             {
-                var s = DOC_CELLSIZE * 0.4 / 1.41;
+                var s = DOC_CELLSIZE * 0.3 / 1.41;
+                var t = DOC_CELLSIZE * 0.3 / 1.41;
+                var u = DOC_CELLSIZE * 0.3 / 1.41;
                 result += `\t\t<path stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
-                    "M", x - s, y - s,
-                    "L", x + s, y - s,
-                    "L", x + s, y + s,
-                    "L", x - s, y + s,
-                    "Z",
-                    "M", x - s * 0.6, y - s / 2,
-                    "L", x + s * 0.6, y - s / 2,
-                    "M", x - s * 0.6, y,
-                    "L", x + s * 0.6, y,
-                    "M", x - s * 0.6, y + s / 2,
-                    "L", x + s * 0.6, y + s / 2,
+                    "M",x-s,y-u,
+                    "L",x+s,y-u,
+                    "L",x+s,y+u,
+
+                    "M",x+s,y-u,
+                    "C",x+s+t,y-u,x+s+t,y+u,x+s,y+u,
+
+                    "L",x-s,y+u,
+                    "L",x-s,y-u,
+
+                    "M",x-s,y+u,
+                    "C",x-s-t,y+u,x-s-t,y-u,x-s,y-u,
                     "'/>\n"
                 ].compileList();
                 

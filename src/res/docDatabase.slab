@@ -73,7 +73,7 @@ lines:
 triple: none
 examples: none
 
-name: Collection
+name: Group
 description: none
 uses: ABGH
 lines:
@@ -102,7 +102,7 @@ examples:
 	description: none
 	translation: Party and after-party.
 
-name: Necessary
+name: Require
 description: none
 uses: ABGH
 lines:
@@ -112,7 +112,7 @@ lines:
 triple: none
 examples: none
 
-name: Relationship
+name: Friendly
 description: none
 uses: ABGH
 lines:
@@ -163,13 +163,14 @@ lines:
 triple: none
 examples: none
 
-name: Say
+
+name: Smell
 description: none
 uses: AGH
 lines:
-	A speaks to H.
-	H is audible.
-	A talks about G to H.	
+	A smells H.
+	H is smelly.
+	A shows G to H.		
 triple: none
 examples: none
 
@@ -214,13 +215,13 @@ lines:
 triple: none
 examples: none
 
-name: Smell
+name: Fear
 description: none
 uses: AGH
 lines:
-	A smells H.
-	H is smelly.
-	A shows G to H.		
+	A speaks to H.
+	H is audible.
+	A talks about G to H.	
 triple: none
 examples: none
 
@@ -246,7 +247,7 @@ lines:
 triple: none
 examples: none
 
-name: Go
+name: Play
 description: none
 uses: ABGH
 lines:
@@ -300,7 +301,7 @@ lines:
 triple: none
 examples: none
 
-name: Able
+name: Safe
 description: none
 uses: ABGH
 lines:
@@ -353,7 +354,7 @@ lines:
 triple: none
 examples: none
 
-name: Read
+name: Sleep
 description: none
 uses: ABGH
 lines:

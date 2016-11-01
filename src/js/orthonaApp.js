@@ -52,7 +52,7 @@ function SaveState(fullbookprint=false,pushToUndoStack=true){
     if(fullbookprint){
         console.log(JSON.stringify(glob.sketchBook))
     } else {
-        console.log(sketch_save)
+        console.log(JSON.stringify(glob.page))
     }
 }
 
@@ -621,7 +621,6 @@ function renderApp(){
     
     canvasRender.render();
 
-
     {
         //window title bar
         ctx.strokeStyle="#000000";
@@ -669,3 +668,4 @@ function renderApp(){
 
 window.onload = doStart
 window.onresize = renderApp
+

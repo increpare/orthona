@@ -1,3 +1,6 @@
+
+console.log("ASDAS DAS DA SD S DA SD ASAAAAAAAA AF ")
+
 var glob = require('./orthoGlobals')
 var lib = require('./orthoLib')
 var log=console.log
@@ -346,19 +349,20 @@ function drawIcon(x,y,n){
             ctx.stroke();
             break;   
         }
-        case 16://open mouth
+        case 16://nose
         {
-            ctx.fillStyle="#ffffff"
-            ctx.strokeStyle="#000000"
-            var r = cellSize*0.4*glob.page.scale;
+            var r = cellSize*0.4*glob.page.scale*0.9;
+            var dy = cellSize*0.4*glob.page.scale*0.1;
+            y+=dy;
             ctx.beginPath();
-            ctx.moveTo(x-r,y);
-            var top=r*0.8;
-            ctx.bezierCurveTo(x-r/2,y-1.5*top,x+r/2,y-1.5*top,x+r,y);
-            ctx.bezierCurveTo(x+r/2,y+1.5*top,x-r/2,y+1.5*top,x-r,y);
+            ctx.moveTo(x-r/4,y-r);
+            ctx.lineTo(x-r/2,y);
+            ctx.bezierCurveTo(x-r,y+r,x+r,y+r,x+r/2,y);
+            ctx.lineTo(x+r/4,y-r);
+            //ctx.closePath();
+            ctx.strokeStyle="#000000"
+            ctx.fillStyle="#ffffff"
             ctx.fill();
-            ctx.bezierCurveTo(x-r/2,y-top,x+r/2,y-top,x+r,y);
-            ctx.bezierCurveTo(x+r/2,y+top,x-r/2,y+top,x-r,y);
             ctx.stroke();
             break;   
         }
@@ -437,19 +441,47 @@ function drawIcon(x,y,n){
             ctx.fillStyle="#ffffff"
             break;   
         }
-        case 21://nose
+        case 21://scared
         {
-            var r = cellSize*0.4*glob.page.scale*0.9;
-            var dy = cellSize*0.4*glob.page.scale*0.1;
-            y+=dy;
-            ctx.beginPath();
-            ctx.moveTo(x-r/4,y-r);
-            ctx.lineTo(x-r/2,y);
-            ctx.bezierCurveTo(x-r,y+r,x+r,y+r,x+r/2,y);
-            ctx.lineTo(x+r/4,y-r);
-            //ctx.closePath();
-            ctx.strokeStyle="#000000"
             ctx.fillStyle="#ffffff"
+            ctx.strokeStyle="#000000"
+            var r = cellSize*0.1*glob.page.scale;
+            var R = cellSize*0.4*glob.page.scale;
+            var s = cellSize*0.1*glob.page.scale;
+            var S = cellSize*0.2*glob.page.scale;
+            ctx.beginPath();
+            ctx.moveTo(x-R,y-S);
+            ctx.bezierCurveTo(
+                                    x-R,y-S-s,
+                                    x-R+2*R/3,y-S-s,
+                                    x-R+2*R/3,y-S);
+            ctx.bezierCurveTo(
+                                    x-R+2*R/3,y-S+s,
+                                    x-R+4*R/3,y-S+s,
+                                    x-R+4*R/3,y-S);
+            ctx.bezierCurveTo(
+                                    x-R+4*R/3,y-S-s,
+                                    x+R,y-S-s,
+                                    x+R,y-S);
+            ctx.lineTo(x+R,y+S);
+
+
+            ctx.bezierCurveTo(
+                                    x+R,y+S+s,
+                                    x+R-2*R/3,y+S+s,
+                                    x+R-2*R/3,y+S);
+            ctx.bezierCurveTo(
+                                    x+R-2*R/3,y+S-s,
+                                    x+R-4*R/3,y+S-s,
+                                    x+R-4*R/3,y+S);
+            ctx.bezierCurveTo(
+                                    x+R-4*R/3,y+S+s,
+                                    x-R,y+S+s,
+                                    x-R,y+S);
+
+
+
+            ctx.closePath();
             ctx.fill();
             ctx.stroke();
             break;   
@@ -706,23 +738,24 @@ function drawIcon(x,y,n){
 
             break;
         }
-        case 34://page
+        case 34://pill
         {
             ctx.beginPath();
-            var s = cellSize*glob.page.scale*0.4/1.41;
+            var s = cellSize*glob.page.scale*0.3/1.41;
             var t = cellSize*glob.page.scale*0.3/1.41;
-            ctx.moveTo(x-s,y-s);
-            ctx.lineTo(x+s,y-s);
-            ctx.lineTo(x+s,y+s);
+            var u = cellSize*glob.page.scale*0.3/1.41;
+            ctx.moveTo(x-s,y-u);
+            ctx.lineTo(x+s,y-u);
+            ctx.lineTo(x+s,y+u);
 
-            ctx.moveTo(x+s,y-s);
-            ctx.bezierCurveTo(x+s+t,y-s,x+s+t,y+s,x+s,y+s);
+            ctx.moveTo(x+s,y-u);
+            ctx.bezierCurveTo(x+s+t,y-u,x+s+t,y+u,x+s,y+u);
 
-            ctx.lineTo(x-s,y+s);
-            ctx.lineTo(x-s,y-s);
+            ctx.lineTo(x-s,y+u);
+            ctx.lineTo(x-s,y-u);
 
-            ctx.moveTo(x-s,y+s);
-            ctx.bezierCurveTo(x-s-t,y+s,x-s-t,y-s,x-s,y-s);
+            ctx.moveTo(x-s,y+u);
+            ctx.bezierCurveTo(x-s-t,y+u,x-s-t,y-u,x-s,y-u);
             ctx.strokeStyle="#000000"
             ctx.fillStyle="#ffffff"
             ctx.fill();
@@ -863,3 +896,5 @@ function canvasRender(){
 
 module.exports.render=canvasRender;
 module.exports.drawIcon=drawIcon;
+
+console.log("STARTED AASDFA SDFA DF AFZZZZZZZZ ")

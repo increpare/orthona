@@ -1,0 +1,90 @@
+
+
+:root {
+  --bg: #024;
+  --fg: #ccc;
+}
+
+body{
+  font-family:"Palatino Linotype","Book Antiqua",Palatino,serif;
+  background-color: var(--bg);
+  color:var(--fg);
+  text-align: center;
+  padding-top: 20px;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+svg {
+  stroke:var(--fg);
+  fill:var(--bg);
+  stroke-linecap:round;
+  font-family:Helvetica;
+  font-size:12px;
+  text-anchor:middle;
+  version:1.1;
+}
+
+
+
+svg text {
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.cheat td {
+  padding:0px;
+}
+
+.frontTable td {
+  padding:0;
+  height:75.58px;
+  margin:0;
+  line-height: 0;
+}
+
+td.padAbove {
+  padding-top: 50px;
+}
+
+a,a:hover,a:visited {
+  color:var(--fg);
+  text-decoration: none;
+}
+
+table{
+  position: absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:0;
+    padding:0;
+}
+
+.documentationTable td{
+  vertical-align: top;
+  max-width: 300px;
+  padding-left:10px;
+  padding-right: 10px;
+}
+
+
+.leadDescription{
+  margin-left:auto; 
+  margin-right:auto;
+  max-width: 300px;  
+}
+
+ul{
+  text-align: left;
+  width: 300px;
+  list-style: none;
+}

@@ -23,43 +23,42 @@
             }
 
 
-        case 24: //banana peel
-            {
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
 
-                var e = DOC_CELLSIZE * 0.1;
-                var r = DOC_CELLSIZE * 0.4;
-                var t = DOC_CELLSIZE * 0.4;
-                var dy = -DOC_CELLSIZE * 0.1;
-                var yc = y - dy;
-                y += dy;
-                result += [
-                    "M", x - e, y - r / 2,
-                    "C", x - 2 * e, y + r / 5, x - e / 5, y + r / 5, x - t, y + r,
-                    "C", x, y + r, x - e / 5, y + r / 5, x, yc,
-
-                    "C", x + e / 5, y + r / 5, x, y + r, x + t, y + r,
-                    "C", x + e / 5, y + r / 5, x + 2 * e, y + r / 5, x + e, y - r / 2,
-                    "Z ",
-                    "'/>\n"
-                ].compileList();
-                break;
-            }
-
+        case 30://yin yang outline
+        {
+            var r = cellSize*0.35*glob.page.scale;
             
-        case 16: //open mouth
+            ctx.fillStyle="#ffffff"     
+            ctx.strokeStyle="#000000"          
+
+            ctx.beginPath();
+            ctx.arc(x,y,r,Math.PI/2,Math.PI/2+2*Math.PI);
+            ctx.fill();              
+            ctx.stroke();      
+
+
+            ctx.beginPath();
+            ctx.arc(x-r/2,y,r/2,Math.PI,2*Math.PI);   
+            ctx.stroke();  
+            ctx.beginPath();
+            ctx.arc(x+r/2,y,r/2,2*Math.PI,3*Math.PI);  
+            ctx.stroke();  
+
+
+            break;
+        }
+
+        case 30: //yin yangoutline
             {
-                var r = DOC_CELLSIZE * 0.4;
-                var top = r * 0.8;
-                result += `\t\t<path  stroke-linejoin="round" stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
+
+                var r = DOC_CELLSIZE * 0.3
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${tof(x)}' cy='${tof(y)}' r='${tof(r)}' fill='${fillCol}' stroke='${strokeCol}' />\n`
+
+                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='transparent" stroke='transparent' d='`
                 result += [
-                    "M", x - r, y,
-                    "C", x - r / 2, y - 1.5 * top, x + r / 2, y - 1.5 * top, x + r, y,
-                    "C", x + r / 2, y + 1.5 * top, x - r / 2, y + 1.5 * top, x - r, y,
-                    "C", x - r / 2, y - top, x + r / 2, y - top, x + r, y,
-                    "C", x + r / 2, y + top, x - r / 2, y + top, x - r, y,
-                    "Z ",
-                    "'/>\n"
-                ].compileList();
-                break
+                  describeArc(x-r/2, y, r/2, Math.PI,2*Math.PI),
+                  describeArc(x+r/2, y, r/2, 2*Math.PI, Math.PI),
+                  "'/>\n"].compileList();
+
+                break;
             }
