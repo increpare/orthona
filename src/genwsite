@@ -14,7 +14,6 @@ var Inliner = require('inliner');
 var csvparse = require('csv-parse/lib/sync');
 
 
-
 String.prototype.replaceAll = function(search, replacement) {
     var target = this;
     return target.replace(new RegExp(search, 'g'), replacement);
@@ -94,7 +93,7 @@ function saveHTML(filePath,htmlDat,pageTitle){
 
 
 //1 load csv database
-var datasheet_raw = fs.readFileSync("./res/datasheet.csv",'utf8');
+var datasheet_raw = fs.readFileSync("./res/datasheet/Sheet 1-Table 1.csv",'utf8');
 var datasheet = csvparse(datasheet_raw)
 var heading = datasheet[0]
 var exampleNames=[]
@@ -110,7 +109,7 @@ function symbolName(i){
 	return s
 }
 
-glob.drawGridLines=false;
+glob.drawGridLines=true;
 
 //2 generate simple images
 
@@ -128,7 +127,7 @@ glob.page=glob.sketchBook[0]
 {
 	glob.page.elements[0][2]=-2;
 	
-	var svgDat = svgRender.render();
+	var svgDat = (svgRender.render());
 	var filePath = `./tmp/arrow.svg`;
 	fs.writeFileSync(filePath, svgDat);
 }
@@ -136,7 +135,7 @@ glob.page=glob.sketchBook[0]
 for (var s=0;s<glob.symbolCount;s++){
 	glob.page.elements[0][2]=s;
 	
-	var svgDat = svgRender.render();
+	var svgDat = (svgRender.render());
 	var filePath = `./tmp/${symbolName(s)}.svg`;
 	fs.writeFileSync(filePath, svgDat);
 }
@@ -183,6 +182,9 @@ var index=`<!DOCTYPE html>
     html,body{
     	width: 100%;
     	text-align:center;
+    	background-color:white;
+    	color:black;
+    	padding-bottom:20px;
     }
     svg{
     	width:100px;
@@ -247,7 +249,7 @@ function embedSvg(name,width=0,height=0,className){
 	svgStr = svgStr.replaceAll(`text-anchor="middle"`,"")  
 	svgStr = svgStr.replaceAll(`<path   fill='transparent'  d=''/>`,"")  
 	svgStr = svgStr.replaceAll(`version='1.1'`,"")  */
-	return svgStr;
+	return (svgStr);
 }
 
 index+=`</body>
@@ -263,9 +265,13 @@ var genericHeader=`<!DOCTYPE html>
     <!-- Your app title -->
     <title>PAGETITLE</title>
     <style>
-    html,body{
+    body{
     	width: 100%;
     	text-align:center;
+    	background-color:white;
+    	color:black;
+    	padding-top:20px;
+    	padding-bottom:20px;
     }
     svg{
     	width:80px;
@@ -303,14 +309,15 @@ var genericHeader=`<!DOCTYPE html>
     </style>
 </head>
 
-<body class="">
-                     <h1>PAGETITLE</h1>`
+<body class="">`
 
 //generate individual pages
 for (var i=1;i<datasheet.length;i++){
 	var s=i-1;
 	var r = datasheet[i];
-	var page = genericHeader.replaceAll("PAGETITLE",`${r[1]}`);
+	var page = genericHeader;
+	page+=embedSvg(symbolName(s),"100px","100px")+"<br>";
+	page+=`<h1>${r[1]}</h1>`
 	r[2]=r[2].trim();
 //	if (r[2].length>0){
 //		page+=`<p>${r[2]}`
@@ -328,13 +335,13 @@ for (var i=1;i<datasheet.length;i++){
 			count++;
 			page+='<td>'
 			var svgStr = svgExDict[ex_name+"_"+s]
-			page+=svgStr; 
+			page+=(svgStr); 
 			page+="<p>"
 			page+=ex_descr;
 
 		}
 	}
-	while(count%4!==0){
+	while(count>3&&count%4!==0){
 		page += `<td> `;		
 		count++;
 	}

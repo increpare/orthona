@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+var fs = require('fs')
+var csvparse = require('csv-parse/lib/sync');
+
+
+
+//1 load csv database
+var datasheet_raw = fs.readFileSync("../res/datasheet/Sheet 1-Table 1.csv",'utf8');
+var datasheet = csvparse(datasheet_raw)
+var symbolNames=[]
+for (var i=1;i<datasheet.length;i++){
+	symbolNames.push(datasheet[i][1]);
+}
+var str = JSON.stringify(symbolNames);
+fs.writeFileSync("../res/entityNames.json",str)

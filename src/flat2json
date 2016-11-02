@@ -1,0 +1,121 @@
+#!/usr/bin/env node
+
+var fs 				= require('fs')
+var glob 			= require('./js/orthoGlobals')
+var canvasRender 	= require('./js/canvasRender')
+var lib 			= require('./js/orthoLib')
+var svgRender 		= require("./js/svgRender")
+var entityNames		= require("./res/entityNames.json")
+var log = console.log;
+
+entityNames[0]="a"
+entityNames[1]="b"
+for (var i =0;i<entityNames.length;i++){
+	entityNames[i]=entityNames[i].toLowerCase();
+}
+
+var log=console.log
+
+if (process.argv.length===2){
+	console.log("USAGE: bin2json INPUT [OUTPUT]")
+	return
+}
+
+var inputFileName=""
+var outputFileName=""
+for (var i=2;i<process.argv.length;i++){
+	var t = process.argv[i]
+	if (inputFileName===""){
+		inputFileName=t
+	} else if (outputFileName===""){
+		outputFileName=t
+	} else {
+		console.log("Too many arguments. Unexpected argument \""+t+"\".")		
+	}
+}
+
+if (inputFileName==="")
+{
+	console.log("need to supply input file")
+}
+
+if (outputFileName===""){
+
+	var path = require('path');
+	var globalPath = path.resolve(inputFileName)
+	var parsed = path.parse(globalPath)
+	parsed.ext=".json"
+	parsed.dir+="/../json_from_flat"
+	parsed.base=parsed.name+"_b"+parsed.ext;
+	outputFileName = path.format(parsed)
+	log("outputFileName = "+outputFileName)
+}
+
+
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+};
+
+function expandTable(M){
+	if (M.length===0){
+		return [[0]];
+	}
+	for (var i=0;i<M.length;i++){
+		M[i].push(0);
+	}
+}
+
+Array.prototype.last = function(){
+	return this[this.length-1];
+}
+
+function flat2Top(str){
+	log(str)
+	str = str.replaceAll("\\["," [ ");
+	str = str.replaceAll("]"," ] ");
+	log(str)
+	var tokens = str.split(' ').filter( t => t.length>0 )
+	log(tokens)
+
+	var S = []
+	var M = []
+	var N = []
+
+	var symbolStack=[-1]
+	var dirStack=[0]
+
+	var state = "readElement";
+	for (var i=0;i<tokens.length;i++){
+		//process symbol
+		var symbol=tokens[i];
+		var s = symbol.toLowerCase();
+		var s_index = entityNames.indexOf(s)
+		if (s_index===-1){
+			log(`ERROR: Expected symbol name but got '${s}'' at token ${i}.`)
+			break;
+		}
+		
+		S.push(s_index)
+		expandTables(M,N)
+		
+		var thispos = S.length-1;
+
+		if (contextStack.length>0){
+			var source_el_index = contextStack.last();
+			var source_to_target_dir = dirStack.last();
+			var target_el_index=s_index
+			M[source_el_index][target_el_index]=source_to_target_dir;
+			M[target_el_index][source_el_index]=-source_to_target_dir;
+		}
+	}
+
+
+	return {S:S,M:M,N:N};
+}
+var data = fs.readFileSync(inputFileName,'utf8');
+
+var T = flat2Top(data);
+log(T)
+lib.saveFile(outputFileName)
+log("saved " + outputFileName)

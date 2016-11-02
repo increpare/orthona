@@ -16,6 +16,8 @@ mkdir dat/tiled/2
 mkdir dat/tiled/3
 mkdir dat/tiled/4
 
+make
+
 for fn in dat/json/*.json
 do
 	./retop $fn &
@@ -75,4 +77,8 @@ wait
 
 ./testbin
 ./gensite
+./genmsite
+./genwsite
+
 make
+

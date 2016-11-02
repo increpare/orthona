@@ -1,6 +1,6 @@
 var glob = require('./orthoGlobals')
 var canvasRender = require('./canvasRender')
-var docDatabase = require('../tmp/docDatabase.json')
+var entityNames = require('../res/entityNames.json')
 var lib = require('./orthoLib')
 log=console.log
 
@@ -566,7 +566,7 @@ function drawSelectionPanel(select,x,y){
         var i = xpos+ypos*panelRows;
         highlightedglyphicon=i;
 
-        highlightedglyphtext=docDatabase[i].name.toUpperCase();
+        highlightedglyphtext=entityNames[i].toUpperCase();
         if (select===true){
             clickCell(oldX,oldY,i);
         }
