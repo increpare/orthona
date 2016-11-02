@@ -30,7 +30,7 @@ for (var i=2;i<process.argv.length;i++){
 		console.log("Too many arguments. Unexpected argument \""+t+"\".");		
 	}
 }
-
+/*
 var symbols = [
 	"■","▼","⌔","○","•",
 	"⊚","◇","△","□","☆",
@@ -39,6 +39,16 @@ var symbols = [
 	"💭","👃","⌛️","⊿","🍌",
 	"⬡","⬇","⌑","λ","✙",
 	"☯","▣","⨸","🌀","📄"];
+*/
+var symbols = [
+	"ε","ჲ","ɣ","o","•",
+	"Q","k","t","n","*",
+	"T","⍵","Ω","c","M",
+	"ϑ","U","h","Ɔ","W",
+	"i","H","8️","L","Λ",
+	"Y","V","X","λ","+",
+	"s","G","φ","∂","R"];
+
 
 if (asciiCharacters){
 	symbols = "1234.abcdefghijklmnopqrstuvwxyABCDE";
