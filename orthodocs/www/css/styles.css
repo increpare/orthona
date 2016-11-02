@@ -17,6 +17,11 @@ html, body {
     height: 100%;
     overflow: hidden;
     -webkit-overflow-scrolling: auto;
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none;      /* IE 10+ */
+	user-select: none;          /* Likely future */ 
+	cursor: default;
 
 }
 
@@ -55,8 +60,7 @@ br{
 }
 
 .col-20 {
-	text-align: center;
-	 user-select: none;  
+	text-align: center; 
 }
 
 .col-20 a{

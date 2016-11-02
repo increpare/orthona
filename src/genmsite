@@ -224,7 +224,7 @@ var index=`<!DOCTYPE html>
             <div class="navbar">
                 <div class="navbar-inner">
                     <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
-                    <div class="center sliding">orthodocs</div>
+                    <div class="center sliding">Orthodocs</div>
                     <div class="right">
                         <!--
                           Right link contains only icon - additional "icon-only" class
