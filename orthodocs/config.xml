@@ -1,10 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.increpare.orthodocs" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Orthodocs</name>
+    <name>orthodocs</name>
     <description>
-        A reference for the Orthona language.
+        A basic Framework7 template for PhoneGap.
     </description>
-    <author email="analytic@gmail.com" href="http://www.increpare.com">increpare</author>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -22,11 +24,7 @@
         <allow-intent href="itms-apps:*" />
         <preference name="BackupWebStorage" value="none" />
     </platform>
-
-<preference name="webviewbounce" value="false" />
-<preference name="DisallowOverscroll" value="true" />
-<preference name="UIWebViewBounce" value="false" />
-
+    <preference name="DisallowOverscroll" value="true" />
     <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
     <plugin name="cordova-plugin-console" spec="~1.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
