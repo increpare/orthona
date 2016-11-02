@@ -22,8 +22,11 @@
         <allow-intent href="itms-apps:*" />
         <preference name="BackupWebStorage" value="none" />
     </platform>
-    <preference name="DisallowOverscroll" value="true" />
-    <preference name="webviewbounce" value="false" />
+
+<preference name="webviewbounce" value="false" />
+<preference name="DisallowOverscroll" value="true" />
+<preference name="UIWebViewBounce" value="false" />
+
     <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
     <plugin name="cordova-plugin-console" spec="~1.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />

@@ -10,7 +10,14 @@
    See https://github.com/apache/cordova-plugin-statusbar
 */
 
-html, body {margin: 0; height: 100%; overflow: hidden}
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    -webkit-overflow-scrolling: auto;
+
+}
 
 .statusbar-overlay {
     background: #000000;
