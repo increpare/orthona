@@ -20,8 +20,8 @@ String.prototype.replaceAll = function(search, replacement) {
     return target.replace(new RegExp(search, 'g'), replacement);
 };
 
-//execSync("rm -rf ../orthology/www/*")
-execSync("mkdir -p ../orthology/www/sym")
+//execSync("rm -rf ../orthodocs/www/*")
+execSync("mkdir -p ../orthodocs/www/sym")
 
 var fast=false;
 var inline=false;
@@ -197,7 +197,7 @@ var index=`<!DOCTYPE html>
     <meta name="msapplication-tap-highlight" content="no">
 
     <!-- Your app title -->
-    <title>Orthology</title>
+    <title>orthodocs</title>
 
     <!-- This template defaults to the iOS CSS theme. To support both iOS and material design themes, see the Framework7 Tutorial at the link below:
         http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
@@ -224,7 +224,7 @@ var index=`<!DOCTYPE html>
             <div class="navbar">
                 <div class="navbar-inner">
                     <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
-                    <div class="center sliding">Orthology</div>
+                    <div class="center sliding">orthodocs</div>
                     <div class="right">
                         <!--
                           Right link contains only icon - additional "icon-only" class
@@ -246,7 +246,7 @@ for (var i=0;i<7;i++){
 	for (var j=0;j<5;j++){
 		var s = j+5*i;
 		index+=`<div class="col-20">\n`
-		index+=`<a   href='sym/${symbolName(s)}.html'>\n`
+		index+=`<a   href='sym/${symbolName(s).replaceAll(" ","_").toLowerCase()}.html'>\n`
 		index+=embedSvg(symbolName(s),"100%",0)+symbolName(s).replaceAll('_',' ')+"</a>";
 		index+='</div>\n'
 	}
@@ -298,11 +298,14 @@ index+=`
         </div>
     </div>
 
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+    <script type="text/javascript" src="js/my-app.js"></script>
 </body>
 
 </html>`
 
-saveHTML("../orthology/www/index.html",index,"Orthology");
+saveHTML("../orthodocs/www/index.html",index,"orthodocs");
 
 
 var genericHeader=`<!-- We don't need a full layout in this file because this page will be parsed with Ajax. -->
@@ -368,5 +371,5 @@ for (var i=1;i<datasheet.length;i++){
         </div>
     </div>
 </div>`;
-	fs.writeFileSync(`../orthology/www/sym/${symbolName(s)}.html`,page);
+	fs.writeFileSync(`../orthodocs/www/sym/${symbolName(s).replaceAll(" ","_").toLowerCase()}.html`,page);
 }
