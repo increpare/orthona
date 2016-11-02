@@ -50,6 +50,7 @@ if (inputFileName==="")
 }
 
 lib.loadFile(inputFileName);
+var page = glob.page;
 
 var bounds = lib.getBounds();
 var height = bounds[1]-bounds[0]+1
