@@ -4,6 +4,173 @@ var lib = require('./orthoLib')
 var log = console.log
 
 
+function dirToPronunciation(dir){
+	var [dx,dy] = lib.axes[dir];
+
+	if (dx===0&&dy===1){
+		return "a";
+	} else if (dx===1&&dy===1){
+		return "ala"
+	} else if (dx===1&&dy===0){
+		return "la"
+	} else if (dx===1&&dy===-1){
+		return "ya"
+	} else if (dx===0&&dy===-1){
+		return "e"
+	} else if (dx===-1&&dy===-1){
+		return "yo"
+	} else if (dx===-1&&dy===0){
+		return "o"
+	} else if (dx===-1&&dy===1){
+		return "wa"
+	} 
+	console.log ("ERROR shouldn't be here something edges")
+}
+
+function symbolToPronunciation(s){
+	var x=s%5;
+	var y = Math.floor(s/5);
+	var v = ["a","e","i","o","u"][x];
+	var c = ["p","d","t","ch","b","k","g"][y];
+	var init = c[0].toUpperCase()+c.substring(1);
+	return init+v+c;
+}
+
+
+function getNeighbours(v,M){
+	var result = []
+	for (var i=0;i<M.length;i++){
+		if (M[i][v]!==0){
+			result.push(i)
+		}
+	}
+	return result;
+}
+
+
+function branchTraverse(S,M,N,visited,curIndex){
+	// log(visited+" visiting "+curIndex)
+	visited.push(curIndex)
+	var result = []
+	for (var neighbourIndex=0;neighbourIndex<M.length;neighbourIndex++){
+		var direction = M[curIndex][neighbourIndex];
+		if (direction===0||visited.indexOf(neighbourIndex)>=0){
+			continue;
+		}
+		var branchwords = branchTraverse(S,M,N,visited,neighbourIndex);
+		//prepend directions to each of these words
+		// log ("direction "+direction)
+		var prefix = dirToPronunciation(direction)
+		if (N[curIndex][neighbourIndex]!==0){
+			prefix=prefix+"n"
+		}
+		// log(`prepending dir ${prefix} to ${prependedWords}`)
+		var prependedWords = branchwords.map(w => prefix+w)
+		result = result.concat(prependedWords);
+	}
+
+	var symbolSound = symbolToPronunciation(S[curIndex]);
+	//if it's empty, return a terminal character
+	if (result.length===0){
+		// log("reached end!"+symbolSound)
+		return [symbolSound]
+	}
+	//log(`prepending icon ${symbolSound} to ${result}`)	
+	//if it's not empty, prepend this element
+	for (var i=0;i<result.length;i++){
+		"prepending"	
+		result[i]=symbolSound+result[i]
+	}
+	// log("result "+result)
+	return result;
+}
+
+
+function branchTraverse(S,M,N,visited,curIndex){
+	// log(visited+" visiting "+curIndex)
+	visited.push(curIndex)
+	var result = []
+	for (var neighbourIndex=0;neighbourIndex<M.length;neighbourIndex++){
+		var direction = M[curIndex][neighbourIndex];
+		if (direction===0||visited.indexOf(neighbourIndex)>=0){
+			continue;
+		}
+		var branchwords = branchTraverse(S,M,N,visited,neighbourIndex);
+		//prepend directions to each of these words
+		// log ("direction "+direction)
+		var prefix = dirToPronunciation(direction)
+		if (N[curIndex][neighbourIndex]!==0){
+			prefix=prefix+"n"
+		}
+		// log(`prepending dir ${prefix} to ${prependedWords}`)
+		var prependedWords = branchwords.map(w => prefix+w)
+		result = result.concat(prependedWords);
+	}
+
+	var symbolSound = symbolToPronunciation(S[curIndex]);
+	//if it's empty, return a terminal character
+	if (result.length===0){
+		// log("reached end!"+symbolSound)
+		return [symbolSound]
+	}
+	//log(`prepending icon ${symbolSound} to ${result}`)	
+	//if it's not empty, prepend this element
+	for (var i=0;i<result.length;i++){
+		"prepending"	
+		result[i]=symbolSound+result[i]
+	}
+	// log("result "+result)
+	return result;
+}
+
+function topToSpeech(T){
+	var S = T.S;
+	var M = T.M;
+	var N = T.N;
+	var visited=[]
+	var resultSentence="";
+
+			//index,symbol,edge type
+	while(visited.length<S.length){
+		var toSelect=-1;
+		for (var i=0;i<S.length;i++){
+			if (visited.indexOf(i)<0){
+				toSelect=i;
+				break;
+			}
+		}
+		if(toSelect===-1){
+			break;
+		}
+		var result=branchTraverse(S,M,N,visited,toSelect)
+		var sentence = result.join(" ")
+		if (resultSentence.length>0){
+			var lswords = resultSentence.split(" ")
+			var lastWord = lswords[lswords.length-1];
+			if (lastWord.substring(0,3)===sentence.substring(0,3)){
+				resultSentence+=","
+			}
+			resultSentence+=" ";
+			
+		}
+		resultSentence+=sentence;
+
+	}
+
+	resultSentence=resultSentence[0].toUpperCase()+resultSentence.substring(1)
+
+	var repeat=true;
+	while(repeat){
+		var newstr1 = resultSentence.replace(/pup(an|alan|lan|yan|en|yon|on|wan)/ig,"n")
+		var newstr = newstr1.replace(/pup(ala|la|a|ya|e|yo|o|wa)/ig,"")
+		repeat = newstr.length!=resultSentence.length;
+		resultSentence=newstr;
+	}
+
+	return resultSentence
+}
+
+
 function Topologize(){
 
 	lib.ConnectLines();
@@ -327,3 +494,4 @@ function Instantiate(T){
 
 module.exports.Topologize=Topologize
 module.exports.Instantiate=Instantiate
+module.exports.topToSpeech=topToSpeech

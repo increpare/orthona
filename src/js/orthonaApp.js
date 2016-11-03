@@ -56,6 +56,14 @@ function SaveState(fullbookprint=false,pushToUndoStack=true){
     }
 }
 
+function DoPrint(printAll){
+    if(printAll){
+        alert(JSON.stringify(glob.sketchBook))
+    } else {
+        alert(JSON.stringify(glob.page))
+    }
+}
+
 function TryRestoreState(sketch_save){
 /*
 
@@ -107,6 +115,9 @@ function doStart(){
             //undo
             DoUndo();
             renderApp();
+        } else if (evt.keyCode===80){
+            //undo
+            DoPrint(evt.shiftKey);
         } 
 
     }

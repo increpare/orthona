@@ -1,0 +1,240 @@
+dat/json/1.json:
+	Bub Bib PepaDidalaTitlaPapeBeb PepaDidaDad Bob Gig Beb Gog Bab Geg Gug Gag
+
+	BebaPapoTityoDidePep BebaPapoTityoDidaDad, Beb Bob Gig Gag Bub Geg Bab Bib Gog Gug
+
+dat/json/10.json:
+	GegoGigaKikyoGogoGugalaKokwaBubeKukalaBobalaChichalaTetaDedoDidwaPopyoDudyaTotlaTitwaDodwaPup GegoGigaKikyoGogoGugalaKokwaBubeKukalaBobalaChichalaTetaDedoDidwaPopyoDudyaTotlaTitwaDodalaPiplaPeplaPapeDadeTateChacheBabyoKekyaGagaKakwaBebaChechyoBibwaChochoChuchaTut
+
+	GagwaKeklaKakwaBebalaChachwaTetwaDidyoToteChocheBobwaChuchaTutaDudlaDodaPoplaPipyaDedyaTataDadaPapoPep GagwaKeklaKakwaBebalaChachwaTetwaDidyoToteChocheBobwaChuchaTutaDudlaDodaPoplaPipyaDedyaTatyoChechoChicheBibyoKokeGogwaKukeGug GagwaKeklaKakwaBebalaChachwaTetwaDidyoToteChocheBobwaChuchaTutaDudlaDodaPoplaPipyaDedyaTatyoChechoChicheBibyoKokeGogwaKukaBub GagwaKeklaKakwaBebalaChachwaTetwaDidyoToteChocheBobwaChuchaTutaDudlaDodaPoplaPipyaDedyaTatyoChechoChicheBibyoKokeGogalaKikyaGegoGig GagwaKeklaKakwaBebalaChachwaTetwaDidyoToteChocheBobwaChuchaTutaDudlaDodaPoplaPipyaDedyaTatyoChechoChichaTit GagwaKeklaKakwaBebalaChachwaTetwaDidyoToteChocheBobwaChuchaTutaDudlaDodaPoplaPipyaDedyaTatyoChechyaBab GagwaKeklaKakwaBebalaChachwaTetwaDidyoToteChocheBobwaChuchaTutaDudlaDodaPopoPup
+
+dat/json/10nolines.json:
+	Pep Pip Pop Pup Dad Ded Did Dod Dud Tat Tet Tit Tot Tut Chuch Choch Chich Chech Chach Bab Beb Bib Bob Bub Kak Kek Kik Kok Kuk Gug Gog Gig Geg Gag Pap
+
+	Tat Kok Tit Bib Pup Kak Bab Dad Pap Chach Tot Chuch Dud Tet Pip Beb Gug Kuk Dod Bob Kik Ded Tut Pop Gog Did Gag Chich Kek Geg Pep Chech Gig Choch Bub
+
+dat/json/11.json:
+	Pap
+
+	Pap
+
+dat/json/12.json:
+	PapwaPup PapaPup PapePup PaplaPup PapoPup PapyaPup PapyoPup
+
+	PapePup PapyoPup PapyaPup PapalaPup PapoPup PapwaPup PapaPup PaplaPup
+
+dat/json/1_b.json:
+	Bub Bob DidePep DidalaTitlaPapeBeb DidaDad Geg Gog Gug Beb Bib Gag Bab Gig
+
+	Gag BebaPapoTityoDidePep BebaPapoTityoDidaDad, Beb Gig Bib Bob Gog Geg Gug Bab Bub
+
+dat/json/2.json:
+	TeteDid TetlaPapeDid TetoPepeDid TetoPepyaTetyaPap TetalaPap
+
+	PapwaTetwaPeplaTetalaPap PapwaTetwaPeplaTetlaPapeDid PapwaTetwaPeplaTeteDid PapwaTetwaPepeDid
+
+dat/json/3.json:
+	Ded Dod PepaTat PepalaDodwaPapaDad
+
+	DadePapyaDodyoPepeDod DadePapyaDodyoPepeDed DadePapyaDodyoPepaTat
+
+dat/json/3b.json:
+	Ded PepaTat PepalaDodwaPapaDad Dod
+
+	DadePapyaDodyoPepaTat DadePapyaDodyoPepeDed DadePapyaDodyoPepeDod
+
+dat/json/4.json:
+	PapoDudeDed PapoDudoPapaDed PapyonTet PapalaDud
+
+	DedePaplaDudeDed DedePaplaDudlaPapyonTet DedePaplaDudlaPapalaDud
+
+dat/json/5.json:
+	PepeDad PepoPapyoChachyoPipyaPop PepoPapoPepeDed PepyoGogyoPipyanPop
+
+	PopwaPipalaChachalaPaplaPepeDad PopwaPipalaChachalaPaplaPepyoGogyoPipyanPop PopwaPipalaChachalaPapoPepeDed
+
+dat/json/6.json:
+	ChachoChochoChoch
+
+	ChochoChoch ChochlaChach
+
+dat/json/7.json:
+	ChachoTit TotyoBub Kok Kuk Tut Chuch Beb Bib DedonTet
+
+	Bib Tut TitlaChach Chuch BubalaTot TetlanDed Beb Kuk Kok
+
+dat/json/8.json:
+	BebonBib
+
+	BiblanBeb
+
+dat/json/9.json:
+	Pap Pep Pip Pop Pup Dad Ded Did Dod Dud Tat Tet Tit Tot Tut Chach Chech Chich Choch Chuch Bab Beb Bib Bob Bub Kak Kek Kik Kok Kuk Gag Geg Gig Gog Gug
+
+	Did Chich Chach Tet Bub Choch Dad Kik Pip Bab Beb Gig Pop Pup Chuch Tot Chech Gog Gag Tit Pap Gug Dod Kok Tat Kak Bib Kek Dud Ded Kuk Pep Tut Bob Geg
+
+dat/json/afterParty.json:
+	DudoDud
+
+	DudlaDud
+
+dat/json/darkness1.json:
+	PopoPopaGegalaPapaDad PopoPopoPopyonChach PopoPopoPopoDudoDudoPapyoGegyoPip PopoPopoPopoDudoDudyonPepyoTetyoPap PopoPopoPopoDudeGegalaPap PopoPopoPopeGog PopyonChach PoplaPipanDod PoplaPipenGeg PoplaPipyoChach PopenGeg
+
+	PapalaTetalaPepalanDudlaDudeGegalaPap PapalaTetalaPepalanDudlaDudlaPopyonChach PapalaTetalaPepalanDudlaDudlaPoplaPoplaPopyonChach PapalaTetalaPepalanDudlaDudlaPoplaPoplaPoplaPipenGeg PapalaTetalaPepalanDudlaDudlaPoplaPoplaPoplaPipyoChach PapalaTetalaPepalanDudlaDudlaPoplaPoplaPoplaPipanDod PapalaTetalaPepalanDudlaDudlaPoplaPoplaPopenGeg PapalaTetalaPepalanDudlaDudlaPoplaPopaGegalaPapaDad PapalaTetalaPepalanDudlaDudlaPopeGog PapalaTetalaPepalanDudoPapyoGegyoPip
+
+dat/json/darkness2.json:
+	PapyoGegyoPip GeganPipyoBab, GegaDudyonPepeDad PopaGegalaPapaDad GeganPopyonBab
+
+	PepeDad PepalanDudeGeg GeganPopyonBab PipenGeg PipyoBab GegyoPip GegalaPap, GegePop GegalaPapaDad
+
+dat/json/darkness3.json:
+	GeganPipaDed DidePapenBib PepaGegaPop DedenPopeGeg
+
+	PopeGeg PopanDed GegePep GegaPop, GeganPipaDed PapenBib PapaDid
+
+dat/json/darkness4.json:
+	GeganDed
+
+	DedenGeg
+
+dat/json/darkness5.json:
+	PopeGegePep DedenPopeGeg PapyoGegyoPip GeganPipaDed
+
+	PipenGeg PipaDed PopeGeg PopanDed GegePep GegaPop, GegalaPap GegyoPip
+
+dat/json/dotExample.json:
+	ChachePep Pap ChichePap
+
+	ChichaChachePep ChichaPap ChichePap
+
+dat/json/ex_a1.json:
+	PopePap
+
+	PapaPop
+
+dat/json/ex_a2.json:
+	PopaPap
+
+	PapePop
+
+dat/json/ex_d1.json:
+	PapyoPop
+
+	PopalaPap
+
+dat/json/ex_d1b.json:
+	PepyoPopyoPap
+
+	PopalaPep PopyoPap
+
+dat/json/ex_d1t.json:
+	PapyoPopyoPep
+
+	PopalaPap PopyoPep
+
+dat/json/ex_d2.json:
+	PopyoPap
+
+	PapalaPop
+
+dat/json/ex_description.json:
+	Pop
+
+	Pop
+
+dat/json/ex_do1.json:
+	PopyoPap PopalaPep PopePip
+
+	PapalaPopalaPep PapalaPopePip
+
+dat/json/ex_do2.json:
+	PopalaPep PopePip PopyoPap
+
+	PapalaPopePip PapalaPopalaPep PapalaPopaPup
+
+dat/json/ex_n1.json:
+	PapwaPopyoPep
+
+	PopyoPep PopyaPap
+
+dat/json/ex_n2.json:
+	PepaPopyoPap
+
+	PopyoPap PopePep
+
+dat/json/ex_na1.json:
+	PopenPap
+
+	PapanPop
+
+dat/json/ex_na2.json:
+	PopanPap
+
+	PapenPop
+
+dat/json/ex_t1.json:
+	PapaPopaPep
+
+	PopaPep PopePap
+
+dat/json/ex_t1b.json:
+	PapaPopaPep
+
+	PopaPep PopePap
+
+dat/json/ex_t1t.json:
+	PapePopePep
+
+	PopePep PopaPap
+
+dat/json/ex_td1.json:
+	PapyoPopyoPep
+
+	PopyoPep PopalaPap
+
+dat/json/ex_td1b.json:
+	PepyoPopyoPap
+
+	PopyoPap PopalaPep
+
+dat/json/ex_td1t.json:
+	PapyoPopyoPep
+
+	PopyoPep PopalaPap
+
+dat/json/ex_ud.json:
+	PepyaPopyaPap
+
+	PopyaPap PopwaPep
+
+dat/json/night.json:
+	Ded DudenTot DudenBib DudeGog Tat nBib
+
+	BibanDudaTat BibanDudanBib BibanDudaDed BibannTot BibanGog
+
+dat/json/night2.json:
+	Bib Ded DudalaGegeKik DudalaGegalaPepeDad DudalaGegalaPepeBib DudeGog
+
+	BibaDad BibaPepyoGegeKik BibaPepyoGegyoDudaBib BibaPepyoGegyoDudaDed BibaPepyoGegyoDudeGog
+
+dat/json/night3.json:
+	Ded DudalaGegalanPepeDad DudalaGegalanPepenBib DudalaGegeKik DudeGog nBib
+
+	BibanDad BibanPepyonGegeKik BibanPepyonGegyoDudeGog BibanPepyonGegyoDudaDed BibanPepyonGegyoDudanBib
+
+dat/json/notAllPeople.json:
+	PapanDod
+
+	DodenPap
+
+dat/json/notOnePerson.json:
+	DodanPap
+
+	PapenDod
+
+dat/json/personExample.json:
+	DadePapoPepeDad
+
+	PepeDad PeplaPapaDad
+

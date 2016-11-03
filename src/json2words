@@ -1,0 +1,58 @@
+#!/usr/bin/env node
+
+var fs = require('fs')
+var glob = require('./js/orthoGlobals')
+var lib = require('./js/orthoLib')
+var top = require('./js/orthoTopology')
+var canvasRender = require("./js/canvasRender")
+var log = console.log
+
+
+if (process.argv.length===2){
+	log("USAGE: json2words INPUT");
+	return;
+}
+
+var inputFileName=""
+var outputFileName=""
+for (var i=2;i<process.argv.length;i++){
+	var t = process.argv[i];
+	if (inputFileName===""){
+		inputFileName=t;
+	} else {
+		log("Too many arguments. Unexpected argument \""+t+"\".");		
+	}
+}
+
+if (inputFileName==="")
+{
+	log("need to supply input file");
+}
+
+
+lib.loadFile(inputFileName)
+
+var minlength=10000000;
+var minsentence="";
+var maxlength=-10000000;
+var maxsentence="";
+
+lib.ConnectLines();
+	
+for (var i=0;i<100;i++){	
+	var T = top.Topologize()
+	// log(T)
+	var sentence = top.topToSpeech(T);
+	var length = sentence.length;
+	// log(sentence)
+	if (length<minlength){
+		minlength=length;
+		minsentence=sentence;
+	}
+	if (length>maxlength || (length===maxlength&&sentence!=minsentence)){
+		maxlength=length;
+		maxsentence=sentence;
+	}
+	lib.shuffle();
+ }
+console.log(`${inputFileName}:\n\t${minsentence}\n\n\t${maxsentence}\n`);

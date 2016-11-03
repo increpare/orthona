@@ -1,0 +1,5 @@
+rm -f res/words.txt
+for fn in dat/json/*.json
+do
+	./json2words $fn >> res/words.txt
+done
