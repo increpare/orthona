@@ -1,0 +1,13 @@
+for fn in dat/flat/*.flat
+do
+	echo "processing $fn"
+	./flat2json $fn &
+done
+wait
+
+for fn in dat/json_from_flat/*.json
+do
+	echo "processing $fn"  &
+	./json2png $fn &
+done
+wait

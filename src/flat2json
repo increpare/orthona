@@ -5,6 +5,7 @@ var glob 			= require('./js/orthoGlobals')
 var canvasRender 	= require('./js/canvasRender')
 var lib 			= require('./js/orthoLib')
 var svgRender 		= require("./js/svgRender")
+var top 		= require("./js/orthoTopology")
 var entityNames		= require("./res/entityNames.json")
 var log = console.log;
 
@@ -46,7 +47,7 @@ if (outputFileName===""){
 	var parsed = path.parse(globalPath)
 	parsed.ext=".json"
 	parsed.dir+="/../json_from_flat"
-	parsed.base=parsed.name+"_b"+parsed.ext;
+	parsed.base=parsed.name+"_flat"+parsed.ext;
 	outputFileName = path.format(parsed)
 	log("outputFileName = "+outputFileName)
 }
@@ -70,52 +71,110 @@ Array.prototype.last = function(){
 	return this[this.length-1];
 }
 
+var dirNames = ["u","d","l","r","ur","dr","ul","dl","-u","-d","-l","-r","-ur","-dr","-ul","-dl"];
+
+
+var dirDict = {
+	"ul":-4,
+	"u":-3,
+	"ur":-2,
+	"l":-1,
+	"r":1,
+	"dl":2,
+	"d":3,
+	"dr":4
+}
+function dirNameToEdgeNeg(dir){
+	var neg = 0;
+	if (dir.indexOf('-')>=0){
+		neg=1;
+		dir=dir.substring(1);
+	}
+
+	var d_i = dirDict[dir];
+	return [d_i,neg]
+}
+function makeSquare(n){
+	var s = []
+	for (var i=0;i<n;i++){
+		var r = []
+		for (var j=0;j<n;j++){
+			r.push(0)
+		}
+		s.push(r)
+	}
+	return s
+}
+
 function flat2Top(str){
 	log(str)
+	str = str.toLowerCase();
 	str = str.replaceAll("\\["," [ ");
 	str = str.replaceAll("]"," ] ");
 	log(str)
 	var tokens = str.split(' ').filter( t => t.length>0 )
 	log(tokens)
 
-	var S = []
-	var M = []
-	var N = []
-
-	var symbolStack=[-1]
-	var dirStack=[0]
-
-	var state = "readElement";
+	// want to build a list of symbol names, and a list of edges
+	var symbols=[]
+	var edges=[]
+	var stack=[[-1,0]]//[[symbols index,direction]]
 	for (var i=0;i<tokens.length;i++){
-		//process symbol
-		var symbol=tokens[i];
-		var s = symbol.toLowerCase();
-		var s_index = entityNames.indexOf(s)
-		if (s_index===-1){
-			log(`ERROR: Expected symbol name but got '${s}'' at token ${i}.`)
-			break;
-		}
-		
-		S.push(s_index)
-		expandTables(M,N)
-		
-		var thispos = S.length-1;
-
-		if (contextStack.length>0){
-			var source_el_index = contextStack.last();
-			var source_to_target_dir = dirStack.last();
-			var target_el_index=s_index
-			M[source_el_index][target_el_index]=source_to_target_dir;
-			M[target_el_index][source_el_index]=-source_to_target_dir;
+		var token = tokens[i]
+		var context=stack[stack.length-1]
+		if (token==="["){
+			stack.push([-1,0])
+		} else if (token==="]")
+		{
+			stack.pop();
+		} else if (dirNames.indexOf(token)>=0 ){
+			stack[stack.length-1][1]=token;
+		} else if (entityNames.indexOf(token)>=0){
+			symbols.push(token)
+			var el_id= symbols.length-1;;
+			stack[stack.length-1][0]=el_id;
+			if (stack.length>1){
+				var dir = stack[stack.length-1][1];
+				var parent_id = stack[stack.length-2][0]
+				//if last symbol was token, then use that instead
+				if (entityNames.indexOf(tokens[i-1])>=0){
+					parent_id=el_id-1;
+				}
+				edges.push([parent_id,el_id,dir])
+			}
+		} else{
+			log("ERROR: incorrectly formed statement - token '"+token+"' not recognised.")
 		}
 	}
 
+	log("S : " + symbols);
+	log("E : " + JSON.stringify(edges))
 
+	var M = makeSquare(symbols.length)
+	var N = makeSquare(symbols.length)
+	for (var i=0;i<edges.length;i++){
+		var [ex,ey,ed]=edges[i]
+		var [e_dir,e_neg]=dirNameToEdgeNeg(ed)
+		M[ex][ey]=-e_dir;
+		N[ex][ey]=e_neg;
+		M[ey][ex]=e_dir;
+		N[ey][ex]=e_neg;
+	}
+	var S = []
+	for (var i=0;i<symbols.length;i++){
+		var s=symbols[i]
+		S.push(entityNames.indexOf(s))
+	}
+	log("el "+entityNames)
+	log("symbols "+symbols)
+	log("S "+S)
 	return {S:S,M:M,N:N};
 }
+
 var data = fs.readFileSync(inputFileName,'utf8');
 
 var T = flat2Top(data);
+top.Instantiate(T)	
 log(T)
 lib.saveFile(outputFileName)
 log("saved " + outputFileName)

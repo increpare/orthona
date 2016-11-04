@@ -121,7 +121,7 @@ function prefixVowel(dir,c){
 		return vowel
 	}
 	if (vowel[vowel.length-1]===c[0]){
-		return vowel+"ء"+c
+		return vowel+"'"+c
 	} else {
 		return vowel+c;
 	}

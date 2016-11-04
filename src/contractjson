@@ -1,0 +1,48 @@
+#!/usr/bin/env node
+
+var fs 				= require('fs')
+var glob 			= require('./js/orthoGlobals')
+var canvasRender 	= require('./js/canvasRender')
+var lib 			= require('./js/orthoLib')
+var svgRender 		= require("./js/svgRender")
+var log=console.log
+
+if (process.argv.length===2){
+	console.log("USAGE: json2bin INPUT [OUTPUT]")
+	return
+}
+
+var inputFileName=""
+var outputFileName=""
+for (var i=2;i<process.argv.length;i++){
+	var t = process.argv[i]
+	if (inputFileName===""){
+		inputFileName=t
+	} else if (outputFileName===""){
+		outputFileName=t
+	} else {
+		console.log("Too many arguments. Unexpected argument \""+t+"\".")		
+	}
+}
+
+if (inputFileName==="")
+{
+	console.log("need to supply input file")
+}
+
+if (outputFileName===""){
+	var path = require('path');
+	var globalPath = path.resolve(inputFileName)
+	var parsed = path.parse(globalPath)
+	parsed.ext=".json"
+	//parsed.dir+="/../bin"
+	parsed.base=parsed.name+"_contracted"+parsed.ext;
+	outputFileName = path.format(parsed)
+	log("outputFileName = "+outputFileName)
+}
+
+lib.loadFile(inputFileName)
+
+
+
+log("saved " + outputFileName)

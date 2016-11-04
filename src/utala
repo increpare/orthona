@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+var execSync = require('child_process').execSync
+
+var fs = require('fs')
+var entityNames = require('./res/entityNames.json')
+var glob = require('./js/orthoGlobals')
+var lib = require('./js/orthoLib')
+var css = require('css')
+var svgRender = require("./js/svgRender")
+var log = console.log
+var Canvas = require('canvas')
+var minify = require('html-minifier').minify;
+var Image = Canvas.Image
+var Inliner = require('inliner');
+var csvparse = require('csv-parse/lib/sync');
+
+
+glob.drawGridLines=false;
+
+glob.sketchBook = [{
+	elements:[[8,4,0]],
+	lines:[],
+	offsetX:0,
+	offsetY:0,
+	scale:1,
+	sketchTitle:""
+}]
+glob.sketchBookIndex=0
+glob.page=glob.sketchBook[0]
+
+var dictStr = `var dictionary = [`
+for (var s=0;s<entityNames.length;s++){
+	var name = entityNames[s];
+	glob.page.elements[0][2]=s;
+	var imageStr = svgRender.render()
+	if (s>0){
+		dictStr+=",";
+	}
+	dictStr += '[[`'+name+'`],[`'+imageStr+'`]]'
+}
+dictStr+="];"
+fs.writeFileSync("../orthoutala/www/js/dictionary.js",dictStr)
+
