@@ -27,11 +27,14 @@ function dirToPronunciation(dir){
 	console.log ("ERROR shouldn't be here something edges")
 }
 
-function symbolToPronunciation(s){
+function symbolToPronunciation(s,capitalize=true){
 	var x=s%5;
 	var y = Math.floor(s/5);
 	var v = ["a","e","i","o","u"][x];
 	var c = ["p","d","t","ch","b","k","g"][y];
+	if (capitalize===false){
+		return c+v+c;
+	}
 	var init = c[0].toUpperCase()+c.substring(1);
 	return init+v+c;
 }
@@ -47,6 +50,129 @@ function getNeighbours(v,M){
 	return result;
 }
 
+function RemoveStrayEdges(){
+	for (var i=glob.lines.length-1;i>=0;i--){
+		var [x1,y1,x2,y2,t] = glob.lines[i];
+		if (!lib.iconAt(x1,y1)|!lib.iconAt(x2,y2)){
+			glob.lines.splice(i,1);
+		}
+	}
+}
+
+function getOutgoingLineIndices(v){
+	var [sx,sy,st] = glob.page.elements[v];
+	var result=[]
+	var lines = glob.page.lines;
+	for (var i=0;i<lines.length;i++){
+		var [x1,y1,x2,y2,t] = lines[i];
+		if (  (sx===x1&&sy===y1) || (sx===x2&&sy===y2) ){
+			result.push(i);
+		}
+	}
+	return result;
+}
+
+function getOppositeElementIndex(eIndex,lIndex){
+	var [ex1,ey1]=glob.page.elements[eIndex];
+	var [x1,y1,x2,y2]=glob.page.lines[lIndex];
+	var ox,oy;
+	if (ex1===x1&&ey1===y1){
+		[ox,oy]=[x2,y2]
+	} else {
+		[ox,oy]=[x1,y1]		
+	}
+	return lib.getIconIndexAt(ox,oy)
+}
+
+function recurse(visitedLines,visitedElements,thisElementIndex){
+	var page=glob.page;
+	var result = {v:thisElementIndex,e:{}};	
+	// log("visiting V"+thisElementIndex)
+
+	if (visitedElements.indexOf(thisElementIndex)===-1) {
+		visitedElements.push(thisElementIndex)		
+	} else {
+		result.silent=true;
+		// log("V"+thisElementIndex+" silent")
+		return result;
+	}
+	var outgoingLineIndices = getOutgoingLineIndices(thisElementIndex);
+	for (var i=0;i<outgoingLineIndices.length;i++){
+		var l_i = outgoingLineIndices[i];		
+		var l = page.lines[l_i]
+		if (l_i in visitedLines){
+			continue;
+		}
+		visitedLines.push(l_i)
+		var nextElement = getOppositeElementIndex(thisElementIndex,l_i);
+		// log(`${thisElementIndex} -${l_i}-> ${nextElement}`)
+		result.e[l_i]=recurse(visitedLines,visitedElements,nextElement)
+	}
+	return result
+}
+
+Object.prototype.empty = function(){
+	return Object.keys(this).length===0;
+}
+
+function prefixVowel(dir,c){
+	var vowel = dirToPronunciation(dir)
+	if (c.length===0){
+		return vowel
+	}
+	if (vowel[vowel.length-1]===c[0]){
+		return vowel+"ء"+c
+	} else {
+		return vowel+c;
+	}
+}
+
+function speakTree(branch){
+	var v = branch.v;
+	var e = branch.e;
+	var result = []
+	if (branch.silent===true || glob.page.elements[v]===4){
+		result.push("");
+	} else {
+		result.push(symbolToPronunciation(glob.page.elements[v][2],false));
+	}	
+
+	var outGoingLineIndices = Object.keys(e);
+	for (var l_i of outGoingLineIndices){
+		var l = glob.page.lines[l_i]
+		var dirIndex = lib.LineDirection(l)
+		var subBranch = e[l_i];
+		var childWords = speakTree(subBranch);
+		// log("childWords = " +JSON.stringify(childWords))
+		for (var c of childWords){
+
+			if (l[4]===1){
+				c="n"+c;	
+			}
+
+			// log("C = " +JSON.stringify(c))
+			var length = lib.LineLength(l);
+			// log(" L = "+length)
+			for (var i=0;i<length;i++){
+				var c = prefixVowel(dirIndex,c);
+			}
+			result.push(c);
+		}
+	}
+	return result;
+}
+
+function topToSpeech2(){
+	//lib.ConnectLines();
+	// log("elements : "+JSON.stringify(glob.page.elements))
+	// log("lines : "+JSON.stringify(glob.page.lines)+"\n")
+	var tree = recurse([],[],0)
+	var sentence = speakTree(tree).join(" ")+".";
+	sentence = sentence[0].toUpperCase()+sentence.substring(1)
+
+	// log("words : "+sentence)
+	return sentence
+}
 
 function branchTraverse(S,M,N,visited,curIndex){
 	// log(visited+" visiting "+curIndex)
@@ -495,3 +621,4 @@ function Instantiate(T){
 module.exports.Topologize=Topologize
 module.exports.Instantiate=Instantiate
 module.exports.topToSpeech=topToSpeech
+module.exports.topToSpeech2=topToSpeech2

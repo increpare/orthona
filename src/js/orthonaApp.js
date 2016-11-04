@@ -64,6 +64,20 @@ function DoPrint(printAll){
     }
 }
 
+function DoLoad(loadAll){
+    var str = prompt("Enter page data", "");
+    var newPage = JSON.parse(str);
+
+    if (PageEmpty()&&glob.sketchBookIndex===glob.sketchBook.length-1){
+        glob.sketchBook.splice(glob.sketchBookIndex,1);
+    }
+    glob.sketchBook.push(newPage);
+    glob.sketchBookIndex=glob.sketchBook.length-1;
+    
+    LoadPage();      
+    SaveState(true);
+}
+
 function TryRestoreState(sketch_save){
 /*
 
@@ -118,6 +132,9 @@ function doStart(){
         } else if (evt.keyCode===80){
             //undo
             DoPrint(evt.shiftKey);
+        }  else if (evt.keyCode===76){
+            //undo
+            DoLoad(evt.shiftKey);
         } 
 
     }

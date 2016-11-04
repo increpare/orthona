@@ -15,6 +15,21 @@ axes[3]=[0,1]
 axes[4]=[1,1]
 
 
+function Diagonal(l){
+	var [x1,y1,x2,y2,t]=l
+	return (x2-x1)*(y2-y1)!==0;
+}
+function LineLength(l){
+	var [x1,y1,x2,y2,t]=l
+	var dx = Math.abs(x2-x1)
+	var dy = Math.abs(y2-y1)
+	if (Diagonal(l)){
+		return dx
+	} else {
+		return dx+dy;
+	}
+}
+
 
 function iconAt(tx,ty){
     for (var i=0;i<glob.page.elements.length;i++){
@@ -24,6 +39,17 @@ function iconAt(tx,ty){
         }
     }
     return false;
+}
+
+
+function getIconIndexAt(tx,ty){
+    for (var i=0;i<glob.page.elements.length;i++){
+        var el = glob.page.elements[i];
+        if (el[0]===tx&&el[1]===ty){
+            return i;
+        }
+    }
+    return -1;
 }
 
 
@@ -601,5 +627,7 @@ module.exports.CenterPortrait=CenterPortrait
 module.exports.saveCanvasToPng=saveCanvasToPng
 module.exports.tryRemoveCellAt=tryRemoveCellAt
 module.exports.iconAt=iconAt
+module.exports.getIconIndexAt=getIconIndexAt
 module.exports.makeLine=makeLine
 module.exports.tryAddLine=tryAddLine
+module.exports.LineLength=LineLength;
