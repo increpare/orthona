@@ -21,7 +21,7 @@ Software ecosystem for the Ortho language.
 - Retopologizer for constellation-style renders
 
 ###Output formats
-- Translating into a speakable instruction language		
+- Translating into a speakable instruction language (2 dialects)
 
 ###Input formats
 - FLAT markup language
