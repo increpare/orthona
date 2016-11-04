@@ -674,7 +674,7 @@ function ElementInInterior(e,l){
 	var [dlx,dly] = axes[ld]
 	var [x1,y1,x2,y2]=l;
 	var result = [];
-	for (var i=0;i<ll-2;i++){
+	for (var i=0;i<ll-1;i++){
 		x1+=dlx;
 		y1+=dly;
 		if (ex===x1&&ey===y1){
