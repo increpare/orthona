@@ -1,4 +1,4 @@
-The Ortho software ecosystem
+Software ecosystem for the Ortho language.
 
 ###Editors
 - Orthona: iOS/Web touch-based text input app
