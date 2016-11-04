@@ -2,7 +2,7 @@ var fs = require('fs')
 
 var glob = require('./orthoGlobals')
 var intersects = require('line-segments-intersect');
-
+var log = console.log
 var ORTHO_VERSION=0;
 
 var axes = {};
@@ -51,6 +51,18 @@ function getIconIndexAt(tx,ty){
         }
     }
     return -1;
+}
+
+
+function getLineIndicesWithEndpoint(tx,ty){
+	var result=[]
+    for (var i=0;i<glob.page.lines.length;i++){
+        var [x1,y1,x2,y2,lt] = glob.page.lines[i];
+        if ( (x1===tx&&y1===ty) || (x2===tx&&y2===ty) ){
+        	result.push(i);
+        }
+    }
+    return result;
 }
 
 
@@ -723,11 +735,125 @@ function SelfIntersects(){
 	return false;
 }
 
-function IsCyclic(){
-	return false;
+function ConnectedComponents(){
+	var lines = glob.page.lines;
+	var elements= glob.page.elements;
+	var l_colours = []
+	var e_colours = []
+	var c = 0;
+	for (var i=0;i<lines.length;i++){
+		l_colours.push(c);
+		c++
+	}
+	for (var i=0;i<elements.length;i++){
+		e_colours.push(c);
+		c++
+	}
+
+	var modified=true
+	while(modified){
+		modified=false;
+		for (var l_i=0;l_i<lines.length;l_i++){
+			var l = lines[l_i];
+
+			var [x1,y1,x2,y2,lt]=l;
+
+			//1 - spread between lines and elements
+			var lc =l_colours[l_i];
+			var e1=null;
+			var e1c=-1;
+
+			var e1_i = getIconIndexAt(x1,y1);
+			if (e1_i>=0){
+				e1 = elements[e1_i];
+				e1c = e_colours[e1_i];
+				if (lc!==e1c){
+					modified=true;
+				}
+				var newC = Math.min(lc,e1c);
+				e_colours[e1_i]=newC
+				l_colours[l_i]=newC
+			}
+
+			var e2_i = getIconIndexAt(x2,y2);
+			if (e2_i>=0){
+				var e2 = elements[e2_i];
+				var e2c = e_colours[e2_i];
+				if (lc!==e1c){
+					modified=true;
+				}
+				var newC = Math.min(lc,e2c);
+				e_colours[e2_i]=newC
+				l_colours[l_i]=newC
+				if (e1_i>=0){
+					e_colours[e1_i]=newC					
+				}
+			}
+
+
+			//2 - spread between lines and lines
+			var lineIndices = getLineIndicesWithEndpoint(x1,y1)
+			lineIndices = lineIndices.concat(getLineIndicesWithEndpoint(x2,y2))
+			var minc = l_colours[lineIndices[0]];
+			for (var i=0;i<lineIndices.length;i++){
+				var li = lineIndices[i]
+				var lc = l_colours[li]
+				if (lc!==minc){
+					modified=true;
+				}
+				minc = Math.min(minc,lc)
+			}
+
+			for (var i=0;i<lineIndices.length;i++){
+				var li = lineIndices[i]
+				l_colours[li]=minc;
+			}
+
+		}
+	}
+
+	var colours = e_colours.concat(l_colours)
+	var count = colours.reduce(function(values, v) {
+	  if (!values.set[v]) {
+	    values.set[v] = 1;
+	    values.count++;
+	  }
+	  return values;
+	}, { set: {}, count: 0 }).count;
+
+	return count;
 }
 
+function IsCyclic(){
+	var lines = [].concat(glob.page.lines)
+	log(JSON.stringify(lines))
+	//algorithm prune lines until no more lines with stray branches left
+	for (var i=0;i<lines.length;i++){
+		var [x1,y1,x2,y2,lt]=lines[i]
+		var linesAtA = getLineIndicesWithEndpoint(x1,y1);
+		var linesAtB = getLineIndicesWithEndpoint(x2,y2);
+		if (linesAtA.length===1||linesAtB.length===1){
+			lines.splice(i,1);
+			i=-1;
+			if (lines.length===0){
+				break;
+			}
+		}
+		log(JSON.stringify(lines))
+	}
+	return lines.length>0;
+}
 
+function LinesOccupied(){
+	var lines = glob.page.lines;
+	for (var i=0;i<lines.length;i++){
+		var [x1,y1,x2,y2,lt]=lines[i];
+		if (getIconIndexAt(x1,y1)==-1 || getIconIndexAt(x2,y2)==-1){
+			return false
+		}
+	}
+	return true;
+}
 module.exports.Relation=Relation
 module.exports.LineDirection=LineDirection
 module.exports.ConnectLines=ConnectLines
@@ -761,3 +887,5 @@ module.exports.TranslateGraph=TranslateGraph
 module.exports.FixPageLines=FixPageLines
 module.exports.IsCyclic=IsCyclic
 module.exports.SelfIntersects=SelfIntersects
+module.exports.ConnectedComponents=ConnectedComponents
+module.exports.LinesOccupied=LinesOccupied

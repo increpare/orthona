@@ -5,7 +5,7 @@ var glob 			= require('./js/orthoGlobals')
 var canvasRender 	= require('./js/canvasRender')
 var lib 			= require('./js/orthoLib')
 var svgRender 		= require("./js/svgRender")
-var reduce 			= require("./js/orthoReduce")
+var contract 			= require("./js/orthoContract")
 var log=console.log
 
 if (process.argv.length===2){
@@ -45,30 +45,8 @@ if (outputFileName===""){
 
 
 lib.loadFile(inputFileName)
-var orig = JSON.stringify(glob.page)
-var minarea=100000000;
-var minpage="orig"
-var maxarea=-100000000;
-var maxpage="orig"
-for (var i=0;i<100;i++){
-	glob.page=JSON.parse(orig)
-	reduce.Reduce();
-	var area = lib.pageArea()
-	if (area<minarea){
-		minarea=area
-		minpage=JSON.stringify(glob.page);
-	}
-	if (area>maxarea){
-		maxarea=area
-		maxpage=JSON.stringify(glob.page);
-	}
-	lib.shuffle()
-}
 
-log("MAX\n"+maxpage)
-log("MIN\n"+minpage)
-
-glob.page=JSON.parse(minpage)
+contract.Contract();
 
 lib.saveFile(outputFileName)
 log("saved " + outputFileName)

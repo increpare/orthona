@@ -3,7 +3,6 @@ var glob 			= require('./orthoGlobals')
 var canvasRender 	= require('./canvasRender')
 var lib 			= require('./orthoLib')
 var svgRender 		= require("./svgRender")
-var reduce 			= require("./orthoReduce")
 var log=console.log
 
 
@@ -81,7 +80,7 @@ function Absolutize(dat){
 	glob.page.lines=lines;
 }
 
-function Reduce(){
+function Contract(){
 	var start = Relativize();
 
 	var reduced=true;
@@ -105,4 +104,4 @@ function Reduce(){
 	Absolutize(start);
 }
 
-module.exports.Reduce = Reduce
+module.exports.Contract = Contract
