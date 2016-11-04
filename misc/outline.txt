@@ -5,9 +5,11 @@ Editors
 Orthona: iOS/Web touch-based text input app
 Orthotope: Keyboard-based text editor
 
-Documentation
+
+Learning/Reference
 -------------
 Orthodocs: iOS/Web usage reference
+Ortho Utala: Multiple-choice iOS learning tool
 
 
 Image Renderers
@@ -40,4 +42,3 @@ FLAT markup language
 
 TO DO
 -----
-learning app

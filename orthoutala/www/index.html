@@ -48,11 +48,25 @@ body {
     -ms-user-select: none;
     user-select: none;
 }
+
+#targetWord svg {    
+    margin-top: -15px;
+    margin-bottom: -15px;
+    height: 50px;
+}
 svg{
     vertical-align: middle;
-    height:100%;
+    width:80px;
+    height:80px;
 }
-.list-group svg{display:float;height:50px;width:50px;}
+.otherLanguage svg{    
+    margin-top: -20px;
+}
+.list-group svg{
+    height: 50px;
+    width: 50px;
+    vertical-align: middle;
+}
 ul {
 list-style-type: none;
 padding:0px;
@@ -162,11 +176,6 @@ function startPopulate(qMode){
         var tr = rows[answer];
         var td = tr[1-direction];
         var inner = td[getRandomInt(0,td.length)];
-        if (direction===0){
-            inner = "<span class='otherLanguage' dir='rtl' lang='ar'>"+inner+"</span>";
-        } else {
-            inner = "<span class='englishLanguage'>"+inner+"</span>";
-        }
         tw.innerHTML = inner;
     }
 
@@ -181,11 +190,6 @@ function startPopulate(qMode){
             d[chosenIndices[i]]=capitalizeFirstLetter(d[chosenIndices[i]]);
             
             var inner = d[chosenIndices[i]];
-            if (direction===1){
-                inner = "<span class='otherLanguage' dir='rtl' lang='ar'>"+inner+"</span>";
-            } else {
-                inner = "<span class='englishLanguage'>"+inner+"</span>";
-            }
 
 
             inner ='<a class="list-group-item itemLink"  ontouchstart="clickChoice('+i+')" >'+inner+'</a>';
@@ -193,18 +197,10 @@ function startPopulate(qMode){
             el.innerHTML= inner;
         } else {
             var inner = d[chosenIndices[i]];
-            if (direction===1){
-                inner = "<span class='otherLanguage' dir='rtl' lang='ar'>"+inner+"</span>";
-            } else {
-                inner = "<span class='englishLanguage' dir='ltr' lang='en'>"+inner+"</span>";
-            }
+
             el.innerHTML=inner;
             def=d2[getRandomInt(0,d2.length)];
-            if (direction===1){
-                def = "<span class='englishLanguage' dir='ltr' lang='en'>"+def+"</span>";
-            } else {
-                def = "<span class='otherLanguage' dir='rtl' lang='ar'>"+def+"</span>";
-            }
+
             if (answer===i && answer===chosenAnswer) {
                 el.innerHTML = '<a class="list-group-item itemLink  disabled"  style="color:green; background-color:lightgreen;" >'+el.innerHTML+" "+check+"("+def+")"+'</a>';
             } else if (answer===i) {
@@ -280,9 +276,7 @@ function doStart(){
   <span id="choice4"></span> <span id = "meaning4"></span>
 </div>
 <p>
-<div><button class="btn btn-block btn-lg btn-info" id="continueButton"  ontouchstart="clickContinue()" >continue</button></class>
-
-        </div>
+<button class="btn btn-block btn-lg btn-info" id="continueButton"  ontouchstart="clickContinue()" >continue</button>
 
 
 

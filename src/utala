@@ -28,6 +28,12 @@ glob.sketchBook = [{
 glob.sketchBookIndex=0
 glob.page=glob.sketchBook[0]
 
+
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+};
+
 var dictStr = `var dictionary = [`
 for (var s=0;s<entityNames.length;s++){
 	var name = entityNames[s];
@@ -36,6 +42,7 @@ for (var s=0;s<entityNames.length;s++){
 	if (s>0){
 		dictStr+=",";
 	}
+	imageStr=imageStr.replaceAll("0 0 30 30","5 5 20 20")
 	dictStr += '[[`'+name+'`],[`'+imageStr+'`]]'
 }
 dictStr+="];"
