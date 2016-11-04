@@ -1,6 +1,7 @@
 var fs = require('fs')
 
 var glob = require('./orthoGlobals')
+var intersects = require('line-segments-intersect');
 
 var ORTHO_VERSION=0;
 
@@ -170,6 +171,7 @@ function pageArea(){
 }
 
 function saveFile(fileName){
+	FixPageLines();
     var sketch_save = JSON.stringify(glob.page);    
 	str = fs.writeFileSync(fileName,sketch_save);
 }
@@ -216,6 +218,22 @@ function loadBinary(fileName){
 
 }
 
+function TranslateGraph(dx,dy){
+
+	for (var i=0;i<glob.page.elements.length;i++){
+		var e = glob.page.elements[i];
+		e[0]+=dx
+		e[1]+=dy
+	}
+	for (var i=0;i<glob.page.lines.length;i++){
+		var l = glob.page.lines[i];
+		l[0]+=dx
+		l[1]+=dy
+		l[2]+=dx
+		l[3]+=dy
+	}
+}
+
 function MoveOriginToTopLeft(dx=0,dy=0){
 	var minx=10000;
 	var miny=10000;
@@ -231,19 +249,7 @@ function MoveOriginToTopLeft(dx=0,dy=0){
 		minx=Math.min(minx,l[2]);
 		miny=Math.min(miny,l[3]);
 	}
-
-	for (var i=0;i<glob.page.elements.length;i++){
-		var e = glob.page.elements[i];
-		e[0]-=minx-dx
-		e[1]-=miny-dy
-	}
-	for (var i=0;i<glob.page.lines.length;i++){
-		var l = glob.page.lines[i];
-		l[0]-=minx-dx
-		l[1]-=miny-dy
-		l[2]-=minx-dx
-		l[3]-=miny-dy
-	}
+	TranslateGraph(dx-minx,dy-miny)
 }
 
 function CenterPortrait(s){
@@ -323,13 +329,16 @@ function saveBinary(fileName){
 	fs.writeFileSync(fileName,buffer);
 }
 
-function loadFile(fileName){
+function loadFile(fileName,fixlines=true){
 	str = fs.readFileSync(fileName)+'';
-	loadString(str);
+	loadString(str,fixlines);
 }
 
-function loadString(str){
+function loadString(str,fixlines=true){
 	glob.page = JSON.parse(str);
+	if (fixlines){
+		FixPageLines();
+	}
 }
 
 
@@ -554,6 +563,34 @@ function tryAddLine(x1,y1,x2,y2,lineMode){
     glob.page.lines.push([x1,y1,x2,y2,lineMode]);
 }
 
+function FixPageLines(){
+	for (var i=0;i<glob.page.lines.length;i++){
+		var l = glob.page.lines[i];
+		var [x1,y1,x2,y2,lt]=l
+
+	    var dx=x2-x1;
+	    var dy=y2-y1;
+
+	    var l = Math.max(Math.abs(dx),Math.abs(dy));
+	    dx = Math.sign(dx)*l;
+	    dy = Math.sign(dy)*l;
+	    x2=x1+dx;
+	    y2=y1+dy;
+
+	    if (x1<x2|| (x1===x2&&y1<y2)){
+	        var tx=x1;
+	        x1=x2;
+	        x2=tx;
+
+	        var ty=y1;
+	        y1=y2;
+	        y2=ty;
+	    }
+
+	    glob.page.lines[i]= [x1,y1,x2,y2,lt]
+	}
+}
+
 //slightly fancier variation, for the touch program
 function makeLine(x1,y1,x2,y2,lineMode=0){
     /*if (x2>x1+1){
@@ -602,6 +639,95 @@ function makeLine(x1,y1,x2,y2,lineMode=0){
     glob.page.lines.push([x1,y1,x2,y2,lineMode]);
 }
 
+
+function LinesIntersect(l,m){
+	//log(JSON.stringify(l)+ " _ "+JSON.stringify(m))
+	var e=0.1
+	var [l1x,l1y,l2x,l2y] = l;
+	var [m1x,m1y,m2x,m2y] = m;
+
+	var ld = LineDirection(l)
+	var [dlx,dly] = axes[ld]
+	l1x+=dlx*e;
+	l1y+=dly*e;
+	l2x-=dlx*e;
+	l2y-=dly*e;
+
+	var md = LineDirection(m)
+	var [dmx,dmy] = axes[md]
+	m1x+=dmx*e;
+	m1y+=dmy*e;
+	m2x-=dmx*e;
+	m2y-=dmy*e;
+	
+	if (intersects([[l1x,l1y],[l2x,l2y]], [[m1x,m1y],[m2x,m2y]])) {
+		return true;
+	}
+
+	return false;
+}
+
+function ElementInInterior(e,l){
+	var [ex,ey,et]=e
+	var ld = LineDirection(l)
+	var ll = LineLength(l)
+	var [dlx,dly] = axes[ld]
+	var [x1,y1,x2,y2]=l;
+	var result = [];
+	for (var i=0;i<ll-2;i++){
+		x1+=dlx;
+		y1+=dly;
+		if (ex===x1&&ey===y1){
+			return true;
+		}
+	}
+	return false;
+}
+
+function SelfIntersects(){
+	var elements = glob.page.elements;
+	var lines = glob.page.lines;
+
+	for (var i=0;i<elements.length;i++){
+		var [e1x,e1y,e1t]=elements[i];
+		for (var j=i+1;j<elements.length;j++){
+			var [e2x,e2y,e2t]=elements[j];
+			if (e1x===e2x&&e1y===e2y){
+				return true;
+			}
+		}
+	}
+
+
+	for (var i=0;i<lines.length;i++){
+		var l1=lines[i];
+		for (var j=i+1;j<lines.length;j++){
+			var l2=lines[j];
+			if (LinesIntersect(l1,l2)){
+				return true;
+			}
+		}
+	}
+
+	//check none of the interior poitns on a line segment intersect an element
+
+	for (var i=0;i<lines.length;i++){
+		var l=lines[i];
+		for (var j=0;j<elements.length;j++){
+			var e = elements[j];
+			if (ElementInInterior(e,l)){
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+function IsCyclic(){
+	return false;
+}
+
+
 module.exports.Relation=Relation
 module.exports.LineDirection=LineDirection
 module.exports.ConnectLines=ConnectLines
@@ -631,3 +757,7 @@ module.exports.getIconIndexAt=getIconIndexAt
 module.exports.makeLine=makeLine
 module.exports.tryAddLine=tryAddLine
 module.exports.LineLength=LineLength;
+module.exports.TranslateGraph=TranslateGraph
+module.exports.FixPageLines=FixPageLines
+module.exports.IsCyclic=IsCyclic
+module.exports.SelfIntersects=SelfIntersects

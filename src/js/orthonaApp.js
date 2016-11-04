@@ -40,6 +40,7 @@ function DoUndo(){
     UndoStack.splice(UndoStack.length-1,1);
     var last = UndoStack[UndoStack.length-1];
     TryRestoreState(last) 
+    lib.FixPageLines()
     SaveState(false,false);
 }
 
@@ -74,7 +75,8 @@ function DoLoad(loadAll){
     glob.sketchBook.push(newPage);
     glob.sketchBookIndex=glob.sketchBook.length-1;
     
-    LoadPage();      
+    LoadPage();   
+    lib.MoveOriginToTopLeft(12,7)
     SaveState(true);
 }
 
@@ -96,6 +98,7 @@ function TryRestoreState(sketch_save){
         var dat = JSON.parse(sketch_save);
         glob.sketchBook=dat.book;
         glob.sketchBookIndex=dat.page;
+        lib.FixPageLines();
         LoadPage();
     } else {        
         SaveState();
@@ -169,6 +172,8 @@ function LoadPage(){
     }
     log(glob.page);
     glob.page=glob.sketchBook[glob.sketchBookIndex];
+
+    lib.FixPageLines()
     log(glob.page);
     renderApp();
 }
