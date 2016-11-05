@@ -69,15 +69,42 @@ function DoLoad(loadAll){
     var str = prompt("Enter page data", "");
     var newPage = JSON.parse(str);
 
+    if (newPage.elements===undefined){
+        glob.sketchBook = newPage;
+        glob.page=glob.sketchBook[0]
+        glob.sketchBookIndex=0;
+    } else {        
+        if (PageEmpty()&&glob.sketchBookIndex===glob.sketchBook.length-1){
+            glob.sketchBook.splice(glob.sketchBookIndex,1);
+        }
+        glob.sketchBook.push(newPage);
+        glob.sketchBookIndex=glob.sketchBook.length-1;    
+    }
+    LoadPage();   
+    lib.MoveOriginToTopLeft(12,7)
+    SaveState(true);
+}
+
+var clipboard="";
+function DoCopy(){
+    clipboard=JSON.stringify(glob.page)
+}
+function DoPaste(){
+    if (clipboard===""){
+        return;
+    }
+    var newPage = JSON.parse(clipboard);
+
     if (PageEmpty()&&glob.sketchBookIndex===glob.sketchBook.length-1){
         glob.sketchBook.splice(glob.sketchBookIndex,1);
     }
     glob.sketchBook.push(newPage);
-    glob.sketchBookIndex=glob.sketchBook.length-1;
-    
+    glob.sketchBookIndex=glob.sketchBook.length-1;    
+
     LoadPage();   
-    lib.MoveOriginToTopLeft(12,7)
+    lib.MoveOriginToTopLeft(4,4)
     SaveState(true);
+
 }
 
 function TryRestoreState(sketch_save){
@@ -138,6 +165,32 @@ function doStart(){
         }  else if (evt.keyCode===76){
             //undo
             DoLoad(evt.shiftKey);
+        }   else if (evt.keyCode===67){
+            //copy
+            DoCopy();
+        }   else if (evt.keyCode===86){
+            //copy
+            DoPaste();
+        }   else if (evt.keyCode===87){
+            //up
+            glob.page.offsetY-=glob.cellSize;
+            SaveState(true);
+            renderApp();
+        }   else if (evt.keyCode===83){
+            //down
+            glob.page.offsetY+=glob.cellSize;
+            SaveState(true);
+            renderApp();
+        }    else if (evt.keyCode===65){
+            //left
+            glob.page.offsetX-=glob.cellSize;
+            SaveState(true);
+            renderApp();
+        }    else if (evt.keyCode===68){
+            //right
+            glob.page.offsetX+=glob.cellSize;
+            SaveState(true);
+            renderApp();
         } 
 
     }

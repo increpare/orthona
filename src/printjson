@@ -123,39 +123,27 @@ function LineAtPoint(p){
 
 
 var lines = [" -/|\\"," …⋰⋮⋱"];
+for (var i=0;i<page.lines.length;i++){
+	var l = page.lines[i]
+	var ll = lib.LineLength(l)
+	var ld = lib.LineDirection(l)
+	var [x1,y1,x2,y2,lt]=l
 
-for (var i=0;i<width;i++){
-	for (var j=0;j<height;j++){
-		var p = [i+offsetX,j+offsetY]
-		var l = LineAtPoint(p);
-		if (l!==null){
-			var ld1=lib.LineDirection(l);
-			grid[2*j+1][2*i+1]=lines[l[4]===1?1:0][Math.abs(ld1)];
-			
-			//for each cell, check 9 points for line drawing
-			for (var mi=-1;mi<=1;mi++){
-				for (var mj=-1;mj<=1;mj++){
-					if (mi===0&&mj===0){
-						continue;
-					}
-					var p_out=[p[0]+mi,p[1]+mj]
-					if (lib.Connection(p,p_out,page.lines)[0]){
-						var l2 = LineAtPoint(p_out);
-						if (l2!==null){
-							var l_dir = lib.LineDirection(l2);
-							var l_vec = lib.axes[l_dir];
-							if ((l_vec[0]===mi&&l_vec[1]===mj)||(l_vec[0]===-mi&&l_vec[1]===-mj)){
-								l_dir=Math.abs(l_dir);								
-								grid[2*j+1+mj][2*i+1+mi]=lines[l2[4]===1?1:0][Math.abs(l_dir)];
-							}
-						}
-					}
-				}
-			}
-		}
+	x1-=offsetX;
+	y1-=offsetY;
+	x2-=offsetX;
+	y2-=offsetY;
+	x1=x1*2+1;
+	y1=y1*2+1;
+
+	var [dx,dy]=lib.axes[ld]
+	for (var j=0;j<2*ll+1;j++){
+		grid[y1][x1]=lines[lt][Math.abs(ld)]
+		x1+=dx;
+		y1+=dy;
 	}
-}
 
+}
 
 for (var i=0;i<page.elements.length;i++){
 	var e = page.elements[i]

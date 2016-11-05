@@ -447,22 +447,18 @@ function PointOnLine(e,line){
 	var lx2=line[2];
 	var ly2=line[3];
 
-	//check by triangle inequality
-	var dlx = lx2-lx1;
-	var dly = ly2-ly1;
+	var ll = LineLength(line)
+	var ld = LineDirection(line)
+	var [dx,dy]=axes[ld]
 
-	var dx1 = ex-lx1;
-	var dy1 = ey-ly1;
-
-	var dx2 = ex-lx2;
-	var dy2 = ey-ly2;
-
-	var d12 = Math.sqrt(dlx*dlx+dly*dly)
-	var d1 = Math.sqrt(dx1*dx1+dy1*dy1)
-	var d2 = Math.sqrt(dx2*dx2+dy2*dy2)
-	var diff = d12-d1-d2
-	var d = Math.abs(d12-d1-d2);
-	return d<0.001;
+	for (var i=0;i<=ll;i++){
+		if (ex===lx1&&ey===ly1){
+			return true;
+		}
+		lx1+=dx;
+		ly1+=dy;
+	}
+	return false;
 }
 
 function ConnectLines(){
