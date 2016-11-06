@@ -117,7 +117,7 @@ var dictionary = [[[`Entity A`],[`<svg preserveAspectRatio="xMidYMid" xmlns="htt
      xmlns:xlink="http://www.w3.org/1999/xlink" width='30mm' height='30mm' viewBox='5 5 20 20' version='1.1'>
 		<path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='#000000' d=''/>
 		<path  stroke-width='1' fill='#ffffff' stroke='#000000' d='M 8.6 8.6 C 15 14.2 15 14.2 21.4 8.6 C 15.8 15 15.8 15 21.4 21.4 C 15 15.8 15 15.8 8.6 21.4 C 14.2 15 14.2 15 8.6 8.6 '/>
- 	</svg>`]],[[`Cause`],[`<svg preserveAspectRatio="xMidYMid" xmlns="http://www.w3.org/2000/svg" 
+ 	</svg>`]],[[`Reason`],[`<svg preserveAspectRatio="xMidYMid" xmlns="http://www.w3.org/2000/svg" 
      xmlns:xlink="http://www.w3.org/1999/xlink" width='30mm' height='30mm' viewBox='5 5 20 20' version='1.1'>
 		<path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='#000000' d=''/>
 		<circle stroke-width='1' cx='15' cy='15' r='6.4' fill='#ffffff' stroke='#000000' />

@@ -1,0 +1,48 @@
+#!/usr/bin/env node
+var execSync = require('child_process').execSync
+
+var fs = require('fs')
+var glob = require('./js/orthoGlobals')
+var lib = require('./js/orthoLib')
+var css = require('css')
+var svgRender = require("./js/svgRender")
+var log = console.log
+var Canvas = require('canvas')
+var minify = require('html-minifier').minify;
+var Image = Canvas.Image
+var Inliner = require('inliner');
+var csvparse = require('csv-parse/lib/sync');
+var shuffle = require('shuffle-array')
+
+
+
+glob.sketchBook=[]
+
+
+for (var s=5;s<glob.symbolCount;s++){
+	for (var t=5;t<glob.symbolCount;t++){
+		//no event/places
+		if (s===9||t===9||(t>=15&&t<=19)||(s>=15&&s<=19)||(s===t)) {
+			continue;
+		}
+
+		glob.page={
+			elements:[[8,4,0],[8,5,0]],
+			lines:[[8,4,8,5,1]],
+			offsetX:0,
+			offsetY:0,
+			scale:1,
+			sketchTitle:""
+		};
+		glob.page.elements[0][2]=s
+		glob.page.elements[1][2]=t
+		glob.sketchBook.push(glob.page)
+
+	}
+}
+
+shuffle(glob.sketchBook)
+
+var dat = JSON.stringify(glob.sketchBook)
+
+fs.writeFileSync("./dat/sketchbook/allpairs.json",dat);

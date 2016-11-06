@@ -97,7 +97,7 @@ var datasheet_raw = fs.readFileSync("./res/datasheet/Sheet 1-Table 1.csv",'utf8'
 var datasheet = csvparse(datasheet_raw)
 var heading = datasheet[0]
 var exampleNames=[]
-for (var i=2;i<heading.length;i++){
+for (var i=3;i<heading.length;i++){
 	if (heading[i].trim()!=""){
 		exampleNames.push(heading[i])
 	}
@@ -325,7 +325,7 @@ for (var i=1;i<datasheet.length;i++){
 	
 	page+=`<table><tr><th><a href="../index.html">&lt;&lt; back << </a><th><th>`
 	var count=0;
-	for (var j=2;j<r.length;j++){
+	for (var j=3;j<r.length;j++){
 		var ex_name = datasheet[0][j].trim();
 		var ex_descr = r[j].trim();
 		if (ex_descr!=""){

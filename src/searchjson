@@ -1,0 +1,71 @@
+#!/usr/bin/env node
+
+var fs 				= require('fs')
+var glob 			= require('./js/orthoGlobals')
+var canvasRender 	= require('./js/canvasRender')
+var lib 			= require('./js/orthoLib')
+var svgRender 		= require("./js/svgRender")
+var contract 			= require("./js/orthoContract")
+var entityNames = require("./res/entitynames.json")
+var print 		= require("./js/jsonPrinter")
+
+for (var i=0;i<entityNames.length;i++){
+	entityNames[i]=entityNames[i].toLowerCase();
+}
+var log=console.log
+
+if (process.argv.length===2){
+	console.log("USAGE: searchjson ENTITYNAME")
+	return
+}
+
+var entityName=""
+for (var i=2;i<process.argv.length;i++){
+	var t = process.argv[i]
+	if (entityName===""){
+		entityName=t.toLowerCase();
+	} else {
+		console.log("Too many arguments. Unexpected argument \""+t+"\".")		
+	}
+}
+
+if (entityName==="")
+{
+	console.log("need to supply entity name")
+}
+
+var entityIndex=entityNames.indexOf(entityName);
+
+if (entityIndex===-1)
+{
+	console.log("need to supply valid name")
+}
+
+var files = fs.readdirSync("./dat/json");
+var path = require('path');
+
+
+function HasSymbol(){
+	var elements = glob.page.elements;
+	var lines = glob.page.lines;
+	for (var i=0;i<elements.length;i++){
+		if (elements[i][2]===entityIndex){
+			return true;
+		}
+	}
+	return false;
+}
+
+for(var i in files) {
+   if(path.extname(files[i]) === ".json") {
+   	log(files[i])
+		lib.loadFile("./dat/json/"+files[i])
+		if (HasSymbol()){
+			log(path.basename(files[i]));
+			log(print.Print())
+			log("\n")
+
+		}
+   }
+}
+
