@@ -58,9 +58,9 @@ function HasSymbol(){
 
 for(var i in files) {
    if(path.extname(files[i]) === ".json") {
-   	log(files[i])
 		lib.loadFile("./dat/json/"+files[i])
 		if (HasSymbol()){
+   			log(files[i])
 			log(path.basename(files[i]));
 			log(print.Print())
 			log("\n")

@@ -6,6 +6,8 @@ var glob = require('./js/orthoGlobals')
 var lib = require('./js/orthoLib')
 var css = require('css')
 var svgRender = require("./js/svgRender")
+var standAlone = require("./js/standAlone")
+var canvasRender = require("./js/canvasRender")
 var log = console.log
 var Canvas = require('canvas')
 var minify = require('html-minifier').minify;
@@ -165,6 +167,13 @@ for (var fn of exampleNames){
 			}
 		}
 		var svgDat = svgRender.render(s);
+
+		standAlone.initOrthoRender()
+
+		canvasRender.render()
+
+		lib.saveCanvasToPng(`./tmp/ex_${fn}_${s}.png`)
+
 		svgExDict[`${fn}_${s}`]=svgDat;
 	}
 

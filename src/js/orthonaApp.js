@@ -173,22 +173,22 @@ function doStart(){
             DoPaste();
         }   else if (evt.keyCode===87){
             //up
-            glob.page.offsetY-=glob.cellSize;
+            glob.page.offsetY+=glob.cellSize;
             SaveState(true);
             renderApp();
         }   else if (evt.keyCode===83){
             //down
-            glob.page.offsetY+=glob.cellSize;
+            glob.page.offsetY-=glob.cellSize;
             SaveState(true);
             renderApp();
         }    else if (evt.keyCode===65){
             //left
-            glob.page.offsetX-=glob.cellSize;
+            glob.page.offsetX+=glob.cellSize;
             SaveState(true);
             renderApp();
         }    else if (evt.keyCode===68){
             //right
-            glob.page.offsetX+=glob.cellSize;
+            glob.page.offsetX-=glob.cellSize;
             SaveState(true);
             renderApp();
         } 

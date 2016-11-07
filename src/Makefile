@@ -2,7 +2,6 @@ all: ../orthona/www/js/compiled.js ../orthotope/js/compiled.js tmp/docDatabase.j
 
 res/entityNames.json: res/datasheet/*.*
 	(cd build/; ./updatenames)
-	cp -rf res/datasheet.numbers ~/Library/Mobile\ Documents/com~apple~Numbers/Documents
 
 tmp/docDatabase.json: res/docDatabase.slab
 	(cd build; ./transformDocDatabase)
