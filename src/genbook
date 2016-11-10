@@ -1,0 +1,102 @@
+#!/usr/bin/env node
+
+var fs = require('fs')
+var glob = require('./js/orthoGlobals')
+var lib = require('./js/orthoLib')
+var standAlone = require('./js/standAlone')
+var svgRender = require("./js/svgRender")
+var execSync = require('child_process').execSync
+var log = console.log
+var standAlone = require('./js/standAlone')
+var canvasRender = require("./js/canvasRender")
+
+
+if (process.argv.length===2){
+	console.log("USAGE: genbook FILENAME");
+	return;
+}
+
+var inputFileName=""
+var noImg=false;
+for (var i=2;i<process.argv.length;i++){
+	var t = process.argv[i];
+	if (inputFileName===""){
+		inputFileName=t;
+		console.log("input file "+t)
+	} else if (t==="-noImg"){
+		noImg=true;
+	} else {
+		console.log("Too many arguments. Unexpected argument \""+t+"\".");		
+	}
+}
+
+if (inputFileName==="")
+{
+	console.log("need to supply input file");
+}
+
+glob.drawGridLines=false;
+glob.drawGridLines_Diagonal=false;
+glob.drawSelectiveGridLines=false;
+glob.drawDots=false;
+
+datFile = fs.readFileSync(inputFileName, 'utf8'),
+
+glob.sketchBook = JSON.parse(datFile)
+
+
+
+var bookTxt=`
+\\documentclass{book}
+
+\\usepackage[size=pocket,trim]{createspace}
+\\usepackage{graphicx}
+\\pagenumbering{gobble}
+\\pdftitle{Orthona Proverbs}
+\\pdfauthor{Stephen Lavelle}
+
+
+\\begin{document}
+`
+
+//generate all pages as svg files
+for (var i=0;i<glob.sketchBook.length;i++){
+	glob.page=glob.sketchBook[i];
+
+	if (noImg===false){
+		var svgDat=svgRender.render();
+		fs.writeFileSync(`./tmp/bp_${i}.svg`,svgDat)
+		execSync(` inkscape ./tmp/bp_${i}.svg -E  ../book/eps/bp_${i}.eps  --export-ignore-filters --export-ps-level=3`)
+	}
+	bookTxt+=`\\begin{figure}[p]
+    \\centering
+	\\includegraphics[scale=0.5]{eps/bp_${i}.eps}
+	\\end{figure}
+	\\clearpage`
+}
+
+bookTxt+=`\\end{document}`
+
+var path = require('path');
+var globalPath = path.resolve(inputFileName)
+var parsed = path.parse(globalPath)
+parsed.ext=".png"
+parsed.dir+="/../png"
+parsed.base=parsed.name+parsed.ext;
+outputFileName = path.format(parsed)
+log("outputFileName = "+outputFileName)
+
+fs.writeFileSync(`../book/${parsed.name}.tex`,bookTxt)
+
+execSync(`pdflatex ${parsed.name}.tex`,{cwd:"../book/"})
+execSync(`convert -size 1000x1000 canvas:white tmp.tiff`,{cwd:"../book/"})
+execSync(`convert tmp.tiff -gravity center -background white -extent 154x100% ${parsed.name}_cover_back_r.tiff`,{cwd:"../book/"})
+execSync(`rsvg-convert -d 2000 -p 2000 ../src/tmp/bp_0.svg -o  tmp.tiff`,{cwd:"../book/"})
+execSync(`convert tmp.tiff -gravity center -background white -extent 154x100% ${parsed.name}_cover_f_r.tiff`,{cwd:"../book/"})
+execSync(`rm -f *.log`,{cwd:"../book/"})
+execSync(`rm -f *tmp.tiff`,{cwd:"../book/"})
+execSync(`rm -f *.aux`,{cwd:"../book/"})
+
+
+
+

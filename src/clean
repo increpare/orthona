@@ -7,3 +7,4 @@ rm -rf dat/tiled
 rm -rf dat/retop
 rm -rf dat/json_random
 rm -rf dat/icons
+rm -rf ../book/eps/*.eps

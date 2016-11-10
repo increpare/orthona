@@ -7,7 +7,7 @@ var lib = require('./js/orthoLib')
 var svgRender = require("./js/svgRender")
 
 if (process.argv.length===2){
-	console.log("USAGE: json2svg [-noGridLines] [-diagonals] [-noIcons] [-noLines] [-selectiveGridLines] FILENAME [OUTPUT]");
+	console.log("USAGE: json2svg [-noDots] [-noGridLines] [-diagonals] [-noIcons] [-noLines] [-selectiveGridLines] FILENAME [OUTPUT]");
 	return;
 }
 
@@ -25,6 +25,8 @@ for (var i=2;i<process.argv.length;i++){
 		glob.drawLines=false;
 	} else if (t==="-selectiveGridLines"){
 		glob.drawSelectiveGridLines=true;
+	} else else if (t==="-noDots"){
+		glob.drawDots=false;
 	} else if (inputFileName===""){
 		inputFileName=t;
 		console.log("input file "+t)

@@ -158,8 +158,10 @@ function drawIcon(x, y, icon) {
             }
         case 4: //dot
             {
-                var r = DOC_CELLSIZE * 0.1;
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${tof(x)}' cy='${tof(y)}' r='${tof(r)}' fill='${strokeCol}' stroke='${strokeCol}' />\n`
+                if (glob.drawDots){
+                    var r = DOC_CELLSIZE * 0.1;
+                    result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${tof(x)}' cy='${tof(y)}' r='${tof(r)}' fill='${strokeCol}' stroke='${strokeCol}' />\n`
+                }
                 break;
             }
         case 5: //concentric circles
@@ -242,9 +244,9 @@ function drawIcon(x, y, icon) {
                 result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${tof(x)}' cy='${tof(y)}' r='${r2}' fill='${fillCol}' stroke='transparent' />\n`
 
                 x -= r;
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${tof(x)}' cy='${tof(y)}' r='${r2}' fill='transparent' stroke='${strokeCol}' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${tof(x)}' cy='${tof(y)}' r='${r2}' fill='white' stroke='${strokeCol}' />\n`
                 x += r;
-                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${tof(x)}' cy='${tof(y)}' r='${r2}' fill='transparent' stroke='${strokeCol}' />\n`
+                result += `\t\t<circle stroke-width='${STROKE_WIDTH}' cx='${tof(x)}' cy='${tof(y)}' r='${r2}' fill='white' stroke='${strokeCol}' />\n`
                 break;
             }
         case 12: //keyhole
@@ -650,14 +652,14 @@ function drawIcon(x, y, icon) {
         case 33: //desire spiral
             {
                 var r = DOC_CELLSIZE * 0.4;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
+                result += `\t\t<path  stroke-linecap="round" stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     describeArc(x, y, r, 0, 2 * Math.PI),
                     "'/>\n"
                 ].compileList();
                 var r2 = r * 2 / 3;
                 var r3 = r2 / 2;
-                result += `\t\t<path  stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
+                result += `\t\t<path  stroke-linecap="round" stroke-width='${STROKE_WIDTH}' fill='${fillCol}' stroke='${strokeCol}' d='`
                 result += [
                     describeArc(x, y + r - r2 - r3, r3, Math.PI / 2, Math.PI * 3 / 2),
                     describeArc(x, y + r - r2, r2, 3 * Math.PI / 2, Math.PI / 2),

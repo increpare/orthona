@@ -22,5 +22,7 @@ mdocs
 orthotope/js/compiled.js
 orthona/www/js/compiled.js
 *.swp
+*.eps
+*.pdf
 
 orthona/platforms/browser/www/js/compiled.js

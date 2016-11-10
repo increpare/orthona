@@ -3,6 +3,7 @@ module.exports.drawGridLines_Diagonal = false;
 module.exports.drawLines = true;
 module.exports.drawElements = true;
 module.exports.drawSelectiveGridLines=false;
+module.exports.drawDots=true;
 
 module.exports.scaleMin=0.25;
 module.exports.scaleMax=1.0;

@@ -325,7 +325,11 @@ function changedTouches(evt){
     }
 }
 
+var mouseState=-1; //global check mouse state
+
 function handleStart(evt) {
+    mouseState=evt.button;
+
     if (iconSelect===true){
         iconSelect=false;
     }
@@ -409,6 +413,7 @@ function clickCell(x,y,n){
 
 
 function handleEnd(evt){
+    mouseState=-1;
     evt.preventDefault();
     if (cleared===true || moved===true || toolbarSelect===true){
         if (noTouches(evt)){
@@ -471,6 +476,9 @@ function dist(ar){
 }
 
 function handleMove(evt) {
+    if (mouseState===-1){
+        iconSelect=false;
+    }
 
     evt.preventDefault();
 
