@@ -670,6 +670,7 @@ function makeLine(x1,y1,x2,y2,lineMode=0){
     if (removed===true){
     	return;
     }
+
     glob.page.lines.push([x1,y1,x2,y2,lineMode]);
 }
 
@@ -701,7 +702,7 @@ function LinesIntersect(l,m){
 	return false;
 }
 
-function LinePoints(l){
+function LinePoints(l,){
 	var points = [
 			[l[0],l[1]],
 			[l[2],l[3]]
