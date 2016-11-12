@@ -25,7 +25,7 @@ for (var i=2;i<process.argv.length;i++){
 		glob.drawLines=false;
 	} else if (t==="-selectiveGridLines"){
 		glob.drawSelectiveGridLines=true;
-	} else else if (t==="-noDots"){
+	} else if (t==="-noDots"){
 		glob.drawDots=false;
 	} else if (inputFileName===""){
 		inputFileName=t;

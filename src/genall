@@ -82,3 +82,5 @@ wait
 ./genflat
 
 make
+
+./genbook dat/sketchbook/proverbbook.json -noImg

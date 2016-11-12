@@ -7,7 +7,7 @@ tmp/docDatabase.json: res/docDatabase.slab
 	(cd build; ./transformDocDatabase)
 
 ../orthona/www/js/compiled.js: tmp/docDatabase.json ./js/*.js
-	browserify ./js/orthonaApp.js -o ../orthona/www/js/compiled.js
+	(browserify ./js/orthonaApp.js -o ../orthona/www/js/compiled.js; cd ../orthona; cordova build ios; cordova build browser)
 
 ../orthotope/js/compiled.js: ./js/*.js
 	 browserify ./js/orthotopeApp.js -o ../orthotope/js/compiled.js

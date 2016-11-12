@@ -98,6 +98,29 @@ function drawIcon(x,y,n){
             ctx.lineWidth=1;
             break;     
         }
+        case -5://print icon
+        {
+            ctx.beginPath();
+            var s = glob.cellSize*0.5/1.41;
+            ctx.moveTo(x-s,y-s);
+            ctx.lineTo(x+s,y-s);
+            ctx.lineTo(x+s,y+s);
+            ctx.lineTo(x-s,y+s);
+            ctx.moveTo(x-s,y-s);
+            ctx.moveTo(x-s/2,y-s);
+            ctx.lineTo(x-s/2,y-s/3);
+            ctx.lineTo(x+s/2,y-s/3);
+            ctx.lineTo(x+s/2,y-s);
+            ctx.fillStyle="#000000"
+            ctx.strokeStyle="#000000"
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle="#ffffff"
+            ctx.beginPath();
+            ctx.arc(x,y,s/4,0,2*Math.PI);
+            ctx.fill();
+            break;   
+        }
 
         case 0://square - solid
         {

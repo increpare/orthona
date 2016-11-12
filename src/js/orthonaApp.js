@@ -1,8 +1,7 @@
-var glob = require('./orthoGlobals')
+    var glob = require('./orthoGlobals')
 var canvasRender = require('./canvasRender')
 var entityNames = require('../res/entityNames.json')
 var lib = require('./orthoLib')
-log=console.log
 
 const cellSize = glob.cellSize;
 var iconSelect=false;
@@ -11,6 +10,7 @@ const scaleMin=glob.scaleMin;
 const scaleMax=glob.scaleMax;
 var toolbarSelect=false;
 
+var iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 
 var hx=0;
 var hy=0;
@@ -223,11 +223,11 @@ function LoadPage(){
             sketchTitle:""
         });
     }
-    log(glob.page);
+    console.log(glob.page);
     glob.page=glob.sketchBook[glob.sketchBookIndex];
 
     lib.FixPageLines()
-    log(glob.page);
+    console.log(glob.page);
     renderApp();
 }
 function PageLeft(){
@@ -354,9 +354,33 @@ function handleStart(evt) {
             if (t.clientX<cellSize){
                 //delete
                 clearEverything();
-            } else if (t.clientX<glob.canvas.width-2*cellSize){
+            } else if (t.clientX<glob.canvas.width-3*cellSize){
                 //set title
                 newTitle();
+            } else if (t.clientX<glob.canvas.width-2*cellSize){
+                console.log("SET TITLE");
+                //set title
+                if (iOS){
+                    var dat = JSON.stringify(glob.sketchBook)
+                    var myurl = `mailto:analytic@gmail.com?subject=Orthona%20Sketchbook&body=${dat}`
+
+
+                    console.log("1 "+dat);
+                    console.log("2"+JSON.stringify(cordova));
+                    console.log("3"+JSON.stringify(cordova.plugins));
+                    cordova.plugins.email.open({
+                        to:      'analytic@gmail.com',
+                        //cc:      'erika@mustermann.de',
+                        //bcc:     ['john@doe.com', 'jane@doe.com'],
+                        subject: 'Orthona Sketchbook',
+                        body:    dat
+                    });
+                    window.open(myurl);
+                } else {
+                    
+                    DoPrint(true);                
+                }
+
             } else if (t.clientX<glob.canvas.width-cellSize){
                 //move left
                 PageLeft();
@@ -386,7 +410,6 @@ function handleStart(evt) {
 
     renderApp();
 }
-
 
 function newTitle(){        
     var onSucess = function(){};
@@ -751,6 +774,7 @@ function renderApp(){
                 canvasRender.drawIcon(glob.canvas.width-cellSize/2,20+cellSize/2,-2);
             }
         }
+        canvasRender.drawIcon(glob.canvas.width-5*cellSize/2,20+cellSize/2,-5);
     }
 
     if (iconSelect&&minDistHit)
