@@ -50,11 +50,6 @@ function SaveState(fullbookprint=false,pushToUndoStack=true){
     if (pushToUndoStack){
         UndoStack.push(sketch_save)
     }
-    if(fullbookprint){
-        console.log(JSON.stringify(glob.sketchBook))
-    } else {
-        console.log(JSON.stringify(glob.page))
-    }
 }
 
 function DoPrint(printAll){
@@ -134,6 +129,8 @@ function TryRestoreState(sketch_save){
 
 var ctx
 var canvas
+
+
 function doStart(){
     glob.canvas = document.getElementById("mainCanvas");
     glob.ctx=glob.canvas.getContext('2d');
@@ -144,32 +141,24 @@ function doStart(){
 
     function handleKeyDown(evt){
         if (evt.keyCode===13){
-            //return
             newTitle();
             renderApp();
         } else if (evt.keyCode===37){
-            //left
             PageLeft();
             renderApp();
         } else if (evt.keyCode===39){
-            //right
             PageRight();
             renderApp();
         }  else if (evt.keyCode===90){
-            //undo
             DoUndo();
             renderApp();
         } else if (evt.keyCode===80){
-            //undo
             DoPrint(evt.shiftKey);
         }  else if (evt.keyCode===76){
-            //undo
             DoLoad(evt.shiftKey);
         }   else if (evt.keyCode===67){
-            //copy
             DoCopy();
         }   else if (evt.keyCode===86){
-            //copy
             DoPaste();
         }   else if (evt.keyCode===87){
             //up
@@ -223,13 +212,12 @@ function LoadPage(){
             sketchTitle:""
         });
     }
-    console.log(glob.page);
     glob.page=glob.sketchBook[glob.sketchBookIndex];
 
     lib.FixPageLines()
-    console.log(glob.page);
     renderApp();
 }
+
 function PageLeft(){
     if (glob.sketchBookIndex===0){
         return;
@@ -349,8 +337,7 @@ function handleStart(evt) {
         if (t.clientY<cellSize+20){
 
             toolbarSelect=true;
-            console.log("toolbarSelect = "+toolbarSelect);
-
+            
             if (t.clientX<cellSize){
                 //delete
                 clearEverything();
@@ -358,16 +345,12 @@ function handleStart(evt) {
                 //set title
                 newTitle();
             } else if (t.clientX<glob.canvas.width-2*cellSize){
-                console.log("SET TITLE");
                 //set title
                 if (iOS){
                     var dat = JSON.stringify(glob.sketchBook)
                     var myurl = `mailto:analytic@gmail.com?subject=Orthona%20Sketchbook&body=${dat}`
 
 
-                    console.log("1 "+dat);
-                    console.log("2"+JSON.stringify(cordova));
-                    console.log("3"+JSON.stringify(cordova.plugins));
                     cordova.plugins.email.open({
                         to:      'analytic@gmail.com',
                         //cc:      'erika@mustermann.de',
@@ -443,7 +426,6 @@ function handleEnd(evt){
             cleared=false;
             moved=false;
             toolbarSelect=false;
-            console.log("toolbarSelect = "+toolbarSelect);
         }
         renderApp();
         return;
@@ -498,6 +480,9 @@ function dist(ar){
     return Math.sqrt(dx*dx+dy*dy);
 }
 
+
+old_SP_Highlighted_Glyph=-14;
+
 function handleMove(evt) {
     if (mouseState===-1){
         iconSelect=false;
@@ -513,10 +498,23 @@ function handleMove(evt) {
         mousex=t.clientX;
         mousey=t.clientY;
         var d = dist([startPosX,startPosY,mousex,mousey]);
+        var oldminDistHit=minDistHit;
         if (iconSelect&& d>minDist){
             minDistHit=true;
         }
-        renderApp();
+
+        var ct = changedTouch(evt)
+        var px = ct.clientX;
+        var py = ct.clientY;
+        var highlightedGlyph = getHighlightedGlyphIndex(px,py);
+        if (old_SP_Highlighted_Glyph!==highlightedGlyph ||
+            oldminDistHit!==minDistHit){
+            renderApp();
+
+        }
+        old_SP_Highlighted_Glyph=highlightedGlyph;
+
+        return;
     }
 
     if (triggerPan(evt)||(exactlyOneDown(evt)&&glob.page.scale<=scaleMin)){
@@ -556,50 +554,59 @@ function handleMove(evt) {
         }
 
         oldtouches=curtouches;
+    }
+
+
+    if (mouseState!==-1) {
         renderApp();
-        return;
-    } else {
         oldtouches=null;
-        renderApp();
     }
     
-/*
-    if (evt.touches.length===1 && iconSelect===false && moved===false)
-    {
-        for (var i =0; i<evt.changedTouches.length; i++){
-            var t= evt.changedTouches[0];
-
-            var cx = t.clientX;
-            var cy = t.clientY;
-
-            var gx = Math.round(cx/cellSize);
-            var gy = Math.round(cy/cellSize);
-
-            if (cx!=oldX||cy!=oldY){
-                var x2=gx;
-                var x1=oldX;
-                var y2=gy;
-                var y1=oldY;
-
-                var dx=x2-x1;
-                var dy=y2-y1;
-
-                var l = Math.max(Math.abs(dx),Math.abs(dy));
-                dx = Math.sign(dx)*l;
-                dy = Math.sign(dy)*l;
-                x2=x1+dx;
-                y2=y1+dy;
-
-                ctx.beginPath();
-                ctx.moveTo(x1*cellSize+0.5,y1*cellSize+0.5);
-                ctx.lineTo(x2*cellSize+0.5,y2*cellSize+0.5);
-                ctx.strokeStyle="#888888"
-                ctx.stroke();
-            }
-        }
-    }*/
 }
 
+
+
+
+function getHighlightedGlyphIndex(x,y){
+    ctx=glob.ctx;
+    var panelRows=5;
+    var panelCols=Math.ceil(glob.symbolCount/panelRows);
+
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+
+    var centerX = w/2;
+    var centerY = h/2;
+
+    var panelLeft = centerX-panelRows*cellSize/2;
+    var panelRight = centerX+panelRows*cellSize/2;
+    var panelTop = centerY-panelCols*cellSize/2;
+    var panelBottom = centerY+panelCols*cellSize/2;
+    panelTop+=cellSize/2;
+    panelBottom+=cellSize/2;
+
+    var ox = panelLeft;
+    var oy = panelTop;
+
+
+    var dx=x-ox;
+    var dy=y-oy;
+    var w = panelRight-panelLeft;
+    var h = panelBottom-panelTop;
+    var highlightedglyphicon;
+    if (dx<0||dy<0||dx>=w||dy>=h){
+        highlightedglyphicon=-1;
+        //nothing
+    } else {
+        var xpos = Math.floor(dx/cellSize);
+        var ypos = Math.floor(dy/cellSize);
+        var i = xpos+ypos*panelRows;
+        highlightedglyphicon=i;
+    }
+    
+    return highlightedglyphicon;
+
+}
 
 function drawSelectionPanel(select,x,y){
     ctx=glob.ctx;
@@ -621,6 +628,33 @@ function drawSelectionPanel(select,x,y){
 
     var ox = panelLeft;
     var oy = panelTop;
+
+
+    var dx=x-ox;
+    var dy=y-oy;
+    var w = panelRight-panelLeft;
+    var h = panelBottom-panelTop;
+    var gridx=-1;
+    var gridy=-1;
+    var highlightedglyphtext="";
+    if (dx<0||dy<0||dx>=w||dy>=h){
+        highlightedglyphicon=-1;
+        //nothing
+    } else {
+        var xpos = Math.floor(dx/cellSize);
+        var ypos = Math.floor(dy/cellSize);
+        gridx=xpos;
+        gridy=ypos;
+        var i = xpos+ypos*panelRows;
+        highlightedglyphicon=i;
+
+        highlightedglyphtext=entityNames[i].toUpperCase();
+        if (select===true){
+            clickCell(oldX,oldY,i);
+            return;
+        }
+    }
+    
 
     //draw panel
     ctx.lineWidth = 1.0;   
@@ -647,8 +681,6 @@ function drawSelectionPanel(select,x,y){
     var titleBarLeft=panelLeft+titleBarIndent;
     var titleBarRight=titleBarLeft+titleBarWidth;
 
-
-    
     //draw title bar
     ctx.strokeStyle="#000000"
     ctx.fillStyle="#ffffff";
@@ -663,31 +695,6 @@ function drawSelectionPanel(select,x,y){
 
     ctx.fill()
     ctx.stroke()
-
-    
-    var dx=x-ox;
-    var dy=y-oy;
-    var w = panelRight-panelLeft;
-    var h = panelBottom-panelTop;
-    var gridx=-1;
-    var gridy=-1;
-    var highlightedglyphtext="";
-    if (dx<0||dy<0||dx>=w||dy>=h){
-        highlightedglyphicon=-1;
-        //nothing
-    } else {
-        var xpos = Math.floor(dx/cellSize);
-        var ypos = Math.floor(dy/cellSize);
-        gridx=xpos;
-        gridy=ypos;
-        var i = xpos+ypos*panelRows;
-        highlightedglyphicon=i;
-
-        highlightedglyphtext=entityNames[i].toUpperCase();
-        if (select===true){
-            clickCell(oldX,oldY,i);
-        }
-    }
 
     //draw name
     ctx.lineWidth = 0;                        
@@ -730,9 +737,11 @@ function drawSelectionPanel(select,x,y){
     glob.page.scale=oldscale;
 
     ctx.globalalpha=1.0;
+    return true;
 }
 
 function renderApp(){
+    console.log("rendering")
     canvas.width  = window.innerWidth;
     canvas.height = window.innerHeight;
     
