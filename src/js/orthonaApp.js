@@ -276,7 +276,7 @@ function exactlyOneDown(evt){
     if ("touches" in evt){
         return evt.touches.length===1;
     } else {
-        return true;
+        return mouseState!==-1;
     }
 }
 
