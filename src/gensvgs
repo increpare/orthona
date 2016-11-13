@@ -1,0 +1,5 @@
+
+for fn in dat/json/*.json
+do
+	./json2svg -noGridLines $fn 
+done

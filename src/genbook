@@ -42,18 +42,6 @@ datFile = fs.readFileSync(inputFileName, 'utf8'),
 
 glob.sketchBook = JSON.parse(datFile)
 
-var path = require('path');
-var globalPath = path.resolve(inputFileName)
-var parsed = path.parse(globalPath)
-parsed.ext=".png"
-parsed.dir+="/../png"
-parsed.base=parsed.name+parsed.ext;
-outputFileName = path.format(parsed)
-log("outputFileName = "+outputFileName)
-
-execSync(`convert  -density 1000 ${parsed.name}.pdf[0]  -background white -alpha remove ${parsed.name}.png`,{cwd:"../book/"})
-return;
-
 
 var bookTxt=`
 \\documentclass{book}
@@ -101,8 +89,11 @@ log("outputFileName = "+outputFileName)
 
 fs.writeFileSync(`../book/${parsed.name}.tex`,bookTxt)
 
+
+//execSync(`convert  -density 1000 ${parsed.name}.pdf[0]  -background white -alpha remove ${parsed.name}.png`,{cwd:"../book/"})
+
 execSync(`pdflatex ${parsed.name}.tex`,{cwd:"../book/"})
-execSync(`convert ${parsed.name}.pdf[0] -geometry x2554  -background white -alpha remove ${parsed.name}.png`,{cwd:"../book/"})
+execSync(`convert -density 2000 ${parsed.name}.pdf[0] -geometry x2554  -background white -alpha remove ${parsed.name}.png`,{cwd:"../book/"})
 //execSync(`convert -size 1000x1000 canvas:white tmp.tiff`,{cwd:"../book/"})
 //execSync(`convert tmp.tiff -gravity center -background white -extent 154x100% ${parsed.name}_cover_back_r.tiff`,{cwd:"../book/"})
 //execSync(`rsvg-convert -d 2000 -p 2000 ../src/tmp/bp_0.svg -o  tmp.tiff`,{cwd:"../book/"})

@@ -83,4 +83,6 @@ wait
 
 make
 
-./genbook dat/sketchbook/proverbbook.json -noImg
+./genbook dat/sketchbook/proverbbook.json 
+./genbook dat/sketchbook/abecedarium.json 
+./genbook dat/sketchbook/ongames.json 
