@@ -3,6 +3,7 @@ Software ecosystem for the Ortho language.
 ###Editors
 - Orthona: iOS/Web touch-based text input app
 - Orthotope: Keyboard-based text editor
+- Orthuino: Arduboy-based text editor
 
 ###Learning/Reference
 - Orthodocs: iOS/Web usage reference

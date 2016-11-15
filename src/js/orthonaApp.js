@@ -438,14 +438,20 @@ function handleEnd(evt){
     }
 
     if (noTouches(evt)){
-        if (iconSelect&&minDistHit){
-            var t = changedTouch(evt);
-            var px = t.clientX;
-            var py = t.clientY;
-            drawSelectionPanel(true,px,py);
-            iconSelect=false;
-            renderApp();
-            return;
+        if (iconSelect){
+            if (minDistHit){
+                var t = changedTouch(evt);
+                var px = t.clientX;
+                var py = t.clientY;
+                drawSelectionPanel(true,px,py);
+                iconSelect=false;
+                renderApp();
+                return;
+            }/* else {
+                clickCell(oldX,oldY,4);
+                renderApp();
+                return;
+            }*/
         }
     }
 

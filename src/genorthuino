@@ -1,0 +1,70 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var PNG = require('pngjs').PNG;
+
+var data = fs.readFileSync('./res/tiles/micro.png');
+var png = PNG.sync.read(data);
+
+var w = png.width;
+var h = png.height;
+
+var inner_tw = 8;
+var inner_th = 8;
+
+var tw = 9;
+var th = 9;
+
+var tilesFG = [];
+
+var outputfg='PROGMEM const unsigned char tiles_fg[][8] = {\n';
+var outputm='PROGMEM const unsigned char tiles_m[][18] = {\n'
+
+for (var i=0;i<35;i++){
+	outputfg+="\n\t{\n"
+	outputm+="\n\t{\n"
+
+	var tx = i%5;
+	var ty = Math.floor(i/5);
+	var off_x=tx*tw;
+	var off_y=ty*th;
+	var tile=[]
+	var str1 = "";
+	var str2 = "";
+	var mstr1 = "";
+	var mstr2 = "";
+	for (var x=0;x<tw;x++){
+		if (x==8){
+			outputfg+=str1;
+		}
+		var t="";
+		var tm1="";
+		var tm2="";
+		for (var y=0;y<th;y++){
+			var r = png.data[4*(off_x+x+w*(off_y+y))+0];
+			var a = png.data[4*(off_x+x+w*(off_y+y))+3];
+			if (y<8){
+				t=((a===255&&r===255)?"1":"0")+t;
+				tm1=(a===255?"1":"0")+tm1;
+			} else {
+				tm2+=(a===255?"1":"0")+tm2
+			}
+		}
+		str1+="\t\t0b"+t
+		mstr1+="\t\t0b"+tm1
+		mstr2+="\t\t0b0000000"+tm2
+		str1+=",\n"
+		mstr1+=",\n"
+		mstr2+=",\n"
+	}	
+	outputm+=mstr1;
+	outputm+=mstr2;
+	outputfg+="\t},"
+	outputm+="\t},"
+}
+
+outputfg+="\n};"
+outputm+="\n};"
+
+var output =  outputfg+"\n\n"+outputm;
+fs.writeFileSync('../orthuino/generatedbitmaps.h',output,'utf8')

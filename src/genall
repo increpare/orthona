@@ -86,3 +86,4 @@ make
 ./genbook dat/sketchbook/proverbbook.json 
 ./genbook dat/sketchbook/abecedarium.json 
 ./genbook dat/sketchbook/ongames.json 
+./genorthuino

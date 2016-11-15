@@ -9,8 +9,12 @@ var csvparse = require('csv-parse/lib/sync');
 var datasheet_raw = fs.readFileSync("../res/datasheet/Sheet 1-Table 1.csv",'utf8');
 var datasheet = csvparse(datasheet_raw)
 var symbolNames=[]
+var header="const char* entityNames[] = {\n"
 for (var i=1;i<datasheet.length;i++){
 	symbolNames.push(datasheet[i][1]);
+	header+=`\t"${datasheet[i][1]}",\n`
 }
+header+="};"
 var str = JSON.stringify(symbolNames);
 fs.writeFileSync("../res/entityNames.json",str)
+fs.writeFileSync("../../orthuino/entityNames.h",header)
