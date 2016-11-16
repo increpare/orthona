@@ -97,6 +97,10 @@ int wcy=world_h/2;
 
 int ldx=0;
 int ldy=0;
+
+void drawNot(int x1, int x2, int y1, int y2){
+
+}
 void drawWorld(){
 
   if (state==2){
@@ -112,6 +116,7 @@ void drawWorld(){
     int px = world_off_x+(tilesize+linelength)*i;
     for (int j=0;j<world_h;j++){
       int v = worldContents_Lines[i][j];
+      int s = worldContents_Shadows[i][j];
       if (v != 0){
         if (v&0b0001){
           var dx=1;
@@ -121,6 +126,7 @@ void drawWorld(){
           var x2=x1+dx*(tilesize+linelength);
           var y2=y1+dy*(tilesize+linelength);
           arduboy.drawLine(x1,y1,x2,y2,1);
+          drawNot(x1,y1,x2,y2);
         }
         if (v&0b0010){
           var dx=0;
@@ -276,8 +282,9 @@ void mainLogic(){
     }
   }
 
-  if (arduboy.justPressed(A_BUTTON)){
+  if (arduboy.pressed(A_BUTTON)){
     worldContents[wcx][wcy]=-1;
+    //clear out lines touching the point as
   }
 
 }
@@ -398,10 +405,10 @@ void lineDrawLogic(){
       var nx=wcx+loffx;
       var ny=wcy+loffy;
       if (ldx==1&&ldy==-1){
-        const m = 0b1000;
+        const int m = 0b1000;
         if (worldContents_Lines[nx][ny]&m){
           if (worldContents_Shadows[nx][ny]&m==0){
-            worldContents_Shadows[nx][ny]|=m
+            worldContents_Shadows[nx][ny]|=m;
           } else {
             worldContents_Lines[nx][ny]&=m; 
           }
