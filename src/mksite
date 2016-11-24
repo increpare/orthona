@@ -1,4 +1,5 @@
 cd ..
+cp index.html site/index.html
 rm -rf site/webintro
 cp -rf webintro site/webintro
 rm -rf site/orthona/www
@@ -7,4 +8,11 @@ rm -rf site/orthodocs_www
 cp -rf orthodocs_www site/orthodocs_www
 rm -rf site/book
 cp -rf book site/book
+rm -rf site/book/*.png
+rm -rf site/book/*.psd
+rm -rf site/book/*.tex
+rm -rf site/book/*.ICC
+rm -rf site/book/*.ins
+rm -rf site/book/eps
+rm -rf site/book/*.sty
 cd src

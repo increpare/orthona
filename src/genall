@@ -86,6 +86,7 @@ make
 
 ./genorthuino
 
+./mksite
 
 #because texts might (unintentionally) not be backwards-compatible, not regenerating these
 #./genbook dat/sketchbook/proverbbook.json 

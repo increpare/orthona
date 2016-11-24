@@ -77,22 +77,9 @@ I've replaced a bunch of symbols, and there are three more probably that should 
 <p>
 Before there were negative lines, there was no distinction between above/below senses (there was only an sense - so you could say 'good', but there was no term for 'important') - symbols above a noun were in the positive sense (good, say), and symbols hanging under nouns were their negatives ("<i>bad</i>", say, rather than "<i>important</i>", which is what it is now).
 <p>
-The dot <span>4</span> used to mean something, but now it's only useful within the editor as an empty symbol - there are options in the renderer to remove the dots when exporting.
+The dot <span>4</span> used to mean something, but now it's only useful within the editor as an empty symbol for drawing lines - there are options in the command-line renderer to remove the dots when exporting.
 <p>
 &lt;&lt; <a href="../index.html">HOME</a> 
 <p>
-<script>
-	var headers = document.getElementsByTagName("h1");
-	var innerHTML="<ol>";
-	for (var i=0;i<headers.length;i++) {
-		var e = headers[i];
-		e.id="section"+i;
-		var title=e.innerHTML;
-		innerHTML+=`<li><a href="#section${i}">${title}</a">`
-	}
-	innerHTML+="</ol>"
-	var index= document.getElementById("index");
-	index.innerHTML=innerHTML;
-	</script>
 </body>
 </html>
