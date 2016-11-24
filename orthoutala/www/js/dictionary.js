@@ -49,8 +49,8 @@ var dictionary = [[[`Entity A`],[`<svg preserveAspectRatio="xMidYMid" xmlns="htt
 		<path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='#000000' d=''/>
 		<circle stroke-width='1' cx='12.6' cy='15' r='6.4' fill='#ffffff' stroke='transparent' />
 		<circle stroke-width='1' cx='17.4' cy='15' r='6.4' fill='#ffffff' stroke='transparent' />
-		<circle stroke-width='1' cx='12.599999999999998' cy='15' r='6.4' fill='transparent' stroke='#000000' />
-		<circle stroke-width='1' cx='17.4' cy='15' r='6.4' fill='transparent' stroke='#000000' />
+		<circle stroke-width='1' cx='12.599999999999998' cy='15' r='6.4' fill='white' stroke='#000000' />
+		<circle stroke-width='1' cx='17.4' cy='15' r='6.4' fill='white' stroke='#000000' />
 	</svg>`]],[[`Question`],[`<svg preserveAspectRatio="xMidYMid" xmlns="http://www.w3.org/2000/svg" 
      xmlns:xlink="http://www.w3.org/1999/xlink" width='30mm' height='30mm' viewBox='5 5 20 20' version='1.1'>
 		<path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='#000000' d=''/>
@@ -147,8 +147,8 @@ var dictionary = [[[`Entity A`],[`<svg preserveAspectRatio="xMidYMid" xmlns="htt
 	</svg>`]],[[`Living`],[`<svg preserveAspectRatio="xMidYMid" xmlns="http://www.w3.org/2000/svg" 
      xmlns:xlink="http://www.w3.org/1999/xlink" width='30mm' height='30mm' viewBox='5 5 20 20' version='1.1'>
 		<path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='#000000' d=''/>
-		<path  stroke-width='1' fill='#ffffff' stroke='#000000' d='M 21.4 14.999999999999998 A 6.4 6.4 0 1 0 21.4 15  '/>
- 		<path  stroke-width='1' fill='#ffffff' stroke='#000000' d='M 15 12.866666666666667 A 2.1333333333333333 2.1333333333333333 0 0 0 15 17.133333333333333  M 15 21.4 A 4.266666666666667 4.266666666666667 0 0 0 15 12.866666666666667  M 21.4 14.999999999999998 A 6.4 6.4 0 1 0 15 21.4  '/>
+		<path  stroke-linecap="round" stroke-width='1' fill='#ffffff' stroke='#000000' d='M 21.4 14.999999999999998 A 6.4 6.4 0 1 0 21.4 15  '/>
+ 		<path  stroke-linecap="round" stroke-width='1' fill='#ffffff' stroke='#000000' d='M 15 12.866666666666667 A 2.1333333333333333 2.1333333333333333 0 0 0 15 17.133333333333333  M 15 21.4 A 4.266666666666667 4.266666666666667 0 0 0 15 12.866666666666667  M 21.4 14.999999999999998 A 6.4 6.4 0 1 0 15 21.4  '/>
  	</svg>`]],[[`Sleep`],[`<svg preserveAspectRatio="xMidYMid" xmlns="http://www.w3.org/2000/svg" 
      xmlns:xlink="http://www.w3.org/1999/xlink" width='30mm' height='30mm' viewBox='5 5 20 20' version='1.1'>
 		<path stroke-linecap="round" stroke-width='1' fill='transparent' stroke='#000000' d=''/>

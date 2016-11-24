@@ -1,0 +1,10 @@
+cd ..
+rm -rf site/webintro
+cp -rf webintro site/webintro
+rm -rf site/orthona/www
+cp -rf orthona/www site/orthona/www
+rm -rf site/orthodocs_www
+cp -rf orthodocs_www site/orthodocs_www
+rm -rf site/book
+cp -rf book site/book
+cd src

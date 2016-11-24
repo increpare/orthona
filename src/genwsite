@@ -176,6 +176,7 @@ for (var fn of exampleNames){
 var index=`<!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <!-- Your app title -->
     <title>Orthodocs</title>
     <style>
@@ -184,7 +185,7 @@ var index=`<!DOCTYPE html>
     	text-align:center;
     	background-color:white;
     	color:black;
-    	padding-bottom:20px;
+	margin-bottom: 100px;
     }
     svg{
     	width:100px;
@@ -192,11 +193,12 @@ var index=`<!DOCTYPE html>
     table{ 
     	margin: 0 auto;
 	    border-collapse: collapse;
-    	text-align:center;
+    	text-align:center;    
+    	border-style: hidden;
     }
-    td,tr,table{
-    	border: 1px solid black;
-
+    td,tr{
+    	padding-bottom: 20px;
+    	border-bottom: 1px solid black;
     }
     </style>
 </head>
@@ -209,7 +211,7 @@ var index=`<!DOCTYPE html>
 
 index+="<p><table>"
 for (var i=0;i<7;i++){
-index+="<p><tr>"
+index+="<tr>"
 	for (var j=0;j<5;j++){
 		index+="<td>"
 		var s = j+5*i;
@@ -265,6 +267,7 @@ saveHTML("../orthodocs_www/index.html",index,"orthodocs");
 var genericHeader=`<!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <!-- Your app title -->
     <title>PAGETITLE</title>
     <style>
@@ -274,22 +277,19 @@ var genericHeader=`<!DOCTYPE html>
     	background-color:white;
     	color:black;
     	padding-top:20px;
-    	padding-bottom:20px;
+		margin-bottom: 100px;
     }
     svg{
     	width:80px;
     }
     table{ 
     	margin: 0 auto;
-	    border-collapse: collapse;
+        border-collapse: collapse;
+        border-style: hidden;
     	text-align:center;
-    }
-    table{
-    	border:0;
     }
     td{
     	border: 1px solid black;
-
     }
     th{
     	border:0;
@@ -319,6 +319,7 @@ for (var i=1;i<datasheet.length;i++){
 	var s=i-1;
 	var r = datasheet[i];
 	var page = genericHeader;
+	page = page.replaceAll("PAGETITLE",r[1])
 	page+=embedSvg(symbolName(s),"100px","100px")+"<br>";
 	page+=`<h1>${r[1]}</h1>`
 	r[2]=r[2].trim();
@@ -326,7 +327,7 @@ for (var i=1;i<datasheet.length;i++){
 //		page+=`<p>${r[2]}`
 //	}
 	
-	page+=`<table><tr><th><a href="../index.html">&lt;&lt; back << </a><th><th>`
+	page+=`<table><tr><th><a href="../index.html">&lt;&lt; back &lt;&lt; </a><th><th>`
 	var count=0;
 	for (var j=3;j<r.length;j++){
 		var ex_name = datasheet[0][j].trim();

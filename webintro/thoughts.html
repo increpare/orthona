@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>Orthona</title>
+<script src="js/compiled.js"></script>
+<style type="text/css">
+body{
+	width:600px;
+	margin-left: 100px;
+	margin-bottom: 50px;
+}
+	.ortho{
+		display: none;
+	}
+	svg{
+		vertical-align: middle;
+		margin-left: -5px;
+		margin-right: -5px;
+		margin-top: -5px;
+		margin-bottom: -5px;
+	}
+	div {
+		margin-left: 50px;
+	}
+	div.index{
+		margin-left: initial;
+	}
+</style>
+</head>
+<body>
+<p>
+&lt;&lt; <a href="../index.html">HOME</a> 
+<p>
+<h1>Thoughts about the language</h1>
+<p>
+<div id="index"></div>
+<p>
+<h2>Why is it called Orthona?</h2>
+<p>
+It's called Orthona because it's written (has only an <i>ortho</i>graphic, and no speech), and because the lines are the same directions you get in <i>ortho</i>graphic projections.
+<p>
+<h2>Ambiguity</h2>
+<p>
+I'm comfortable with the language being a little ambiguous.  And in any event, the more I've written, the more I've become comfortable with the use of dependent clauses, which solves most problems.
+<p>
+Most proverbs are metaphorical, but I find that because the language is quite vague/general, saying things directly has the same effect to me as saying things metaphorically in english - maybe metaphors in English proverbs are there to increase the ambiguity/applicability, while in Orthona this is unnecessary?
+<p>
+<h2>Directionality</h2>
+<p>
+At one point I decided things were too horizontally biased (because one of my goals is to optimize the language for smart-phone entry), so I thought "<i>ok, this is easy, I'll just rotate the language 90 degrees - time now goes down, and all the grammar structures will be rotated</i>".  However, this resulted in the "<i>above/below</i>"  senses for all the symbols turning into "<i>left/right</i>" sense, and for some reason my brain has no interest in learning the horizontal distinctions, but can deal with up/down ones just fine.
+<p>
+The direction that verbs go is a weird one - I don't have a consisten rule across all verbs (except the sensory ones).
+<p>
+<h2>Other non-linear languages</h2>
+<p>
+<h4>UNLWS</h4>
+<p>
+Comparing to <a href="https://t.co/4Ghuz5kZOe">UNLWS</a> is interesting.  The choice to privilege particular directions and give them functions makes the resulting language a lot more rigid in appearance - but you can still have fun with thickly meshing statements - the problems are more geometrical and less topological. 
+<p>
+In particular, late into the development of the language, stumbling across Sai's essay <a href="https://s.ai/essays/nlf2dws">Non-Linear Fully Two-Dimensional Writing System Design</a> and seeing they were also thinking a lot about various connection types was reassuring. 
+<p>
+Using the horizontal axis for time gives the whole language a horizontal bias. It seems a bit of a shame to go all 2D and then suddenly slap down a line.  I dislike writing sentences that are temporally ordered in the sense of using the horizontal line - with most proverbs it's sufficient to use the past/future tense indicators instead.  So maybe I should repurpose the line for some other uses. If only I could think of any.
+<p>
+I need to look at UNLWS again - I've done lots of work on Orthona since I last checked it out.
+<p>
+<h4>Other non-linear languages</h4>
+<p>
+<ul>
+<li><a href="http://qiihoskeh.conlang.org/cl/ascii/SW0/W0Intro.htm">SWO</a>
+<li><a href="http://forstinea.nl/pinuyo/">Pinuyo</a>
+<li><a href="http://ouwi.org">Ouwi</a>
+</ul>
+<p>
+<h1>How the language has changed over time</h1>
+The meanings I gave directions changed over time - what was possession, slowly also acquired verb-structure, vertical adjectives also acquired the ability to do comparitives, and the upward diagonal, which used to express "<i>a is b</i>", now is used for dependent clauses and implication.
+<p>
+I've replaced a bunch of symbols, and there are three more probably that should get audited out and replaced with better ones (help, fear, implication, sleep).  Either they're obsolete, or express just one useful concept (I'd prefer each symbol to have at least three related but distinct uses), or express a concept I very very rarely use.
+<p>
+Before there were negative lines, there was no distinction between above/below senses (there was only an sense - so you could say 'good', but there was no term for 'important') - symbols above a noun were in the positive sense (good, say), and symbols hanging under nouns were their negatives ("<i>bad</i>", say, rather than "<i>important</i>", which is what it is now).
+<p>
+The dot <span>4</span> used to mean something, but now it's only useful within the editor as an empty symbol - there are options in the renderer to remove the dots when exporting.
+<p>
+&lt;&lt; <a href="../index.html">HOME</a> 
+<p>
+<script>
+	var headers = document.getElementsByTagName("h1");
+	var innerHTML="<ol>";
+	for (var i=0;i<headers.length;i++) {
+		var e = headers[i];
+		e.id="section"+i;
+		var title=e.innerHTML;
+		innerHTML+=`<li><a href="#section${i}">${title}</a">`
+	}
+	innerHTML+="</ol>"
+	var index= document.getElementById("index");
+	index.innerHTML=innerHTML;
+	</script>
+</body>
+</html>

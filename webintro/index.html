@@ -6,6 +6,7 @@
 body{
 	width:600px;
 	margin-left: 100px;
+	margin-bottom: 50px;
 }
 	.ortho{
 		display: none;
@@ -30,7 +31,7 @@ body{
 <p>
 <h1>A rough guide to the Orthona Langauge</h1>
 <p>
-v0.1
+v0.2
 <p>
 <div id="index"></div>
 <p>
@@ -101,7 +102,7 @@ it means "<i><span>0</span> is good/happy</i>", while if it appears under
 <p>
 It means "<i><span>0</span>is unimportant</i>".  All symbols used as adjectives in this sense have separate upper and lower forms, with different shades of meaning.  
 <p>
-Also, sometimes, diagonal connections can convey particular adjective-flavour meanings. For instance using the time symbol <span>22</span>:
+Also, sometimes, diagonal connections can convey particular adjective-flavour meanings. For instance, using the time symbol <span>22</span>:
 <div>{"elements":[[9,5,0],[10,6,22]],"lines":[[10,6,9,5,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
 means  "<i><span>0</span> is young/new</i>".
 <p>
@@ -118,7 +119,7 @@ Often, if three symbols appear in a vertical row it a comparison is implied.  Fo
 means that "<i><span>0</span> is happier/better than <span>1</span></i>".  However, if you it's connected in such a way that you read it from the top down, such as the second part of
 <div>{"elements":[[6,5,0],[6,4,6],[7,6,6],[6,3,1],[7,5,2],[7,7,3]],"lines":[[6,5,6,4,0],[6,4,6,3,0],[7,5,6,5,0],[7,6,7,5,0],[7,7,7,6,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
 <p>
-Then you read the right part as "<i><span>2</span> is more important than <span>3</span></i>". 
+then you read the right part as "<i><span>2</span> is more important than <span>3</span></i>". 
 <p>
 Other examples would be <span>20</span>, which denotes knowledge if above, and belief if below, or <span>14</span>, which denotes power if above, and truth if below.
 <p>
@@ -201,7 +202,7 @@ The way the language deals with conditionals, is it can express things "to be X 
 <div>{"elements":[[8,8,22],[7,7,0],[8,6,0],[8,5,6]],"lines":[[8,8,7,7,0],[8,6,7,7,0],[8,6,8,5,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
 <p> can be read as "<i>To be young is to be good</i>"
 <p>
-This converges pretty well with the subordinate use, but it makes more sense when negated (I haven't decided if reading direction is important here, but I normally read from left to right)
+This converges pretty well with the subordinate use, and makes sense when negated.
 <p>
 <div>{"elements":[[8,8,22],[7,7,0],[8,6,0],[8,5,6]],"lines":[[8,8,7,7,0],[8,6,7,7,1],[8,6,8,5,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
 <p>
@@ -246,7 +247,7 @@ Assuming all lines are positive, there is only one way to fill in all the lines 
 <div>
 {"elements":[[9,5,0],[9,4,5],[10,6,2],[10,2,6]],"lines":[[9,5,9,4,0],[10,6,9,5,0],[10,6,10,2,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}
 </div>
-I havn't used this form since I added negation to the language, so I don't know how I'd express it in this form.  Probably with a dot.
+I havn't used this form since I added negation to the language, so I don't know how I'd express it in this form.  Probably with a dot.  I figured this might be a nice form for some ceremonial uses, or situations where drawing lines was bothersome (maybe a city layout, for instance, where you want important buildings to fit into a pattern).
 <p>
 <h2>Text Editor</h2>
 <p>
@@ -258,49 +259,30 @@ I havn't used this form since I added negation to the language, so I don't know 
 <li>click and drag over an existing line from a glyph to negate/delete it (slightly complicated behaviour to describe, but it should be possible to figure it out by trial+error).
 </ul>
 <p>
-There are keyboard shortcuts (z to undo, c/v to copy/paste, wsad to pan, left/right to change pages)
-<h2>Other Software Infrastructure</h2>
-<p>There are a bunch of different pieces of software that combined together to make this - several different renderers, text editors, data formats, documentation generators - there's an outline described on the github repository for the conlang project <a href="https://github.com/increpare/ortho">here</a>. 
-<p>
-The nicest way by far to enter text is with the iOS app (not available), which is basically the same as the web editor, just, it works much better.
-<h2>Thoughts about the language</h2>
-<p>
-<h3>Ambiguity</h3>
-<p>
-One problem that the language might have is ambiguity. I'm just using it for myself, so I'm not totally confident that it's not so much conveying information as acting as a mnemonic.  This page and the other reference section still leave a lot of ambiguity, but I don't know how much of that is just "<i>stuff in the language I don't understand how to put into words, that I 'know' intuitively</i>", vs "<i>particular meanings that are in my head that I recall when I see a particular page</i>".  
-<p>
-I've written lots and lots in it now hoping to eventually write more than I can remember so I can test it out, but so far it's still very easily to remember from context.
-<p>
-I should say, I'm comfortable with the language being a little ambiguous.  And in any event, the more I've written, the more I've become comfortable with the use of dependent clauses, which solves most problems.
-<p>
-<h3>Directionality</h3>
-<p>
-At one point I decided things were too horizontally biased (because one of my goals is to optimize the language for smart-phone entry), so I thought "<i>ok, this is easy, I'll just rotate the language 90 degrees - time now goes down, and all the grammar structures will be rotated</i>".  However, this resulted in the "<i>above/below</i>"  senses for all the symbols turning into "<i>left/right</i>" sense, and for some reason my brain has no interest in learning the horizontal distinctions, but can deal with up/down ones just fine.
-<p>
-The direction that verbs go is a weird one - I don't have a consisten rule across all verbs (except the sensory ones).
-<p>
-<h3>Comparing to Unker</h3>
-<p>
-Comparing to <a href="https://t.co/4Ghuz5kZOe">Unker</a> is interesting.  The choice to privilege particular directions and give them functions makes the resulting language a lot more rigid in appearance - but you can still have fun with thickly meshing statements - the problems are more geometrical and less topological. 
-<p>
-In particular, late into the development of the language, stumbling across Sai's essay <a href="https://s.ai/essays/nlf2dws">Non-Linear Fully Two-Dimensional Writing System Design</a> and seeing they were also thinking a lot about various connection types was reassuring. 
-<p>
-Using the horizontal axis for time gives the whole language a horizontal bias. It seems a bit of a shame to go all 2D and then suddenly slap down a line.  I dislike writing sentences that are temporally ordered in the sense of using the horizontal line - with most proverbs it's sufficient to use the past/future tense indicators instead.  So maybe I should repurpose the line for some other uses. If only I could think of any.
-<p>
-I need to look at Unker again - I've done lots of work on Orthona since I last checked it out.
-<p>
-<h2>How the language has changed over time</h2>
-The meanings I gave directions changed over time - what was possession, slowly also acquired verb-structure, vertical adjectives also acquired the ability to do comparitives, and the upward diagonal, which used to express "<i>a is b</i>", now is used for dependent clauses and implication.
-<p>
-I've replaced a bunch of symbols, and there are three more probably that should get audited out and replaced with better ones (help, fear, implication, sleep).  Either they're obsolete, or express just one useful concept (I'd prefer each symbol to have at least three related but distinct uses), or express a concept I very very rarely use.
-<p>
-Before there were negative lines, there was no distinction between above/below senses (there was only a below sense) - symbols above a noun were in the positive sense (good, say), and symbols hanging under nouns were their negatives ("<i>bad</i>", say, rather than "<i>important</i>", which is what it is now).
+There are keyboard shortcuts - here's a probably incomplete list:
+<ul>
+<li>Z to undo
+<li>C/V to copy/paste
+<li>W/S/A/D to pan
+<li>left/right to change pages
+<li>P to data string for current page
+<li>Shift+P to data string representing entire sketchbook
+<li>L to load data string
+</ul>
 <h2>Language Reference</h2>
 <p>
 See <a href="../orthodocs_www/index.html">Orthodocs</a>
+<p>
+<h2>Software Infrastructure</h2>
+<p>There are a bunch of different pieces of software that combined together to make this - several different renderers, text editors, data formats, documentation generators - there's an outline described on the github repository for the conlang project <a href="https://github.com/increpare/orthona">here</a>. 
+<p>
+The nicest way by far to enter text is with the iOS app (currently under review), which is basically the same as the web editor, just, it works much better.
+<p>
 <h2>Contact</h2>
 <p>
-Any questions, just ask me <a href="mailto:analytic@gmail.com">analytic@gmail.com</a>.
+Any questions? Just ask <a href="https://groups.google.com/forum/#!forum/orthona">on the forums</a>.
+<p>
+&lt;&lt; <a href="../index.html">HOME</a> 
 <p>
 </body>
 </html>

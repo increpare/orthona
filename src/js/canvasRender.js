@@ -28,7 +28,7 @@ function drawIcon(x,y,n){
         {
             ctx.lineWidth=2;
             ctx.beginPath();
-            var s = glob.cellSize/3;
+            var s = glob.cellSize*0.75/3;
             ctx.moveTo(x+s,y);
             ctx.lineTo(x-s,y);
             ctx.lineTo(x-s/2,y-s);
@@ -45,7 +45,7 @@ function drawIcon(x,y,n){
         {
             ctx.lineWidth=2;
             ctx.beginPath();
-            var s = -glob.cellSize/3;
+            var s = -glob.cellSize*0.75/3;
             ctx.moveTo(x+s,y);
             ctx.lineTo(x-s,y);
             ctx.lineTo(x-s/2,y-s);
@@ -62,7 +62,7 @@ function drawIcon(x,y,n){
         {
             ctx.lineWidth=2;
             ctx.beginPath();
-            var s = glob.cellSize/3;
+            var s = glob.cellSize*0.75/3;
             ctx.moveTo(x+s,y+s);
             ctx.lineTo(x-s,y-s);
             ctx.moveTo(x+s,y-s);
@@ -78,7 +78,7 @@ function drawIcon(x,y,n){
         {
             ctx.lineWidth=2;
             ctx.beginPath();
-            var s = glob.cellSize/3;
+            var s = glob.cellSize*0.75/3;
             var t = 0.2*s;
             ctx.moveTo(x-s,y-s);
             ctx.lineTo(x+t,y-s);
@@ -101,7 +101,7 @@ function drawIcon(x,y,n){
         case -5://print icon
         {
             ctx.beginPath();
-            var s = glob.cellSize*0.5/1.41;
+            var s = glob.cellSize*0.75*0.5/1.41;
             ctx.moveTo(x-s,y-s);
             ctx.lineTo(x+s,y-s);
             ctx.lineTo(x+s,y+s);

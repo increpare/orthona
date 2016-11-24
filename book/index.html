@@ -6,6 +6,7 @@
 body{
 	width:600px;
 	margin-left: 100px;
+	margin-bottom: 50px;
 }
 	.ortho{
 		display: none;
@@ -28,28 +29,38 @@ body{
 <body>
 &lt;&lt; <a href="../index.html">HOME</a> 
 <p>
-<h1>Snippits</h1>
-Here are some random translations I've posted on reddit and elsewhere (the language is in flux, so some might use outdated grammar/rules):
+<h1>Texts</h1>
+<p>
+<div id="index"></div>
+<p>
+<h2>Snippits</h2>
+Here are some random translations I've posted on reddit and elsewhere (the language is in flux, so some might use obsolete symbols, or outdated grammar/rules):
 <p>
 <ul>
+	<li>"Two wrongs don't make a right" - <A href="https://twitter.com/increpare/status/801736110988808192">twitter</A>
 	<li>St Francis's Prayer - <a href="https://twitter.com/increpare/status/801397901301809152">twitter</a>
 	<li>"<i>The only thing we have to fear is fear itself.</i>" - <a href="https://www.reddit.com/r/conlangs/comments/5dpl7c/translation_challenge/da6rp27/">reddit</a>
-	<li>"<i>I know not with what weapons World War III will be fought, but World War IV will be fought with sticks and stones.</i>" - <a href="https://www.reddit.com/r/conlangs/comments/5dbo7f/translation_challenge/da6rl0u/?context=3">reddit</a>
+	<li>"<i>I know not with what weapons World War III will be fought [...]</i>" - <a href="https://www.reddit.com/r/conlangs/comments/5dbo7f/translation_challenge/da6rl0u/?context=3">reddit</a>
 	<li>A pangram - <a href ="https://www.reddit.com/r/conlangs/comments/5ct9y4/translation_challenge_quick_brown_fox/d9zbaor/">reddit</a>
 	<li>Title of proverb book, explanation - <a href="http://i.imgur.com/7Ia98lU.png">reddit</a>
-	<li>Shakespeare Romeo & Juliet quote, <a href="https://www.reddit.com/r/conlangs/comments/5cbzo6/shakespeare_challenge_1_but_soft/d9vdgkw/">reddit</a>
+	<li>Trying allowing more flexibility/ambiguity in order to compress more - <a href="https://twitter.com/increpare/status/795840733731323904">twitter</a>
+	<li>Some proverbs - <a href="https://twitter.com/increpare/status/795836504442568704">twitter</a>
+	<li>Shakespeare Romeo &amp; Juliet quote - <a href="https://www.reddit.com/r/conlangs/comments/5cbzo6/shakespeare_challenge_1_but_soft/d9vdgkw/">reddit</a>
 	<li>"Rule Five - No Cross, No Crown" - <a href="https://www.reddit.com/r/conlangs/comments/5bx7ap/translation_challenge_1_rule_5/d9u7xxo/">reddit</a>
 	<li>"[...] Fear is the mind-killer. [...]" - <a href="https://www.reddit.com/r/conlangs/comments/5c4zmf/posted_this_for_the_pecomo_challenge_subreddit/d9tvpvn/">reddit</a>
+	<li>Screenshots of two editors - <a href="https://twitter.com/increpare/status/792959852104605696">twitter</a>	
 	<li>Odyssey excerpt - <a href="https://www.reddit.com/r/conlangs/comments/5b3m3g/a_conlanging_odyssey_34/d9m0edh/">reddit</a>
 	<li>404 error message - <a href="https://www.reddit.com/r/conlangs/comments/5b533q/translation_challenge_http_404/d9lt6f0/">reddit</a>
 	<li>"Do not go gentle into that good night" - <a href="https://www.reddit.com/r/conlangs/comments/5ano42/quotes_45/d9j6oph/?context=3">reddit</a>
+	<li>Screenshots of different fonts - <a href="https://twitter.com/increpare/status/791845953837920256">twitter</a>
 	<li>Darkness - song translation - <a href="https://www.reddit.com/r/conlangs/comments/5arcqo/darkness_song_translation/d9j1ii0/">reddit</a>
 	<li>Spooky Scary Skeletons - <a href="https://www.reddit.com/r/conlangs/comments/5adjb9/translation_challenge_spooky_scary_skeletons/d9gd962/">reddit</a>
 	<li>This is Halloween - <a href="https://www.reddit.com/r/conlangs/comments/5aakji/translation_challenge_this_is_halloween/d9g8ciq/">reddit</a>
+	<li>Random sentences - <a href="https://twitter.com/increpare/status/790040704529694721">twitter</a>
 </ul>
 <p>
-<h1>Texts</h1>
-Here are some books:
+<h2>Books</h2>
+Here are some books [ <a href="https://twitter.com/increpare/status/801249436479299584/video/1">twitter</a> ]:
 <ul>
 <li><a href="ongames.pdf">On Games</a>
 <li><a href="diary.pdf">Diary</a>
@@ -59,5 +70,19 @@ Here are some books:
 </ul>
 <p>
 They can be purchased in physical form from <a href="http://www.lulu.com/shop/search.ep?contributorId=1467257">Lulu</a>.
+<p>
+<script>
+	var headers = document.getElementsByTagName("h2");
+	var innerHTML="<ol>";
+	for (var i=0;i<headers.length;i++) {
+		var e = headers[i];
+		e.id="section"+i;
+		var title=e.innerHTML;
+		innerHTML+=`<li><a href="#section${i}">${title}</a">`
+	}
+	innerHTML+="</ol>"
+	var index= document.getElementById("index");
+	index.innerHTML=innerHTML;
+	</script>
 </body>
 </html>

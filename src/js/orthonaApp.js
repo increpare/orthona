@@ -32,6 +32,13 @@ var startPosY=0;
 
 var UndoStack = []
 
+var emailAddress = '';
+
+var emailLoaded = (localStorage.getItem("glob.emailAddress"));
+if (emailLoaded){
+    emailAddress=emailLoaded;
+}
+
 function DoUndo(){
     if (UndoStack.length<2){
         return;
@@ -348,17 +355,21 @@ function handleStart(evt) {
                 //set title
                 if (iOS){
                     var dat = JSON.stringify(glob.sketchBook)
-                    var myurl = `mailto:analytic@gmail.com?subject=Orthona%20Sketchbook&body=${dat}`
 
+                    console.log("EMAIL ADDY '" + emailAddress+"'");
+
+                    if (emailAddress == ""){
+                        emailAddress = prompt("enter email address","");
+                        localStorage.setItem("glob.emailAddress",emailAddress);
+                    }
 
                     cordova.plugins.email.open({
-                        to:      'analytic@gmail.com',
+                        to:      emailAddress,
                         //cc:      'erika@mustermann.de',
                         //bcc:     ['john@doe.com', 'jane@doe.com'],
                         subject: 'Orthona Sketchbook',
                         body:    dat
                     });
-                    window.open(myurl);
                 } else {
                     
                     DoPrint(true);                

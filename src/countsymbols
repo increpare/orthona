@@ -1,0 +1,52 @@
+#!/usr/bin/env node
+var fs = require('fs')
+log = console.log
+
+var glob = require('./js/orthoGlobals')
+var lib = require('./js/orthoLib')
+var svgRender = require("./js/svgRender")
+
+if (process.argv.length===2){
+	console.log("USAGE: countsymbols FILENAMES");
+	return;
+}
+
+var inputFileNames=[]
+for (var i=2;i<process.argv.length;i++){
+	var t = process.argv[i];
+	inputFileNames.push(t);
+}
+
+if (inputFileNames.length==0)
+{
+	console.log("need to supply input file");
+}
+
+var frequencies=[];
+for (var i=0;i<35;i++){
+	frequencies.push(0);
+}
+
+for (var inputFileName of inputFileNames){
+	datFile = fs.readFileSync(inputFileName, 'utf8')
+
+
+	var sketchBook = JSON.parse(datFile);
+	for (var p of sketchBook){
+		for (var el of p.elements){
+			frequencies[el[2]]++;
+		}
+	}
+}
+
+function padRight(s,len){
+	while (s.length<len){
+		s+=' ';
+	}
+	return s;
+}
+var entityNames = require('./res/entityNames.json')
+for (var i=0;i<35;i++){
+	entityNames[i] = padRight(entityNames[i],12)
+	console.log(entityNames[i]+" :\t"+frequencies[i])
+}

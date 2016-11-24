@@ -80,10 +80,12 @@ wait
 ./genmsite
 ./genwsite
 ./genflat
+./utala
 
 make
 
 ./genorthuino
+
 
 #because texts might (unintentionally) not be backwards-compatible, not regenerating these
 #./genbook dat/sketchbook/proverbbook.json 
