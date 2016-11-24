@@ -1,0 +1,306 @@
+<html>
+<head>
+<title>Orthona Introduction</title>
+<script src="js/compiled.js"></script>
+<style type="text/css">
+body{
+	width:600px;
+	margin-left: 100px;
+}
+	.ortho{
+		display: none;
+	}
+	svg{
+		vertical-align: middle;
+		margin-left: -5px;
+		margin-right: -5px;
+		margin-top: -5px;
+		margin-bottom: -5px;
+	}
+	div {
+		margin-left: 50px;
+	}
+	div.index{
+		margin-left: initial;
+	}
+</style>
+</head>
+<body>
+&lt;&lt; <a href="../index.html">HOME</a> 
+<p>
+<h1>A rough guide to the Orthona Langauge</h1>
+<p>
+v0.1
+<p>
+<div id="index"></div>
+<p>
+This is a work-in-progress. The language is still a bit in flux, and this document hasn't been properly proofread. 
+<p>
+<h2>What is Orthona for?</h2>
+<p>
+Orthona is a constructed language.  It has three goals:
+<p>
+<ol>
+<li> To be written in a way to take advantage of two dimensional layouts.
+<li> To be capable of expressing broad generalities - to express the gist of proverbs, for instance.
+<li> To be easy to input on a mobile phone/touch screen.
+</ol>
+<p>
+<h2>Symbols</h2>
+<p>
+Because of goal 3, Orthona has a writing symbol with a fixed number of 35 symbols:
+<p>
+<div>
+{"elements":[[4,4,0],[5,4,1],[6,4,2],[7,4,3],[8,4,4],[4,5,5],[5,5,6],[6,5,7],[7,5,8],[8,5,9],[8,6,14],[7,6,13],[6,6,12],[5,6,11],[4,6,10],[4,7,15],[5,7,16],[6,7,17],[7,7,18],[8,7,19],[4,8,20],[5,8,21],[6,8,22],[7,8,23],[8,8,24],[4,9,25],[5,9,26],[6,9,27],[7,9,28],[8,9,29],[4,10,30],[5,10,31],[6,10,32],[7,10,33],[8,10,34]],"lines":[],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+<p>
+If a new symbol is added, an old symbol will be removed (there are a number of weak candidates that need pruning atm).
+<p>
+<h2>Layout</h2>
+<p>
+Orthona text is laid out on a grid, like so:
+<p>
+<div>{"elements":[[8,6,0],[9,7,3],[8,5,8],[9,8,8]],"lines":[[9,7,8,6,0],[8,6,8,5,1],[9,8,9,7,1]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+<p>
+There are four identifiers:
+<p>
+<div>{"elements":[[10,5,0],[11,5,1],[12,5,2],[13,5,3]],"lines":[],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+<p>
+The left two are used for people/animate objects, the right two for inanimate things. (Because of principle 2, there's no need for proper nouns. I might add in more because sometimes I run out of animate object pronouns, and have to designate a third person as a "<i>living inanimate thing</i>"...)
+<p>
+How symbols are connected determines their relationship.  
+<ul>
+<li>
+If things are connected horizontally, the left thing happened first. So <span>{"elements":[[10,6,0],[11,6,1]],"lines":[[11,6,10,6,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</span> means "<i><span>0</span>, then <span>1</span></i>".
+<li>If things are connected by descending diagonals, that (often) indicates posession. So 
+<span>
+{"elements":[[10,6,0],[11,7,2]],"lines":[[11,7,10,6,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}
+</span>
+means "<i><span>0</span> has <span>2</span></i>".
+<li>
+Ascending diagonals are used to do subclauses, and also to do "<i>if, then</i>" statements. I'll cover that later.
+<li>
+Vertical lines are usually used for adjectival properties. I'll cover that now.
+</ul>
+<p>
+<h2>Person</h2>
+<p>
+The symbol <span>5</span> is used to indicate first or second person, depending on whether it's connected above or below. So in this example
+<span>
+{"elements":[[10,6,0],[10,5,5],[11,5,1],[11,6,5]],"lines":[[10,6,10,5,0],[11,6,11,5,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</span> means "<i>I am <span>0</span>, and you are <span>1</span></i>."
+<p>
+<h2>Adjectives</h2>
+<p>
+All symbols have a primary meaning.  <span>6</span> is "<i>virtue/vice</i>" (normally more in the sense of virtue) for instance, but what it actually means depends on how it's connected up.  
+<p>
+If the "<i>virtue</i>" symbol appears above
+<p>
+<div>{"elements":[[8,6,0],[8,5,6]],"lines":[[8,6,8,5,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+it means "<i><span>0</span> is good/happy</i>", while if it appears under
+<p>
+<div>{"elements":[[8,6,0],[8,7,6]],"lines":[[8,7,8,6,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+<p>
+It means "<i><span>0</span>is unimportant</i>".  All symbols used as adjectives in this sense have separate upper and lower forms, with different shades of meaning.  
+<p>
+Also, sometimes, diagonal connections can convey particular adjective-flavour meanings. For instance using the time symbol <span>22</span>:
+<div>{"elements":[[9,5,0],[10,6,22]],"lines":[[10,6,9,5,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+means  "<i><span>0</span> is young/new</i>".
+<p>
+<h2>Negation</h2>
+<p>
+If you want to say that someone is bad/not good/unhappy, you strike through the line:
+<p>
+<div>{"elements":[[8,6,0],[8,5,6]],"lines":[[8,6,8,5,1]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+<p>
+<h2>Comparisons</h2>
+<p>
+Often, if three symbols appear in a vertical row it a comparison is implied.  For the case of "<i>virtue</i>", because it has two different meanings in comparisons, you may have to indicate the direction - by default you read from the bottom up, so:
+<div>{"elements":[[8,7,6],[8,8,0],[8,6,1]],"lines":[[8,7,8,6,0],[8,8,8,7,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+means that "<i><span>0</span> is happier/better than <span>1</span></i>".  However, if you it's connected in such a way that you read it from the top down, such as the second part of
+<div>{"elements":[[6,5,0],[6,4,6],[7,6,6],[6,3,1],[7,5,2],[7,7,3]],"lines":[[6,5,6,4,0],[6,4,6,3,0],[7,5,6,5,0],[7,6,7,5,0],[7,7,7,6,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+<p>
+Then you read the right part as "<i><span>2</span> is more important than <span>3</span></i>". 
+<p>
+Other examples would be <span>20</span>, which denotes knowledge if above, and belief if below, or <span>14</span>, which denotes power if above, and truth if below.
+<p>
+If a comparison is free-floating, and you want to indicate directionality, you can use a stray horizontal line to indicate reading direction :
+<div>
+{"elements":[[7,5,0],[7,6,6],[7,7,1]],"lines":[[7,6,7,5,0],[7,7,7,6,0],[7,5,6,5,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}
+</div>
+Says "<i><span>0</span> is more important than <span>1</span></i>"
+<p>
+<h2>Dependent clauses</h2> 
+<p>
+If you want to say "<i><span>0</span> has <span>1</span>. <span>1</span> is good.</i>", you have several options.  You can place them side-by-side, unconnected:
+<div>
+{"elements":[[5,5,0],[6,6,2],[7,6,2],[7,5,6]],"lines":[[6,6,5,5,0],[7,6,7,5,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}
+</div>
+<p>
+You can compress them into a single statement:
+<div>
+{"elements":[[5,5,0],[6,6,2],[6,5,6]],"lines":[[6,6,5,5,0],[6,6,6,5,1]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}
+</div>
+Or you can attach it as a dependent clause:
+<div>
+{"elements":[[5,5,0],[6,6,2],[7,5,2],[7,4,6]],"lines":[[6,6,5,5,0],[7,5,6,6,0],[7,5,7,4,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}
+</div>
+This can help break up complicated statements into more managable pieces.
+<p>
+Generally speaking, repeated symbols, linked with an ascending diagonal, indicate a dependent clause.  The connections are read from left to right.
+<p>
+<h2>Verbs</h2>
+<p>
+Verb patterns are mostly given by 3-part diagonals (ascending or descending - sometimes, but not always there are differences in meanings for both directions).  If <span>0</span> does something good for <span>1</span>, you write
+<div>{"elements":[[9,6,0],[10,7,6],[11,8,1]],"lines":[[10,7,9,6,0],[11,8,10,7,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+<p>
+If you want to just say "<i><span>0</span> has done something good/is doing something good</i>"", you can leave out <span>1</span>:
+<p>
+<div>{"elements":[[9,6,0],[10,7,6]],"lines":[[10,7,9,6,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+<p>
+<h2>Nominalization</h2>
+<p>
+If you want to describe the qualities of a verb, you can just add an adjective to it. 
+<div>{"elements":[[9,6,0],[9,7,26]],"lines":[[9,7,9,6,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+<p>
+means that <span>0</span> is experiencing or causing pleasure, and
+<div>
+{"elements":[[9,6,0],[10,7,6],[10,8,26]],"lines":[[10,7,9,6,0],[10,8,10,7,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+means that <span>0</span> is doing something good, and the action is a source of pleasure.  
+<p>
+Sometimes you'll have to break out subordinate clauses to describe things.  If you want to say you did something good for someone, and that good action was novel/new - both parts are expressed by descending diagonal relations, so you do this:
+<div>{"elements":[[9,5,0],[10,6,6],[11,5,6],[12,6,22],[11,7,1]],"lines":[[10,6,9,5,0],[11,5,10,6,0],[11,7,10,6,0],[12,6,11,5,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+<p>
+Actully, even saying "<i>You did a good deed which is new</i>" is super confusing to put in a single diagonal line (it is ambiguous and might be read as "<i>you did a good dead for time</i>"), so you might want to break it out
+<p>
+<div>{"elements":[[9,5,0],[10,6,6],[11,5,6],[12,6,22]],"lines":[[10,6,9,5,0],[11,5,10,6,0],[12,6,11,5,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+<p>
+<h2>Sense verbs</h2>
+<p>
+Sight, smell, touch, hear, taste are the sensory verbs.
+<div>{"elements":[[9,4,15],[10,4,16],[11,4,17],[12,4,18],[13,4,19]],"lines":[],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+<p>
+<div>{"elements":[[9,7,0],[8,6,15],[7,5,2]],"lines":[[9,7,8,6,0],[8,6,7,5,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+means that <span>0</span> sees <span>2</span>.
+<p>
+Sense verbs also allow a four-part construction. If you want to show somebody something to eat/taste/&c., you can write
+<div>
+{"elements":[[8,6,15],[7,5,2],[8,7,0],[9,7,1]],"lines":[[9,7,8,6,0],[8,6,7,5,0],[8,7,8,6,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}
+</div>
+<p>
+Which means "<i><span>0</span> showed <span>2</span> to <span>1</span></i>".  
+<p>
+This can lead to some ambiguous situations
+<p>
+<div>{"elements":[[7,5,2],[9,7,1],[9,6,5],[8,6,15],[8,7,22]],"lines":[[9,7,8,6,0],[8,6,7,5,0],[9,7,9,6,0],[8,7,8,6,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+The above could be read as both "<i>Time showed me <span>2</span></i>", or "<i>I saw <span>2</span> in the past</i>" (<span>22</span> connected under something indicates the past tense). In this case, the former interpretation would probably get priority. If you wanted to say the latter, you would use a dependent clause
+<div>{"elements":[[7,5,2],[9,7,1],[9,6,5],[8,6,15],[7,7,15],[7,8,22]],"lines":[[9,7,8,6,0],[8,6,7,5,0],[9,7,9,6,0],[7,8,7,7,0],[8,6,7,7,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+<p>
+<h2>Conditionals</h2>
+<p>
+The way the language deals with conditionals, is it can express things "to be X is to be Y" with an ascending diagonal.
+<p>
+<div>{"elements":[[8,8,22],[7,7,0],[8,6,0],[8,5,6]],"lines":[[8,8,7,7,0],[8,6,7,7,0],[8,6,8,5,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+<p> can be read as "<i>To be young is to be good</i>"
+<p>
+This converges pretty well with the subordinate use, but it makes more sense when negated (I haven't decided if reading direction is important here, but I normally read from left to right)
+<p>
+<div>{"elements":[[8,8,22],[7,7,0],[8,6,0],[8,5,6]],"lines":[[8,8,7,7,0],[8,6,7,7,1],[8,6,8,5,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+<p>
+Says "<i>Someone being young doesn't mean they're good</i>"
+<p>
+I used to use <span>28</span> to indicate cause/implication with a special syntax, but I haven't used it in a long time, favouring the above notation.
+<p>
+<h2>Pair proverbs</h2>
+<p>
+While I said an upwards reading direction is generally preferred for comparisons, there's no preferred reading direction for solitary vertical pairs, which allows for you to easily say two different things at once depending on whether you read up or down, perfect for proverb-style expressions.  So, <span>33</span> is "<i>life</i>", and represents infinity, if connected under something, while <span>26</span> is "<i>pain</i>", and when used above something means "<i>is in pain, or causes pain</i>". 
+<p>
+So <span>
+{"elements":[[10,6,33],[10,5,26]],"lines":[[10,6,10,5,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}
+</span>
+means both "Life is pain", and "Pain is infinite".
+<p>
+For another example <span>7</span> is "<i>change</i>", and represents capability/ability if above, so
+
+<span>
+{"elements":[[11,6,7],[11,7,6]],"lines":[[11,7,11,6,1]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}
+</span>
+express the rather cynical pair of "<i>Virtue is futile</i>" and "<i>Change is unimportant</i>".
+<p>
+<span>{"elements":[[10,5,13],[10,6,11]],"lines":[[10,6,10,5,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</span>
+means "<i>Friendship is desirable</i>" and "<i>Desire is selfish</i>".
+<p>
+<span>{"elements":[[10,5,12],[10,6,8]],"lines":[[10,6,10,5,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</span>
+means "<i>Everything is a question</i>" and "<i>There is one answer</i>".
+<h2>Constellation Form</h2>
+<p>
+If you take the sentence <span>{"elements":[[9,5,0],[10,6,2],[10,5,6],[9,4,5]],"lines":[[10,6,9,5,0],[10,6,10,5,0],[9,5,9,4,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</span>, which means "I have a good thing", and you remove the connecting lines, you lose information:
+<div>{"elements":[[9,5,0],[10,6,2],[10,5,6],[9,4,5]],"lines":[],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+<p>
+If you were to try to reconstruct original sentence from this you wouldn't be able to tell what should be connected to what, and also all information about negation would be lost.
+<p>
+However, if I give you 
+<p>
+<div>{"elements":[[9,5,0],[9,4,5],[10,6,2],[10,2,6]],"lines":[],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}</div>
+<p>
+Assuming all lines are positive, there is only one way to fill in all the lines (because lines have to be either horizontal, vertical, or some 45 degree angle):
+<p>
+<div>
+{"elements":[[9,5,0],[9,4,5],[10,6,2],[10,2,6]],"lines":[[9,5,9,4,0],[10,6,9,5,0],[10,6,10,2,0]],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}
+</div>
+I havn't used this form since I added negation to the language, so I don't know how I'd express it in this form.  Probably with a dot.
+<p>
+<h2>Text Editor</h2>
+<p>
+<a href="../orthona/www/index.html">The online editor</a>.  It's not documented well - controls are - 
+<ul>
+<li>click + drag on a blank area to select a glyph.
+<li>click on a glyph to delete it.
+<li>click and drag from a glyph to add a line.
+<li>click and drag over an existing line from a glyph to negate/delete it (slightly complicated behaviour to describe, but it should be possible to figure it out by trial+error).
+</ul>
+<p>
+There are keyboard shortcuts (z to undo, c/v to copy/paste, wsad to pan, left/right to change pages)
+<h2>Other Software Infrastructure</h2>
+<p>There are a bunch of different pieces of software that combined together to make this - several different renderers, text editors, data formats, documentation generators - there's an outline described on the github repository for the conlang project <a href="https://github.com/increpare/ortho">here</a>. 
+<p>
+The nicest way by far to enter text is with the iOS app (not available), which is basically the same as the web editor, just, it works much better.
+<h2>Thoughts about the language</h2>
+<p>
+<h3>Ambiguity</h3>
+<p>
+One problem that the language might have is ambiguity. I'm just using it for myself, so I'm not totally confident that it's not so much conveying information as acting as a mnemonic.  This page and the other reference section still leave a lot of ambiguity, but I don't know how much of that is just "<i>stuff in the language I don't understand how to put into words, that I 'know' intuitively</i>", vs "<i>particular meanings that are in my head that I recall when I see a particular page</i>".  
+<p>
+I've written lots and lots in it now hoping to eventually write more than I can remember so I can test it out, but so far it's still very easily to remember from context.
+<p>
+I should say, I'm comfortable with the language being a little ambiguous.  And in any event, the more I've written, the more I've become comfortable with the use of dependent clauses, which solves most problems.
+<p>
+<h3>Directionality</h3>
+<p>
+At one point I decided things were too horizontally biased (because one of my goals is to optimize the language for smart-phone entry), so I thought "<i>ok, this is easy, I'll just rotate the language 90 degrees - time now goes down, and all the grammar structures will be rotated</i>".  However, this resulted in the "<i>above/below</i>"  senses for all the symbols turning into "<i>left/right</i>" sense, and for some reason my brain has no interest in learning the horizontal distinctions, but can deal with up/down ones just fine.
+<p>
+The direction that verbs go is a weird one - I don't have a consisten rule across all verbs (except the sensory ones).
+<p>
+<h3>Comparing to Unker</h3>
+<p>
+Comparing to <a href="https://t.co/4Ghuz5kZOe">Unker</a> is interesting.  The choice to privilege particular directions and give them functions makes the resulting language a lot more rigid in appearance - but you can still have fun with thickly meshing statements - the problems are more geometrical and less topological. 
+<p>
+In particular, late into the development of the language, stumbling across Sai's essay <a href="https://s.ai/essays/nlf2dws">Non-Linear Fully Two-Dimensional Writing System Design</a> and seeing they were also thinking a lot about various connection types was reassuring. 
+<p>
+Using the horizontal axis for time gives the whole language a horizontal bias. It seems a bit of a shame to go all 2D and then suddenly slap down a line.  I dislike writing sentences that are temporally ordered in the sense of using the horizontal line - with most proverbs it's sufficient to use the past/future tense indicators instead.  So maybe I should repurpose the line for some other uses. If only I could think of any.
+<p>
+I need to look at Unker again - I've done lots of work on Orthona since I last checked it out.
+<p>
+<h2>How the language has changed over time</h2>
+The meanings I gave directions changed over time - what was possession, slowly also acquired verb-structure, vertical adjectives also acquired the ability to do comparitives, and the upward diagonal, which used to express "<i>a is b</i>", now is used for dependent clauses and implication.
+<p>
+I've replaced a bunch of symbols, and there are three more probably that should get audited out and replaced with better ones (help, fear, implication, sleep).  Either they're obsolete, or express just one useful concept (I'd prefer each symbol to have at least three related but distinct uses), or express a concept I very very rarely use.
+<p>
+Before there were negative lines, there was no distinction between above/below senses (there was only a below sense) - symbols above a noun were in the positive sense (good, say), and symbols hanging under nouns were their negatives ("<i>bad</i>", say, rather than "<i>important</i>", which is what it is now).
+<h2>Language Reference</h2>
+<p>
+See <a href="../orthodocs_www/index.html">Orthodocs</a>
+<h2>Contact</h2>
+<p>
+Any questions, just ask me <a href="mailto:analytic@gmail.com">analytic@gmail.com</a>.
+<p>
+</body>
+</html>

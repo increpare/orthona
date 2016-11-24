@@ -12,3 +12,5 @@ tmp/docDatabase.json: res/docDatabase.slab
 ../orthotope/js/compiled.js: ./js/*.js
 	 browserify ./js/orthotopeApp.js -o ../orthotope/js/compiled.js
 
+../webintro/js/compiled.js: ./js/*.js
+	browserify ./js/webintro.js -o ../webintro/js/compiled.js

@@ -1,4 +1,4 @@
-    var glob = require('./orthoGlobals')
+var glob = require('./orthoGlobals')
 var canvasRender = require('./canvasRender')
 var entityNames = require('../res/entityNames.json')
 var lib = require('./orthoLib')

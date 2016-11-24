@@ -202,6 +202,9 @@ var index=`<!DOCTYPE html>
 </head>
 
 <body class="">
+
+&lt;&lt; <a href="../index.html">HOME</a> 
+<p>
                     <h1>Orthodocs</h1>`
 
 index+="<p><table>"

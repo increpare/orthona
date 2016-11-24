@@ -14,6 +14,7 @@ Software ecosystem for the Ortho language.
 - Bitmap font renderer (with 4 fonts)
 - Character-based command-line renderer
 - Export sketchbooks to PDF for Lulu.com
+- Embeddable js library for rendering inline Ortho text.
 
 ###File Formats
 - JSON 
