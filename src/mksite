@@ -15,4 +15,6 @@ rm -rf site/book/*.ICC
 rm -rf site/book/*.ins
 rm -rf site/book/eps
 rm -rf site/book/*.sty
+rm -rf site/webrender
+cp -rf webrender site/webrender
 cd src

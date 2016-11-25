@@ -138,6 +138,21 @@ var ctx
 var canvas
 
 
+function DoShowGfxLink(){
+    var pageCode="";
+
+    pageCode+=glob.page.elements.length+",";
+    for (var e of glob.page.elements){
+        pageCode+=`${e[0]},${e[1]},${e[2]},`
+    }
+    pageCode+=glob.page.lines.length+",";
+    for (var l of glob.page.lines){
+        pageCode+=`${l[0]},${l[1]},${l[2]},${l[3]},${l[4]},`
+    }
+    var linkURL = "../../webrender/?r="+pageCode.substring(0,pageCode.length-1);
+    window.open(linkURL,'_blank');
+}
+
 function doStart(){
     glob.canvas = document.getElementById("mainCanvas");
     glob.ctx=glob.canvas.getContext('2d');
@@ -167,7 +182,9 @@ function doStart(){
             DoCopy();
         }   else if (evt.keyCode===86){
             DoPaste();
-        }   else if (evt.keyCode===87){
+        } else if (evt.keyCode===75){
+            DoShowGfxLink();
+        } else if (evt.keyCode===87){
             //up
             glob.page.offsetY+=glob.cellSize;
             SaveState(true);

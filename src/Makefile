@@ -1,4 +1,4 @@
-all: ../orthona/www/js/compiled.js ../orthotope/js/compiled.js tmp/docDatabase.json ../orthotope/js/compiled.js res/entityNames.json
+all: ../orthona/www/js/compiled.js ../orthotope/js/compiled.js tmp/docDatabase.json ../orthotope/js/compiled.js res/entityNames.json ../webintro/js/compiled.js ../webrender/js/compiled.js
 
 res/entityNames.json: res/datasheet/*.*
 	(cd build/; ./updatenames)
@@ -14,3 +14,6 @@ tmp/docDatabase.json: res/docDatabase.slab
 
 ../webintro/js/compiled.js: ./js/*.js
 	browserify ./js/webintro.js -o ../webintro/js/compiled.js
+
+../webrender/js/compiled.js: ./js/*.js
+	browserify ./js/webrender.js -o ../webrender/js/compiled.js
