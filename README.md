@@ -27,7 +27,7 @@ Software ecosystem for the Ortho language.
 - Translating into a speakable instruction language (2 dialects)
 
 ###Input formats
-- FLAT markup language
+- SLAB markup language
 
 ###TO DO
 - Write a graph reducer to improve FLAT->json conversion.
