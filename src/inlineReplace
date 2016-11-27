@@ -1,0 +1,62 @@
+#!/usr/bin/env node
+
+// Print all of the news items on Hacker News
+var fs = require("fs");
+log = console.log
+
+var glob = require('./js/orthoGlobals')
+var lib = require('./js/orthoLib')
+var inlineReplace = require('./js/inlineReplace').inlineReplace
+var svgRender = require("./js/svgRender")
+var jsdom = require("jsdom");
+
+
+if (process.argv.length===2){
+    console.log("USAGE: webintroprocess  INFILE OUTFILE");
+    return;
+}
+var inputFileName=""
+var outputFileName=""
+for (var i=2;i<process.argv.length;i++){
+    var t = process.argv[i];
+    if (inputFileName===""){
+        inputFileName=t;
+        console.log("input file "+t)
+    } else if (outputFileName===""){
+        outputFileName=t;
+    } else {
+        console.log("Too many arguments. Unexpected argument \""+t+"\".");      
+    }
+}
+
+if (inputFileName==="")
+{
+    console.log("need to supply an input file name");
+}
+
+if (outputFileName===""){
+    console.log("need to supply an output file name");
+}
+
+
+var dummy = fs.readFileSync(inputFileName,"utf-8")
+
+jsdom.env(
+  dummy,
+  ["../webintro/js/compiled.js"],
+  function (err, window) {
+    procpage(window)
+  }
+);
+
+function procpage(window){
+    inlineReplace(window.document)
+
+    var r = window.document.getElementsByTagName('script');
+    for (var i = (r.length-1); i >= 0; i--) {
+        r[i].parentNode.removeChild(r[i]);
+    }
+
+    var outDat = window.document.documentElement.outerHTML;
+    fs.writeFileSync(outputFileName,outDat)
+}

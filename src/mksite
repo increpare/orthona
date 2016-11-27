@@ -1,7 +1,7 @@
 cd ..
 cp index.html site/index.html
 rm -rf site/webintro
-cp -rf webintro site/webintro
+mkdir site/webintro
 rm -rf site/orthona/www
 cp -rf orthona/www site/orthona/www
 rm -rf site/orthodocs_www
@@ -18,3 +18,5 @@ rm -rf site/book/*.sty
 rm -rf site/webrender
 cp -rf webrender site/webrender
 cd src
+./inlinereplace ../webintro/index.html ../site/webintro/index.html
+./inlinereplace ../webintro/thoughts.html ../site/webintro/thoughts.html

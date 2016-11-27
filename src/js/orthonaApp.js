@@ -292,7 +292,7 @@ function zoomCoords(evt){
                 [evt.touches[0].clientX,evt.touches[0].clientY,evt.touches[1].clientX,evt.touches[1].clientY] :
                 [evt.touches[0].clientX,evt.touches[0].clientY,evt.touches[0].clientX,evt.touches[0].clientY];
     } else {
-        return [evt.clientX,event.clientY,event.clientX,event.clientY]
+        return [evt.clientX,evt.clientY,evt.clientX,evt.clientY]
     }
 }
 
