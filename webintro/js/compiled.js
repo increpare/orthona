@@ -44,7 +44,6 @@ function inlineReplace(document){
 			continue;
 		}
 		var s = e.innerHTML;
-		console.log(s)
 		if (!isNaN(s)){
 			s=`{"elements":[[8,8,${s}]],"lines":[],"offsetX":0,"offsetY":0,"scale":1,"sketchTitle":""}`;
 		}
