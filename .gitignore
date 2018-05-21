@@ -19,10 +19,7 @@ src/dat/tiled
 src/tmp
 docs
 mdocs
-orthotope/js/compiled.js
-orthona/www/js/compiled.js
 *.swp
 *.eps
 *.pdf
 site
-orthona/platforms/browser/www/js/compiled.js
