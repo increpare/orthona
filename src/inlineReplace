@@ -8,7 +8,7 @@ var glob = require('./js/orthoGlobals')
 var lib = require('./js/orthoLib')
 var inlineReplace = require('./js/inlineReplace').inlineReplace
 var svgRender = require("./js/svgRender")
-var jsdom = require("jsdom");
+var jsdom = require("jsdom/lib/old-api");
 
 
 if (process.argv.length===2){
