@@ -1,0 +1,21 @@
+{
+  "name": "com.increpare.orthona",
+  "version": "1.0.2",
+  "displayName": "Orthona",
+  "cordova": {
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "plugins": {
+      "cordova-plugin-whitelist": {}
+    }
+  },
+  "dependencies": {
+    "cordova-android": "^8.0.0",
+    "cordova-ios": "~3.9.1"
+  },
+  "devDependencies": {
+    "cordova-plugin-whitelist": "1"
+  }
+}

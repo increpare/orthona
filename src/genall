@@ -89,6 +89,6 @@ make
 ./mksite
 
 #because texts might (unintentionally) not be backwards-compatible, not regenerating these
-#./genbook dat/sketchbook/proverbbook.json 
-#./genbook dat/sketchbook/abecedarium.json 
-#./genbook dat/sketchbook/ongames.json 
+./genbook dat/sketchbook/proverbbook.json 
+./genbook dat/sketchbook/abecedarium.json 
+./genbook dat/sketchbook/ongames.json 

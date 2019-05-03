@@ -67,6 +67,7 @@ for (var i=0;i<glob.sketchBook.length;i++){
 	if (noImg===false){
 		var svgDat=svgRender.render();
 		fs.writeFileSync(`./tmp/bp_${i}.svg`,svgDat)
+		console.log(` inkscape ./tmp/bp_${i}.svg -E  ../book/eps/bp_${i}.eps  --export-ignore-filters --export-ps-level=3`)
 		execSync(` inkscape ./tmp/bp_${i}.svg -E  ../book/eps/bp_${i}.eps  --export-ignore-filters --export-ps-level=3`)
 	}
 	bookTxt+=`\\begin{figure}[p]

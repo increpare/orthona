@@ -1,0 +1,1072 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/MacPorts 2015_9) (preloaded format=pdflatex 2015.12.3)  31 MAY 2018 13:32
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**proverbbook.tex
+(./proverbbook.tex
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 51 languages loaded.
+(/opt/local/share/texmf-texlive/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/opt/local/share/texmf-texlive/tex/latex/base/bk10.clo
+File: bk10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/opt/local/share/texmf-texlive/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/opt/local/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/opt/local/share/texmf-texlive/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count88
+\Gm@cntv=\count89
+\c@Gm@tempcnt=\count90
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@layoutwidth=\dimen107
+\Gm@layoutheight=\dimen108
+\Gm@layouthoffset=\dimen109
+\Gm@layoutvoffset=\dimen110
+\Gm@dimlist=\toks15
+)
+(/opt/local/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/opt/local/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
+
+(/opt/local/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/opt/local/share/texmf-texlive/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 94.
+
+(/opt/local/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count91
+))
+\Gin@req@height=\dimen111
+\Gin@req@width=\dimen112
+)
+(./proverbbook.aux)
+\openout1 = `proverbbook.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: custom
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(61.45805pt, 305.29794pt, 54.34486pt)
+* v-part:(T,H,B)=(54.34486pt, 488.81815pt, 54.34486pt)
+* \paperwidth=421.10086pt
+* \paperheight=597.50787pt
+* \textwidth=305.29794pt
+* \textheight=488.81815pt
+* \oddsidemargin=-10.81194pt
+* \evensidemargin=-17.92513pt
+* \topmargin=-47.99261pt
+* \headheight=12.0pt
+* \headsep=18.06749pt
+* \topskip=10.0pt
+* \footskip=25.29494pt
+* \marginparwidth=125.0pt
+* \marginparsep=7.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/opt/local/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count92
+\scratchdimen=\dimen113
+\scratchbox=\box26
+\nofMPsegments=\count93
+\nofMParguments=\count94
+\everyMPshowfont=\toks16
+\MPscratchCnt=\count95
+\MPscratchDim=\dimen114
+\MPnumerator=\count96
+\makeMPintoPDFobject=\count97
+\everyMPtoPDFconversion=\toks17
+) (/opt/local/share/texmf-texlive/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/opt/local/share/texmf-texlive/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/opt/local/share/texmf-texlive/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/opt/local/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/opt/local/share/texmf-texlive/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+
+LaTeX Warning: File `eps/bp_0.eps' not found on input line 18.
+
+Package epstopdf Info: Source file: <eps/bp_0.eps>
+(epstopdf)             Output file: <eps/bp_0-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:48
+(epstopdf)                    size: 2753 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_0-eps-converted-to.
+pdf eps/bp_0.eps>
+(epstopdf)             \includegraphics on input line 18.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_0-eps-converted-to.pdf, id=1, 88.33pt x 149.55875pt>
+File: eps/bp_0-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_0-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_0-eps-converted-to.pdf used on input line 18.
+(pdftex.def)             Requested size: 61.83057pt x 104.6904pt.
+ [1 <./eps/bp_0-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_1.eps' not found on input line 22.
+
+Package epstopdf Info: Source file: <eps/bp_1.eps>
+(epstopdf)             Output file: <eps/bp_1-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:48
+(epstopdf)                    size: 2548 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_1-eps-converted-to.
+pdf eps/bp_1.eps>
+(epstopdf)             \includegraphics on input line 22.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_1-eps-converted-to.pdf, id=9, 41.15375pt x 89.33376pt>
+File: eps/bp_1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_1-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_1-eps-converted-to.pdf used on input line 22.
+(pdftex.def)             Requested size: 28.80742pt x 62.53319pt.
+ [2 <./eps/bp_1-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_2.eps' not found on input line 26.
+
+Package epstopdf Info: Source file: <eps/bp_2.eps>
+(epstopdf)             Output file: <eps/bp_2-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:48
+(epstopdf)                    size: 2607 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_2-eps-converted-to.
+pdf eps/bp_2.eps>
+(epstopdf)             \includegraphics on input line 26.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_2-eps-converted-to.pdf, id=15, 92.345pt x 149.55875pt>
+File: eps/bp_2-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_2-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_2-eps-converted-to.pdf used on input line 26.
+(pdftex.def)             Requested size: 64.64104pt x 104.6904pt.
+ [3 <./eps/bp_2-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_3.eps' not found on input line 30.
+
+Package epstopdf Info: Source file: <eps/bp_3.eps>
+(epstopdf)             Output file: <eps/bp_3-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:49
+(epstopdf)                    size: 2765 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_3-eps-converted-to.
+pdf eps/bp_3.eps>
+(epstopdf)             \includegraphics on input line 30.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_3-eps-converted-to.pdf, id=21, 142.5325pt x 205.76875pt>
+File: eps/bp_3-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_3-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_3-eps-converted-to.pdf used on input line 30.
+(pdftex.def)             Requested size: 99.77205pt x 144.03712pt.
+ [4 <./eps/bp_3-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_4.eps' not found on input line 34.
+
+Package epstopdf Info: Source file: <eps/bp_4.eps>
+(epstopdf)             Output file: <eps/bp_4-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:49
+(epstopdf)                    size: 4123 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_4-eps-converted-to.
+pdf eps/bp_4.eps>
+(epstopdf)             \includegraphics on input line 34.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_4-eps-converted-to.pdf, id=27, 609.27625pt x 487.8225pt>
+File: eps/bp_4-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_4-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_4-eps-converted-to.pdf used on input line 34.
+(pdftex.def)             Requested size: 426.49046pt x 341.47342pt.
+
+Overfull \hbox (121.19252pt too wide) in paragraph at lines 34--35
+ [][] 
+ []
+
+[5 <./eps/bp_4-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_5.eps' not found on input line 38.
+
+Package epstopdf Info: Source file: <eps/bp_5.eps>
+(epstopdf)             Output file: <eps/bp_5-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:49
+(epstopdf)                    size: 4192 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_5-eps-converted-to.
+pdf eps/bp_5.eps>
+(epstopdf)             \includegraphics on input line 38.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_5-eps-converted-to.pdf, id=33, 385.44pt x 487.8225pt>
+File: eps/bp_5-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_5-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_5-eps-converted-to.pdf used on input line 38.
+(pdftex.def)             Requested size: 269.80615pt x 341.47342pt.
+ [6 <./eps/bp_5-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_6.eps' not found on input line 42.
+
+Package epstopdf Info: Source file: <eps/bp_6.eps>
+(epstopdf)             Output file: <eps/bp_6-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:49
+(epstopdf)                    size: 2801 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_6-eps-converted-to.
+pdf eps/bp_6.eps>
+(epstopdf)             \includegraphics on input line 42.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_6-eps-converted-to.pdf, id=39, 148.555pt x 206.7725pt>
+File: eps/bp_6-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_6-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_6-eps-converted-to.pdf used on input line 42.
+(pdftex.def)             Requested size: 103.98778pt x 144.73975pt.
+ [7 <./eps/bp_6-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_7.eps' not found on input line 46.
+
+Package epstopdf Info: Source file: <eps/bp_7.eps>
+(epstopdf)             Output file: <eps/bp_7-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:50
+(epstopdf)                    size: 3013 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_7-eps-converted-to.
+pdf eps/bp_7.eps>
+(epstopdf)             \includegraphics on input line 46.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_7-eps-converted-to.pdf, id=46, 89.33376pt x 145.54375pt>
+File: eps/bp_7-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_7-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_7-eps-converted-to.pdf used on input line 46.
+(pdftex.def)             Requested size: 62.53319pt x 101.87991pt.
+ [8 <./eps/bp_7-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_8.eps' not found on input line 50.
+
+Package epstopdf Info: Source file: <eps/bp_8.eps>
+(epstopdf)             Output file: <eps/bp_8-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:50
+(epstopdf)                    size: 3843 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_8-eps-converted-to.
+pdf eps/bp_8.eps>
+(epstopdf)             \includegraphics on input line 50.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_8-eps-converted-to.pdf, id=52, 320.19624pt x 321.2pt>
+File: eps/bp_8-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_8-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_8-eps-converted-to.pdf used on input line 50.
+(pdftex.def)             Requested size: 224.13583pt x 224.83847pt.
+ [9 <./eps/bp_8-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_9.eps' not found on input line 54.
+
+Package epstopdf Info: Source file: <eps/bp_9.eps>
+(epstopdf)             Output file: <eps/bp_9-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:50
+(epstopdf)                    size: 2709 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_9-eps-converted-to.
+pdf eps/bp_9.eps>
+(epstopdf)             \includegraphics on input line 54.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_9-eps-converted-to.pdf, id=58, 205.76875pt x 203.76125pt>
+File: eps/bp_9-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_9-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_9-eps-converted-to.pdf used on input line 54.
+(pdftex.def)             Requested size: 144.03712pt x 142.6319pt.
+ [10 <./eps/bp_9-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_10.eps' not found on input line 58.
+
+Package epstopdf Info: Source file: <eps/bp_10.eps>
+(epstopdf)             Output file: <eps/bp_10-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:50
+(epstopdf)                    size: 3238 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_10-eps-converted-to
+.pdf eps/bp_10.eps>
+(epstopdf)             \includegraphics on input line 58.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_10-eps-converted-to.pdf, id=64, 154.5775pt x 150.5625pt>
+File: eps/bp_10-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_10-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_10-eps-converted-to.pdf used on input line 58.
+(pdftex.def)             Requested size: 108.20349pt x 105.39302pt.
+ [11 <./eps/bp_10-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_11.eps' not found on input line 62.
+
+Package epstopdf Info: Source file: <eps/bp_11.eps>
+(epstopdf)             Output file: <eps/bp_11-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:51
+(epstopdf)                    size: 2869 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_11-eps-converted-to
+.pdf eps/bp_11.eps>
+(epstopdf)             \includegraphics on input line 62.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_11-eps-converted-to.pdf, id=70, 198.7425pt x 198.7425pt>
+File: eps/bp_11-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_11-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_11-eps-converted-to.pdf used on input line 62.
+(pdftex.def)             Requested size: 139.11879pt x 139.11879pt.
+ [12 <./eps/bp_11-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_12.eps' not found on input line 66.
+
+Package epstopdf Info: Source file: <eps/bp_12.eps>
+(epstopdf)             Output file: <eps/bp_12-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:51
+(epstopdf)                    size: 3216 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_12-eps-converted-to
+.pdf eps/bp_12.eps>
+(epstopdf)             \includegraphics on input line 66.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_12-eps-converted-to.pdf, id=76, 201.75375pt x 205.76875pt>
+File: eps/bp_12-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_12-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_12-eps-converted-to.pdf used on input line 66.
+(pdftex.def)             Requested size: 141.22665pt x 144.03712pt.
+ [13 <./eps/bp_12-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_13.eps' not found on input line 70.
+
+Package epstopdf Info: Source file: <eps/bp_13.eps>
+(epstopdf)             Output file: <eps/bp_13-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:51
+(epstopdf)                    size: 3593 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_13-eps-converted-to
+.pdf eps/bp_13.eps>
+(epstopdf)             \includegraphics on input line 70.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_13-eps-converted-to.pdf, id=83, 258.9675pt x 205.76875pt>
+File: eps/bp_13-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_13-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_13-eps-converted-to.pdf used on input line 70.
+(pdftex.def)             Requested size: 181.27599pt x 144.03712pt.
+ [14 <./eps/bp_13-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_14.eps' not found on input line 74.
+
+Package epstopdf Info: Source file: <eps/bp_14.eps>
+(epstopdf)             Output file: <eps/bp_14-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:51
+(epstopdf)                    size: 2820 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_14-eps-converted-to
+.pdf eps/bp_14.eps>
+(epstopdf)             \includegraphics on input line 74.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_14-eps-converted-to.pdf, id=89, 145.54375pt x 155.58125pt>
+File: eps/bp_14-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_14-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_14-eps-converted-to.pdf used on input line 74.
+(pdftex.def)             Requested size: 101.87991pt x 108.90611pt.
+ [15 <./eps/bp_14-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_15.eps' not found on input line 78.
+
+Package epstopdf Info: Source file: <eps/bp_15.eps>
+(epstopdf)             Output file: <eps/bp_15-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:52
+(epstopdf)                    size: 3592 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_15-eps-converted-to
+.pdf eps/bp_15.eps>
+(epstopdf)             \includegraphics on input line 78.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_15-eps-converted-to.pdf, id=95, 201.75375pt x 261.97874pt>
+File: eps/bp_15-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_15-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_15-eps-converted-to.pdf used on input line 78.
+(pdftex.def)             Requested size: 141.22665pt x 183.38387pt.
+ [16 <./eps/bp_15-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_16.eps' not found on input line 82.
+
+Package epstopdf Info: Source file: <eps/bp_16.eps>
+(epstopdf)             Output file: <eps/bp_16-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:52
+(epstopdf)                    size: 3288 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_16-eps-converted-to
+.pdf eps/bp_16.eps>
+(epstopdf)             \includegraphics on input line 82.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_16-eps-converted-to.pdf, id=101, 193.72375pt x 373.395pt>
+File: eps/bp_16-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_16-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_16-eps-converted-to.pdf used on input line 82.
+(pdftex.def)             Requested size: 135.60568pt x 261.37471pt.
+ [17 <./eps/bp_16-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_17.eps' not found on input line 86.
+
+Package epstopdf Info: Source file: <eps/bp_17.eps>
+(epstopdf)             Output file: <eps/bp_17-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:52
+(epstopdf)                    size: 3326 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_17-eps-converted-to
+.pdf eps/bp_17.eps>
+(epstopdf)             \includegraphics on input line 86.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_17-eps-converted-to.pdf, id=107, 148.555pt x 262.9825pt>
+File: eps/bp_17-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_17-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_17-eps-converted-to.pdf used on input line 86.
+(pdftex.def)             Requested size: 103.98778pt x 184.08649pt.
+ [18 <./eps/bp_17-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_18.eps' not found on input line 90.
+
+Package epstopdf Info: Source file: <eps/bp_18.eps>
+(epstopdf)             Output file: <eps/bp_18-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:52
+(epstopdf)                    size: 2874 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_18-eps-converted-to
+.pdf eps/bp_18.eps>
+(epstopdf)             \includegraphics on input line 90.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_18-eps-converted-to.pdf, id=113, 42.1575pt x 211.79124pt>
+File: eps/bp_18-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_18-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_18-eps-converted-to.pdf used on input line 90.
+(pdftex.def)             Requested size: 29.51003pt x 148.25285pt.
+ [19 <./eps/bp_18-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_19.eps' not found on input line 94.
+
+Package epstopdf Info: Source file: <eps/bp_19.eps>
+(epstopdf)             Output file: <eps/bp_19-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:53
+(epstopdf)                    size: 3117 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_19-eps-converted-to
+.pdf eps/bp_19.eps>
+(epstopdf)             \includegraphics on input line 94.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_19-eps-converted-to.pdf, id=120, 148.555pt x 200.75pt>
+File: eps/bp_19-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_19-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_19-eps-converted-to.pdf used on input line 94.
+(pdftex.def)             Requested size: 103.98778pt x 140.52403pt.
+ [20 <./eps/bp_19-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_20.eps' not found on input line 98.
+
+Package epstopdf Info: Source file: <eps/bp_20.eps>
+(epstopdf)             Output file: <eps/bp_20-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:53
+(epstopdf)                    size: 3012 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_20-eps-converted-to
+.pdf eps/bp_20.eps>
+(epstopdf)             \includegraphics on input line 98.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_20-eps-converted-to.pdf, id=126, 145.54375pt x 269.005pt>
+File: eps/bp_20-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_20-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_20-eps-converted-to.pdf used on input line 98.
+(pdftex.def)             Requested size: 101.87991pt x 188.3022pt.
+ [21 <./eps/bp_20-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_21.eps' not found on input line 102.
+
+Package epstopdf Info: Source file: <eps/bp_21.eps>
+(epstopdf)             Output file: <eps/bp_21-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:53
+(epstopdf)                    size: 3493 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_21-eps-converted-to
+.pdf eps/bp_21.eps>
+(epstopdf)             \includegraphics on input line 102.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_21-eps-converted-to.pdf, id=132, 263.98625pt x 321.2pt>
+File: eps/bp_21-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_21-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_21-eps-converted-to.pdf used on input line 102.
+
+(pdftex.def)             Requested size: 184.78911pt x 224.83847pt.
+ [22 <./eps/bp_21-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_22.eps' not found on input line 106.
+
+Package epstopdf Info: Source file: <eps/bp_22.eps>
+(epstopdf)             Output file: <eps/bp_22-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:53
+(epstopdf)                    size: 3126 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_22-eps-converted-to
+.pdf eps/bp_22.eps>
+(epstopdf)             \includegraphics on input line 106.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_22-eps-converted-to.pdf, id=138, 148.555pt x 263.98625pt>
+File: eps/bp_22-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_22-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_22-eps-converted-to.pdf used on input line 106.
+
+(pdftex.def)             Requested size: 103.98778pt x 184.78911pt.
+ [23 <./eps/bp_22-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_23.eps' not found on input line 110.
+
+Package epstopdf Info: Source file: <eps/bp_23.eps>
+(epstopdf)             Output file: <eps/bp_23-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:54
+(epstopdf)                    size: 3178 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_23-eps-converted-to
+.pdf eps/bp_23.eps>
+(epstopdf)             \includegraphics on input line 110.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_23-eps-converted-to.pdf, id=144, 155.58125pt x 145.54375pt>
+File: eps/bp_23-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_23-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_23-eps-converted-to.pdf used on input line 110.
+
+(pdftex.def)             Requested size: 108.90611pt x 101.87991pt.
+ [24 <./eps/bp_23-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_24.eps' not found on input line 114.
+
+Package epstopdf Info: Source file: <eps/bp_24.eps>
+(epstopdf)             Output file: <eps/bp_24-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:54
+(epstopdf)                    size: 3807 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_24-eps-converted-to
+.pdf eps/bp_24.eps>
+(epstopdf)             \includegraphics on input line 114.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_24-eps-converted-to.pdf, id=150, 319.1925pt x 382.42876pt>
+File: eps/bp_24-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_24-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_24-eps-converted-to.pdf used on input line 114.
+
+(pdftex.def)             Requested size: 223.43321pt x 267.69829pt.
+ [25 <./eps/bp_24-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_25.eps' not found on input line 118.
+
+Package epstopdf Info: Source file: <eps/bp_25.eps>
+(epstopdf)             Output file: <eps/bp_25-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:54
+(epstopdf)                    size: 3658 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_25-eps-converted-to
+.pdf eps/bp_25.eps>
+(epstopdf)             \includegraphics on input line 118.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_25-eps-converted-to.pdf, id=157, 261.97874pt x 259.97125pt>
+File: eps/bp_25-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_25-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_25-eps-converted-to.pdf used on input line 118.
+
+(pdftex.def)             Requested size: 183.38387pt x 181.97862pt.
+ [26 <./eps/bp_25-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_26.eps' not found on input line 122.
+
+Package epstopdf Info: Source file: <eps/bp_26.eps>
+(epstopdf)             Output file: <eps/bp_26-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:54
+(epstopdf)                    size: 3105 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_26-eps-converted-to
+.pdf eps/bp_26.eps>
+(epstopdf)             \includegraphics on input line 122.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_26-eps-converted-to.pdf, id=164, 145.54375pt x 326.21875pt>
+File: eps/bp_26-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_26-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_26-eps-converted-to.pdf used on input line 122.
+
+(pdftex.def)             Requested size: 101.87991pt x 228.35156pt.
+ [27 <./eps/bp_26-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_27.eps' not found on input line 126.
+
+Package epstopdf Info: Source file: <eps/bp_27.eps>
+(epstopdf)             Output file: <eps/bp_27-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:55
+(epstopdf)                    size: 3003 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_27-eps-converted-to
+.pdf eps/bp_27.eps>
+(epstopdf)             \includegraphics on input line 126.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_27-eps-converted-to.pdf, id=170, 103.38625pt x 146.5475pt>
+File: eps/bp_27-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_27-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_27-eps-converted-to.pdf used on input line 126.
+
+(pdftex.def)             Requested size: 72.36987pt x 102.58253pt.
+ [28 <./eps/bp_27-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_28.eps' not found on input line 130.
+
+Package epstopdf Info: Source file: <eps/bp_28.eps>
+(epstopdf)             Output file: <eps/bp_28-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:55
+(epstopdf)                    size: 3228 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_28-eps-converted-to
+.pdf eps/bp_28.eps>
+(epstopdf)             \includegraphics on input line 130.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_28-eps-converted-to.pdf, id=176, 275.0275pt x 211.79124pt>
+File: eps/bp_28-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_28-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_28-eps-converted-to.pdf used on input line 130.
+
+(pdftex.def)             Requested size: 192.51793pt x 148.25285pt.
+ [29 <./eps/bp_28-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_29.eps' not found on input line 134.
+
+Package epstopdf Info: Source file: <eps/bp_29.eps>
+(epstopdf)             Output file: <eps/bp_29-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:55
+(epstopdf)                    size: 3121 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_29-eps-converted-to
+.pdf eps/bp_29.eps>
+(epstopdf)             \includegraphics on input line 134.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_29-eps-converted-to.pdf, id=182, 211.79124pt x 259.97125pt>
+File: eps/bp_29-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_29-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_29-eps-converted-to.pdf used on input line 134.
+
+(pdftex.def)             Requested size: 148.25285pt x 181.97862pt.
+ [30 <./eps/bp_29-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_30.eps' not found on input line 138.
+
+Package epstopdf Info: Source file: <eps/bp_30.eps>
+(epstopdf)             Output file: <eps/bp_30-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:55
+(epstopdf)                    size: 4003 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_30-eps-converted-to
+.pdf eps/bp_30.eps>
+(epstopdf)             \includegraphics on input line 138.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_30-eps-converted-to.pdf, id=188, 375.4025pt x 268.00125pt>
+File: eps/bp_30-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_30-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_30-eps-converted-to.pdf used on input line 138.
+
+(pdftex.def)             Requested size: 262.77995pt x 187.59958pt.
+ [31 <./eps/bp_30-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_31.eps' not found on input line 142.
+
+Package epstopdf Info: Source file: <eps/bp_31.eps>
+(epstopdf)             Output file: <eps/bp_31-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:56
+(epstopdf)                    size: 2807 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_31-eps-converted-to
+.pdf eps/bp_31.eps>
+(epstopdf)             \includegraphics on input line 142.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_31-eps-converted-to.pdf, id=195, 202.7575pt x 146.5475pt>
+File: eps/bp_31-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_31-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_31-eps-converted-to.pdf used on input line 142.
+
+(pdftex.def)             Requested size: 141.92928pt x 102.58253pt.
+ [32 <./eps/bp_31-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_32.eps' not found on input line 146.
+
+Package epstopdf Info: Source file: <eps/bp_32.eps>
+(epstopdf)             Output file: <eps/bp_32-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:56
+(epstopdf)                    size: 2937 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_32-eps-converted-to
+.pdf eps/bp_32.eps>
+(epstopdf)             \includegraphics on input line 146.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_32-eps-converted-to.pdf, id=201, 253.94875pt x 202.7575pt>
+File: eps/bp_32-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_32-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_32-eps-converted-to.pdf used on input line 146.
+
+(pdftex.def)             Requested size: 177.76291pt x 141.92928pt.
+ [33 <./eps/bp_32-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_33.eps' not found on input line 150.
+
+Package epstopdf Info: Source file: <eps/bp_33.eps>
+(epstopdf)             Output file: <eps/bp_33-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:56
+(epstopdf)                    size: 3331 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_33-eps-converted-to
+.pdf eps/bp_33.eps>
+(epstopdf)             \includegraphics on input line 150.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_33-eps-converted-to.pdf, id=207, 153.57375pt x 202.7575pt>
+File: eps/bp_33-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_33-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_33-eps-converted-to.pdf used on input line 150.
+
+(pdftex.def)             Requested size: 107.50089pt x 141.92928pt.
+ [34 <./eps/bp_33-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_34.eps' not found on input line 154.
+
+Package epstopdf Info: Source file: <eps/bp_34.eps>
+(epstopdf)             Output file: <eps/bp_34-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:56
+(epstopdf)                    size: 3160 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_34-eps-converted-to
+.pdf eps/bp_34.eps>
+(epstopdf)             \includegraphics on input line 154.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_34-eps-converted-to.pdf, id=213, 203.76125pt x 254.9525pt>
+File: eps/bp_34-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_34-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_34-eps-converted-to.pdf used on input line 154.
+
+(pdftex.def)             Requested size: 142.6319pt x 178.46552pt.
+ [35 <./eps/bp_34-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_35.eps' not found on input line 158.
+
+Package epstopdf Info: Source file: <eps/bp_35.eps>
+(epstopdf)             Output file: <eps/bp_35-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:56
+(epstopdf)                    size: 3039 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_35-eps-converted-to
+.pdf eps/bp_35.eps>
+(epstopdf)             \includegraphics on input line 158.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_35-eps-converted-to.pdf, id=219, 210.7875pt x 268.00125pt>
+File: eps/bp_35-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_35-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_35-eps-converted-to.pdf used on input line 158.
+
+(pdftex.def)             Requested size: 147.55025pt x 187.59958pt.
+ [36 <./eps/bp_35-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_36.eps' not found on input line 162.
+
+Package epstopdf Info: Source file: <eps/bp_36.eps>
+(epstopdf)             Output file: <eps/bp_36-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:57
+(epstopdf)                    size: 3760 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_36-eps-converted-to
+.pdf eps/bp_36.eps>
+(epstopdf)             \includegraphics on input line 162.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_36-eps-converted-to.pdf, id=225, 310.15875pt x 269.005pt>
+File: eps/bp_36-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_36-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_36-eps-converted-to.pdf used on input line 162.
+
+(pdftex.def)             Requested size: 217.10963pt x 188.3022pt.
+ [37 <./eps/bp_36-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_37.eps' not found on input line 166.
+
+Package epstopdf Info: Source file: <eps/bp_37.eps>
+(epstopdf)             Output file: <eps/bp_37-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:57
+(epstopdf)                    size: 4088 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_37-eps-converted-to
+.pdf eps/bp_37.eps>
+(epstopdf)             \includegraphics on input line 166.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_37-eps-converted-to.pdf, id=232, 439.6425pt x 382.42876pt>
+File: eps/bp_37-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_37-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_37-eps-converted-to.pdf used on input line 166.
+
+(pdftex.def)             Requested size: 307.74765pt x 267.69829pt.
+
+Overfull \hbox (2.4497pt too wide) in paragraph at lines 166--167
+ [][] 
+ []
+
+[38 <./eps/bp_37-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_38.eps' not found on input line 170.
+
+Package epstopdf Info: Source file: <eps/bp_38.eps>
+(epstopdf)             Output file: <eps/bp_38-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:57
+(epstopdf)                    size: 3755 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_38-eps-converted-to
+.pdf eps/bp_38.eps>
+(epstopdf)             \includegraphics on input line 170.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_38-eps-converted-to.pdf, id=238, 322.20375pt x 434.62375pt>
+File: eps/bp_38-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_38-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_38-eps-converted-to.pdf used on input line 170.
+
+(pdftex.def)             Requested size: 225.54108pt x 304.23454pt.
+ [39 <./eps/bp_38-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_39.eps' not found on input line 174.
+
+Package epstopdf Info: Source file: <eps/bp_39.eps>
+(epstopdf)             Output file: <eps/bp_39-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:58
+(epstopdf)                    size: 3858 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_39-eps-converted-to
+.pdf eps/bp_39.eps>
+(epstopdf)             \includegraphics on input line 174.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_39-eps-converted-to.pdf, id=244, 207.77625pt x 321.2pt>
+File: eps/bp_39-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_39-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_39-eps-converted-to.pdf used on input line 174.
+
+(pdftex.def)             Requested size: 145.44237pt x 224.83847pt.
+ [40 <./eps/bp_39-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_40.eps' not found on input line 178.
+
+Package epstopdf Info: Source file: <eps/bp_40.eps>
+(epstopdf)             Output file: <eps/bp_40-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:58
+(epstopdf)                    size: 2753 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_40-eps-converted-to
+.pdf eps/bp_40.eps>
+(epstopdf)             \includegraphics on input line 178.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_40-eps-converted-to.pdf, id=250, 145.54375pt x 259.97125pt>
+File: eps/bp_40-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_40-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_40-eps-converted-to.pdf used on input line 178.
+
+(pdftex.def)             Requested size: 101.87991pt x 181.97862pt.
+ [41 <./eps/bp_40-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_41.eps' not found on input line 182.
+
+Package epstopdf Info: Source file: <eps/bp_41.eps>
+(epstopdf)             Output file: <eps/bp_41-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:58
+(epstopdf)                    size: 3145 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_41-eps-converted-to
+.pdf eps/bp_41.eps>
+(epstopdf)             \includegraphics on input line 182.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_41-eps-converted-to.pdf, id=256, 210.7875pt x 194.7275pt>
+File: eps/bp_41-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_41-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_41-eps-converted-to.pdf used on input line 182.
+
+(pdftex.def)             Requested size: 147.55025pt x 136.3083pt.
+ [42 <./eps/bp_41-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_42.eps' not found on input line 186.
+
+Package epstopdf Info: Source file: <eps/bp_42.eps>
+(epstopdf)             Output file: <eps/bp_42-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:58
+(epstopdf)                    size: 2737 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_42-eps-converted-to
+.pdf eps/bp_42.eps>
+(epstopdf)             \includegraphics on input line 186.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_42-eps-converted-to.pdf, id=262, 193.72375pt x 194.7275pt>
+File: eps/bp_42-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_42-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_42-eps-converted-to.pdf used on input line 186.
+
+(pdftex.def)             Requested size: 135.60568pt x 136.3083pt.
+ [43 <./eps/bp_42-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_43.eps' not found on input line 190.
+
+Package epstopdf Info: Source file: <eps/bp_43.eps>
+(epstopdf)             Output file: <eps/bp_43-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:59
+(epstopdf)                    size: 3744 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_43-eps-converted-to
+.pdf eps/bp_43.eps>
+(epstopdf)             \includegraphics on input line 190.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_43-eps-converted-to.pdf, id=269, 210.7875pt x 316.18124pt>
+File: eps/bp_43-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_43-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_43-eps-converted-to.pdf used on input line 190.
+
+(pdftex.def)             Requested size: 147.55025pt x 221.32535pt.
+ [44 <./eps/bp_43-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_44.eps' not found on input line 194.
+
+Package epstopdf Info: Source file: <eps/bp_44.eps>
+(epstopdf)             Output file: <eps/bp_44-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:59
+(epstopdf)                    size: 2701 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_44-eps-converted-to
+.pdf eps/bp_44.eps>
+(epstopdf)             \includegraphics on input line 194.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_44-eps-converted-to.pdf, id=275, 88.33pt x 146.5475pt>
+File: eps/bp_44-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_44-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_44-eps-converted-to.pdf used on input line 194.
+
+(pdftex.def)             Requested size: 61.83057pt x 102.58253pt.
+ [45 <./eps/bp_44-eps-converted-to.pdf>]
+
+LaTeX Warning: File `eps/bp_45.eps' not found on input line 198.
+
+Package epstopdf Info: Source file: <eps/bp_45.eps>
+(epstopdf)             Output file: <eps/bp_45-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-23 02:59:59
+(epstopdf)                    size: 3569 bytes
+(epstopdf)             Command: <repstopdf --outfile=eps/bp_45-eps-converted-to
+.pdf eps/bp_45.eps>
+(epstopdf)             \includegraphics on input line 198.
+Package epstopdf Info: Output file is already uptodate.
+<eps/bp_45-eps-converted-to.pdf, id=281, 201.75375pt x 206.7725pt>
+File: eps/bp_45-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eps/bp_45-eps-converted-to.pdf>
+Package pdftex.def Info: eps/bp_45-eps-converted-to.pdf used on input line 198.
+
+(pdftex.def)             Requested size: 141.22665pt x 144.73975pt.
+ [46 <./eps/bp_45-eps-converted-to.pdf>]
+(./proverbbook.aux) ) 
+Here is how much of TeX's memory you used:
+ 2185 strings out of 493678
+ 34915 string characters out of 6149272
+ 89946 words of memory out of 5000000
+ 5475 multiletter control sequences out of 15000+600000
+ 3993 words of font info for 15 fonts, out of 8000000 for 9000
+ 846 hyphenation exceptions out of 8191
+ 37i,6n,28p,245b,207s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on proverbbook.pdf (46 pages, 63155 bytes).
+PDF statistics:
+ 292 PDF objects out of 1000 (max. 8388607)
+ 196 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 231 words of extra memory for PDF output out of 10000 (max. 10000000)
+

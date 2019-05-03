@@ -1,0 +1,95 @@
+/*
+   statusbar-overlay sets the background color for the overlay. Black text is the default when the statusbar plugin is not added. When the
+   statusbar plugin is added, it also adds default setting to make the content white via:
+
+       <preference name="StatusBarStyle" value="lightcontent"/>
+
+   Setting the background color to black will allow the default light content (white text/icons) to show on it. The statusbar plugin is included
+   in the config.xml file and will be added by the CLI when you build locally.
+
+   See https://github.com/apache/cordova-plugin-statusbar
+*/
+
+html, body {
+	position: fixed;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    -webkit-overflow-scrolling: auto;
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none;      /* IE 10+ */
+	user-select: none;          /* Likely future */ 
+	cursor: default;
+
+}
+
+.statusbar-overlay {
+    background: #000000;
+}
+
+svg{
+height:100%;
+width:100%;
+display: block;
+margin: auto;
+}
+
+.card-footer {
+	text-align: center;
+}
+.card svg {
+	max-height:100px;
+	width:100%;
+}
+
+.card {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.navbar svg {
+	height:30px;
+	width:30px;
+}
+
+br{
+   display: block;
+   margin: 0 0;
+}
+
+.col-20 {
+	text-align: center; 
+}
+
+.col-20 a{
+	color: black;
+}
+
+.col-20 svg{
+	max-height:10vh;
+}
+
+.content-block {
+	margin:20px;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.unpadded {
+	margin-top: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.bigcontent {
+	padding-bottom: 0;
+}
+
+div.page-content.bigcontent {
+	padding-bottom: 0;
+	
+}
